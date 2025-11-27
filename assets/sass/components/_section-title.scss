@@ -1,0 +1,53 @@
+.section-title {
+	margin-bottom: 60px;
+	text-align: center;
+
+	@include media-query(767px) {
+		margin-bottom: 40px;
+	}
+
+
+	h3 {
+		color: #666;
+		font-size: 20px;
+		font-weight: 500;
+		border-radius: 20px;
+		background: #FCF1E8;
+		padding: 7px 35px;
+		display: inline-block;
+	}
+
+	h2 {
+		margin: 0;
+		position: relative;
+		text-transform: capitalize;
+		font-family: $heading-font;
+		color: #000;
+		font-size: 60px;
+		font-weight: 400;
+		line-height: 80px;
+
+		@include media-query(1199px) {
+			font-size: 50px;
+			line-height: 65px;
+		}
+		@include media-query(1199px) {
+			font-size: 40px;
+			line-height: 55px;
+		}
+		@include media-query(767px) {
+			font-size: 32px;
+			line-height: 40px;
+		}
+
+		@include media-query(330px) {
+			font-size: 30px;
+		}
+
+	}
+
+	p {
+		font-size: 18px;
+	}
+
+}
