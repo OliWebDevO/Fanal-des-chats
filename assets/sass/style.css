@@ -4281,6 +4281,12 @@ img {
 .testimonial-section .item .client-wrap {
   display: flex;
   align-items: center;
+  img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    object-position: center;
+    }
 }
 @media (max-width: 575px) {
   .testimonial-section .item .client-wrap {
