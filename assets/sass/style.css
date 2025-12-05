@@ -556,12 +556,14 @@ img {
 .wpo-page-title {
   /* background: url(../images/page-title.jpg) no-repeat center top/cover; */
   background: url(../images/images/titlepicture.jpg) no-repeat center center/cover;
-  min-height: 480px;
+  min-height: 380px;
   position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
   z-index: 1;
+  /* border-radius: 58px;
+  overflow: hidden; */
 }
 @media (max-width: 767px) {
   .wpo-page-title {
@@ -582,6 +584,7 @@ img {
 .wpo-page-title .wpo-breadcumb-wrap {
   text-align: center;
   margin-top: 10px;
+  
 }
 @media (max-width: 991px) {
   .wpo-page-title .wpo-breadcumb-wrap {
