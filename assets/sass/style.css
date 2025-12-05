@@ -554,8 +554,9 @@ img {
 }
 
 .wpo-page-title {
-  background: url(../images/page-title.jpg) no-repeat center top/cover;
-  min-height: 380px;
+  /* background: url(../images/page-title.jpg) no-repeat center top/cover; */
+  background: url(../images/images/titlepicture.jpg) no-repeat center center/cover;
+  min-height: 480px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -5032,6 +5033,10 @@ img {
   font-size: 35px;
   line-height: 130.5%;
   margin-bottom: 20px;
+}
+.wpo-service-single-main-img img{
+  max-height: 500px;
+  border-radius: 9px;
 }
 @media (max-width: 767px) {
   .wpo-service-single-area .wpo-service-single-wrap .wpo-service-single-title h3 {
