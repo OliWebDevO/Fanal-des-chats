@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-lg-2 col-md-6 col-6">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg"
+                                    <a class="navbar-brand" href="'<?php echo home_url("/"); ?>'"><img src="assets/images/logo.svg"
                                             alt=""></a>
                                 </div>
                             </div>
@@ -70,40 +70,40 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">Home</a>
                                             <ul class="sub-menu">
-                                                <li><a href="index.html">Home style 1</a></li>
-                                                <li><a href="index-2.html">Home style 2</a></li>
+                                                <li><a href="'<?php echo home_url("/"); ?>'">Home style 1</a></li>
+                                                <li><a href="'<?php echo home_url("/index-2"); ?>'">Home style 2</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Page</a>
                                             <ul class="sub-menu">
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="pricing.html">Pricing</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="'<?php echo home_url("/about"); ?>'">About</a></li>
+                                                <li><a href="'<?php echo home_url("/pricing"); ?>'">Pricing</a></li>
+                                                <li><a href="'<?php echo home_url("/faq"); ?>'">Faq</a></li>
+                                                <li><a href="'<?php echo home_url("/404"); ?>'">404</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Services</a>
                                             <ul class="sub-menu">
-                                                <li><a href="service.html">Services</a></li>
-                                                <li><a href="service-single.html">Service Single</a></li>
+                                                <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li>
+                                                <li><a href="'<?php echo home_url("/service-single"); ?>'">Service Single</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Shop</a>
                                             <ul class="sub-menu">
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-single.html">Shop Single</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="'<?php echo home_url("/shop"); ?>'">Shop</a></li>
+                                                <li><a href="'<?php echo home_url("/shop-single"); ?>'">Shop Single</a></li>
+                                                <li><a href="'<?php echo home_url("/cart"); ?>'">Cart</a></li>
+                                                <li><a href="'<?php echo home_url("/checkout"); ?>'">Checkout</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Blog</a>
                                             <ul class="sub-menu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a>
+                                                <li><a href="'<?php echo home_url("/blog"); ?>'">Blog</a></li>
+                                                <li><a href="'<?php echo home_url("/blog-single"); ?>'">Blog Single</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
                                     <div class="close-form">
-                                        <a class="theme-btn" href="contact.html">Contact Now</a>
+                                        <a class="theme-btn" href="'<?php echo home_url("/contact"); ?>'">Contact Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                         <div class="wpo-breadcumb-wrap">
                             <h2>Privace & Policy</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="'<?php echo home_url("/"); ?>'">Home</a></li>
                                 <li>Privace & Policy</li>
                             </ol>
                         </div>
@@ -355,11 +355,11 @@
                                     <h3>Quick Link</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="service.html">Services</a></li>
-                                    <li><a href="pricing.html">Pricing Plan</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="'<?php echo home_url("/about"); ?>'">About Us</a></li>
+                                    <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li>
+                                    <li><a href="'<?php echo home_url("/pricing"); ?>'">Pricing Plan</a></li>
+                                    <li><a href="'<?php echo home_url("/blog"); ?>'">Blog</a></li>
+                                    <li><a href="'<?php echo home_url("/contact"); ?>'">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -375,10 +375,10 @@
                         </div>
                         <div class="col col-lg-6 col-12">
                             <ul class="right">
-                                <li><a href="privace.html"><span class="rolling-text">Privace & Policy</span> </a></li>
-                                <li><a href="terms.html"><span class="rolling-text">Terms</span></a></li>
-                                <li><a href="about.html"><span class="rolling-text">About us</span></a></li>
-                                <li><a href="faq.html"><span class="rolling-text">FAQ</span></a></li>
+                                <li><a href="'<?php echo home_url("/privace"); ?>'"><span class="rolling-text">Privace & Policy</span> </a></li>
+                                <li><a href="'<?php echo home_url("/terms"); ?>'"><span class="rolling-text">Terms</span></a></li>
+                                <li><a href="'<?php echo home_url("/about"); ?>'"><span class="rolling-text">About us</span></a></li>
+                                <li><a href="'<?php echo home_url("/faq"); ?>'"><span class="rolling-text">FAQ</span></a></li>
                             </ul>
                         </div>
                     </div>

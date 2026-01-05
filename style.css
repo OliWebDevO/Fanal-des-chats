@@ -1,0 +1,20 @@
+/*
+Theme Name: Le Fanal des Chats
+Theme URI: https://github.com/OliWebDevO/Fanal-des-chats
+Description: Thème WordPress personnalisé pour Le Fanal des Chats - Association de protection et soins des chats. Un thème moderne et responsive conçu spécialement pour les refuges et associations de protection animale.
+Author: Oliver Van Droogenbroeck
+Author URI: https://github.com/OliWebDevO
+Version: 1.0.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: fanal-des-chats
+Tags: animals, pets, charity, nonprofit, responsive, bootstrap, modern
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+*/
+
+/* 
+ * The main stylesheet is located in assets/sass/style.css
+ * This file is only for WordPress theme recognition
+ */

@@ -1,146 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php get_template_part("partials/header"); ?>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-    <title>Petlox | Pet Care & Veterinary HTML5 Template</title>
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/css/flaticon.css" rel="stylesheet">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet">
-    <link href="assets/css/owl.carousel.css" rel="stylesheet">
-    <link href="assets/css/owl.theme.css" rel="stylesheet">
-    <link href="assets/css/slick.css" rel="stylesheet">
-    <link href="assets/css/slick-theme.css" rel="stylesheet">
-    <link href="assets/css/swiper.min.css" rel="stylesheet">
-    <link href="assets/css/owl.transitions.css" rel="stylesheet">
-    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
-    <link href="assets/sass/style.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <!-- start page-wrapper -->
-    <div class="page-wrapper">
-        <!-- start preloader -->
-        <div class="preloader">
-            <div class="vertical-centered-box">
-                <div class="content">
-                    <div class="loader-circle"></div>
-                    <div class="loader-line-mask">
-                        <div class="loader-line"></div>
-                    </div>
-                    <img src="assets/images/preloader.png" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- end preloader -->
-
-        <!-- Start header -->
-        <header id="header">
-            <div class="wpo-site-header wpo-site-header-s2 orange">
-                <nav class="navigation navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
-                                <div class="mobail-menu">
-                                    <button type="button" class="navbar-toggler open-btn">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar first-angle"></span>
-                                        <span class="icon-bar middle-angle"></span>
-                                        <span class="icon-bar last-angle"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-6">
-                                <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.html"><img src="assets/images/images/logo.gif"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-1 col-1">
-                                <div id="navbar" class="collapse navbar-collapse navigation-holder">
-                                    <button class="menu-close"><i class="ti-close"></i></button>
-                                    <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Accueil</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="index.html">Home style 1</a></li>
-                                                <li><a href="index-2.html">Home style 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">A Propos</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="pricing.html">Pricing</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="404.html">404</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="service.html">Participer</a>
-                                            <ul class="sub-menu">
-                                                <!-- <li><a href="service.html">Services</a></li> -->
-                                                <li><a href="service-single.html">Devenir Bénévole</a></li>
-                                                <li><a href="service-single2.html">Adopter un Chat</a></li>
-                                                <li><a href="service-single3.html">Faire un don</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Revue</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop.html">Revue</a></li>
-                                                <li><a href="shop-single.html">Revue Single</a></li>
-                                                <!-- <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li> -->
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">News</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="blog-single.html">News Single</a>
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-                                </div><!-- end of nav-collapse -->
-                            </div>
-                            <div class="col-lg-3 col-md-2 col-2">
-                                <div class="header-right">
-                                    <!-- <div class="header-search-form-wrapper">
-                                        <div class="cart-search-contact">
-                                            <button class="search-toggle-btn"><i class="fi flaticon-loupe"></i></button>
-                                            <div class="header-search-form">
-                                                <form>
-                                                    <div>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Search here...">
-                                                        <button type="submit"><i class="fi flaticon-loupe"></i></button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <div class="close-form">
-                                        <a class="theme-btn" href="contact.html">Contactez nous</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- end of container -->
-                </nav>
-            </div>
-        </header>
-        <!-- end of header -->
-
-        <!-- start wpo-page-title -->
+       <!-- start wpo-page-title -->
         <section class="wpo-page-title orange">
             <div class="container">
                 <div class="row">
@@ -148,7 +8,7 @@
                         <div class="wpo-breadcumb-wrap">
                             <h2>Cours de taichi pour chat</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Accueil</a></li>
+                                <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
                                 <li>Cours de taichi pour chat</li>
                             </ol>
                         </div>
@@ -166,7 +26,7 @@
                         <div class="wpo-blog-content">
                             <div class="post format-standard-image">
                                 <div class="entry-media">
-                                    <img src="assets/images/images/taichi.png" alt>
+                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/taichi.png" alt="">
                                 </div>
                                 <div class="entry-meta">
                                     <ul>
@@ -184,10 +44,10 @@
 
                                 <div class="gallery">
                                     <div>
-                                        <img src="assets/images/blog-details/1.jpg" alt="">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/blog-details/1.jpg" alt="">
                                     </div>
                                     <div>
-                                        <img src="assets/images/blog-details/2.jpg" alt="">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/blog-details/2.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -217,8 +77,8 @@
 
                             <div class="author-box">
                                 <div class="author-avatar">
-                                    <a href="#" target="_blank"><img src="assets/images/blog-details/author.jpg"
-                                            alt></a>
+                                    <a href="#" target="_blank"><img src="<?php bloginfo("template_url")?>/assets/images/blog-details/author.jpg"
+                                            alt=""></a>
                                 </div>
                                 <div class="author-content">
                                     <a href="#" class="author-name">Auteur: Équipe du Fanal des Chats</a>
@@ -236,13 +96,13 @@
 
                             <div class="more-posts">
                                 <div class="previous-post">
-                                    <a href="blog.html">
+                                    <a href="<?php echo home_url('/blog'); ?>">
                                         <span class="post-control-link">Article précédent</span>
                                         <span class="post-name">Les bienfaits de la méditation pour les chats en refuge</span>
                                     </a>
                                 </div>
                                 <div class="next-post">
-                                    <a href="blog-left-sidebar.html">
+                                    <a href="<?php echo home_url('/blog'); ?>">
                                         <span class="post-control-link">Article suivant</span>
                                         <span class="post-name">Comment créer un environnement zen pour nos pensionnaires</span>
                                     </a>
@@ -257,8 +117,8 @@
                                             <div id="div-comment-1">
                                                 <div class="comment-theme">
                                                     <div class="comment-image"><img
-                                                            src="assets/images/blog-details/comments-author/img-1.jpg"
-                                                            alt></div>
+                                                            src="<?php bloginfo("template_url")?>/assets/images/blog-details/comments-author/img-1.jpg"
+                                                            alt=""></div>
                                                 </div>
                                                 <div class="comment-main-area">
                                                     <div class="comment-wrapper">
@@ -281,8 +141,8 @@
                                                     <div>
                                                         <div class="comment-theme">
                                                             <div class="comment-image"><img
-                                                                    src="assets/images/blog-details/comments-author/img-2.jpg"
-                                                                    alt></div>
+                                                                    src="<?php bloginfo("template_url")?>/assets/images/blog-details/comments-author/img-2.jpg"
+                                                                    alt=""></div>
                                                         </div>
                                                         <div class="comment-main-area">
                                                             <div class="comment-wrapper">
@@ -305,8 +165,8 @@
                                                             <div>
                                                                 <div class="comment-theme">
                                                                     <div class="comment-image"><img
-                                                                            src="assets/images/blog-details/comments-author/img-3.jpg"
-                                                                            alt></div>
+                                                                            src="<?php bloginfo("template_url")?>/assets/images/blog-details/comments-author/img-3.jpg"
+                                                                            alt=""></div>
                                                                 </div>
                                                                 <div class="comment-main-area">
                                                                     <div class="comment-wrapper">
@@ -335,8 +195,8 @@
                                             <div>
                                                 <div class="comment-theme">
                                                     <div class="comment-image"><img
-                                                            src="assets/images/blog-details/comments-author/img-1.jpg"
-                                                            alt></div>
+                                                            src="<?php bloginfo("template_url")?>/assets/images/blog-details/comments-author/img-1.jpg"
+                                                            alt=""></div>
                                                 </div>
                                                 <div class="comment-main-area">
                                                     <div class="comment-wrapper">
@@ -392,29 +252,29 @@
                                 <div class="posts">
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-1.jpg" alt>
+                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-1.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="blog-single.html">La méditation féline au refuge</a>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">La méditation féline au refuge</a>
                                             </h4>
                                             <span class="date">19 Jun 2025 </span>
                                         </div>
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-2.jpg" alt>
+                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-2.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="blog-single.html">Les chats ont-ils des émotions ?</a></h4>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
                                             <span class="date">22 May 2025 </span>
                                         </div>
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-3.jpg" alt>
+                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-3.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="blog-single.html">Comment adopter un chat du refuge</a>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Comment adopter un chat du refuge</a>
                                             </h4>
                                             <span class="date">12 Apr 2025 </span>
                                         </div>
@@ -426,17 +286,17 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="service-single.html"><img src="assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
                                                 alt=""></a></li>
                                 </ul>
                             </div>
@@ -460,96 +320,4 @@
         </section>
         <!-- end wpo-blog-pg-section -->
 
-
-        <!-- start of wpo-site-footer-section -->
-        <footer class="wpo-site-footer">
-            <div class="wpo-upper-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="widget about-widget">
-                                 
-                                <div class="widget-title">
-                                    <a class="footer-logo" href="index.html"><img src="assets/images/images/logo.gif"
-                                            alt=""></a>
-                                    <h2>Le Fanal des Chats</h2>
-                                </div>
-                                <div class="social-widget">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
-                            <div class="widget contact-widget">
-                                <div class="widget-title">
-                                    <h3>Contact</h3>
-                                </div>
-                                <ul>
-                                    <li>Le Fanal des Chats asbl</li>
-                                    <li>16 avenue Emile Max, 1030 Bruxelles</li>
-                                    <li>lefanaldeschats@proximus.be</li>
-                                    <li>02/734.60.29</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
-                            <div class="widget link-widget">
-                                <div class="widget-title">
-                                    <h3>Menu</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="about.html">A Propos</a></li>
-                                    <li><a href="service.html">Services</a></li>
-                                    <li><a href="pricing.html">Réseau</a></li>
-                                    <li><a href="blog.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end container -->
-            </div>
-            <div class="wpo-lower-footer">
-                <div class="container-fluid">
-                    <div class="row g-0">
-                        <div class="col col-lg-6 col-12">
-                            <p class="copyright"> Copyright &copy; 2025 Le Fanal des Chats Asbl. All
-                                Rights Reserved.</p>
-                        </div>
-                        <div class="col col-lg-6 col-12">
-                            <ul class="right">
-                                <li><a href="privace.html"><span class="rolling-text">Confidentialité</span> </a></li>
-                                <li><a href="terms.html"><span class="rolling-text">Conditions</span></a></li>
-                                <li><a href="about.html"><span class="rolling-text">A Propos</span></a></li>
-                                <li><a href="faq.html"><span class="rolling-text">FAQ</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- end of wpo-site-footer-section -->
-
-
-    </div>
-    <!-- end of page-wrapper -->
-
-    <!-- All JavaScript files
-    ================================================== -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Plugins for this template -->
-    <script src="assets/js/modernizr.custom.js"></script>
-    <script src="assets/js/jquery-plugin-collection.js"></script>
-    <!-- Custom script for this template -->
-    <script src="assets/js/script.js"></script>
-</body>
-
-</html>
+<?php get_template_part("partials/footer"); ?>
