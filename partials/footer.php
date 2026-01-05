@@ -7,7 +7,7 @@
                             <div class="widget about-widget">
                                  
                                 <div class="widget-title">
-                                    <a class="footer-logo" href="'<?php echo home_url("/"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
+                                    <a class="footer-logo" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
                                             alt=""></a>
                                     <h2>Le Fanal des Chats</h2>
                                 </div>
@@ -41,11 +41,11 @@
                                     <h3>Menu</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="'<?php echo home_url("/about"); ?>'">A Propos</a></li>
-                                    <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li>
-                                    <li><a href="'<?php echo home_url("/pricing"); ?>'">Réseau</a></li>
-                                    <li><a href="'<?php echo home_url("/blog"); ?>'">News</a></li>
-                                    <li><a href="'<?php echo home_url("/contact"); ?>'">Contact</a></li>
+                                    <li><a href="<?php echo home_url('/about'); ?>">A Propos</a></li>
+                                    <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
+                                    <li><a href="<?php echo home_url('/pricing'); ?>">Réseau</a></li>
+                                    <li><a href="<?php echo home_url('/blog'); ?>">News</a></li>
+                                    <li><a href="<?php echo home_url('/contact'); ?>">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -61,10 +61,10 @@
                         </div>
                         <div class="col col-lg-6 col-12">
                             <ul class="right">
-                                <li><a href="'<?php echo home_url("/privace"); ?>'"><span class="rolling-text">Confidentialité</span> </a></li>
-                                <li><a href="'<?php echo home_url("/terms"); ?>'"><span class="rolling-text">Conditions</span></a></li>
-                                <li><a href="'<?php echo home_url("/about"); ?>'"><span class="rolling-text">A Propos</span></a></li>
-                                <li><a href="'<?php echo home_url("/faq"); ?>'"><span class="rolling-text">FAQ</span></a></li>
+                                <li><a href="<?php echo home_url('/privace'); ?>"><span class="rolling-text">Confidentialité</span> </a></li>
+                                <li><a href="<?php echo home_url('/terms'); ?>"><span class="rolling-text">Conditions</span></a></li>
+                                <li><a href="<?php echo home_url('/about'); ?>"><span class="rolling-text">A Propos</span></a></li>
+                                <li><a href="<?php echo home_url('/faq'); ?>"><span class="rolling-text">FAQ</span></a></li>
                             </ul>
                         </div>
                     </div>

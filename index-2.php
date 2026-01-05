@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-lg-2 col-md-6 col-6">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="'<?php echo home_url("/"); ?>'"><img src="assets/images/logo.svg"
+                                    <a class="navbar-brand" href="<?php echo home_url('/'); ?>"><img src="assets/images/logo.svg"
                                             alt=""></a>
                                 </div>
                             </div>
@@ -70,40 +70,40 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">Home</a>
                                             <ul class="sub-menu">
-                                                <li><a href="'<?php echo home_url("/"); ?>'">Home style 1</a></li>
-                                                <li><a href="'<?php echo home_url("/index-2"); ?>'">Home style 2</a></li>
+                                                <li><a href="<?php echo home_url('/'); ?>">Home style 1</a></li>
+                                                <li><a href="<?php echo home_url('/index-2'); ?>">Home style 2</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Page</a>
                                             <ul class="sub-menu">
-                                                <li><a href="'<?php echo home_url("/about"); ?>'">About</a></li>
-                                                <li><a href="'<?php echo home_url("/pricing"); ?>'">Pricing</a></li>
-                                                <li><a href="'<?php echo home_url("/faq"); ?>'">Faq</a></li>
-                                                <li><a href="'<?php echo home_url("/404"); ?>'">404</a></li>
+                                                <li><a href="<?php echo home_url('/about'); ?>">About</a></li>
+                                                <li><a href="<?php echo home_url('/pricing'); ?>">Pricing</a></li>
+                                                <li><a href="<?php echo home_url('/faq'); ?>">Faq</a></li>
+                                                <li><a href="<?php echo home_url('/404'); ?>">404</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Services</a>
                                             <ul class="sub-menu">
-                                                <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li>
-                                                <li><a href="'<?php echo home_url("/service-single"); ?>'">Service Single</a></li>
+                                                <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
+                                                <li><a href="<?php echo home_url('/service-single'); ?>">Service Single</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Shop</a>
                                             <ul class="sub-menu">
-                                                <li><a href="'<?php echo home_url("/shop"); ?>'">Shop</a></li>
-                                                <li><a href="'<?php echo home_url("/shop-single"); ?>'">Shop Single</a></li>
-                                                <li><a href="'<?php echo home_url("/cart"); ?>'">Cart</a></li>
-                                                <li><a href="'<?php echo home_url("/checkout"); ?>'">Checkout</a></li>
+                                                <li><a href="<?php echo home_url('/shop'); ?>">Shop</a></li>
+                                                <li><a href="<?php echo home_url('/shop-single'); ?>">Shop Single</a></li>
+                                                <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
+                                                <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Blog</a>
                                             <ul class="sub-menu">
-                                                <li><a href="'<?php echo home_url("/blog"); ?>'">Blog</a></li>
-                                                <li><a href="'<?php echo home_url("/blog-single"); ?>'">Blog Single</a>
+                                                <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
+                                                <li><a href="<?php echo home_url('/blog-single'); ?>">Blog Single</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -120,11 +120,11 @@
                                             <div class="mini-cart-items">
                                                 <div class="mini-cart-item clearfix">
                                                     <div class="mini-cart-item-image">
-                                                        <a href="'<?php echo home_url("/shop"); ?>'"><img
+                                                        <a href="<?php echo home_url('/shop'); ?>"><img
                                                                 src="assets/images/shop/mini-cart/img-1.jpg" alt></a>
                                                     </div>
                                                     <div class="mini-cart-item-des">
-                                                        <a href="'<?php echo home_url("/shop"); ?>'">Procan Adult Dog Food</a>
+                                                        <a href="<?php echo home_url('/shop'); ?>">Procan Adult Dog Food</a>
                                                         <span class="mini-cart-item-price">$20.15 x 1</span>
                                                         <span class="mini-cart-item-quantity"><a href="#"><i
                                                                     class="ti-close"></i></a></span>
@@ -132,11 +132,11 @@
                                                 </div>
                                                 <div class="mini-cart-item clearfix">
                                                     <div class="mini-cart-item-image">
-                                                        <a href="'<?php echo home_url("/shop"); ?>'"><img
+                                                        <a href="<?php echo home_url('/shop'); ?>"><img
                                                                 src="assets/images/shop/mini-cart/img-2.jpg" alt></a>
                                                     </div>
                                                     <div class="mini-cart-item-des">
-                                                        <a href="'<?php echo home_url("/shop"); ?>'">Bonnie Cat Food Chicken</a>
+                                                        <a href="<?php echo home_url('/shop'); ?>">Bonnie Cat Food Chicken</a>
                                                         <span class="mini-cart-item-price">$13.25 x 2</span>
                                                         <span class="mini-cart-item-quantity"><a href="#"><i
                                                                     class="ti-close"></i></a></span>
@@ -146,14 +146,14 @@
                                             <div class="mini-cart-action clearfix">
                                                 <span class="mini-checkout-price">Subtotal: <span>$215.14</span></span>
                                                 <div class="mini-btn">
-                                                    <a href="'<?php echo home_url("/checkout"); ?>'" class="view-cart-btn s1">Checkout</a>
-                                                    <a href="'<?php echo home_url("/cart"); ?>'" class="view-cart-btn">View Cart</a>
+                                                    <a href="<?php echo home_url('/checkout'); ?>" class="view-cart-btn s1">Checkout</a>
+                                                    <a href="<?php echo home_url('/cart'); ?>" class="view-cart-btn">View Cart</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="close-form">
-                                        <a class="theme-btn" href="'<?php echo home_url("/contact"); ?>'">Contact Now</a>
+                                        <a class="theme-btn" href="<?php echo home_url('/contact'); ?>">Contact Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                             consequuntur consequatur totam dolor quidem.</p>
                                     </div>
                                     <div data-swiper-parallax="500" class="slide-btns">
-                                        <a href="'<?php echo home_url("/about"); ?>'" class="theme-btn-s2">About Us</a>
+                                        <a href="<?php echo home_url('/about'); ?>" class="theme-btn-s2">About Us</a>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                             consequuntur consequatur totam dolor quidem.</p>
                                     </div>
                                     <div data-swiper-parallax="500" class="slide-btns">
-                                        <a href="'<?php echo home_url("/about"); ?>'" class="theme-btn-s2">About Us</a>
+                                        <a href="<?php echo home_url('/about'); ?>" class="theme-btn-s2">About Us</a>
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@
                             <img src="assets/images/service/1.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Over Night Care</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Over Night Care</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -368,7 +368,7 @@
                             <img src="assets/images/service/2.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Pet Walking</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Walking</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -379,7 +379,7 @@
                             <img src="assets/images/service/3.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Pet Grooming</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Grooming</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -390,7 +390,7 @@
                             <img src="assets/images/service/4.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Vaccination</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Vaccination</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -551,7 +551,7 @@
                                     <li>By Admin </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'">Dog walking is possible when it’s cold</a></h2>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Dog walking is possible when it’s cold</a></h2>
                                 <p>Energizing walks to keep your favorite dog active, healthy, and happy....</p>
                             </div>
                         </div>
@@ -566,7 +566,7 @@
                                     <li>By Admin </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'">These toys can be bad for your pet.</a></h2>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>">These toys can be bad for your pet.</a></h2>
                                 <p>Energizing walks to keep your favorite dog active, healthy, and happy....</p>
                             </div>
                         </div>
@@ -581,7 +581,7 @@
                                     <li>By Admin </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'">Safe, comfortable place for your cat.</a></h2>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Safe, comfortable place for your cat.</a></h2>
                                 <p>Energizing walks to keep your favorite dog active, healthy, and happy....</p>
                             </div>
                         </div>
@@ -631,11 +631,11 @@
                                     <h3>Quick Link</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="'<?php echo home_url("/about"); ?>'">About Us</a></li>
-                                    <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li>
-                                    <li><a href="'<?php echo home_url("/pricing"); ?>'">Pricing Plan</a></li>
-                                    <li><a href="'<?php echo home_url("/blog"); ?>'">Blog</a></li>
-                                    <li><a href="'<?php echo home_url("/contact"); ?>'">Contact Us</a></li>
+                                    <li><a href="<?php echo home_url('/about'); ?>">About Us</a></li>
+                                    <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
+                                    <li><a href="<?php echo home_url('/pricing'); ?>">Pricing Plan</a></li>
+                                    <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
+                                    <li><a href="<?php echo home_url('/contact'); ?>">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -651,10 +651,10 @@
                         </div>
                         <div class="col col-lg-6 col-12">
                             <ul class="right">
-                                <li><a href="'<?php echo home_url("/privace"); ?>'"><span class="rolling-text">Privace & Policy</span> </a></li>
-                                <li><a href="'<?php echo home_url("/terms"); ?>'"><span class="rolling-text">Terms</span></a></li>
-                                <li><a href="'<?php echo home_url("/about"); ?>'"><span class="rolling-text">About us</span></a></li>
-                                <li><a href="'<?php echo home_url("/faq"); ?>'"><span class="rolling-text">FAQ</span></a></li>
+                                <li><a href="<?php echo home_url('/privace'); ?>"><span class="rolling-text">Privace & Policy</span> </a></li>
+                                <li><a href="<?php echo home_url('/terms'); ?>"><span class="rolling-text">Terms</span></a></li>
+                                <li><a href="<?php echo home_url('/about'); ?>"><span class="rolling-text">About us</span></a></li>
+                                <li><a href="<?php echo home_url('/faq'); ?>"><span class="rolling-text">FAQ</span></a></li>
                             </ul>
                         </div>
                     </div>

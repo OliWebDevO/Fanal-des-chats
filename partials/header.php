@@ -107,7 +107,7 @@
                                         <li class="menu-item-has-children">
                                             <a href="<?php echo home_url('/service'); ?>">Participer</a>
                                             <ul class="sub-menu">
-                                                <!-- <li><a href="'<?php echo home_url("/service"); ?>'">Services</a></li> -->
+                                                <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
                                                 <li><a href="<?php echo home_url('/service-single'); ?>">Devenir Bénévole</a></li>
                                                 <li><a href="<?php echo home_url('/service-single2'); ?>">Adopter un Chat</a></li>
                                                 <li><a href="<?php echo home_url('/service-single3'); ?>">Faire un don</a></li>
@@ -118,8 +118,8 @@
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/shop'); ?>">Revue</a></li>
                                                 <li><a href="<?php echo home_url('/shop-single'); ?>">Revue Single</a></li>
-                                                <!-- <li><a href="'<?php echo home_url("/cart"); ?>'">Cart</a></li>
-                                                <li><a href="'<?php echo home_url("/checkout"); ?>'">Checkout</a></li> -->
+                                                <!-- <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
+                                                <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li> -->
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -150,7 +150,7 @@
                                         </div>
                                     </div> -->
                                     <div class="close-form">
-                                        <a class="theme-btn" href="'<?php echo home_url("/contact"); ?>'">Contactez nous</a>
+                                        <a class="theme-btn" href="<?php echo home_url('/contact'); ?>">Contactez nous</a>
                                     </div>
                                 </div>
                             </div>

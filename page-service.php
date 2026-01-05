@@ -27,7 +27,7 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/1.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Over Night Care</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Over Night Care</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/2.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Pet Walking</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Walking</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/3.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Pet Grooming</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Grooming</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/4.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Vaccination</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Vaccination</a></h2>
                             <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
                         </div>
                     </div>

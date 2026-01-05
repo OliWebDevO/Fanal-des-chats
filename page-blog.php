@@ -8,7 +8,7 @@
                         <div class="wpo-breadcumb-wrap">
                             <h2>News</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="'<?php echo home_url("/"); ?>'">Accueil</a></li>
+                                <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
                                 <li>News</li>
                             </ol>
                         </div>
@@ -36,9 +36,9 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="'<?php echo home_url("/blog-single"); ?>'">Cours de taichi pour chat</a></h3>
+                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Cours de taichi pour chat</a></h3>
                                     <p>Venez découvrir les bienfaits du taichi pour votre chat. Cette pratique millénaire adaptée aux félins permet de réduire le stress et d'améliorer leur bien-être général. Découvrez notre offre dès aujourd'hui.</p>
-                                    <a href="'<?php echo home_url("/blog-single"); ?>'" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
                             <div class="post format-standard-image">
@@ -53,10 +53,10 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="'<?php echo home_url("/blog-single"); ?>'">Ces jouets peuvent être mauvais pour votre animal</a>
+                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Ces jouets peuvent être mauvais pour votre animal</a>
                                     </h3>
                                     <p>Tous les jouets ne sont pas adaptés à nos compagnons félins. Découvrez quels jouets éviter pour protéger la santé et la sécurité de votre chat. Nos conseils pour faire les bons choix.</p>
-                                    <a href="'<?php echo home_url("/blog-single"); ?>'" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
 
@@ -72,9 +72,9 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="'<?php echo home_url("/blog-single"); ?>'">Un endroit sûr et confortable pour votre chat</a></h3>
+                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Un endroit sûr et confortable pour votre chat</a></h3>
                                     <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui. Découvrez comment aménager l'espace idéal pour le bien-être de votre compagnon félin au quotidien.</p>
-                                    <a href="'<?php echo home_url("/blog-single"); ?>'" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
 
@@ -115,7 +115,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-1.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="'<?php echo home_url("/blog-single"); ?>'">La méditation féline au refuge</a>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">La méditation féline au refuge</a>
                                             </h4>
                                             <span class="date">19 Jun 2025 </span>
                                         </div>
@@ -125,7 +125,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-2.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="'<?php echo home_url("/blog-single"); ?>'">Les chats ont-ils des émotions ?</a></h4>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
                                             <span class="date">22 May 2025 </span>
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-3.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="'<?php echo home_url("/blog-single"); ?>'">Comment adopter un chat du refuge</a>
+                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Comment adopter un chat du refuge</a>
                                             </h4>
                                             <span class="date">12 Apr 2025 </span>
                                         </div>
@@ -146,17 +146,17 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
                                                 alt=""></a></li>
                                 </ul>
                             </div>

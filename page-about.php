@@ -59,7 +59,7 @@
                         ensure their health, happiness, and well-being.</p>
 
                     <div class="about-btn">
-                        <a href="'<?php echo home_url("/about"); ?>'" class="theme-btn-s2">Discover More</a>
+                        <a href="<?php echo home_url('/about'); ?>" class="theme-btn-s2">Discover More</a>
                         <div class="video-wrap">
                             <div class="video-holder">
                                 <a href="https://www.youtube.com/embed/S1x0HWc-iaE?si=dU9jHGkKlqKajczi"
@@ -159,7 +159,7 @@
                                 <li>Grooming</li>
                                 <li>Hair & Nail Cut</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -176,7 +176,7 @@
                                 <li>Fresh Snack</li>
                                 <li>Pet Park & Games</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -190,7 +190,7 @@
                                 <li>Grooming</li>
                                 <li>Hair & Nail Cut</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                 </div>

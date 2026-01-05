@@ -7,7 +7,7 @@
                         <div class="wpo-breadcumb-wrap">
                             <h2>Adopter un chat</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="'<?php echo home_url("/"); ?>'">Accueil</a></li>
+                                <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
                                 <li>Adopter un chat</li>
                             </ol>
                         </div>
@@ -249,22 +249,22 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="'<?php echo home_url("/service-single"); ?>'"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
                                                 alt=""></a>
                                     </li>
                                 </ul>

@@ -8,7 +8,7 @@
                     <h3>Bienvenue au Fanal des chats</h3>
                     <p>Notre mission est d'accueilir et protéger les chats errants, en leur offrant un refuge sûr et aimant, tout en sensibilisant la communauté à l'importance du bien-être félin.
                     </p>
-                    <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Faire un don</a>
+                    <a href="<?php echo home_url('/service-single3'); ?>" class="theme-btn-s2">Faire un don</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -64,7 +64,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/1.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Accueil</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Accueil</a></h2>
                             <p>Nous accueillons les chats errants et abandonnés dans un environnement sûr et bienveillant. </p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/2.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Soins Vétérinaires</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Soins Vétérinaires</a></h2>
                             <p>Nos chats reçoivent tous les soins médicaux nécessaires pour retrouver la santé. </p>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/4.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Stérilisation & Vaccin</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Stérilisation & Vaccin</a></h2>
                             <p>Programme de stérilisation et de vaccination pour le bien-être de nos pensionnaires. </p>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/3.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="'<?php echo home_url("/service-single"); ?>'">Adoptions</a></h2>
+                            <h2><a href="<?php echo home_url('/service-single'); ?>">Adoptions</a></h2>
                             <p>Nous trouvons des familles aimantes pour nos chats prêts à être adoptés. </p>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                     <p>Le fanal est un lieu dédié au bien-être et à la protection des chats. Nous mettons également tout en place pour leur trouver une famille aimante et adaptée aux besoins spécifiques de chaque chat. Et tout ça grâce à vous !</p>
 
                     <div class="about-btn">
-                        <a href="'<?php echo home_url("/about"); ?>'" class="theme-btn-s2">Adoptez un chat</a>
+                        <a href="<?php echo home_url("/service-single2"); ?>" class="theme-btn-s2">Adoptez un chat</a>
                         <!-- <div class="video-wrap">
                             <div class="video-holder">
                                 <a href="https://www.youtube.com/embed/S1x0HWc-iaE?si=dU9jHGkKlqKajczi"
@@ -253,7 +253,7 @@
                                     <li>Soins et suivi</li>
 
                             </ul>
-                            <a href="'<?php echo home_url("/service-single2"); ?>'" class="theme-btn-s2">Adopter un chat</a>
+                            <a href="<?php echo home_url("/service-single2"); ?>" class="theme-btn-s2">Adopter un chat</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -268,7 +268,7 @@
                                 <li>Chauffage et climatisation</li>
                                 <li>Jouets et accessoires</li>
                             </ul>
-                            <a href="'<?php echo home_url("/service-single3"); ?>'" class="theme-btn-s2">Faire un don</a>
+                            <a href="<?php echo home_url('/service-single3'); ?>" class="theme-btn-s2">Faire un don</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -282,7 +282,7 @@
                                 <li>Entretien des installations</li>
                                 <li>Sensibilisation du public</li>
                             </ul>
-                            <a href="'<?php echo home_url("/service-single"); ?>'" class="theme-btn-s2">Devenir bénévole</a>
+                            <a href="<?php echo home_url('/service-single'); ?>" class="theme-btn-s2">Devenir bénévole</a>
                         </div>
                     </div>
                 </div>
@@ -417,8 +417,8 @@
                                     <li>Activité</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'"> Cours de taichi pour chat</a></h2>
-                                <p>Venez découvrir les bienfaits du taichi pour votre chat. Découvrez notre offre  dès aujourd'hui.</p>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>"> Cours de taichi pour chat</a></h2>
+                                <p>Venez découvrir les bienfaits du taichi pour votre chat. Découvrez notre offre  dès aujourd'hui.</p>
                             </div>
                         </div>
                     </div>
@@ -432,7 +432,7 @@
                                     <li>News </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
                                 <p>Des promenades énergisantes pour garder votre chien préféré actif, en bonne santé et heureux....</p>
                             </div>
                         </div>
@@ -447,7 +447,7 @@
                                     <li>News</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="'<?php echo home_url("/blog-single"); ?>'">Un endroit sûr et confortable pour votre chat.</a></h2>
+                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
                                 <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui.</p>
                             </div>
                         </div>

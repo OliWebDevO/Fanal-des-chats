@@ -33,7 +33,7 @@
                                 <li>Grooming</li>
                                 <li>Hair & Nail Cut</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -50,7 +50,7 @@
                                 <li>Fresh Snack</li>
                                 <li>Pet Park & Games</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -64,7 +64,7 @@
                                 <li>Grooming</li>
                                 <li>Hair & Nail Cut</li>
                             </ul>
-                            <a href="'<?php echo home_url("/pricing"); ?>'" class="theme-btn-s2">Choose Plan</a>
+                            <a href="<?php echo home_url('/pricing'); ?>" class="theme-btn-s2">Choose Plan</a>
                         </div>
                     </div>
                 </div>
