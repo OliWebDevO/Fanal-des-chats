@@ -274,6 +274,8 @@
             </div>
         </div>
         <!-- service-single-area end -->
-        <?php echo do_shortcode('[give_form id="43"]'); ?>
 
+
+        <?php echo do_shortcode('[give_form id="43"]'); ?>
+        
 <?php get_template_part("partials/footer"); ?>

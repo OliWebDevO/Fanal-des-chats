@@ -42,6 +42,7 @@
     <meta name="theme-color" content="#ffffff">
   	<meta name="description" content="Le Fanal des Chats | Soins et Protection des Chats">
     <title><?php bloginfo("name")?></title>
+    <?php wp_head(); ?>
 </head>
 
 <body>

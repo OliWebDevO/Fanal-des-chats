@@ -87,6 +87,7 @@
     <script src="<?php bloginfo("template_url")?>/assets/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="<?php bloginfo("template_url")?>/assets/js/script.js"></script>
+    <?php wp_footer(); ?>
 </body>
 
 </html>
