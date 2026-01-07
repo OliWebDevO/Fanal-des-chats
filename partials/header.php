@@ -109,9 +109,10 @@
                                             <a href="<?php echo home_url('/service'); ?>">Participer</a>
                                             <ul class="sub-menu">
                                                 <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
-                                                <li><a href="<?php echo home_url('/service-single'); ?>">Devenir Bénévole</a></li>
+                                                <li><a href="<?php echo home_url('/service-single'); ?>">Devenir Benevole</a></li>
                                                 <li><a href="<?php echo home_url('/service-single2'); ?>">Adopter un Chat</a></li>
                                                 <li><a href="<?php echo home_url('/service-single3'); ?>">Faire un don</a></li>
+                                                <li><a href="<?php echo home_url('/quiz-adoption'); ?>">Quiz Adoption</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">

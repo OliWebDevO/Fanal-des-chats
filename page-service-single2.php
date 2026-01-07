@@ -76,6 +76,9 @@
                                     <li>Suivi post-adoption et accompagnement si nécessaire</li>
                                 </ul>
                             </div>
+                            <div class="about-btn">
+                                <a href="<?php echo home_url("/quiz-adoption"); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                            </div>
                         </div>
                     </div>
                 </div>

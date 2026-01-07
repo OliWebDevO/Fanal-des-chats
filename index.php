@@ -166,8 +166,8 @@
                                     </svg>
                                 </a>
                             </div>
-                            <span>Watch Videos</span> -->
-                        </div>
+                            <span>Watch Videos</span> 
+                        </div>-->
                     </div>
                 </div>
             </div>

@@ -76,6 +76,15 @@
                                     <li>Massa volutpat odio facilisis purus sit elementum.</li>
                                 </ul>
                             </div>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3>Testez votre profil de benevole</h3>
+                                </div>
+                                <p>Vous souhaitez rejoindre notre equipe ? Participez a notre quiz pour decouvrir si votre profil correspond a nos besoins et en apprendre plus sur le benevolat au Fanal des Chats.</p>
+                                <div class="about-btn">
+                                    <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
