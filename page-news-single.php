@@ -96,13 +96,13 @@
 
                             <div class="more-posts">
                                 <div class="previous-post">
-                                    <a href="<?php echo home_url('/blog'); ?>">
+                                    <a href="<?php echo home_url('/news'); ?>">
                                         <span class="post-control-link">Article précédent</span>
                                         <span class="post-name">Les bienfaits de la méditation pour les chats en refuge</span>
                                     </a>
                                 </div>
                                 <div class="next-post">
-                                    <a href="<?php echo home_url('/blog'); ?>">
+                                    <a href="<?php echo home_url('/news'); ?>">
                                         <span class="post-control-link">Article suivant</span>
                                         <span class="post-name">Comment créer un environnement zen pour nos pensionnaires</span>
                                     </a>
@@ -255,7 +255,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-1.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">La méditation féline au refuge</a>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">La méditation féline au refuge</a>
                                             </h4>
                                             <span class="date">19 Jun 2025 </span>
                                         </div>
@@ -265,7 +265,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-2.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
                                             <span class="date">22 May 2025 </span>
                                         </div>
                                     </div>
@@ -274,7 +274,7 @@
                                             <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-3.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Comment adopter un chat du refuge</a>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">Comment adopter un chat du refuge</a>
                                             </h4>
                                             <span class="date">12 Apr 2025 </span>
                                         </div>
@@ -286,17 +286,17 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
                                                 alt=""></a></li>
                                 </ul>
                             </div>

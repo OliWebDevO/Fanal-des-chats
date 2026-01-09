@@ -89,47 +89,54 @@
                                 <div id="navbar" class="collapse navbar-collapse navigation-holder">
                                     <button class="menu-close"><i class="ti-close"></i></button>
                                     <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Accueil</a>
+                                        <li>
+                                            <a href="<?php echo home_url('/'); ?>">Accueil</a>
+                                            <!-- Sous-menu Accueil (desactive)
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/'); ?>">Home style 1</a></li>
                                                 <li><a href="<?php echo home_url('/index-2'); ?>">Home style 2</a></li>
                                             </ul>
+                                            -->
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">A Propos</a>
+                                        <li>
+                                            <a href="<?php echo home_url('/about'); ?>">A Propos</a>
+                                            <!-- Sous-menu A Propos (desactive)
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/about'); ?>">About</a></li>
                                                 <li><a href="<?php echo home_url('/pricing'); ?>">Pricing</a></li>
                                                 <li><a href="<?php echo home_url('/faq'); ?>">Faq</a></li>
                                                 <li><a href="<?php echo home_url('/404'); ?>">404</a></li>
                                             </ul>
+                                            -->
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="<?php echo home_url('/service'); ?>">Participer</a>
                                             <ul class="sub-menu">
                                                 <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
-                                                <li><a href="<?php echo home_url('/service-single'); ?>">Devenir Benevole</a></li>
-                                                <li><a href="<?php echo home_url('/service-single2'); ?>">Adopter un Chat</a></li>
-                                                <li><a href="<?php echo home_url('/service-single3'); ?>">Faire un don</a></li>
-                                                <li><a href="<?php echo home_url('/quiz-adoption'); ?>">Quiz Adoption</a></li>
+                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adopter un Chat</a></li>
+                                                <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
+                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Benevole</a></li>
                                             </ul>
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Revue</a>
+                                        <li>
+                                            <a href="<?php echo home_url('/revue'); ?>">Revue</a>
+                                            <!-- Sous-menu Revue (desactive)
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/shop'); ?>">Revue</a></li>
-                                                <li><a href="<?php echo home_url('/shop-single'); ?>">Revue Single</a></li>
-                                                <!-- <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
-                                                <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li> -->
+                                                <li><a href="<?php echo home_url('/revue'); ?>">Revue</a></li>
+                                                <li><a href="<?php echo home_url('/revue-single'); ?>">Revue Single</a></li>
+                                                <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
+                                                <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li>
                                             </ul>
+                                            -->
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">News</a>
+                                        <li>
+                                            <a href="<?php echo home_url('/news'); ?>">News</a>
+                                            <!-- Sous-menu News (desactive)
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/blog'); ?>">News</a></li>
-                                                <li><a href="<?php echo home_url('/blog-single'); ?>">News Single</a>
+                                                <li><a href="<?php echo home_url('/news'); ?>">News</a></li>
+                                                <li><a href="<?php echo home_url('/news-single'); ?>">News Single</a></li>
                                             </ul>
+                                            -->
                                         </li>
                                     </ul>
 

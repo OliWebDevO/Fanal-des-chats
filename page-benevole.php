@@ -1,14 +1,15 @@
 <?php get_template_part("partials/header"); ?>
+
         <!-- start wpo-page-title -->
         <section class="wpo-page-title orange">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Adopter un chat</h2>
+                            <h2>Devenir bénévole</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                                <li>Adopter un chat</li>
+                                <li>Devenir bénévole</li>
                             </ol>
                         </div>
                     </div>
@@ -22,62 +23,76 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-12">
-                        <div class="wpo-service-single-wrap">
+                        <div class="wpo-service-single-wrap ">
                             <div class="wpo-service-single-item">
-                                <!-- <div class="wpo-service-single-main-img">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png" alt="">
-                                </div> -->
                                 <div class="wpo-service-single-title">
-                                    <h3>Adopter un chat</h3>
+                                    <h3>Notre mission</h3>
                                 </div>
-                                <p>Adopter un chat du Fanal des Chats, c'est offrir une seconde chance à un animal qui a besoin d'amour et de sécurité. Nos pensionnaires félins attendent patiemment de trouver leur famille pour la vie. Chaque adoption est une victoire contre l'abandon et un nouveau départ vers le bonheur.</p>
-                                <p>Notre équipe vous accompagne dans cette belle aventure en vous aidant à trouver le compagnon idéal selon votre mode de vie, votre logement et vos attentes. Nous croyons fermement qu'il existe un chat parfait pour chaque famille.</p>
-                                <!-- <div class="row mt-4">
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere amet
+                                    tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea condimentum cursus
+                                    velit dui. Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum
+                                    quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
+                                    sollicitudin diam, elit sit. Et nisi in libero facilisis sed est. Elit curabitur
+                                    amet risus bibendum. Posuere et eget orci, tempor enim.</p>
+                                <p>Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat odio
+                                    facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra est, at
+                                    rhoncus, nec ullamcorper tincidunt. Id aliquet duis sollicitudin diam, elit sit.</p>
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Critères d'adoption</h3>
+                                    <h3>Nos besoins</h3>
                                 </div>
-                                <p>Pour garantir le bien-être de nos chats et assurer une adoption réussie, nous demandons à tous les futurs adoptants de respecter quelques critères essentiels :</p>
+                                <p>Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum quam. Id
+                                    risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
+                                    sollicitudin diam.</p>
                                 <ul>
-                                    <li>Être majeur et en capacité légale d'adopter un animal</li>
-                                    <li>Disposer d'un logement adapté et sécurisé pour un chat</li>
-                                    <li>Avoir les moyens financiers pour assumer les frais vétérinaires</li>
-                                    <li>S'engager à stériliser l'animal si ce n'est pas déjà fait</li>
-                                    <li>Accepter une visite de pré-adoption et un suivi post-adoption</li>
+                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
+                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
+                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
+                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
+                                    <li>Elit curabitur amet risus bibendum.</li>
                                 </ul>
                             </div>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Le processus d'adoption</h3>
+                                    <h3>Notre approche</h3>
                                 </div>
-                                <p>Notre processus d'adoption est conçu pour assurer le bien-être de nos chats et la satisfaction des adoptants. Nous prenons le temps nécessaire pour créer des liens durables entre nos pensionnaires et leurs nouvelles familles. Chaque adoption fait l'objet d'un suivi personnalisé pour garantir une intégration réussie dans votre foyer.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat suspendisse aenean
+                                    tellus augue morbi risus. Sit morbi vitae morbi sed urna sed purus. Orci facilisi
+                                    eros sed pellentesque. Risus id sed tortor sed scelerisque. Vestibulum elit
+                                    elementum, magna id viverra non, velit. Pretium, eros, porttitor fusce auctor vitae
+                                    id. Phasellus scelerisque nibh eleifend vel enim mauris purus. Rutrum vel sem
+                                    adipiscing nisi vulputate molestie scelerisque molestie ultrices. Eu, fusce
+                                    vulputate diam interdum morbi ac a.</p>
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Les étapes d'adoption</h3>
+                                    <h3>Le quotidien au Fanal</h3>
                                 </div>
                                 <ul>
-                                    <li>Première visite pour rencontrer nos chats disponibles</li>
-                                    <li>Entretien avec notre équipe pour définir vos attentes</li>
-                                    <li>Période de réflexion et visite de pré-adoption à domicile</li>
-                                    <li>Finalisation du dossier et signature du contrat d'adoption</li>
-                                    <li>Suivi post-adoption et accompagnement si nécessaire</li>
+                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
+                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
+                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
+                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
                                 </ul>
                             </div>
-                            <div class="about-btn">
-                                <a href="<?php echo home_url("/quiz-adoption"); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3>Testez votre profil de benevole</h3>
+                                </div>
+                                <p>Vous souhaitez rejoindre notre equipe ? Participez a notre quiz pour decouvrir si votre profil correspond a nos besoins et en apprendre plus sur le benevolat au Fanal des Chats.</p>
+                                <div class="about-btn">
+                                    <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                                </div>
+                            </div>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3>Postuler comme benevole</h3>
+                                </div>
+                                <p>Pret a rejoindre notre equipe ? Remplissez notre formulaire de candidature pour nous en dire plus sur vous, vos disponibilites, votre experience et vos motivations. Nous reviendrons vers vous rapidement !</p>
+                                <div class="about-btn">
+                                    <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,13 +121,13 @@
                                                     <button class="accordion-button" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                                         aria-expanded="true" aria-controls="collapseOne">
-                                                        Quels sont les frais d'adoption ?
+                                                        Quel est l'engagement de temps minimum pour être bénévole ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Les frais d'adoption sont de 150€ pour un chat adulte et 200€ pour un chaton. Ces frais couvrent la stérilisation, l'identification par puce, les vaccins à jour et un bilan de santé vétérinaire complet.</p>
+                                                        <p>Nous demandons un minimum de 4 heures par semaine, réparties selon vos disponibilités. Cela peut être 2 créneaux de 2 heures ou une demi-journée. La régularité est importante pour créer des liens avec nos pensionnaires félins.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,13 +136,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                                         aria-expanded="false" aria-controls="collapseTwo">
-                                                        Puis-je adopter si je vis en appartement ?
+                                                        Dois-je avoir de l'expérience avec les chats pour devenir bénévole ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Absolument ! Beaucoup de chats s'adaptent parfaitement à la vie en appartement. Nous vous aiderons à choisir un chat dont le caractère et les besoins correspondent à votre mode de vie et à votre logement.</p>
+                                                        <p>Pas nécessairement ! Nous accueillons tous les profils motivés. Une formation initiale est dispensée à tous nos nouveaux bénévoles pour apprendre les gestes essentiels, comprendre le comportement félin et connaître nos protocoles de sécurité.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,13 +151,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                                         aria-expanded="false" aria-controls="collapseThree">
-                                                        Combien de temps dure le processus d'adoption ?
+                                                        Quelles sont les principales tâches d'un bénévole au refuge ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseThree" class="accordion-collapse collapse"
                                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Le processus prend généralement 1 à 2 semaines. Cela comprend la rencontre avec le chat, l'entretien, la visite de pré-adoption à domicile et la finalisation du dossier. Nous prenons le temps nécessaire pour assurer une adoption réussie.</p>
+                                                        <p>Les activités sont variées : nettoyage des espaces de vie, distribution de nourriture, socialisation des chats, aide aux adoptions, transport vétérinaire, événements de sensibilisation. Chacun peut trouver sa place selon ses affinités et compétences.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,13 +166,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseFour"
                                                         aria-expanded="false" aria-controls="collapseFour">
-                                                        Que faire si l'adoption ne se passe pas bien ?
+                                                        Y a-t-il des frais ou des équipements à prévoir pour être bénévole ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseFour" class="accordion-collapse collapse"
                                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Nous offrons un suivi post-adoption et restons disponibles pour vous conseiller. Si malgré tous nos efforts l'adoption ne fonctionne pas, nous reprenons le chat sans jugement. L'important est le bien-être de l'animal.</p>
+                                                        <p>Non, le bénévolat au Fanal des Chats est entièrement gratuit. Nous fournissons tout le matériel nécessaire : vêtements de protection, produits d'entretien, nourriture pour les chats. Seuls des vêtements confortables et fermés sont recommandés.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,8 +196,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à adopter ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour démarrer votre processus d'adoption</p>
+                                        <h2>Prêt à nous rejoindre ? Contactez-nous !</h2>
+                                        <p>Prenez contact avec nous pour devenir bénévole au Fanal des Chats</p>
                                     </div>
                                     <div class="wpo-contact-form-area">
                                         <form method="post" class="contact-validation-active" id="contact-form-main">
@@ -197,28 +212,28 @@
                                                 </div>
                                                 <div class="col col-lg-12 col-12">
                                                     <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de chat recherché</option>
-                                                        <option>Chat adulte calme</option>
-                                                        <option>Chaton joueur</option>
-                                                        <option>Chat senior</option>
-                                                        <option>Chat sociable avec enfants</option>
-                                                        <option>Chat indépendant</option>
-                                                        <option>Pas de préférence</option>
+                                                        <option disabled="disabled" selected="">Type de bénévolat souhaité</option>
+                                                        <option>Soins et nourrissage</option>
+                                                        <option>Socialisation des chats</option>
+                                                        <option>Aide aux adoptions</option>
+                                                        <option>Transport vétérinaire</option>
+                                                        <option>Événements et communication</option>
+                                                        <option>Entretien et nettoyage</option>
                                                     </select>
                                                 </div>
                                                 <div class="fullwidth col col-lg-12 col-12">
                                                     <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Parlez-nous de votre logement, votre expérience avec les chats, vos attentes..."></textarea>
+                                                        placeholder="Parlez-nous de votre motivation, vos disponibilités..."></textarea>
                                                 </div>
                                             </div>
                                             <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Demande d'adoption</button>
+                                                <button type="submit" class="theme-btn">Envoyer ma candidature</button>
                                                 <div id="loader">
                                                     <i class="ti-reload"></i>
                                                 </div>
                                             </div>
                                             <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre demande d'adoption a été envoyée</div>
+                                                <div id="success">Merci ! Votre candidature a été envoyée</div>
                                                 <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
                                             </div>
                                         </form>
@@ -227,57 +242,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 col-12">
-                        <div class="blog-sidebar">
-                            <div class="widget search-widget">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="Search Post..">
-                                        <button type="submit"><i class="ti-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="wpo-newsletter-widget widget">
-                                <h3>Newsletter</h3>
-                                <p>Join 20,000 Sabscribers!</p>
-                                <form class="form">
-                                    <input type="email" placeholder="Email Address" required>
-                                    <button type="submit">Sign Up</button>
-                                </form>
-                                <span>By signing up you agree to our <a href="#">Privecy Policy</a></span>
-                            </div>
-                            <div class="widget wpo-instagram-widget">
-                                <div class="widget-title">
-                                    <h3>Instagram</h3>
-                                </div>
-                                <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
-                                                alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </div>
                 </div>
             </div>
         </div>
         <!-- service-single-area end -->
-
 
 <?php get_template_part("partials/footer"); ?>

@@ -1,15 +1,14 @@
 <?php get_template_part("partials/header"); ?>
-
         <!-- start wpo-page-title -->
         <section class="wpo-page-title orange">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Devenir bénévole</h2>
+                            <h2>Faire un don</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                                <li>Devenir bénévole</li>
+                                <li>Faire un don</li>
                             </ol>
                         </div>
                     </div>
@@ -23,66 +22,67 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-12">
-                        <div class="wpo-service-single-wrap ">
+                        <div class="wpo-service-single-wrap">
                             <div class="wpo-service-single-item">
+                                <!-- <div class="wpo-service-single-main-img">
+                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png" alt="">
+                                </div> -->
                                 <div class="wpo-service-single-title">
-                                    <h3>Notre mission</h3>
+                                    <h3>Pourquoi faire un don ?</h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere amet
-                                    tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea condimentum cursus
-                                    velit dui. Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum
-                                    quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
-                                    sollicitudin diam, elit sit. Et nisi in libero facilisis sed est. Elit curabitur
-                                    amet risus bibendum. Posuere et eget orci, tempor enim.</p>
-                                <p>Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat odio
-                                    facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra est, at
-                                    rhoncus, nec ullamcorper tincidunt. Id aliquet duis sollicitudin diam, elit sit.</p>
+                                <p>Votre générosité fait toute la différence dans la vie de nos pensionnaires félins. Chaque don, qu'il soit ponctuel ou régulier, nous permet de continuer notre mission de sauvetage, de soins et de réhabilitation des chats abandonnés ou maltraités. Grâce à votre soutien, nous pouvons offrir des soins vétérinaires, une alimentation de qualité et un environnement sécurisé.</p>
+                                <p>Le Fanal des Chats fonctionne uniquement grâce aux dons et à l'engagement de nos bénévoles. Chaque euro compte et contribue directement au bien-être de nos compagnons à quatre pattes en attente d'une famille aimante.</p>
+                                <!-- <div class="row mt-4">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="wpo-p-details-img">
+                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="wpo-p-details-img">
+                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/3.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div> -->
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Nos besoins</h3>
+                                    <h3>À quoi servent vos dons ?</h3>
                                 </div>
-                                <p>Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum quam. Id
-                                    risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
-                                    sollicitudin diam.</p>
+                                <p>Transparence et responsabilité sont nos maîtres mots. Voici comment nous utilisons chaque euro de vos précieux dons :</p>
                                 <ul>
-                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
-                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
-                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
-                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
-                                    <li>Elit curabitur amet risus bibendum.</li>
+                                    <li>Soins vétérinaires : vaccinations, stérilisations, traitements médicaux</li>
+                                    <li>Alimentation de qualité adaptée à chaque âge et état de santé</li>
+                                    <li>Entretien et amélioration des infrastructures du refuge</li>
+                                    <li>Matériel et équipements pour le bien-être des chats</li>
+                                    <li>Campagnes de sensibilisation et événements d'adoption</li>
                                 </ul>
                             </div>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Notre approche</h3>
+                                    <h3>Comment faire un don ?</h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat suspendisse aenean
-                                    tellus augue morbi risus. Sit morbi vitae morbi sed urna sed purus. Orci facilisi
-                                    eros sed pellentesque. Risus id sed tortor sed scelerisque. Vestibulum elit
-                                    elementum, magna id viverra non, velit. Pretium, eros, porttitor fusce auctor vitae
-                                    id. Phasellus scelerisque nibh eleifend vel enim mauris purus. Rutrum vel sem
-                                    adipiscing nisi vulputate molestie scelerisque molestie ultrices. Eu, fusce
-                                    vulputate diam interdum morbi ac a.</p>
+                                <p>Plusieurs modalités s'offrent à vous pour soutenir notre action. Que vous préfériez un don ponctuel ou un soutien régulier, chaque geste compte. Vous pouvez effectuer un virement bancaire, nous envoyer un chèque ou même faire un don en nature (nourriture, litière, jouets). Tous les dons donnent droit à une déduction fiscale selon la législation en vigueur.</p>
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Le quotidien au Fanal</h3>
+                                    <h3>Avantages fiscaux en Belgique</h3>
                                 </div>
                                 <ul>
-                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
-                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
-                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
-                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
+                                    <li>Reduction d'impot de 45% du montant de votre don</li>
+                                    <li>Attestation fiscale transmise automatiquement au SPF Finances</li>
+                                    <li>Dons deductibles jusqu'a 10% du revenu net imposable</li>
+                                    <li>Montant minimum de 40 euros par an pour l'attestation</li>
+                                    <li>Avantages pour les particuliers ET les entreprises</li>
                                 </ul>
                             </div>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Testez votre profil de benevole</h3>
+                                    <h3>Testez vos connaissances sur les dons</h3>
                                 </div>
-                                <p>Vous souhaitez rejoindre notre equipe ? Participez a notre quiz pour decouvrir si votre profil correspond a nos besoins et en apprendre plus sur le benevolat au Fanal des Chats.</p>
+                                <p>Connaissez-vous les avantages fiscaux des dons aux ASBL agreees en Belgique ? Participez a notre quiz pour decouvrir comment optimiser votre generosite tout en beneficiant d'avantages fiscaux, que vous soyez un particulier ou une entreprise.</p>
                                 <div class="about-btn">
-                                    <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                                    <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                                 </div>
                             </div>
                         </div>
@@ -112,13 +112,13 @@
                                                     <button class="accordion-button" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                                         aria-expanded="true" aria-controls="collapseOne">
-                                                        Quel est l'engagement de temps minimum pour être bénévole ?
+                                                        Quel est le montant minimum pour faire un don ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Nous demandons un minimum de 4 heures par semaine, réparties selon vos disponibilités. Cela peut être 2 créneaux de 2 heures ou une demi-journée. La régularité est importante pour créer des liens avec nos pensionnaires félins.</p>
+                                                        <p>Il n'y a pas de montant minimum ! Chaque don, même le plus modeste, fait la différence. Que ce soit 5€ ou 500€, votre générosité contribue directement au bien-être de nos pensionnaires félins.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,13 +127,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                                         aria-expanded="false" aria-controls="collapseTwo">
-                                                        Dois-je avoir de l'expérience avec les chats pour devenir bénévole ?
+                                                        Mon don est-il déductible des impôts ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Pas nécessairement ! Nous accueillons tous les profils motivés. Une formation initiale est dispensée à tous nos nouveaux bénévoles pour apprendre les gestes essentiels, comprendre le comportement félin et connaître nos protocoles de sécurité.</p>
+                                                        <p>Oui ! En tant qu'ASBL agreee par le SPF Finances, vos dons au Fanal des Chats donnent droit a une reduction d'impot de 45% de leur montant (minimum 40 euros/an). L'attestation fiscale est transmise automatiquement via Tax-on-web.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,13 +142,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                                         aria-expanded="false" aria-controls="collapseThree">
-                                                        Quelles sont les principales tâches d'un bénévole au refuge ?
+                                                        Puis-je faire un don en nature ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseThree" class="accordion-collapse collapse"
                                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Les activités sont variées : nettoyage des espaces de vie, distribution de nourriture, socialisation des chats, aide aux adoptions, transport vétérinaire, événements de sensibilisation. Chacun peut trouver sa place selon ses affinités et compétences.</p>
+                                                        <p>Absolument ! Nous acceptons les dons de nourriture, litière, jouets, couvertures, matériel vétérinaire. Contactez-nous avant pour connaître nos besoins prioritaires du moment.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,13 +157,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseFour"
                                                         aria-expanded="false" aria-controls="collapseFour">
-                                                        Y a-t-il des frais ou des équipements à prévoir pour être bénévole ?
+                                                        Puis-je mettre en place un don régulier ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseFour" class="accordion-collapse collapse"
                                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Non, le bénévolat au Fanal des Chats est entièrement gratuit. Nous fournissons tout le matériel nécessaire : vêtements de protection, produits d'entretien, nourriture pour les chats. Seuls des vêtements confortables et fermés sont recommandés.</p>
+                                                        <p>Oui, et c'est très apprécié ! Un don mensuel, même modest, nous aide à planifier nos actions et garantit une stabilité financière. Vous pouvez modifier ou arrêter votre don à tout moment.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,8 +187,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous rejoindre ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour devenir bénévole au Fanal des Chats</p>
+                                        <h2>Prêt à nous soutenir ? Contactez-nous !</h2>
+                                        <p>Prenez contact avec nous pour organiser votre don au Fanal des Chats</p>
                                     </div>
                                     <div class="wpo-contact-form-area">
                                         <form method="post" class="contact-validation-active" id="contact-form-main">
@@ -203,28 +203,28 @@
                                                 </div>
                                                 <div class="col col-lg-12 col-12">
                                                     <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de bénévolat souhaité</option>
-                                                        <option>Soins et nourrissage</option>
-                                                        <option>Socialisation des chats</option>
-                                                        <option>Aide aux adoptions</option>
-                                                        <option>Transport vétérinaire</option>
-                                                        <option>Événements et communication</option>
-                                                        <option>Entretien et nettoyage</option>
+                                                        <option disabled="disabled" selected="">Type de don souhaité</option>
+                                                        <option>Don ponctuel</option>
+                                                        <option>Don mensuel régulier</option>
+                                                        <option>Don en nature</option>
+                                                        <option>Parrainage d'un chat</option>
+                                                        <option>Léguer ou donation</option>
+                                                        <option>Autre</option>
                                                     </select>
                                                 </div>
                                                 <div class="fullwidth col col-lg-12 col-12">
                                                     <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Parlez-nous de votre motivation, vos disponibilités..."></textarea>
+                                                        placeholder="Montant envisagé, fréquence, préférences..."></textarea>
                                                 </div>
                                             </div>
                                             <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Envoyer ma candidature</button>
+                                                <button type="submit" class="theme-btn">Contactez-nous pour donner</button>
                                                 <div id="loader">
                                                     <i class="ti-reload"></i>
                                                 </div>
                                             </div>
                                             <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre candidature a été envoyée</div>
+                                                <div id="success">Merci ! Votre message a été envoyé, nous vous recontacterons rapidement</div>
                                                 <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
                                             </div>
                                         </form>
@@ -233,9 +233,59 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="col-lg-4 col-12">
+                        <div class="blog-sidebar">
+                            <div class="widget search-widget">
+                                <form>
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="Search Post..">
+                                        <button type="submit"><i class="ti-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="wpo-newsletter-widget widget">
+                                <h3>Newsletter</h3>
+                                <p>Join 20,000 Sabscribers!</p>
+                                <form class="form">
+                                    <input type="email" placeholder="Email Address" required>
+                                    <button type="submit">Sign Up</button>
+                                </form>
+                                <span>By signing up you agree to our <a href="#">Privecy Policy</a></span>
+                            </div>
+                            <div class="widget wpo-instagram-widget">
+                                <div class="widget-title">
+                                    <h3>Instagram</h3>
+                                </div>
+                                <ul class="d-flex">
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                                alt=""></a>
+                                    </li>
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                                alt=""></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
         <!-- service-single-area end -->
 
+
+        <?php echo do_shortcode('[give_form id="43"]'); ?>
+        
 <?php get_template_part("partials/footer"); ?>

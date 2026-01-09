@@ -28,7 +28,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>
@@ -40,7 +40,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>
@@ -52,7 +52,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>
@@ -64,7 +64,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>
@@ -76,7 +76,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>
@@ -88,7 +88,7 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/shop-single'); ?>">Titre de la revue</a></h3>
+                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
                                     <div class="add-to-cart">
                                         <a href="#">Obtenir la revue</a>

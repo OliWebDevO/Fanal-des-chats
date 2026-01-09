@@ -87,16 +87,16 @@
                                             <a href="<?php echo home_url('/service'); ?>">Participer</a>
                                             <ul class="sub-menu">
                                                 <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
-                                                <li><a href="<?php echo home_url('/service-single'); ?>">Devenir Bénévole</a></li>
-                                                <li><a href="<?php echo home_url('/service-single2'); ?>">Adopter un Chat</a></li>
-                                                <li><a href="<?php echo home_url('/service-single3'); ?>">Faire un don</a></li>
+                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Bénévole</a></li>
+                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adopter un Chat</a></li>
+                                                <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Revue</a>
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/shop'); ?>">Revue</a></li>
-                                                <li><a href="<?php echo home_url('/shop-single'); ?>">Revue Single</a></li>
+                                                <li><a href="<?php echo home_url('/revue'); ?>">Revue</a></li>
+                                                <li><a href="<?php echo home_url('/revue-single'); ?>">Revue Single</a></li>
                                                 <!-- <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
                                                 <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li> -->
                                             </ul>
@@ -104,8 +104,8 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">News</a>
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/blog'); ?>">News</a></li>
-                                                <li><a href="<?php echo home_url('/blog-single'); ?>">News Single</a>
+                                                <li><a href="<?php echo home_url('/news'); ?>">News</a></li>
+                                                <li><a href="<?php echo home_url('/news-single'); ?>">News Single</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -122,11 +122,11 @@
                                             <div class="mini-cart-items">
                                                 <div class="mini-cart-item clearfix">
                                                     <div class="mini-cart-item-image">
-                                                        <a href="<?php echo home_url('/shop'); ?>"><img
+                                                        <a href="<?php echo home_url('/revue'); ?>"><img
                                                                 src="assets/images/shop/mini-cart/img-1.jpg" alt></a>
                                                     </div>
                                                     <div class="mini-cart-item-des">
-                                                        <a href="<?php echo home_url('/shop'); ?>">Procan Adult Dog Food</a>
+                                                        <a href="<?php echo home_url('/revue'); ?>">Procan Adult Dog Food</a>
                                                         <span class="mini-cart-item-price">$20.15 x 1</span>
                                                         <span class="mini-cart-item-quantity"><a href="#"><i
                                                                     class="ti-close"></i></a></span>
@@ -134,11 +134,11 @@
                                                 </div>
                                                 <div class="mini-cart-item clearfix">
                                                     <div class="mini-cart-item-image">
-                                                        <a href="<?php echo home_url('/shop'); ?>"><img
+                                                        <a href="<?php echo home_url('/revue'); ?>"><img
                                                                 src="assets/images/shop/mini-cart/img-2.jpg" alt></a>
                                                     </div>
                                                     <div class="mini-cart-item-des">
-                                                        <a href="<?php echo home_url('/shop'); ?>">Bonnie Cat Food Chicken</a>
+                                                        <a href="<?php echo home_url('/revue'); ?>">Bonnie Cat Food Chicken</a>
                                                         <span class="mini-cart-item-price">$13.25 x 2</span>
                                                         <span class="mini-cart-item-quantity"><a href="#"><i
                                                                     class="ti-close"></i></a></span>
@@ -482,7 +482,7 @@
                                     <li><a href="<?php echo home_url('/about'); ?>">A Propos</a></li>
                                     <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
                                     <li><a href="<?php echo home_url('/pricing'); ?>">Réseau</a></li>
-                                    <li><a href="<?php echo home_url('/blog'); ?>">News</a></li>
+                                    <li><a href="<?php echo home_url('/news'); ?>">News</a></li>
                                     <li><a href="<?php echo home_url('/contact'); ?>">Contact</a></li>
                                 </ul>
                             </div>

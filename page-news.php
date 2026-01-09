@@ -26,7 +26,9 @@
                         <div class="wpo-blog-content">
                             <div class="post format-standard-image">
                                 <div class="entry-media">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/taichi.png" alt="">
+                                    <a href="<?php echo home_url('/news-single'); ?>">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/taichi.png" alt="">
+                                    </a>
                                 </div>
                                 <div class="entry-meta">
                                     <ul>
@@ -36,14 +38,16 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Cours de taichi pour chat</a></h3>
+                                    <h3><a href="<?php echo home_url('/news-single'); ?>">Cours de taichi pour chat</a></h3>
                                     <p>Venez découvrir les bienfaits du taichi pour votre chat. Cette pratique millénaire adaptée aux félins permet de réduire le stress et d'améliorer leur bien-être général. Découvrez notre offre dès aujourd'hui.</p>
-                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/news-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
                             <div class="post format-standard-image">
                                 <div class="entry-media">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/jouets.jpg" alt="">
+                                    <a href="<?php echo home_url('/news-single'); ?>">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/jouets.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="entry-meta">
                                     <ul>
@@ -53,16 +57,18 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Ces jouets peuvent être mauvais pour votre animal</a>
+                                    <h3><a href="<?php echo home_url('/news-single'); ?>">Ces jouets peuvent être mauvais pour votre animal</a>
                                     </h3>
                                     <p>Tous les jouets ne sont pas adaptés à nos compagnons félins. Découvrez quels jouets éviter pour protéger la santé et la sécurité de votre chat. Nos conseils pour faire les bons choix.</p>
-                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/news-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
 
                             <div class="post format-standard-image">
                                 <div class="entry-media">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/confortable.jpeg" alt="">
+                                    <a href="<?php echo home_url('/news-single'); ?>">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/confortable.jpeg" alt="">
+                                    </a>
                                 </div>
                                 <div class="entry-meta">
                                     <ul>
@@ -72,9 +78,9 @@
                                     </ul>
                                 </div>
                                 <div class="entry-details">
-                                    <h3><a href="<?php echo home_url('/blog-single'); ?>">Un endroit sûr et confortable pour votre chat</a></h3>
+                                    <h3><a href="<?php echo home_url('/news-single'); ?>">Un endroit sûr et confortable pour votre chat</a></h3>
                                     <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui. Découvrez comment aménager l'espace idéal pour le bien-être de votre compagnon félin au quotidien.</p>
-                                    <a href="<?php echo home_url('/blog-single'); ?>" class="read-more">LIRE PLUS...</a>
+                                    <a href="<?php echo home_url('/news-single'); ?>" class="read-more">LIRE PLUS...</a>
                                 </div>
                             </div>
 
@@ -112,29 +118,29 @@
                                 <div class="posts">
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-1.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/taichi.png" alt=""></a>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">La méditation féline au refuge</a>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">La méditation féline au refuge</a>
                                             </h4>
                                             <span class="date">19 Jun 2025 </span>
                                         </div>
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-2.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/jouets.jpg" alt=""></a>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
                                             <span class="date">22 May 2025 </span>
                                         </div>
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-3.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/confortable.jpeg" alt=""></a>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="<?php echo home_url('/blog-single'); ?>">Comment adopter un chat du refuge</a>
+                                            <h4><a href="<?php echo home_url('/news-single'); ?>">Comment adopter un chat du refuge</a>
                                             </h4>
                                             <span class="date">12 Apr 2025 </span>
                                         </div>
@@ -146,17 +152,17 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/6_kitten.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/14_orange cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/19_cute gray cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/4_playful cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/7_pretty cat.png"
                                                 alt=""></a></li>
                                 </ul>
                             </div>

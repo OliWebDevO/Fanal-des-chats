@@ -8,7 +8,7 @@
                         <div class="wpo-breadcumb-wrap">
                             <h2>Services</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="<?php echo home_url('/'); ?>">Home</a></li>
+                                <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
                                 <li>Services</li>
                             </ol>
                         </div>
@@ -27,8 +27,8 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/1.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Over Night Care</a></h2>
-                            <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Accueil</a></h2>
+                            <p>Nous accueillons les chats errants et abandonnés dans un environnement sûr et bienveillant.</p>
                         </div>
                     </div>
                 </div>
@@ -38,19 +38,8 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/2.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Walking</a></h2>
-                            <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                        <div class="icon">
-                            <img src="<?php bloginfo("template_url")?>/assets/images/service/3.svg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Pet Grooming</a></h2>
-                            <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Soins Vétérinaires</a></h2>
+                            <p>Nos chats reçoivent tous les soins médicaux nécessaires pour retrouver la santé.</p>
                         </div>
                     </div>
                 </div>
@@ -60,8 +49,19 @@
                             <img src="<?php bloginfo("template_url")?>/assets/images/service/4.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Vaccination</a></h2>
-                            <p>If you are away for the night, we can keep your favorite pet happy and safe. </p>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Stérilisation & Vaccin</a></h2>
+                            <p>Programme de stérilisation et de vaccination pour le bien-être de nos pensionnaires.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="item">
+                        <div class="icon">
+                            <img src="<?php bloginfo("template_url")?>/assets/images/service/3.svg" alt="">
+                        </div>
+                        <div class="content">
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Adoptions</a></h2>
+                            <p>Nous trouvons des familles aimantes pour nos chats prêts à être adoptés.</p>
                         </div>
                     </div>
                 </div>

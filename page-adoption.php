@@ -5,10 +5,10 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Faire un don</h2>
+                            <h2>Adopter un chat</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                                <li>Faire un don</li>
+                                <li>Adopter un chat</li>
                             </ol>
                         </div>
                     </div>
@@ -28,10 +28,10 @@
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png" alt="">
                                 </div> -->
                                 <div class="wpo-service-single-title">
-                                    <h3>Pourquoi faire un don ?</h3>
+                                    <h3>Adopter un chat</h3>
                                 </div>
-                                <p>Votre générosité fait toute la différence dans la vie de nos pensionnaires félins. Chaque don, qu'il soit ponctuel ou régulier, nous permet de continuer notre mission de sauvetage, de soins et de réhabilitation des chats abandonnés ou maltraités. Grâce à votre soutien, nous pouvons offrir des soins vétérinaires, une alimentation de qualité et un environnement sécurisé.</p>
-                                <p>Le Fanal des Chats fonctionne uniquement grâce aux dons et à l'engagement de nos bénévoles. Chaque euro compte et contribue directement au bien-être de nos compagnons à quatre pattes en attente d'une famille aimante.</p>
+                                <p>Adopter un chat du Fanal des Chats, c'est offrir une seconde chance à un animal qui a besoin d'amour et de sécurité. Nos pensionnaires félins attendent patiemment de trouver leur famille pour la vie. Chaque adoption est une victoire contre l'abandon et un nouveau départ vers le bonheur.</p>
+                                <p>Notre équipe vous accompagne dans cette belle aventure en vous aidant à trouver le compagnon idéal selon votre mode de vie, votre logement et vos attentes. Nous croyons fermement qu'il existe un chat parfait pour chaque famille.</p>
                                 <!-- <div class="row mt-4">
                                     <div class="col-md-6 col-sm-6 col-12">
                                         <div class="wpo-p-details-img">
@@ -47,33 +47,52 @@
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>À quoi servent vos dons ?</h3>
+                                    <h3>Critères d'adoption</h3>
                                 </div>
-                                <p>Transparence et responsabilité sont nos maîtres mots. Voici comment nous utilisons chaque euro de vos précieux dons :</p>
+                                <p>Pour garantir le bien-être de nos chats et assurer une adoption réussie, nous demandons à tous les futurs adoptants de respecter quelques critères essentiels :</p>
                                 <ul>
-                                    <li>Soins vétérinaires : vaccinations, stérilisations, traitements médicaux</li>
-                                    <li>Alimentation de qualité adaptée à chaque âge et état de santé</li>
-                                    <li>Entretien et amélioration des infrastructures du refuge</li>
-                                    <li>Matériel et équipements pour le bien-être des chats</li>
-                                    <li>Campagnes de sensibilisation et événements d'adoption</li>
+                                    <li>Être majeur et en capacité légale d'adopter un animal</li>
+                                    <li>Disposer d'un logement adapté et sécurisé pour un chat</li>
+                                    <li>Avoir les moyens financiers pour assumer les frais vétérinaires</li>
+                                    <li>S'engager à stériliser l'animal si ce n'est pas déjà fait</li>
+                                    <li>Accepter une visite de pré-adoption et un suivi post-adoption</li>
                                 </ul>
                             </div>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Comment faire un don ?</h3>
+                                    <h3>Le processus d'adoption</h3>
                                 </div>
-                                <p>Plusieurs modalités s'offrent à vous pour soutenir notre action. Que vous préfériez un don ponctuel ou un soutien régulier, chaque geste compte. Vous pouvez effectuer un virement bancaire, nous envoyer un chèque ou même faire un don en nature (nourriture, litière, jouets). Tous les dons donnent droit à une déduction fiscale selon la législation en vigueur.</p>
+                                <p>Notre processus d'adoption est conçu pour assurer le bien-être de nos chats et la satisfaction des adoptants. Nous prenons le temps nécessaire pour créer des liens durables entre nos pensionnaires et leurs nouvelles familles. Chaque adoption fait l'objet d'un suivi personnalisé pour garantir une intégration réussie dans votre foyer.</p>
                             </div>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Avantages fiscaux</h3>
+                                    <h3>Les étapes d'adoption</h3>
                                 </div>
                                 <ul>
-                                    <li>Déduction fiscale de 66% du montant de votre don</li>
-                                    <li>Reçu fiscal délivré automatiquement pour tout don</li>
-                                    <li>Possibilité de donner jusqu'à 20% de vos revenus imposables</li>
-                                    <li>Report possible de l'excédent sur les 5 années suivantes</li>
+                                    <li>Première visite pour rencontrer nos chats disponibles</li>
+                                    <li>Entretien avec notre équipe pour définir vos attentes</li>
+                                    <li>Période de réflexion et visite de pré-adoption à domicile</li>
+                                    <li>Finalisation du dossier et signature du contrat d'adoption</li>
+                                    <li>Suivi post-adoption et accompagnement si nécessaire</li>
                                 </ul>
+                            </div>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3>Testez vos connaissances</h3>
+                                </div>
+                                <p>Vous souhaitez adopter un chat ? Participez a notre quiz pour tester vos connaissances sur le bien-etre felin et decouvrir si vous etes pret a accueillir un nouveau compagnon.</p>
+                                <div class="about-btn">
+                                    <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Participez au Quiz</a>
+                                </div>
+                            </div>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3>Faire une demande d'adoption</h3>
+                                </div>
+                                <p>Pret a accueillir un chat dans votre foyer ? Remplissez notre formulaire de demande d'adoption pour nous en dire plus sur vous, votre environnement et vos attentes. Notre equipe etudiera votre dossier et vous contactera rapidement.</p>
+                                <div class="about-btn">
+                                    <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,13 +121,13 @@
                                                     <button class="accordion-button" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                                         aria-expanded="true" aria-controls="collapseOne">
-                                                        Quel est le montant minimum pour faire un don ?
+                                                        Quels sont les frais d'adoption ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Il n'y a pas de montant minimum ! Chaque don, même le plus modeste, fait la différence. Que ce soit 5€ ou 500€, votre générosité contribue directement au bien-être de nos pensionnaires félins.</p>
+                                                        <p>Les frais d'adoption sont de 150€ pour un chat adulte et 200€ pour un chaton. Ces frais couvrent la stérilisation, l'identification par puce, les vaccins à jour et un bilan de santé vétérinaire complet.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,13 +136,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                                         aria-expanded="false" aria-controls="collapseTwo">
-                                                        Mon don est-il déductible des impôts ?
+                                                        Puis-je adopter si je vis en appartement ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Oui ! En tant qu'association reconnue d'intérêt général, vos dons donnent droit à une réduction d'impôt de 66% de leur montant. Un reçu fiscal vous sera automatiquement envoyé.</p>
+                                                        <p>Absolument ! Beaucoup de chats s'adaptent parfaitement à la vie en appartement. Nous vous aiderons à choisir un chat dont le caractère et les besoins correspondent à votre mode de vie et à votre logement.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,13 +151,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                                         aria-expanded="false" aria-controls="collapseThree">
-                                                        Puis-je faire un don en nature ?
+                                                        Combien de temps dure le processus d'adoption ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseThree" class="accordion-collapse collapse"
                                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Absolument ! Nous acceptons les dons de nourriture, litière, jouets, couvertures, matériel vétérinaire. Contactez-nous avant pour connaître nos besoins prioritaires du moment.</p>
+                                                        <p>Le processus prend généralement 1 à 2 semaines. Cela comprend la rencontre avec le chat, l'entretien, la visite de pré-adoption à domicile et la finalisation du dossier. Nous prenons le temps nécessaire pour assurer une adoption réussie.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,13 +166,13 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapseFour"
                                                         aria-expanded="false" aria-controls="collapseFour">
-                                                        Puis-je mettre en place un don régulier ?
+                                                        Que faire si l'adoption ne se passe pas bien ?
                                                     </button>
                                                 </h3>
                                                 <div id="collapseFour" class="accordion-collapse collapse"
                                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Oui, et c'est très apprécié ! Un don mensuel, même modest, nous aide à planifier nos actions et garantit une stabilité financière. Vous pouvez modifier ou arrêter votre don à tout moment.</p>
+                                                        <p>Nous offrons un suivi post-adoption et restons disponibles pour vous conseiller. Si malgré tous nos efforts l'adoption ne fonctionne pas, nous reprenons le chat sans jugement. L'important est le bien-être de l'animal.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,8 +196,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous soutenir ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour organiser votre don au Fanal des Chats</p>
+                                        <h2>Prêt à adopter ? Contactez-nous !</h2>
+                                        <p>Prenez contact avec nous pour démarrer votre processus d'adoption</p>
                                     </div>
                                     <div class="wpo-contact-form-area">
                                         <form method="post" class="contact-validation-active" id="contact-form-main">
@@ -193,28 +212,28 @@
                                                 </div>
                                                 <div class="col col-lg-12 col-12">
                                                     <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de don souhaité</option>
-                                                        <option>Don ponctuel</option>
-                                                        <option>Don mensuel régulier</option>
-                                                        <option>Don en nature</option>
-                                                        <option>Parrainage d'un chat</option>
-                                                        <option>Léguer ou donation</option>
-                                                        <option>Autre</option>
+                                                        <option disabled="disabled" selected="">Type de chat recherché</option>
+                                                        <option>Chat adulte calme</option>
+                                                        <option>Chaton joueur</option>
+                                                        <option>Chat senior</option>
+                                                        <option>Chat sociable avec enfants</option>
+                                                        <option>Chat indépendant</option>
+                                                        <option>Pas de préférence</option>
                                                     </select>
                                                 </div>
                                                 <div class="fullwidth col col-lg-12 col-12">
                                                     <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Montant envisagé, fréquence, préférences..."></textarea>
+                                                        placeholder="Parlez-nous de votre logement, votre expérience avec les chats, vos attentes..."></textarea>
                                                 </div>
                                             </div>
                                             <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Contactez-nous pour donner</button>
+                                                <button type="submit" class="theme-btn">Demande d'adoption</button>
                                                 <div id="loader">
                                                     <i class="ti-reload"></i>
                                                 </div>
                                             </div>
                                             <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre message a été envoyé, nous vous recontacterons rapidement</div>
+                                                <div id="success">Merci ! Votre demande d'adoption a été envoyée</div>
                                                 <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
                                             </div>
                                         </form>
@@ -248,22 +267,22 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
                                                 alt=""></a>
                                     </li>
-                                    <li><a href="<?php echo home_url('/service-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
                                                 alt=""></a>
                                     </li>
                                 </ul>
@@ -276,6 +295,4 @@
         <!-- service-single-area end -->
 
 
-        <?php echo do_shortcode('[give_form id="43"]'); ?>
-        
 <?php get_template_part("partials/footer"); ?>

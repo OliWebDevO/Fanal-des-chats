@@ -8,36 +8,36 @@
                     <h3>Bienvenue au Fanal des chats</h3>
                     <p>Notre mission est d'accueilir et protéger les chats errants, en leur offrant un refuge sûr et aimant, tout en sensibilisant la communauté à l'importance du bien-être félin.
                     </p>
-                    <a href="<?php echo home_url('/service-single3'); ?>" class="theme-btn-s2">Faire un don</a>
+                    <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="top-image">
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
                     </div>
                 </div>
                 <div class="buttom-image">
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" style="filter: drop-shadow(-6px 10px 15px rgba(0, 0, 0, 0.25)) drop-shadow(-3px 6px 8px rgba(0, 0, 0, 0.12)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" style="filter: drop-shadow(-6px 10px 15px rgba(0, 0, 0, 0.25)) drop-shadow(-3px 6px 8px rgba(0, 0, 0, 0.12)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" style="filter: drop-shadow(-6px 10px 15px rgba(0, 0, 0, 0.25)) drop-shadow(-3px 6px 8px rgba(0, 0, 0, 0.12)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
                     </div>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" style="filter: drop-shadow(-6px 10px 15px rgba(0, 0, 0, 0.25)) drop-shadow(-3px 6px 8px rgba(0, 0, 0, 0.12)) !important;">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/1.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Accueil</a></h2>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Accueil</a></h2>
                             <p>Nous accueillons les chats errants et abandonnés dans un environnement sûr et bienveillant. </p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/2.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Soins Vétérinaires</a></h2>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Soins Vétérinaires</a></h2>
                             <p>Nos chats reçoivent tous les soins médicaux nécessaires pour retrouver la santé. </p>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/4.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Stérilisation & Vaccin</a></h2>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Stérilisation & Vaccin</a></h2>
                             <p>Programme de stérilisation et de vaccination pour le bien-être de nos pensionnaires. </p>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/service/3.svg" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/service-single'); ?>">Adoptions</a></h2>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>">Adoptions</a></h2>
                             <p>Nous trouvons des familles aimantes pour nos chats prêts à être adoptés. </p>
                         </div>
                     </div>
@@ -120,8 +120,8 @@
                 <div class="left">
                     <div class="image">
                         <!-- <img src="assets/images/about.png" alt=""> -->
-                         <!-- <img src="assets/images/images/fanal chats-slide.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;"> -->
-                         <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/20_tiger cat.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                         <!-- <img src="assets/images/images/fanal chats-slide.png" alt="" > -->
+                         <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/20_tiger cat.png" alt="" >
                         <div class="shape">
                             <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
                                 <path
@@ -268,7 +268,7 @@
                                 <li>Chauffage et climatisation</li>
                                 <li>Jouets et accessoires</li>
                             </ul>
-                            <a href="<?php echo home_url('/service-single3'); ?>" class="theme-btn-s2">Faire un don</a>
+                            <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -282,7 +282,7 @@
                                 <li>Entretien des installations</li>
                                 <li>Sensibilisation du public</li>
                             </ul>
-                            <a href="<?php echo home_url('/service-single'); ?>" class="theme-btn-s2">Devenir bénévole</a>
+                            <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir bénévole</a>
                         </div>
                     </div>
                 </div>
@@ -303,8 +303,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-12">
                         <div class="testimonial-image">
-                            <!-- <img src="<?php bloginfo('template_url'); ?>/assets/images/images/adoptionD.png" alt="" style="filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;"> -->
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="" style="max-height:600px; filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                            <!-- <img src="<?php bloginfo('template_url'); ?>/assets/images/images/adoptionD.png" alt="" > -->
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="">
                             <div class="shape">
                                 <svg viewBox="0 0 932 866" fill="none">
                                     <path
@@ -385,7 +385,7 @@
             </div>
             <div class="image">
                 <!-- <img src="<?php bloginfo('template_url'); ?>/assets/images/cta.png" alt=""> -->
-                <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/1_meow cat.png" alt=""  style=" max-height:702px; filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15)) !important;">
+                <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/1_meow cat.png" alt="">
             </div>
             <div class="shape">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-10.png" alt="">
@@ -410,14 +410,16 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="blog-card">
                             <div class="image">
-                                <img src="<?php bloginfo('template_url'); ?>/assets/images/images/taichi.png" alt="">
+                                <a href="<?php echo home_url('/news-single'); ?>">
+                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/taichi.png" alt="">
+                                </a>
                             </div>
                             <div class="content">
                                 <ul class="date">
                                     <li>Activité</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/blog-single'); ?>"> Cours de taichi pour chat</a></h2>
+                                <h2><a href="<?php echo home_url('/news-single'); ?>"> Cours de taichi pour chat</a></h2>
                                 <p>Venez découvrir les bienfaits du taichi pour votre chat. Découvrez notre offre  dès aujourd'hui.</p>
                             </div>
                         </div>
@@ -425,14 +427,16 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="blog-card">
                             <div class="image">
-                                <img src="<?php bloginfo('template_url'); ?>/assets/images/images/jouets.jpg" alt="">
+                                <a href="<?php echo home_url('/news-single'); ?>">
+                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/jouets.jpg" alt="">
+                                </a>
                             </div>
                             <div class="content">
                                 <ul class="date">
                                     <li>News </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
+                                <h2><a href="<?php echo home_url('/news-single'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
                                 <p>Des promenades énergisantes pour garder votre chien préféré actif, en bonne santé et heureux....</p>
                             </div>
                         </div>
@@ -440,14 +444,16 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="blog-card">
                             <div class="image">
-                                <img src="<?php bloginfo('template_url'); ?>/assets/images/images/confortable.jpeg" alt="">
+                                <a href="<?php echo home_url('/news-single'); ?>">
+                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/confortable.jpeg" alt="">
+                                </a>
                             </div>
                             <div class="content">
                                 <ul class="date">
                                     <li>News</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/blog-single'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
+                                <h2><a href="<?php echo home_url('/news-single'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
                                 <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui.</p>
                             </div>
                         </div>

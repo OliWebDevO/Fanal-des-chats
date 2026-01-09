@@ -87,14 +87,14 @@
                                             <a href="#">Services</a>
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
-                                                <li><a href="<?php echo home_url('/service-single'); ?>">Service Single</a></li>
+                                                <li><a href="<?php echo home_url('/benevole'); ?>">Service Single</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Shop</a>
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/shop'); ?>">Shop</a></li>
-                                                <li><a href="<?php echo home_url('/shop-single'); ?>">Shop Single</a></li>
+                                                <li><a href="<?php echo home_url('/revue'); ?>">Shop</a></li>
+                                                <li><a href="<?php echo home_url('/revue-single'); ?>">Shop Single</a></li>
                                                 <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
                                                 <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li>
                                             </ul>
@@ -102,8 +102,8 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">Blog</a>
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
-                                                <li><a href="<?php echo home_url('/blog-single'); ?>">Blog Single</a>
+                                                <li><a href="<?php echo home_url('/news'); ?>">Blog</a></li>
+                                                <li><a href="<?php echo home_url('/news-single'); ?>">Blog Single</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -221,7 +221,7 @@
                                     <li><a href="<?php echo home_url('/about'); ?>">About Us</a></li>
                                     <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
                                     <li><a href="<?php echo home_url('/pricing'); ?>">Pricing Plan</a></li>
-                                    <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
+                                    <li><a href="<?php echo home_url('/news'); ?>">Blog</a></li>
                                     <li><a href="<?php echo home_url('/contact'); ?>">Contact Us</a></li>
                                 </ul>
                             </div>
