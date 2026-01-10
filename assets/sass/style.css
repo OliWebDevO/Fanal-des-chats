@@ -8646,3 +8646,68 @@ background-color: #FCF1E8;
     max-height: 702px;
     filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15));
 }
+
+/* News & News Single - Border radius for images */
+.wpo-blog-pg-section .entry-media img,
+.wpo-blog-single-section .entry-media img,
+.wpo-blog-pg-section .recent-post-widget .img-holder img,
+.wpo-blog-single-section .recent-post-widget .img-holder img,
+.wpo-blog-pg-section .wpo-instagram-widget img,
+.wpo-blog-single-section .wpo-instagram-widget img {
+    border-radius: 8px;
+}
+
+/* News Single - Gallery images */
+.wpo-blog-single-section .gallery img {
+    width: 419px;
+    height: 285px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Contact page - Pale orange info cards */
+.wpo-contact-pg-section .office-info .office-info-item {
+    background: #FBDABF;
+    border-radius: 8px;
+}
+
+.wpo-contact-pg-section .office-info .office-info-item .office-info-icon {
+    background: #FF5B2E;
+}
+
+.wpo-contact-pg-section .office-info .office-info-item .office-info-icon .icon .fi:before {
+    color: #fff;
+}
+
+.wpo-contact-pg-section .office-info .office-info-link {
+    text-decoration: none;
+    display: block;
+}
+
+.wpo-contact-pg-section .office-info .office-info-link .office-info-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.wpo-contact-pg-section .office-info .office-info-link:hover .office-info-item {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px 0px rgba(62, 65, 159, 0.15);
+}
+
+/* CTA buttons container for service pages */
+.wpo-service-contact-area {
+    padding: 50px 40px;
+}
+
+.wpo-service-contact-area .about-btn {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* GiveWP form container spacing */
+.wpo-service-contact-area .givewp-form-container {
+    margin-top: 40px;
+}

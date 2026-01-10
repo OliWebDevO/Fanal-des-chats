@@ -84,6 +84,9 @@
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                                 </div>
+                                <div class="givewp-form-container">
+                                    <?php echo do_shortcode('[give_form id="43"]'); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,105 +190,22 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous soutenir ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour organiser votre don au Fanal des Chats</p>
+                                        <h2>Prêt à nous soutenir ?</h2>
+                                        <p>Testez vos connaissances sur les dons ou faites un don directement</p>
                                     </div>
-                                    <div class="wpo-contact-form-area">
-                                        <form method="post" class="contact-validation-active" id="contact-form-main">
-                                            <div class="row">
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="text" class="form-control" name="name" id="name"
-                                                        placeholder="Votre nom*">
-                                                </div>
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="email" class="form-control" name="email" id="email"
-                                                        placeholder="Votre email*">
-                                                </div>
-                                                <div class="col col-lg-12 col-12">
-                                                    <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de don souhaité</option>
-                                                        <option>Don ponctuel</option>
-                                                        <option>Don mensuel régulier</option>
-                                                        <option>Don en nature</option>
-                                                        <option>Parrainage d'un chat</option>
-                                                        <option>Léguer ou donation</option>
-                                                        <option>Autre</option>
-                                                    </select>
-                                                </div>
-                                                <div class="fullwidth col col-lg-12 col-12">
-                                                    <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Montant envisagé, fréquence, préférences..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Contactez-nous pour donner</button>
-                                                <div id="loader">
-                                                    <i class="ti-reload"></i>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre message a été envoyé, nous vous recontacterons rapidement</div>
-                                                <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
-                                            </div>
-                                        </form>
+                                    <div class="about-btn">
+                                        <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faire le Quiz</a>
+                                    </div>
+                                    <div class="givewp-form-container">
+                                        <?php echo do_shortcode('[give_form id="43"]'); ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 col-12">
-                        <div class="blog-sidebar">
-                            <div class="widget search-widget">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="Search Post..">
-                                        <button type="submit"><i class="ti-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="wpo-newsletter-widget widget">
-                                <h3>Newsletter</h3>
-                                <p>Join 20,000 Sabscribers!</p>
-                                <form class="form">
-                                    <input type="email" placeholder="Email Address" required>
-                                    <button type="submit">Sign Up</button>
-                                </form>
-                                <span>By signing up you agree to our <a href="#">Privecy Policy</a></span>
-                            </div>
-                            <div class="widget wpo-instagram-widget">
-                                <div class="widget-title">
-                                    <h3>Instagram</h3>
-                                </div>
-                                <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
-                                                alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </div>
                 </div>
             </div>
         </div>
         <!-- service-single-area end -->
-
-
-        <?php echo do_shortcode('[give_form id="43"]'); ?>
         
 <?php get_template_part("partials/footer"); ?>

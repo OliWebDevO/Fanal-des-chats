@@ -33,43 +33,49 @@
                         <div class="office-info">
                             <div class="row">
                                 <div class="col col-xl-4 col-lg-6 col-md-6 col-12">
-                                    <div class="office-info-item">
-                                        <div class="office-info-icon">
-                                            <div class="icon">
-                                                <i class="fi flaticon-placeholder"></i>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Le+Fanal+des+Chats+Bruxelles" target="_blank" class="office-info-link">
+                                        <div class="office-info-item">
+                                            <div class="office-info-icon">
+                                                <div class="icon">
+                                                    <i class="fi flaticon-placeholder"></i>
+                                                </div>
+                                            </div>
+                                            <div class="office-info-text">
+                                                <h2>Adresse</h2>
+                                                <p>16 avenue Emile Max, 1030 Bruxelles</p>
                                             </div>
                                         </div>
-                                        <div class="office-info-text">
-                                            <h2>Adresse</h2>
-                                            <p>16 avenue Emile Max, 1030 Bruxelles</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col col-xl-4 col-lg-6 col-md-6 col-12">
-                                    <div class="office-info-item">
-                                        <div class="office-info-icon">
-                                            <div class="icon">
-                                                <i class="fi flaticon-email"></i>
+                                    <a href="mailto:lefanaldeschats@proximus.be" class="office-info-link">
+                                        <div class="office-info-item">
+                                            <div class="office-info-icon">
+                                                <div class="icon">
+                                                    <i class="fi flaticon-email"></i>
+                                                </div>
+                                            </div>
+                                            <div class="office-info-text">
+                                                <h2>Email</h2>
+                                                <p>lefanaldeschats@proximus.be</p>
                                             </div>
                                         </div>
-                                        <div class="office-info-text">
-                                            <h2>Email</h2>
-                                            <p>lefanaldeschats@proximus.be</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col col-xl-4 col-lg-6 col-md-6 col-12">
-                                    <div class="office-info-item">
-                                        <div class="office-info-icon">
-                                            <div class="icon">
-                                                <i class="fi flaticon-phone-call"></i>
+                                    <a href="tel:+3227346029" class="office-info-link">
+                                        <div class="office-info-item">
+                                            <div class="office-info-icon">
+                                                <div class="icon">
+                                                    <i class="fi flaticon-phone-call"></i>
+                                                </div>
+                                            </div>
+                                            <div class="office-info-text">
+                                                <h2>Téléphone</h2>
+                                                <p>02/734.60.29</p>
                                             </div>
                                         </div>
-                                        <div class="office-info-text">
-                                            <h2>Téléphone</h2>
-                                            <p>02/734.60.29</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +110,7 @@
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="pricing-card">
-                            <h2>Faitez un Don</h2>
+                            <h2>Faites un Don</h2>
                             <div class="price"></div>
                             <ul class="features">
                                 <li>Soins vétérinaires</li>

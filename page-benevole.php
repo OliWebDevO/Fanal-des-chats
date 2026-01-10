@@ -196,52 +196,24 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous rejoindre ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour devenir bénévole au Fanal des Chats</p>
+                                        <h2>Prêt à nous rejoindre ?</h2>
+                                        <p>Testez votre profil avec notre quiz ou remplissez directement le formulaire de candidature</p>
                                     </div>
-                                    <div class="wpo-contact-form-area">
-                                        <form method="post" class="contact-validation-active" id="contact-form-main">
-                                            <div class="row">
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="text" class="form-control" name="name" id="name"
-                                                        placeholder="Votre nom*">
-                                                </div>
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="email" class="form-control" name="email" id="email"
-                                                        placeholder="Votre email*">
-                                                </div>
-                                                <div class="col col-lg-12 col-12">
-                                                    <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de bénévolat souhaité</option>
-                                                        <option>Soins et nourrissage</option>
-                                                        <option>Socialisation des chats</option>
-                                                        <option>Aide aux adoptions</option>
-                                                        <option>Transport vétérinaire</option>
-                                                        <option>Événements et communication</option>
-                                                        <option>Entretien et nettoyage</option>
-                                                    </select>
-                                                </div>
-                                                <div class="fullwidth col col-lg-12 col-12">
-                                                    <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Parlez-nous de votre motivation, vos disponibilités..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Envoyer ma candidature</button>
-                                                <div id="loader">
-                                                    <i class="ti-reload"></i>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre candidature a été envoyée</div>
-                                                <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
-                                            </div>
-                                        </form>
+                                    <div class="about-btn">
+                                        <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Faire le Quiz</a>
+                                        <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Formulaire de candidature</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Ancien formulaire commenté
+                    <div class="wpo-contact-form-area">
+                        <form method="post" class="contact-validation-active" id="contact-form-main">
+                            ...
+                        </form>
+                    </div>
+                    -->
                 </div>
             </div>
         </div>

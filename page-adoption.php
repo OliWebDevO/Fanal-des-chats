@@ -196,99 +196,24 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à adopter ? Contactez-nous !</h2>
-                                        <p>Prenez contact avec nous pour démarrer votre processus d'adoption</p>
+                                        <h2>Prêt à adopter ? Lancez-vous !</h2>
+                                        <p>Testez vos connaissances avec notre quiz ou remplissez directement le formulaire d'adoption</p>
                                     </div>
-                                    <div class="wpo-contact-form-area">
-                                        <form method="post" class="contact-validation-active" id="contact-form-main">
-                                            <div class="row">
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="text" class="form-control" name="name" id="name"
-                                                        placeholder="Votre nom*">
-                                                </div>
-                                                <div class="col col-lg-6 col-md-6 col-12">
-                                                    <input type="email" class="form-control" name="email" id="email"
-                                                        placeholder="Votre email*">
-                                                </div>
-                                                <div class="col col-lg-12 col-12">
-                                                    <select name="service" class="form-control">
-                                                        <option disabled="disabled" selected="">Type de chat recherché</option>
-                                                        <option>Chat adulte calme</option>
-                                                        <option>Chaton joueur</option>
-                                                        <option>Chat senior</option>
-                                                        <option>Chat sociable avec enfants</option>
-                                                        <option>Chat indépendant</option>
-                                                        <option>Pas de préférence</option>
-                                                    </select>
-                                                </div>
-                                                <div class="fullwidth col col-lg-12 col-12">
-                                                    <textarea class="form-control" name="note" id="note"
-                                                        placeholder="Parlez-nous de votre logement, votre expérience avec les chats, vos attentes..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="submit-area">
-                                                <button type="submit" class="theme-btn">Demande d'adoption</button>
-                                                <div id="loader">
-                                                    <i class="ti-reload"></i>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix error-handling-messages">
-                                                <div id="success">Merci ! Votre demande d'adoption a été envoyée</div>
-                                                <div id="error"> Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard. </div>
-                                            </div>
-                                        </form>
+                                    <div class="about-btn">
+                                        <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faire le Quiz</a>
+                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Formulaire d'adoption</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 col-12">
-                        <div class="blog-sidebar">
-                            <div class="widget search-widget">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="Search Post..">
-                                        <button type="submit"><i class="ti-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="wpo-newsletter-widget widget">
-                                <h3>Newsletter</h3>
-                                <p>Join 20,000 Sabscribers!</p>
-                                <form class="form">
-                                    <input type="email" placeholder="Email Address" required>
-                                    <button type="submit">Sign Up</button>
-                                </form>
-                                <span>By signing up you agree to our <a href="#">Privecy Policy</a></span>
-                            </div>
-                            <div class="widget wpo-instagram-widget">
-                                <div class="widget-title">
-                                    <h3>Instagram</h3>
-                                </div>
-                                <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
-                                                alt=""></a>
-                                    </li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
-                                                alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
+                    <!-- Ancien formulaire commenté
+                    <div class="wpo-contact-form-area">
+                        <form method="post" class="contact-validation-active" id="contact-form-main">
+                            ...
+                        </form>
                     </div>
+                    -->
                 </div>
             </div>
         </div>

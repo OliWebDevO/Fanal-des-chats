@@ -44,10 +44,10 @@
 
                                 <div class="gallery">
                                     <div>
-                                        <img src="<?php bloginfo("template_url")?>/assets/images/blog-details/1.jpg" alt="">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/jouets.jpg" alt="">
                                     </div>
                                     <div>
-                                        <img src="<?php bloginfo("template_url")?>/assets/images/blog-details/2.jpg" alt="">
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/confortable.jpeg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                                 <div class="posts">
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-1.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/taichi.png" alt=""></a>
                                         </div>
                                         <div class="details">
                                             <h4><a href="<?php echo home_url('/news-single'); ?>">La méditation féline au refuge</a>
@@ -262,7 +262,7 @@
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-2.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/jouets.jpg" alt=""></a>
                                         </div>
                                         <div class="details">
                                             <h4><a href="<?php echo home_url('/news-single'); ?>">Les chats ont-ils des émotions ?</a></h4>
@@ -271,7 +271,7 @@
                                     </div>
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/recent-posts/img-3.jpg" alt="">
+                                            <a href="<?php echo home_url('/news-single'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/confortable.jpeg" alt=""></a>
                                         </div>
                                         <div class="details">
                                             <h4><a href="<?php echo home_url('/news-single'); ?>">Comment adopter un chat du refuge</a>
@@ -286,17 +286,17 @@
                                     <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/7.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/8.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/6_kitten.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/9.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/14_orange cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/10.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/19_cute gray cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/11.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/4_playful cat.png"
                                                 alt=""></a></li>
-                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/instragram/12.jpg"
+                                    <li><a href="<?php echo home_url('/benevole'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/7_pretty cat.png"
                                                 alt=""></a></li>
                                 </ul>
                             </div>

@@ -214,7 +214,7 @@ img {
 }
 
 .pb-100 {
-    padding-bottom: 100px;
+    padding-bottom: 30px;
 }
 
 /* Form Content */
@@ -303,16 +303,52 @@ img {
     margin-top: 20px;
 }
 
-.form-group {
+/* Section Headers (h3) - Espacement entre sections */
+.form-inner-area h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--form-secondary);
+    margin-top: 40px;
     margin-bottom: 20px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.form-group label {
-    display: block;
+.form-inner-area h3:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.form-inner-area h3 i {
+    color: var(--form-primary);
+    font-size: 20px;
+}
+
+/* Sub-section headers (h4) */
+.form-inner-area h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
     font-weight: 600;
+    color: var(--form-secondary);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group > label {
+    display: block;
+    font-weight: 700;
     color: var(--form-text);
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: 12px;
+    font-size: 16px;
 }
 
 .form-control {
@@ -496,39 +532,82 @@ select.form-control {
 .radio-group-horizontal {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px 25px;
+    margin-top: 10px;
 }
 
 .radio-option-h {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
 }
 
 .radio-option-h input {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
     accent-color: var(--form-primary);
+    cursor: pointer;
 }
 
 .radio-option-h span {
-    font-weight: 500;
+    font-weight: 400;
     color: var(--form-text);
+    transform: translateY(1px);
 }
 
-/* Checkbox Grid */
+/* Checkbox Group - Liste de checkboxes avec cases visibles */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.checkbox-group-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 25px;
+    margin-top: 10px;
+}
+
+.checkbox-group .checkbox-option,
+.checkbox-group-inline .checkbox-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-group .checkbox-option input,
+.checkbox-group-inline .checkbox-option input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--form-primary);
+    cursor: pointer;
+}
+
+.checkbox-group .checkbox-option span,
+.checkbox-group-inline .checkbox-option span {
+    font-weight: 400;
+    color: var(--form-text);
+    transform: translateY(1px);
+}
+
+/* Checkbox Grid - Grille avec cartes (pour designs spéciaux) */
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
 }
 
-.checkbox-option {
+.checkbox-grid .checkbox-option {
     cursor: pointer;
 }
 
-.checkbox-option input {
+.checkbox-grid .checkbox-option input {
     display: none;
 }
 
@@ -683,17 +762,17 @@ select.form-control {
 }
 
 .consent-option {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 15px;
     cursor: pointer;
 }
 
 .consent-option input {
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
     accent-color: var(--form-primary);
     flex-shrink: 0;
 }
@@ -701,7 +780,7 @@ select.form-control {
 .consent-option span {
     font-size: 14px;
     color: var(--form-text);
-    line-height: 1.5;
+    transform: translateY(1px);
 }
 
 /* Info Box */
@@ -730,7 +809,7 @@ select.form-control {
 
 /* Actions */
 .actions {
-    padding: 20px 40px;
+    padding: 30px 40px 60px;
     background: transparent;
     border-top: none;
     display: flex;
