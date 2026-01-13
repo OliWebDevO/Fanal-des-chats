@@ -308,10 +308,10 @@
 	.close-form {
 		.theme-btn {
 			padding: 10px 35px;
-			background: transparent;
+			background: $theme-primary-color;
 			border-radius: 25px;
-			border: 1px solid #000;
-			color: #000;
+			border: 1px solid transparent;
+			color: $dark-gray;
 			font-family: "DM Sans";
 			font-size: 20px;
 			font-weight: 600;
@@ -323,7 +323,8 @@
 			}
 
 			&:hover {
-				color: $white;
+				background: lighten($theme-primary-color, 8%);
+				color: $dark-gray;
 				border: 1px solid transparent;
 			}
 		}

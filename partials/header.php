@@ -159,7 +159,7 @@
                                         </div>
                                     </div> -->
                                     <div class="close-form">
-                                        <a class="theme-btn" href="<?php echo home_url('/contact'); ?>">Contactez nous</a>
+                                        <a class="theme-btn-s2" href="<?php echo home_url('/contact'); ?>">Contactez nous</a>
                                     </div>
                                 </div>
                             </div>

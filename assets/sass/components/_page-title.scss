@@ -8,6 +8,7 @@
 	justify-content: center;
 	flex-direction: column;
 	z-index: 1;
+	margin-top: 120px;
 
 	@media(max-width: 767px) {
 		min-height: 250px;
@@ -22,7 +23,7 @@
 		background: $black;
 		content: "";
 		z-index: -1;
-		opacity: .50;
+		opacity: .50
 	}
 
 	.wpo-breadcumb-wrap {

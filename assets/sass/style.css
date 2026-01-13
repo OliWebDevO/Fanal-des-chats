@@ -565,6 +565,7 @@ img {
   z-index: 1;
   /* border-radius: 58px; */
   overflow: hidden;
+  padding-top: 120px;
 }
 @media (max-width: 767px) {
   .wpo-page-title {
@@ -1516,10 +1517,10 @@ img {
 
 .wpo-site-header .header-right .close-form .theme-btn, .wpo-site-header .header-right .close-form .view-cart-btn {
   padding: 10px 35px;
-  background: transparent;
+  background: #FF5B2E;
   border-radius: 25px;
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid transparent;
+  color: #fff;
   font-family: "DM Sans";
   font-size: 20px;
   font-weight: 600;
@@ -1531,6 +1532,7 @@ img {
   }
 }
 .wpo-site-header .header-right .close-form .theme-btn:hover, .wpo-site-header .header-right .close-form .view-cart-btn:hover {
+  background: #FF7A54;
   color: #fff;
   border: 1px solid transparent;
 }
@@ -3170,7 +3172,9 @@ img {
 .wpo-site-footer .wpo-lower-footer {
   text-align: center;
   position: relative;
-  background: #F2D6CF;
+  /* background: #F2D6CF;
+  border-radius: 8px;
+  margin-bottom : 50px */
 }
 .wpo-site-footer .wpo-lower-footer .container-fluid {
   max-width: 1720px;
@@ -8147,6 +8151,10 @@ img {
 
 .orange {
 background-color: #FCF1E8;
+}
+.space {
+  height: 120px;
+  background-color: #FCF1E8;
 }
 
 /* ===== GLOBAL PADDING CONSISTENCY ===== */
