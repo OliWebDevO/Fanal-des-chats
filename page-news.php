@@ -23,7 +23,7 @@
         <section class="wpo-blog-pg-section section-padding orange">
             <div class="container">
                 <div class="row">
-                    <div class="col col-lg-8">
+                    <div class="col col-lg-8 col-12">
                         <div class="wpo-blog-content">
                             <div class="post format-standard-image">
                                 <div class="entry-media">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col col-lg-4">
+                    <div class="col col-lg-4 col-12">
                         <div class="blog-sidebar">
                             <div class="widget search-widget">
                                 <form>

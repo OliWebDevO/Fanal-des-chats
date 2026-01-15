@@ -110,7 +110,7 @@
                                             -->
                                         </li>
                                         <li class="menu-item-has-children">
-                                            <a href="<?php echo home_url('/service'); ?>">Participer</a>
+                                            <span class="nav-trigger">Participer</span>
                                             <ul class="sub-menu">
                                                 <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
                                                 <li><a href="<?php echo home_url('/adoption'); ?>">Adopter un Chat</a></li>
