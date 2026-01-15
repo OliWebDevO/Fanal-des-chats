@@ -308,6 +308,11 @@ img {
   padding: 7px 35px;
   display: inline-block;
 }
+@media (max-width: 767px) {
+  .section-title h3 {
+    margin-bottom: 25px;
+  }
+}
 .section-title h2 {
   margin: 0;
   position: relative;
@@ -2257,6 +2262,7 @@ img {
   .hero-image {
     position: unset;
     margin: 0 auto;
+    text-align: center;
   }
 }
 .hero-image .top-image {
@@ -2332,6 +2338,8 @@ img {
     height: auto;
     transform: none;
     margin-top: 80px;
+    padding-left: 50px;
+    box-sizing: border-box;
   }
 }
 .hero-image .buttom-image.slick-slider .item {
@@ -2691,6 +2699,16 @@ img {
 .service-section-s2 .col:last-child {
   padding-right: 40px;
 }
+@media (max-width: 767px) {
+  .service-section .col:last-child .content,
+  .service-section-s2 .col:last-child .content {
+    padding-right: 0;
+  }
+  .service-section .col:last-child,
+  .service-section-s2 .col:last-child {
+    padding-right: 0;
+  }
+}
 .service-section .item,
 .service-section-s2 .item {
   max-width: 281px;
@@ -3008,8 +3026,9 @@ img {
 @media (max-width: 767px) {
   .about-section .about-video {
     width: 100%;
-    height: 100%;
-    border-radius: 0;
+    height: auto;
+    border-radius: 40px;
+    padding-bottom: 60px;
   }
 }
 .about-section .about-video .icon {
@@ -5811,6 +5830,9 @@ background-color: #FCF1E8;
     font-size: 48px;
     color: #FF5B2E;
 }
+.pricing-section .col:nth-child(2) .mission-icon {
+    color: #fff;
+}
 
 /* Qui sommes-nous section */
 .about-section.qui-sommes-nous {
@@ -5829,7 +5851,8 @@ background-color: #FCF1E8;
     padding-right: 30px;
 }
 
-.about-section.qui-sommes-nous .section-label {
+.about-section.qui-sommes-nous .section-label,
+.nos-missions .section-label {
     background: #FBDABF;
 }
 
@@ -5862,6 +5885,10 @@ background-color: #FCF1E8;
 }
 
 /* Nos valeurs section */
+.about-section.nos-valeurs {
+    padding-top: 80px;
+}
+
 .about-section.nos-valeurs .wraper {
     padding-left: 100px;
 }
