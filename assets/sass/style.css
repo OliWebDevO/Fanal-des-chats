@@ -546,13 +546,12 @@ img {
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   z-index: 1;
   /* border-radius: 58px; */
   overflow: hidden;
-  padding-top: 120px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding: 120px 80px;
 }
 @media (max-width: 767px) {
   .wpo-page-title {
@@ -584,7 +583,21 @@ img {
 @media (max-width: 991px) {
   .wpo-page-title .wpo-breadcumb-wrap {
     margin-top: 0;
-    
+  }
+  .wpo-page-title:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #FCF1E8;
+    content: "";
+    z-index: 0;
+    opacity: 0.4;
+  }
+  .wpo-page-title .wpo-breadcumb-wrap {
+    position: relative;
+    z-index: 1;
   }
 }
 .wpo-page-title .wpo-breadcumb-wrap h2 {
@@ -5802,11 +5815,22 @@ background-color: #FCF1E8;
 /* Qui sommes-nous section */
 .about-section.qui-sommes-nous {
     padding-bottom: 120px;
+    margin-top: 0;
+    padding-top: 80px;
+}
+@media (max-width: 991px) {
+    .about-section.qui-sommes-nous {
+        padding-top: 20px;
+    }
 }
 
 .about-section.qui-sommes-nous .right {
     padding-left: 80px;
     padding-right: 30px;
+}
+
+.about-section.qui-sommes-nous .section-label {
+    background: #FBDABF;
 }
 
 .about-section.qui-sommes-nous .image {
@@ -5939,6 +5963,10 @@ background-color: #FCF1E8;
 
     .about-section.qui-sommes-nous .right {
         padding-left: 50px;
+    }
+
+    .about-section.nos-valeurs {
+        padding-top: 60px;
     }
 
     .about-section.nos-valeurs .image {
