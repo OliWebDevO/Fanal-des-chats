@@ -22,7 +22,7 @@
 	}
 
 
-	.hero-inner-slider {
+	.hero-content {
 		max-width: 738px;
 		margin-left: 160px;
 		padding-top: 100px;
@@ -156,7 +156,7 @@
 }
 
 
-.hero-image {
+.hero-slider {
 	max-width: 1370px;
 	max-height: 900px;
 	position: absolute;
@@ -180,7 +180,7 @@
 		margin: 0 auto;
 	}
 
-	.top-image {
+	.hero-slider-main {
 		max-width: 729px;
 		position: relative;
 		right: 200px;
@@ -224,7 +224,7 @@
 		}
 	}
 
-	.buttom-image.slick-slider {
+	.hero-slider-thumb.slick-slider {
 		width: 181px;
 		height: 428px;
 		position: absolute;

@@ -2,43 +2,82 @@
 
         <!-- start of hero-section -->
         <section class="hero-section">
-            <div class="hero-inner-slider">
-                <div class="hero-inner">
-                    <!-- <h2>Best Pet Care Service Company</h2> -->
-                    <h3>Bienvenue au Fanal des chats</h3>
-                    <p>Notre mission est d'accueilir et protéger les chats errants, en leur offrant un refuge sûr et aimant, tout en sensibilisant la communauté à l'importance du bien-être félin.
-                    </p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <?php
+                    // Récupérer le contenu Titre & Texte du slider
+                    $texte_query = new WP_Query(array(
+                        'post_type' => 'slider',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => 'slider_type',
+                                'value' => 'texte',
+                            ),
+                        ),
+                    ));
+                    if ($texte_query->have_posts()) : while ($texte_query->have_posts()) : $texte_query->the_post();
+                    ?>
+                    <h3><?php the_field('slider_titre'); ?></h3>
+                    <p><?php the_field('slider_texte'); ?></p>
+                    <?php endwhile; endif; wp_reset_postdata(); ?>
                     <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="top-image">
+            <div class="hero-slider">
+                <div class="hero-slider-main">
+                    <?php
+                    // Récupérer les images principales
+                    $images_main_query = new WP_Query(array(
+                        'post_type' => 'slider',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => 'slider_type',
+                                'value' => 'images_main',
+                            ),
+                        ),
+                    ));
+                    if ($images_main_query->have_posts()) : while ($images_main_query->have_posts()) : $images_main_query->the_post();
+                        $images_main = get_field('slider_images_main');
+                        if ($images_main) :
+                            foreach ($images_main as $image) :
+                    ?>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                     </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
-                    </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
-                    </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-slide.png" alt="" >
-                    </div>
+                    <?php
+                            endforeach;
+                        endif;
+                    endwhile; endif; wp_reset_postdata();
+                    ?>
                 </div>
-                <div class="buttom-image">
+                <div class="hero-slider-thumb">
+                    <?php
+                    // Récupérer les images miniatures
+                    $images_thumb_query = new WP_Query(array(
+                        'post_type' => 'slider',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => 'slider_type',
+                                'value' => 'images_thumb',
+                            ),
+                        ),
+                    ));
+                    if ($images_thumb_query->have_posts()) : while ($images_thumb_query->have_posts()) : $images_thumb_query->the_post();
+                        $images_thumb = get_field('slider_images_thumb');
+                        if ($images_thumb) :
+                            foreach ($images_thumb as $image) :
+                    ?>
                     <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                     </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
-                    </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
-                    </div>
-                    <div class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/fanal chats-Mini.png" alt="" >
-                    </div>
+                    <?php
+                            endforeach;
+                        endif;
+                    endwhile; endif; wp_reset_postdata();
+                    ?>
                 </div>
             </div>
             <div class="paw-1">
@@ -55,72 +94,66 @@
             </div>
         </section>
 
-        <!-- start of service-section -->
-        <section class="service-section section-padding">
+        <!-- start of services-section -->
+        <section class="services-section section-padding">
             <div class="wraper">
+                <?php
+                // Récupérer le contenu Services de la page accueil
+                $services_query = new WP_Query(array(
+                    'post_type' => 'page_accueil',
+                    'posts_per_page' => 1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'accueil_type',
+                            'value' => 'services',
+                        ),
+                    ),
+                ));
+                if ($services_query->have_posts()) : while ($services_query->have_posts()) : $services_query->the_post();
+                    $icons = array('1.svg', '2.svg', '4.svg', '3.svg');
+                    for ($i = 1; $i <= 4; $i++) :
+                        $titre = get_field('services_titre_' . $i);
+                        $texte = get_field('services_texte_' . $i);
+                        if ($titre) :
+                ?>
                 <div class="col">
                     <div class="item">
                         <div class="icon">
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/service/1.svg" alt="">
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/service/<?php echo $icons[$i-1]; ?>" alt="">
                         </div>
                         <div class="content">
-                            <h2><a href="<?php echo home_url('/benevole'); ?>">Accueil</a></h2>
-                            <p>Nous accueillons les chats errants et abandonnés dans un environnement sûr et bienveillant. </p>
+                            <h2><a href="<?php echo home_url('/benevole'); ?>"><?php echo esc_html($titre); ?></a></h2>
+                            <p><?php echo esc_html($texte); ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="item">
-                        <div class="icon">
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/service/2.svg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2><a href="<?php echo home_url('/benevole'); ?>">Soins Vétérinaires</a></h2>
-                            <p>Nos chats reçoivent tous les soins médicaux nécessaires pour retrouver la santé. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                        <div class="icon">
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/service/4.svg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2><a href="<?php echo home_url('/benevole'); ?>">Stérilisation & Vaccin</a></h2>
-                            <p>Programme de stérilisation et de vaccination pour le bien-être de nos pensionnaires. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                        <div class="icon">
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/service/3.svg" alt="">
-                        </div>
-                        <div class="content">
-                            <h2><a href="<?php echo home_url('/benevole'); ?>">Adoptions</a></h2>
-                            <p>Nous trouvons des familles aimantes pour nos chats prêts à être adoptés. </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="top-img-1">
-                    <img src="assets/images/service/top-img-1.png" alt="">
-                </div>
-                <div class="top-img-2">
-                    <img src="assets/images/images/fanal chats 222.png" alt="">
-                </div>
-                <div class="top-img-3">
-                    <img src="assets/images/service/top-img-3.png" alt="">
-                </div> -->
+                <?php
+                        endif;
+                    endfor;
+                endwhile; endif; wp_reset_postdata();
+                ?>
             </div>
         </section>
 
         <!-- start of about-section -->
         <section class="about-section section-padding pt-0">
+            <?php
+            // Récupérer le contenu A propos de la page accueil
+            $apropos_query = new WP_Query(array(
+                'post_type' => 'page_accueil',
+                'posts_per_page' => 1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'accueil_type',
+                        'value' => 'apropos',
+                    ),
+                ),
+            ));
+            if ($apropos_query->have_posts()) : while ($apropos_query->have_posts()) : $apropos_query->the_post();
+            ?>
             <div class="wraper">
                 <div class="left">
                     <div class="image">
-                        <!-- <img src="assets/images/about.png" alt=""> -->
-                         <!-- <img src="assets/images/images/fanal chats-slide.png" alt="" > -->
                          <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/20_tiger cat.png" alt="" >
                         <div class="shape">
                             <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
@@ -134,11 +167,11 @@
                         <div class="icon">
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/ab-icon.png" alt="">
                         </div>
-                        <h2>Comment accueilir au mieux votre petite boule de poils</h2>
-                        <p>Nous avons prévu un petit guide pour vous aider à préparer l'arrivée de votre nouveau compagnon.</p>
+                        <h2><?php the_field('apropos_titre_encart'); ?></h2>
+                        <p><?php the_field('apropos_texte_encart'); ?></p>
+                        <?php $video_url = get_field('apropos_video_encart'); if ($video_url) : ?>
                         <div class="video-holder">
-                            <a href="https://www.youtube.com/embed/S1x0HWc-iaE?si=dU9jHGkKlqKajczi" class="video-btn"
-                                data-type="iframe">
+                            <a href="<?php echo esc_url(convert_youtube_to_embed($video_url)); ?>" class="video-btn" data-type="iframe">
                                 <svg width="33" height="36" viewBox="0 0 33 36" fill="none">
                                     <path
                                         d="M30.5 13.6699C33.8333 15.5944 33.8333 20.4056 30.5 22.3301L8 35.3205C4.66667 37.245 0.499998 34.8394 0.499998 30.9904L0.499999 5.00962C0.5 1.16062 4.66667 -1.24501 8 0.679491L30.5 13.6699Z"
@@ -146,31 +179,20 @@
                                 </svg>
                             </a>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="right">
                     <span>A Propos</span>
-                    <h2>Le fanal, un refuge pour vos compagnons à quatre pattes</h2>
-                    <p>Le fanal est un lieu dédié au bien-être et à la protection des chats. Nous mettons également tout en place pour leur trouver une famille aimante et adaptée aux besoins spécifiques de chaque chat. Et tout ça grâce à vous !</p>
+                    <h2><?php the_field('apropos_titre'); ?></h2>
+                    <p><?php the_field('apropos_texte'); ?></p>
 
                     <div class="about-btn">
                         <a href="<?php echo home_url("/service-single2"); ?>" class="theme-btn-s2">Adoptez un chat</a>
-                        <!-- <div class="video-wrap">
-                            <div class="video-holder">
-                                <a href="https://www.youtube.com/embed/S1x0HWc-iaE?si=dU9jHGkKlqKajczi"
-                                    class="video-btn" data-type="iframe">
-                                    <svg width="24" height="27" viewBox="0 0 24 27" fill="none">
-                                        <path
-                                            d="M22.25 15.665L4.99999 25.6243C3.33333 26.5865 1.25 25.3837 1.25 23.4592L1.25 3.54063C1.25 1.61613 3.33333 0.413319 5 1.37557L22.25 11.3349C23.9167 12.2971 23.9167 14.7027 22.25 15.665Z"
-                                            stroke="black" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <span>Watch Videos</span> 
-                        </div>-->
                     </div>
                 </div>
             </div>
+            <?php endwhile; endif; wp_reset_postdata(); ?>
             <div class="shape">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-6.png" alt="">
             </div>
@@ -230,80 +252,94 @@
             </div>
         </section> -->
 
-        <!-- start of pricing-section -->
-        <section class="pricing-section section-padding">
+        <!-- start of engagement-section -->
+        <section class="engagement-section section-padding">
             <div class="container">
+                <?php
+                // Récupérer le contenu Dons & Adoptions de la page accueil
+                $dons_query = new WP_Query(array(
+                    'post_type' => 'page_accueil',
+                    'posts_per_page' => 1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'accueil_type',
+                            'value' => 'dons_adoptions',
+                        ),
+                    ),
+                ));
+                if ($dons_query->have_posts()) : while ($dons_query->have_posts()) : $dons_query->the_post();
+                ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="section-title">
                             <h3>Dons & Adoptions</h3>
-                            <h2>Participez à notre mission</h2>
+                            <h2><?php the_field('dons_titre_section'); ?></h2>
                         </div>
                     </div>
                 </div>
-                <div class="pricing-wrap row g-0 align-items-center">
+                <div class="engagement-cards row g-0 align-items-center">
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
-                            <h2>Adoptez un Chat</h2>
-                            <!-- <div class="price"> <span class="simbol">€</span>150 <span></span></div> -->
-                            <div class="price"></div>
-                            <ul class="features">
-                                    <li>Vaccinations</li>
-                                    <li>Stérilisation</li>
-                                    <li>Soins et suivi</li>
-
-                            </ul>
+                        <div class="engagement-card">
+                            <h2><?php the_field('dons_titre_adoption'); ?></h2>
+                            <div class="engagement-icon"></div>
+                            <div class="engagement-features">
+                                <?php echo wpautop(get_field('dons_texte_adoption')); ?>
+                            </div>
                             <a href="<?php echo home_url("/service-single2"); ?>" class="theme-btn-s2">Adopter un chat</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
-                            <h2>Faitez un Don</h2>
-                            <div class="price"></div>
-                            <ul class="features">
-                                <li>Soins vétérinaires</li>
-                                <li>Médicaments et vaccins</li>
-                                <li>Nourriture de qualité</li>
-                                <li>Litière et produits d'hygiène</li>
-                                <li>Chauffage et climatisation</li>
-                                <li>Jouets et accessoires</li>
-                            </ul>
+                        <div class="engagement-card">
+                            <h2><?php the_field('dons_titre_don'); ?></h2>
+                            <div class="engagement-icon"></div>
+                            <div class="engagement-features">
+                                <?php echo wpautop(get_field('dons_texte_don')); ?>
+                            </div>
                             <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
-                            <h2>Devenez Bénévole</h2>
-                            <!-- <div class="price"> <span class="simbol">$</span>225 <span>/ Visit</span></div> -->
-                             <div class="price"></div>
-                            <ul class="features">
-                                <li>Nourrir et soigner les chats</li>
-                                <li>Socialiser les félins</li>
-                                <li>Entretien des installations</li>
-                                <li>Sensibilisation du public</li>
-                            </ul>
+                        <div class="engagement-card">
+                            <h2><?php the_field('dons_titre_benevole'); ?></h2>
+                            <div class="engagement-icon"></div>
+                            <div class="engagement-features">
+                                <?php echo wpautop(get_field('dons_texte_benevole')); ?>
+                            </div>
                             <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir bénévole</a>
                         </div>
                     </div>
                 </div>
+                <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </section>
 
-        <!-- start of testimonial-section -->
-        <section class="testimonial-section section-padding">
+        <!-- start of temoignages-section -->
+        <section class="temoignages-section section-padding">
             <div class="container">
+                <?php
+                // Récupérer le contenu Témoignages de la page accueil
+                $temoignages_query = new WP_Query(array(
+                    'post_type' => 'page_accueil',
+                    'posts_per_page' => 1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'accueil_type',
+                            'value' => 'temoignages',
+                        ),
+                    ),
+                ));
+                if ($temoignages_query->have_posts()) : while ($temoignages_query->have_posts()) : $temoignages_query->the_post();
+                ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="section-title">
-                            <!-- <h3>Le témoignage de nos adoptants</h3> -->
-                            <h2>Un mot de nos adoptants</h2>
+                            <h2><?php the_field('temoignages_titre'); ?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-12">
-                        <div class="testimonial-image">
-                            <!-- <img src="<?php bloginfo('template_url'); ?>/assets/images/images/adoptionD.png" alt="" > -->
+                        <div class="temoignages-image">
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="">
                             <div class="shape">
                                 <svg viewBox="0 0 932 866" fill="none">
@@ -326,41 +362,42 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">
-                        <div class="testimonial-slider owl-carousel">
+                        <div class="temoignages-slider owl-carousel">
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) :
+                                $nom = get_field('temoignages_nom_' . $i);
+                                $profession = get_field('temoignages_profession_' . $i);
+                                $texte = get_field('temoignages_texte_' . $i);
+                                $photo = get_field('temoignages_photo_' . $i);
+                                if ($texte) :
+                            ?>
                             <div class="item">
                                 <div class="icon">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/testimonial-icon.svg" alt="">
                                 </div>
-                                <h3>Kitty s'est très bien intégrée à notre famille. Elle est adorable et pleine d'énergie.</h3>
+                                <h3><?php echo esc_html($texte); ?></h3>
                                 <div class="client-wrap">
                                     <div class="image">
+                                        <?php if ($photo) : ?>
+                                        <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($nom); ?>">
+                                        <?php else : ?>
                                         <img src="<?php bloginfo('template_url'); ?>/assets/images/images/portrait.avif" alt="">
+                                        <?php endif; ?>
                                     </div>
                                     <div class="text">
-                                        <h4>Mike Abraham</h4>
-                                        <span>Web Developer</span>
+                                        <h4><?php echo esc_html($nom); ?></h4>
+                                        <span><?php echo esc_html($profession); ?></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="icon">
-                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/testimonial-icon.svg" alt="">
-                                </div>
-                                <h3>L'arrivée de Mimie a changé notre quotidien. Son énergie et sa joie de vivre font fibrer notre foyer.</h3>
-                                <div class="client-wrap">
-                                    <div class="image">
-                                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/portrait.avif" alt="">
-                                    </div>
-                                    <div class="text">
-                                        <h4>Ernest Crabtree</h4>
-                                        <span>Web Developer</span>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <?php
+                                endif;
+                            endfor;
+                            ?>
                         </div>
                     </div>
                 </div>
+                <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
             <div class="shape-1">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-7.png" alt="">
@@ -370,13 +407,13 @@
             </div>
         </section>
 
-        <!-- start of cta-section -->
-        <section class="cta-section">
+        <!-- start of newsletter-section -->
+        <section class="newsletter-section">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-12">
                         <h2>Inscrivez-vous à notre revue</h2>
-                        <div class="subscription-box">
+                        <div class="newsletter-form">
                             <input type="email" placeholder="Votre mail">
                             <button>S'abonner</button>
                         </div>
@@ -395,8 +432,8 @@
             </div>
         </section>
 
-        <!-- start of blog-section -->
-        <section class="blog-section section-padding">
+        <!-- start of actualites-section -->
+        <section class="actualites-section section-padding">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
@@ -406,9 +443,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row blog-wrap">
+                <div class="row actualites-grid">
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="blog-card">
+                        <div class="actualite-card">
                             <div class="image">
                                 <a href="<?php echo home_url('/news-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/taichi.png" alt="">
@@ -425,7 +462,7 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="blog-card">
+                        <div class="actualite-card">
                             <div class="image">
                                 <a href="<?php echo home_url('/news-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/jouets.jpg" alt="">
@@ -442,7 +479,7 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="blog-card">
+                        <div class="actualite-card">
                             <div class="image">
                                 <a href="<?php echo home_url('/news-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/confortable.jpeg" alt="">

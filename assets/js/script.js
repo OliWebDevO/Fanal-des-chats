@@ -389,22 +389,22 @@
 
 
     function heroImage() {
-        if ($(".hero-image").length) {
+        if ($(".hero-slider").length) {
 
-            $('.top-image').slick({
+            $('.hero-slider-main').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 arrows: false,
                 autoplay: true,
                 autoplaySpeed: 3000,
                 fade: true,
-                asNavFor: '.buttom-image'
+                asNavFor: '.hero-slider-thumb'
             });
 
-            $('.buttom-image').slick({
+            $('.hero-slider-thumb').slick({
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                asNavFor: '.top-image',
+                asNavFor: '.hero-slider-main',
                 focusOnSelect: true,
                 arrows: false,
                 focusOnSelect: true,
@@ -444,10 +444,10 @@
 
 
     /*------------------------------------------
-     testimonial-slider
+     temoignages-slider
 -------------------------------------------*/
-    if ($(".testimonial-slider".length)) {
-        $('.testimonial-slider').owlCarousel({
+    if ($(".temoignages-slider".length)) {
+        $('.temoignages-slider').owlCarousel({
             loop: true,
             nav: true,
             dots: false,

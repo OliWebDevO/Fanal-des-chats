@@ -86,8 +86,8 @@
         </section>
         <!-- end wpo-contact-pg-section -->
         
-        <!-- start of pricing-section -->
-        <section class="pricing-section section-padding orange">
+        <!-- start of engagement-section -->
+        <section class="engagement-section section-padding orange">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
@@ -96,12 +96,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="pricing-wrap row g-0 align-items-center">
+                <div class="engagement-cards row g-0 align-items-center">
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Adoptez un Chat</h2>
-                            <div class="price"></div>
-                            <ul class="features">
+                            <div class="engagement-icon"></div>
+                            <ul class="engagement-features">
                                 <li>Vaccinations</li>
                                 <li>Stérilisation</li>
                                 <li>Soins et suivi</li>
@@ -110,10 +110,10 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Faites un Don</h2>
-                            <div class="price"></div>
-                            <ul class="features">
+                            <div class="engagement-icon"></div>
+                            <ul class="engagement-features">
                                 <li>Soins vétérinaires</li>
                                 <li>Médicaments et vaccins</li>
                                 <li>Nourriture de qualité</li>
@@ -125,10 +125,10 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Devenez Bénévole</h2>
-                            <div class="price"></div>
-                            <ul class="features">
+                            <div class="engagement-icon"></div>
+                            <ul class="engagement-features">
                                 <li>Nourrir et soigner les chats</li>
                                 <li>Socialiser les félins</li>
                                 <li>Entretien des installations</li>

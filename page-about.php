@@ -110,7 +110,7 @@
         </section>
 
         <!-- start of missions-section -->
-        <section class="pricing-section section-padding orange nos-missions">
+        <section class="engagement-section section-padding orange nos-missions">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
@@ -120,12 +120,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="pricing-wrap row g-0 align-items-center">
+                <div class="engagement-cards row g-0 align-items-center">
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Recueillir</h2>
-                            <div class="price"><i class="fas fa-hands-holding-child mission-icon"></i></div>
-                            <ul class="features">
+                            <div class="engagement-icon"><i class="fas fa-hands-holding-child mission-icon"></i></div>
+                            <ul class="engagement-features">
                                 <li>Accueil des chats abandonnes</li>
                                 <li>Prise en charge des chats errants</li>
                                 <li>Sauvetage d'urgence</li>
@@ -136,10 +136,10 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Soigner</h2>
-                            <div class="price"><i class="fas fa-stethoscope mission-icon"></i></div>
-                            <ul class="features">
+                            <div class="engagement-icon"><i class="fas fa-stethoscope mission-icon"></i></div>
+                            <ul class="engagement-features">
                                 <li>Soins veterinaires complets</li>
                                 <li>Sterilisation systematique</li>
                                 <li>Vaccination et vermifugation</li>
@@ -153,10 +153,10 @@
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="pricing-card">
+                        <div class="engagement-card">
                             <h2>Adopter</h2>
-                            <div class="price"><i class="fas fa-home mission-icon"></i></div>
-                            <ul class="features">
+                            <div class="engagement-icon"><i class="fas fa-home mission-icon"></i></div>
+                            <ul class="engagement-features">
                                 <li>Recherche de familles aimantes</li>
                                 <li>Processus d'adoption encadre</li>
                                 <li>Conseils personnalises</li>

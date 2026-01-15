@@ -18,80 +18,80 @@
         </section>
         <!-- end page-title -->
 
-        <!-- stert wpo-shop-section -->
-        <section class="wpo-shop-section section-padding orange">
+        <!-- start revues-section -->
+        <section class="revues-section section-padding orange">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
-                        <div class="shop-grids clearfix">
-                            <div class="grid">
+                        <div class="revues-grid clearfix">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid">
+                            <div class="revue-card">
                                 <div class="img-holder">
                                     <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
                                 </div>
                                 <div class="details">
                                     <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
                                     <span>Décembre 2025</span>
-                                    <div class="add-to-cart">
+                                    <div class="revue-action">
                                         <a href="#">Obtenir la revue</a>
                                     </div>
                                 </div>
@@ -118,6 +118,6 @@
                 </div>
             </div> <!-- end container -->
         </section>
-        <!-- end wpo-shop-section -->
+        <!-- end revues-section -->
 
 <?php get_template_part("partials/footer"); ?>

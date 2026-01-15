@@ -1,8 +1,8 @@
 /*--------------------------------------------------------------
-6. wpo-shop-page
+6. Revues Section (page-revue.php)
 --------------------------------------------------------------*/
-.wpo-shop-section {
-    .shop-grids {
+.revues-section {
+    .revues-grid {
         margin: 0 -15px;
 
         @include media-query(767px) {
@@ -10,7 +10,7 @@
         }
     }
 
-    .grid {
+    .revue-card {
         width: calc(33.33% - 30px);
         float: left;
         margin: 0 15px 30px;
@@ -66,7 +66,7 @@
         }
     }
 
-    .add-to-cart {
+    .revue-action {
         margin-top: 20px;
 
         a {
@@ -99,7 +99,7 @@
         }
     }
 
-    .grid:hover .add-to-cart a {
+    .grid:hover .revue-action a {
         background-color: $theme-primary-color;
         color: $white;
     }
