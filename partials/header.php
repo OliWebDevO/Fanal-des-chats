@@ -130,11 +130,11 @@
                                             -->
                                         </li>
                                         <li>
-                                            <a href="<?php echo home_url('/news'); ?>">News</a>
-                                            <!-- Sous-menu News (desactive)
+                                            <a href="<?php echo home_url('/histoires'); ?>">Histoires</a>
+                                            <!-- Sous-menu Histoires (desactive)
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/news'); ?>">News</a></li>
-                                                <li><a href="<?php echo home_url('/news-single'); ?>">News Single</a></li>
+                                                <li><a href="<?php echo home_url('/histoires'); ?>">Histoires</a></li>
+                                                <li><a href="<?php echo home_url('/histoire-single'); ?>">Histoire Single</a></li>
                                             </ul>
                                             -->
                                         </li>

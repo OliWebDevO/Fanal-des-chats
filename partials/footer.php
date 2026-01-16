@@ -44,7 +44,7 @@
                                     <li><a href="<?php echo home_url('/about'); ?>">A Propos</a></li>
                                     <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
                                     <li><a href="<?php echo home_url('/pricing'); ?>">Réseau</a></li>
-                                    <li><a href="<?php echo home_url('/news'); ?>">News</a></li>
+                                    <li><a href="<?php echo home_url('/histoires'); ?>">Histoires</a></li>
                                     <li><a href="<?php echo home_url('/contact'); ?>">Contact</a></li>
                                 </ul>
                             </div>

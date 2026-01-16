@@ -6248,3 +6248,37 @@ Revues Section (page-revue.php)
   color: #fff;
 }
 
+/*--------------------------------------------------------------
+Blog Sidebar About Widget (Partagez votre histoire)
+--------------------------------------------------------------*/
+.blog-sidebar .about-widget {
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px 2px rgba(21, 44, 88, 0.1);
+  text-align: left;
+}
+.blog-sidebar .about-widget h3 {
+  text-align: center;
+}
+.blog-sidebar .about-widget h3:before {
+  width: 100%;
+  left: 0;
+}
+.blog-sidebar .about-widget h3:after {
+  display: none;
+}
+.blog-sidebar .about-widget p {
+  text-align: left;
+}
+.blog-sidebar .about-widget .about-btn {
+  text-align: center;
+}
+.blog-sidebar .about-widget .theme-btn-s2 {
+  color: #fff;
+  text-decoration: none;
+  background-color: #FF5B2E;
+}
+.blog-sidebar .about-widget .theme-btn-s2:hover {
+  color: #fff;
+  background-color: #e04d22;
+}
+

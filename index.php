@@ -441,7 +441,7 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="actualite-card">
                             <div class="image">
-                                <a href="<?php echo home_url('/news-single'); ?>">
+                                <a href="<?php echo home_url('/histoire-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/taichi.png" alt="">
                                 </a>
                             </div>
@@ -450,7 +450,7 @@
                                     <li>Activité</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/news-single'); ?>"> Cours de taichi pour chat</a></h2>
+                                <h2><a href="<?php echo home_url('/histoire-single'); ?>"> Cours de taichi pour chat</a></h2>
                                 <p>Venez découvrir les bienfaits du taichi pour votre chat. Découvrez notre offre  dès aujourd'hui.</p>
                             </div>
                         </div>
@@ -458,7 +458,7 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="actualite-card">
                             <div class="image">
-                                <a href="<?php echo home_url('/news-single'); ?>">
+                                <a href="<?php echo home_url('/histoire-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/jouets.jpg" alt="">
                                 </a>
                             </div>
@@ -467,7 +467,7 @@
                                     <li>News </li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/news-single'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
+                                <h2><a href="<?php echo home_url('/histoire-single'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
                                 <p>Des promenades énergisantes pour garder votre chien préféré actif, en bonne santé et heureux....</p>
                             </div>
                         </div>
@@ -475,7 +475,7 @@
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="actualite-card">
                             <div class="image">
-                                <a href="<?php echo home_url('/news-single'); ?>">
+                                <a href="<?php echo home_url('/histoire-single'); ?>">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/images/confortable.jpeg" alt="">
                                 </a>
                             </div>
@@ -484,7 +484,7 @@
                                     <li>News</li>
                                     <li>Sep 03, 2025</li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/news-single'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
+                                <h2><a href="<?php echo home_url('/histoire-single'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
                                 <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui.</p>
                             </div>
                         </div>
