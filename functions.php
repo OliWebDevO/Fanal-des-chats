@@ -2828,3 +2828,209 @@ if( function_exists('acf_add_local_field_group') ) {
     ));
 
 }
+
+// ============================================================================
+// CPT: Histoires d'adoption
+// ============================================================================
+function register_cpt_histoire() {
+    $labels = array(
+        'name'               => 'Histoires',
+        'singular_name'      => 'Histoire',
+        'menu_name'          => 'Histoires',
+        'add_new'            => 'Ajouter',
+        'add_new_item'       => 'Ajouter une histoire',
+        'edit_item'          => 'Modifier l\'histoire',
+        'new_item'           => 'Nouvelle histoire',
+        'view_item'          => 'Voir l\'histoire',
+        'search_items'       => 'Rechercher une histoire',
+        'not_found'          => 'Aucune histoire trouvée',
+        'not_found_in_trash' => 'Aucune histoire dans la corbeille',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'histoire'),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-heart',
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+    );
+
+    register_post_type('histoire', $args);
+}
+add_action('init', 'register_cpt_histoire');
+
+// ============================================================================
+// Taxonomie: Catégories d'histoires
+// ============================================================================
+function register_taxonomy_categorie_histoire() {
+    $labels = array(
+        'name'              => 'Catégories d\'histoires',
+        'singular_name'     => 'Catégorie d\'histoire',
+        'search_items'      => 'Rechercher une catégorie',
+        'all_items'         => 'Toutes les catégories',
+        'parent_item'       => 'Catégorie parente',
+        'parent_item_colon' => 'Catégorie parente :',
+        'edit_item'         => 'Modifier la catégorie',
+        'update_item'       => 'Mettre à jour la catégorie',
+        'add_new_item'      => 'Ajouter une catégorie',
+        'new_item_name'     => 'Nom de la nouvelle catégorie',
+        'menu_name'         => 'Catégories',
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'categorie-histoire'),
+    );
+
+    register_taxonomy('categorie_histoire', array('histoire'), $args);
+}
+add_action('init', 'register_taxonomy_categorie_histoire');
+
+// Ajouter les catégories par défaut lors de l'activation du thème
+function add_default_histoire_categories() {
+    $categories = array(
+        'Chats craintifs',
+        'Chats seniors',
+        'Duos inséparables',
+        'Transformations',
+    );
+
+    foreach ($categories as $cat) {
+        if (!term_exists($cat, 'categorie_histoire')) {
+            wp_insert_term($cat, 'categorie_histoire');
+        }
+    }
+}
+add_action('after_switch_theme', 'add_default_histoire_categories');
+// Exécuter aussi maintenant pour les thèmes déjà actifs
+add_action('init', 'add_default_histoire_categories', 20);
+
+// ============================================================================
+// ACF: Champs pour Histoires
+// ============================================================================
+add_action('acf/init', 'register_acf_histoire_fields');
+function register_acf_histoire_fields() {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group(array(
+        'key' => 'group_histoire',
+        'title' => 'Informations de l\'histoire',
+        'fields' => array(
+            array(
+                'key' => 'field_histoire_auteur',
+                'label' => 'Nom de la famille / auteur',
+                'name' => 'histoire_auteur',
+                'type' => 'text',
+                'instructions' => 'Ex: Famille Dubois, Marie-Claire L.',
+                'required' => 1,
+                'placeholder' => 'Famille Dupont',
+            ),
+            array(
+                'key' => 'field_histoire_auteur_photo',
+                'label' => 'Photo de l\'auteur',
+                'name' => 'histoire_auteur_photo',
+                'type' => 'image',
+                'instructions' => 'Photo ronde affichée à côté du témoignage (optionnel). Format carré recommandé.',
+                'required' => 0,
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_histoire_date_adoption',
+                'label' => 'Date d\'adoption',
+                'name' => 'histoire_date_adoption',
+                'type' => 'date_picker',
+                'instructions' => 'Date à laquelle le chat a été adopté',
+                'required' => 0,
+                'display_format' => 'd/m/Y',
+                'return_format' => 'd/m/Y',
+                'first_day' => 1,
+            ),
+            array(
+                'key' => 'field_histoire_citation',
+                'label' => 'Citation mise en avant',
+                'name' => 'histoire_citation',
+                'type' => 'textarea',
+                'instructions' => 'Une citation marquante de l\'histoire (optionnel)',
+                'required' => 0,
+                'rows' => 3,
+            ),
+            array(
+                'key' => 'field_histoire_galerie',
+                'label' => 'Galerie photos',
+                'name' => 'histoire_galerie',
+                'type' => 'gallery',
+                'instructions' => 'Photos supplémentaires pour illustrer l\'histoire (optionnel)',
+                'required' => 0,
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'min' => 0,
+                'max' => 10,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'histoire',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+    ));
+}
+
+// ============================================================================
+// Configuration des commentaires pour les Histoires
+// ============================================================================
+
+// Personnaliser le formulaire de commentaires (retirer le champ site web)
+function custom_comment_form_fields($fields) {
+    // Supprimer le champ URL/site web
+    if (isset($fields['url'])) {
+        unset($fields['url']);
+    }
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'custom_comment_form_fields');
+
+// Personnaliser les textes du formulaire de commentaires
+function custom_comment_form_defaults($defaults) {
+    $defaults['title_reply'] = 'Laisser un commentaire';
+    $defaults['title_reply_to'] = 'Répondre à %s';
+    $defaults['cancel_reply_link'] = 'Annuler la réponse';
+    $defaults['label_submit'] = 'Publier le commentaire';
+    $defaults['comment_notes_before'] = '';
+    $defaults['comment_notes_after'] = '';
+
+    return $defaults;
+}
+add_filter('comment_form_defaults', 'custom_comment_form_defaults');
+
+// Activer les commentaires imbriqués (réponses)
+function enable_threaded_comments() {
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
+}
+add_action('wp_enqueue_scripts', 'enable_threaded_comments');
