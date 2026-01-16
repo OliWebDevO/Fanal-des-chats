@@ -24,64 +24,136 @@
                 <div class="row">
                     <div class="col-lg-12 col-12">
                         <div class="wpo-service-single-wrap">
+
+                            <!-- Section Intro -->
+                            <?php
+                            $intro_query = new WP_Query(array(
+                                'post_type' => 'page_don',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'don_type',
+                                        'value' => 'intro',
+                                    ),
+                                ),
+                            ));
+                            if ($intro_query->have_posts()) : while ($intro_query->have_posts()) : $intro_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
-                                <!-- <div class="wpo-service-single-main-img">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png" alt="">
-                                </div> -->
                                 <div class="wpo-service-single-title">
-                                    <h3>Pourquoi faire un don ?</h3>
+                                    <h3><?php the_field('don_intro_titre'); ?></h3>
                                 </div>
-                                <p>Votre générosité fait toute la différence dans la vie de nos pensionnaires félins. Chaque don, qu'il soit ponctuel ou régulier, nous permet de continuer notre mission de sauvetage, de soins et de réhabilitation des chats abandonnés ou maltraités. Grâce à votre soutien, nous pouvons offrir des soins vétérinaires, une alimentation de qualité et un environnement sécurisé.</p>
-                                <p>Le Fanal des Chats fonctionne uniquement grâce aux dons et à l'engagement de nos bénévoles. Chaque euro compte et contribue directement au bien-être de nos compagnons à quatre pattes en attente d'une famille aimante.</p>
-                                <!-- <div class="row mt-4">
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <?php if (get_field('don_intro_paragraphe_1')) : ?>
+                                    <p><?php the_field('don_intro_paragraphe_1'); ?></p>
+                                <?php endif; ?>
+                                <?php if (get_field('don_intro_paragraphe_2')) : ?>
+                                    <p><?php the_field('don_intro_paragraphe_2'); ?></p>
+                                <?php endif; ?>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Utilisation -->
+                            <?php
+                            $utilisation_query = new WP_Query(array(
+                                'post_type' => 'page_don',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'don_type',
+                                        'value' => 'utilisation',
+                                    ),
+                                ),
+                            ));
+                            if ($utilisation_query->have_posts()) : while ($utilisation_query->have_posts()) : $utilisation_query->the_post();
+                                $liste = get_field('don_utilisation_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>À quoi servent vos dons ?</h3>
+                                    <h3><?php the_field('don_utilisation_titre'); ?></h3>
                                 </div>
-                                <p>Transparence et responsabilité sont nos maîtres mots. Voici comment nous utilisons chaque euro de vos précieux dons :</p>
+                                <?php if (get_field('don_utilisation_texte')) : ?>
+                                    <p><?php the_field('don_utilisation_texte'); ?></p>
+                                <?php endif; ?>
                                 <ul>
-                                    <li>Soins vétérinaires : vaccinations, stérilisations, traitements médicaux</li>
-                                    <li>Alimentation de qualité adaptée à chaque âge et état de santé</li>
-                                    <li>Entretien et amélioration des infrastructures du refuge</li>
-                                    <li>Matériel et équipements pour le bien-être des chats</li>
-                                    <li>Campagnes de sensibilisation et événements d'adoption</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Comment -->
+                            <?php
+                            $comment_query = new WP_Query(array(
+                                'post_type' => 'page_don',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'don_type',
+                                        'value' => 'comment',
+                                    ),
+                                ),
+                            ));
+                            if ($comment_query->have_posts()) : while ($comment_query->have_posts()) : $comment_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Comment faire un don ?</h3>
+                                    <h3><?php the_field('don_comment_titre'); ?></h3>
                                 </div>
-                                <p>Plusieurs modalités s'offrent à vous pour soutenir notre action. Que vous préfériez un don ponctuel ou un soutien régulier, chaque geste compte. Vous pouvez effectuer un virement bancaire, nous envoyer un chèque ou même faire un don en nature (nourriture, litière, jouets). Tous les dons donnent droit à une déduction fiscale selon la législation en vigueur.</p>
+                                <p><?php the_field('don_comment_texte'); ?></p>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Avantages -->
+                            <?php
+                            $avantages_query = new WP_Query(array(
+                                'post_type' => 'page_don',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'don_type',
+                                        'value' => 'avantages',
+                                    ),
+                                ),
+                            ));
+                            if ($avantages_query->have_posts()) : while ($avantages_query->have_posts()) : $avantages_query->the_post();
+                                $liste = get_field('don_avantages_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Avantages fiscaux en Belgique</h3>
+                                    <h3><?php the_field('don_avantages_titre'); ?></h3>
                                 </div>
                                 <ul>
-                                    <li>Reduction d'impot de 45% du montant de votre don</li>
-                                    <li>Attestation fiscale transmise automatiquement au SPF Finances</li>
-                                    <li>Dons deductibles jusqu'a 10% du revenu net imposable</li>
-                                    <li>Montant minimum de 40 euros par an pour l'attestation</li>
-                                    <li>Avantages pour les particuliers ET les entreprises</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Quiz -->
+                            <?php
+                            $quiz_query = new WP_Query(array(
+                                'post_type' => 'page_don',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'don_type',
+                                        'value' => 'quiz',
+                                    ),
+                                ),
+                            ));
+                            if ($quiz_query->have_posts()) : while ($quiz_query->have_posts()) : $quiz_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Testez vos connaissances sur les dons</h3>
+                                    <h3><?php the_field('don_quiz_titre'); ?></h3>
                                 </div>
-                                <p>Connaissez-vous les avantages fiscaux des dons aux ASBL agreees en Belgique ? Participez a notre quiz pour decouvrir comment optimiser votre generosite tout en beneficiant d'avantages fiscaux, que vous soyez un particulier ou une entreprise.</p>
+                                <p><?php the_field('don_quiz_texte'); ?></p>
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                                 </div>
@@ -89,6 +161,8 @@
                                     <?php echo do_shortcode('[give_form id="43"]'); ?>
                                 </div>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
                         </div>
                     </div>
                 </div>
@@ -97,12 +171,25 @@
         <!-- service-single-area end -->
 
         <!-- start wpo-faq-section -->
+        <?php
+        $faq_query = new WP_Query(array(
+            'post_type' => 'page_don',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'don_type',
+                    'value' => 'faq',
+                ),
+            ),
+        ));
+        if ($faq_query->have_posts()) : while ($faq_query->have_posts()) : $faq_query->the_post();
+        ?>
         <section class="wpo-faq-section section-padding">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="section-title">
-                            <h2>Questions fréquentes</h2>
+                            <h2><?php the_field('don_faq_titre'); ?></h2>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -111,66 +198,34 @@
                                 <div class="col-lg-12 col-12">
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="accordionExample">
+                                            <?php
+                                            $faq_items = array(
+                                                array('num' => 'One', 'index' => 1, 'expanded' => 'true', 'show' => ' show'),
+                                                array('num' => 'Two', 'index' => 2, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Four', 'index' => 4, 'expanded' => 'false', 'show' => ''),
+                                            );
+                                            foreach ($faq_items as $item) :
+                                                $question = get_field('don_faq_question_' . $item['index']);
+                                                $reponse = get_field('don_faq_reponse_' . $item['index']);
+                                                if ($question && $reponse) :
+                                            ?>
                                             <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
-                                                        Quel est le montant minimum pour faire un don ?
+                                                <h3 class="accordion-header" id="heading<?php echo $item['num']; ?>">
+                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $item['num']; ?>"
+                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapse<?php echo $item['num']; ?>">
+                                                        <?php echo esc_html($question); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapse<?php echo $item['num']; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
+                                                    aria-labelledby="heading<?php echo $item['num']; ?>" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Il n'y a pas de montant minimum ! Chaque don, même le plus modeste, fait la différence. Que ce soit 5€ ou 500€, votre générosité contribue directement au bien-être de nos pensionnaires félins.</p>
+                                                        <p><?php echo esc_html($reponse); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        Mon don est-il déductible des impôts ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Oui ! En tant qu'ASBL agreee par le SPF Finances, vos dons au Fanal des Chats donnent droit a une reduction d'impot de 45% de leur montant (minimum 40 euros/an). L'attestation fiscale est transmise automatiquement via Tax-on-web.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                        aria-expanded="false" aria-controls="collapseThree">
-                                                        Puis-je faire un don en nature ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseThree" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Absolument ! Nous acceptons les dons de nourriture, litière, jouets, couvertures, matériel vétérinaire. Contactez-nous avant pour connaître nos besoins prioritaires du moment.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                        aria-expanded="false" aria-controls="collapseFour">
-                                                        Puis-je mettre en place un don régulier ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseFour" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Oui, et c'est très apprécié ! Un don mensuel, même modest, nous aide à planifier nos actions et garantit une stabilité financière. Vous pouvez modifier ou arrêter votre don à tout moment.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <?php endif; endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -180,9 +235,23 @@
                 </div>
             </div> <!-- end container -->
         </section>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- end faq-section -->
 
         <!-- service contact area start -->
+        <?php
+        $cta_query = new WP_Query(array(
+            'post_type' => 'page_don',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'don_type',
+                    'value' => 'cta',
+                ),
+            ),
+        ));
+        if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
+        ?>
         <div class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
@@ -191,8 +260,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous soutenir ?</h2>
-                                        <p>Testez vos connaissances sur les dons ou faites un don directement</p>
+                                        <h2><?php the_field('don_cta_titre'); ?></h2>
+                                        <p><?php the_field('don_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faire le Quiz</a>
@@ -207,6 +276,7 @@
                 </div>
             </div>
         </div>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- service-single-area end -->
-        
+
 <?php get_template_part("partials/footer"); ?>

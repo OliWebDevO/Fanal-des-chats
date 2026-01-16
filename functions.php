@@ -196,6 +196,36 @@ function register_cpt_page_don() {
 }
 add_action('init', 'register_cpt_page_don');
 
+// CPT: Page Bénévole
+function register_cpt_page_benevole() {
+    $labels = array(
+        'name'               => 'Page Bénévole',
+        'singular_name'      => 'Contenu Bénévole',
+        'menu_name'          => 'Page Bénévole',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 9,
+        'menu_icon'          => 'dashicons-groups',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_benevole', $args);
+}
+add_action('init', 'register_cpt_page_benevole');
+
 // CPT: Actualités (reste séparé car c'est du contenu indépendant)
 function register_cpt_actualite() {
     $labels = array(
@@ -2407,6 +2437,451 @@ if( function_exists('acf_add_local_field_group') ) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'page_don',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Contenu spécifique Page Bénévole
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_benevole',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_benevole_type',
+                'label' => 'Type de contenu',
+                'name' => 'benevole_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'mission' => 'Notre mission',
+                    'besoins' => 'Nos besoins',
+                    'approche' => 'Notre approche',
+                    'quotidien' => 'Le quotidien au Fanal',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'mission',
+            ),
+
+            // === CHAMPS MISSION ===
+            array(
+                'key' => 'field_benevole_mission_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_mission_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_mission_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'benevole_mission_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_mission_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'benevole_mission_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS BESOINS ===
+            array(
+                'key' => 'field_benevole_besoins_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_besoins_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_besoins_texte',
+                'label' => 'Texte introduction',
+                'name' => 'benevole_besoins_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_besoins_liste',
+                'label' => 'Liste',
+                'name' => 'benevole_besoins_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS APPROCHE ===
+            array(
+                'key' => 'field_benevole_approche_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_approche_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_approche_texte',
+                'label' => 'Texte',
+                'name' => 'benevole_approche_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUOTIDIEN ===
+            array(
+                'key' => 'field_benevole_quotidien_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_quotidien_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_quotidien_liste',
+                'label' => 'Liste',
+                'name' => 'benevole_quotidien_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_benevole_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'benevole_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FORMULAIRE ===
+            array(
+                'key' => 'field_benevole_formulaire_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_formulaire_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_formulaire_texte',
+                'label' => 'Texte',
+                'name' => 'benevole_formulaire_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_benevole_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'benevole_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'benevole_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'benevole_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'benevole_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'benevole_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'benevole_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'benevole_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'benevole_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'benevole_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_benevole_cta_titre',
+                'label' => 'Titre',
+                'name' => 'benevole_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_benevole_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'benevole_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_benevole',
                 ),
             ),
         ),

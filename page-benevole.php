@@ -24,77 +24,170 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-12">
-                        <div class="wpo-service-single-wrap ">
+                        <div class="wpo-service-single-wrap">
+
+                            <!-- Section Mission -->
+                            <?php
+                            $mission_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'mission',
+                                    ),
+                                ),
+                            ));
+                            if ($mission_query->have_posts()) : while ($mission_query->have_posts()) : $mission_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Notre mission</h3>
+                                    <h3><?php the_field('benevole_mission_titre'); ?></h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere amet
-                                    tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea condimentum cursus
-                                    velit dui. Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum
-                                    quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
-                                    sollicitudin diam, elit sit. Et nisi in libero facilisis sed est. Elit curabitur
-                                    amet risus bibendum. Posuere et eget orci, tempor enim.</p>
-                                <p>Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat odio
-                                    facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra est, at
-                                    rhoncus, nec ullamcorper tincidunt. Id aliquet duis sollicitudin diam, elit sit.</p>
+                                <?php if (get_field('benevole_mission_paragraphe_1')) : ?>
+                                    <p><?php the_field('benevole_mission_paragraphe_1'); ?></p>
+                                <?php endif; ?>
+                                <?php if (get_field('benevole_mission_paragraphe_2')) : ?>
+                                    <p><?php the_field('benevole_mission_paragraphe_2'); ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Besoins -->
+                            <?php
+                            $besoins_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'besoins',
+                                    ),
+                                ),
+                            ));
+                            if ($besoins_query->have_posts()) : while ($besoins_query->have_posts()) : $besoins_query->the_post();
+                                $liste = get_field('benevole_besoins_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
+                            <div class="wpo-service-single-item">
+                                <div class="wpo-service-single-title">
+                                    <h3><?php the_field('benevole_besoins_titre'); ?></h3>
+                                </div>
+                                <?php if (get_field('benevole_besoins_texte')) : ?>
+                                    <p><?php the_field('benevole_besoins_texte'); ?></p>
+                                <?php endif; ?>
                             </div>
                             <div class="wpo-service-single-item list-widget">
-                                <div class="wpo-service-single-title">
-                                    <h3>Nos besoins</h3>
-                                </div>
-                                <p>Massa volutpat odio facilisis purus sit elementum. Non, sed velit dictum quam. Id
-                                    risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
-                                    sollicitudin diam.</p>
                                 <ul>
-                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
-                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
-                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
-                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
-                                    <li>Elit curabitur amet risus bibendum.</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Approche -->
+                            <?php
+                            $approche_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'approche',
+                                    ),
+                                ),
+                            ));
+                            if ($approche_query->have_posts()) : while ($approche_query->have_posts()) : $approche_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Notre approche</h3>
+                                    <h3><?php the_field('benevole_approche_titre'); ?></h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat suspendisse aenean
-                                    tellus augue morbi risus. Sit morbi vitae morbi sed urna sed purus. Orci facilisi
-                                    eros sed pellentesque. Risus id sed tortor sed scelerisque. Vestibulum elit
-                                    elementum, magna id viverra non, velit. Pretium, eros, porttitor fusce auctor vitae
-                                    id. Phasellus scelerisque nibh eleifend vel enim mauris purus. Rutrum vel sem
-                                    adipiscing nisi vulputate molestie scelerisque molestie ultrices. Eu, fusce
-                                    vulputate diam interdum morbi ac a.</p>
+                                <p><?php the_field('benevole_approche_texte'); ?></p>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Quotidien -->
+                            <?php
+                            $quotidien_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'quotidien',
+                                    ),
+                                ),
+                            ));
+                            if ($quotidien_query->have_posts()) : while ($quotidien_query->have_posts()) : $quotidien_query->the_post();
+                                $liste = get_field('benevole_quotidien_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Le quotidien au Fanal</h3>
+                                    <h3><?php the_field('benevole_quotidien_titre'); ?></h3>
                                 </div>
                                 <ul>
-                                    <li>Non saed velit dictum quam risus pharetra esta.</li>
-                                    <li>Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt.</li>
-                                    <li>Hac nibh fermentum nisi, platea condimentum cursus.</li>
-                                    <li>Massa volutpat odio facilisis purus sit elementum.</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Quiz -->
+                            <?php
+                            $quiz_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'quiz',
+                                    ),
+                                ),
+                            ));
+                            if ($quiz_query->have_posts()) : while ($quiz_query->have_posts()) : $quiz_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Testez votre profil de benevole</h3>
+                                    <h3><?php the_field('benevole_quiz_titre'); ?></h3>
                                 </div>
-                                <p>Vous souhaitez rejoindre notre equipe ? Participez a notre quiz pour decouvrir si votre profil correspond a nos besoins et en apprendre plus sur le benevolat au Fanal des Chats.</p>
+                                <p><?php the_field('benevole_quiz_texte'); ?></p>
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                                 </div>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Formulaire -->
+                            <?php
+                            $formulaire_query = new WP_Query(array(
+                                'post_type' => 'page_benevole',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'benevole_type',
+                                        'value' => 'formulaire',
+                                    ),
+                                ),
+                            ));
+                            if ($formulaire_query->have_posts()) : while ($formulaire_query->have_posts()) : $formulaire_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Postuler comme benevole</h3>
+                                    <h3><?php the_field('benevole_formulaire_titre'); ?></h3>
                                 </div>
-                                <p>Pret a rejoindre notre equipe ? Remplissez notre formulaire de candidature pour nous en dire plus sur vous, vos disponibilites, votre experience et vos motivations. Nous reviendrons vers vous rapidement !</p>
+                                <p><?php the_field('benevole_formulaire_texte'); ?></p>
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
                                 </div>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
                         </div>
                     </div>
                 </div>
@@ -103,12 +196,25 @@
         <!-- service-single-area end -->
 
         <!-- start wpo-faq-section -->
+        <?php
+        $faq_query = new WP_Query(array(
+            'post_type' => 'page_benevole',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'benevole_type',
+                    'value' => 'faq',
+                ),
+            ),
+        ));
+        if ($faq_query->have_posts()) : while ($faq_query->have_posts()) : $faq_query->the_post();
+        ?>
         <section class="wpo-faq-section section-padding">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="section-title">
-                            <h2>Questions fréquentes</h2>
+                            <h2><?php the_field('benevole_faq_titre'); ?></h2>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -117,66 +223,34 @@
                                 <div class="col-lg-12 col-12">
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="accordionExample">
+                                            <?php
+                                            $faq_items = array(
+                                                array('num' => 'One', 'index' => 1, 'expanded' => 'true', 'show' => ' show'),
+                                                array('num' => 'Two', 'index' => 2, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Four', 'index' => 4, 'expanded' => 'false', 'show' => ''),
+                                            );
+                                            foreach ($faq_items as $item) :
+                                                $question = get_field('benevole_faq_question_' . $item['index']);
+                                                $reponse = get_field('benevole_faq_reponse_' . $item['index']);
+                                                if ($question && $reponse) :
+                                            ?>
                                             <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
-                                                        Quel est l'engagement de temps minimum pour être bénévole ?
+                                                <h3 class="accordion-header" id="heading<?php echo $item['num']; ?>">
+                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $item['num']; ?>"
+                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapse<?php echo $item['num']; ?>">
+                                                        <?php echo esc_html($question); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapse<?php echo $item['num']; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
+                                                    aria-labelledby="heading<?php echo $item['num']; ?>" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Nous demandons un minimum de 4 heures par semaine, réparties selon vos disponibilités. Cela peut être 2 créneaux de 2 heures ou une demi-journée. La régularité est importante pour créer des liens avec nos pensionnaires félins.</p>
+                                                        <p><?php echo esc_html($reponse); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        Dois-je avoir de l'expérience avec les chats pour devenir bénévole ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Pas nécessairement ! Nous accueillons tous les profils motivés. Une formation initiale est dispensée à tous nos nouveaux bénévoles pour apprendre les gestes essentiels, comprendre le comportement félin et connaître nos protocoles de sécurité.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                        aria-expanded="false" aria-controls="collapseThree">
-                                                        Quelles sont les principales tâches d'un bénévole au refuge ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseThree" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Les activités sont variées : nettoyage des espaces de vie, distribution de nourriture, socialisation des chats, aide aux adoptions, transport vétérinaire, événements de sensibilisation. Chacun peut trouver sa place selon ses affinités et compétences.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                        aria-expanded="false" aria-controls="collapseFour">
-                                                        Y a-t-il des frais ou des équipements à prévoir pour être bénévole ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseFour" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Non, le bénévolat au Fanal des Chats est entièrement gratuit. Nous fournissons tout le matériel nécessaire : vêtements de protection, produits d'entretien, nourriture pour les chats. Seuls des vêtements confortables et fermés sont recommandés.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <?php endif; endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -186,9 +260,23 @@
                 </div>
             </div> <!-- end container -->
         </section>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- end faq-section -->
 
         <!-- service contact area start -->
+        <?php
+        $cta_query = new WP_Query(array(
+            'post_type' => 'page_benevole',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'benevole_type',
+                    'value' => 'cta',
+                ),
+            ),
+        ));
+        if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
+        ?>
         <div class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
@@ -197,8 +285,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à nous rejoindre ?</h2>
-                                        <p>Testez votre profil avec notre quiz ou remplissez directement le formulaire de candidature</p>
+                                        <h2><?php the_field('benevole_cta_titre'); ?></h2>
+                                        <p><?php the_field('benevole_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Faire le Quiz</a>
@@ -208,16 +296,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Ancien formulaire commenté
-                    <div class="wpo-contact-form-area">
-                        <form method="post" class="contact-validation-active" id="contact-form-main">
-                            ...
-                        </form>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- service-single-area end -->
 
 <?php get_template_part("partials/footer"); ?>
