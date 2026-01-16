@@ -21,6 +21,20 @@
 
         <!-- start of about-section -->
         <section class="about-section section-padding orange qui-sommes-nous">
+            <?php
+            // Récupérer le contenu Qui sommes-nous
+            $qsn_query = new WP_Query(array(
+                'post_type' => 'page_about',
+                'posts_per_page' => 1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'about_type',
+                        'value' => 'qui_sommes_nous',
+                    ),
+                ),
+            ));
+            if ($qsn_query->have_posts()) : while ($qsn_query->have_posts()) : $qsn_query->the_post();
+            ?>
             <div class="wraper">
                 <div class="left">
                     <div class="image">
@@ -36,19 +50,23 @@
                 </div>
                 <div class="right">
                     <span class="section-label">Qui sommes-nous ?</span>
-                    <h2>Le Fanal des Chats, un refuge au grand coeur.</h2>
-                    <p>Le Fanal des Chats est une ASBL dediee a la protection et au bien-etre des chats abandonnes.
-                       Notre mission est simple mais essentielle : recueillir, nourrir, soigner et offrir une seconde
-                       chance a tous les felins qui croisent notre chemin.</p>
-                    <p>Chaque jour, notre equipe de benevoles passionnes s'engage pour offrir aux chats abandonnes
-                       l'amour et les soins qu'ils meritent. Nous assurons leur sterilisation, leurs soins veterinaires
-                       et nous les preparons a rejoindre une nouvelle famille aimante.</p>
+                    <h2><?php the_field('about_qsn_titre'); ?></h2>
+                    <?php if (get_field('about_qsn_paragraphe_1')) : ?>
+                        <p><?php the_field('about_qsn_paragraphe_1'); ?></p>
+                    <?php endif; ?>
+                    <?php if (get_field('about_qsn_paragraphe_2')) : ?>
+                        <p><?php the_field('about_qsn_paragraphe_2'); ?></p>
+                    <?php endif; ?>
+                    <?php if (get_field('about_qsn_paragraphe_3')) : ?>
+                        <p><?php the_field('about_qsn_paragraphe_3'); ?></p>
+                    <?php endif; ?>
 
                     <div class="about-btn">
                         <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Adopter un chat</a>
                     </div>
                 </div>
             </div>
+            <?php endwhile; endif; wp_reset_postdata(); ?>
             <div class="shape">
                 <img src="<?php bloginfo("template_url")?>/assets/images/paws-6.png" alt="">
             </div>
@@ -64,129 +82,134 @@
                 <img src="<?php bloginfo("template_url")?>/assets/images/images/Les-chats-a-adopter.jpg" alt="Nos chats">
             </div>
             <div class="container">
+                <?php
+                // Récupérer le contenu Statistiques
+                $stats_query = new WP_Query(array(
+                    'post_type' => 'page_about',
+                    'posts_per_page' => 1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'about_type',
+                            'value' => 'statistiques',
+                        ),
+                    ),
+                ));
+                if ($stats_query->have_posts()) : while ($stats_query->have_posts()) : $stats_query->the_post();
+                    $icons = array('1.svg', '2.svg', '3.svg', '4.svg');
+                    $suffixes = array('+', '+', '+', '%');
+                ?>
                 <div class="row">
+                    <?php for ($i = 1; $i <= 4; $i++) :
+                        $titre = get_field('about_stats_titre_' . $i);
+                        $nombre = get_field('about_stats_nombre_' . $i);
+                        if ($titre && $nombre) :
+                    ?>
                     <div class="col col-lg-3 col-md-6 col-12">
                         <div class="item">
                             <div class="icon">
-                                <img src="<?php bloginfo("template_url")?>/assets/images/funfact/1.svg" alt="">
+                                <img src="<?php bloginfo("template_url")?>/assets/images/funfact/<?php echo $icons[$i-1]; ?>" alt="">
                             </div>
-                            <h2><span class="odometer" data-count="150">00</span> <span class="ico">+</span>
+                            <h2><span class="odometer" data-count="<?php echo esc_attr($nombre); ?>">00</span> <span class="ico"><?php echo $suffixes[$i-1]; ?></span>
                             </h2>
-                            <h3>Chats adoptes</h3>
+                            <h3><?php echo esc_html($titre); ?></h3>
                         </div>
                     </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="<?php bloginfo("template_url")?>/assets/images/funfact/2.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="200">00</span> <span class="ico">+</span>
-                            </h2>
-                            <h3>Chats sterilises</h3>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="<?php bloginfo("template_url")?>/assets/images/funfact/3.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="25">00</span> <span class="ico">+</span>
-                            </h2>
-                            <h3>Benevoles actifs</h3>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="<?php bloginfo("template_url")?>/assets/images/funfact/4.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="100">00</span> <span class="ico">%</span>
-                            </h2>
-                            <h3>Devouement</h3>
-                        </div>
-                    </div>
+                    <?php endif; endfor; ?>
                 </div>
+                <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </section>
 
         <!-- start of missions-section -->
         <section class="engagement-section section-padding orange nos-missions">
             <div class="container">
+                <?php
+                // Récupérer le contenu Nos Missions
+                $missions_query = new WP_Query(array(
+                    'post_type' => 'page_about',
+                    'posts_per_page' => 1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'about_type',
+                            'value' => 'nos_missions',
+                        ),
+                    ),
+                ));
+                if ($missions_query->have_posts()) : while ($missions_query->have_posts()) : $missions_query->the_post();
+                    $icons = array('fa-hands-holding-child', 'fa-stethoscope', 'fa-home');
+                    $links = array('/benevole', '/don', '/adoption');
+                    $buttons = array('Devenir bénévole', 'Faire un don', 'Adopter un chat');
+                ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="section-title">
                             <h3 class="section-label">Nos Missions</h3>
-                            <h2>Ce que nous faisons au quotidien</h2>
+                            <h2><?php the_field('about_missions_titre_section'); ?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="engagement-cards row g-0 align-items-center">
+                    <?php for ($i = 1; $i <= 3; $i++) :
+                        $titre = get_field('about_missions_titre_' . $i);
+                        $texte = get_field('about_missions_texte_' . $i);
+                        if ($titre) :
+                            $lignes = preg_split('/\r\n|\r|\n/', $texte);
+                            $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                    ?>
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="engagement-card">
-                            <h2>Recueillir</h2>
-                            <div class="engagement-icon"><i class="fas fa-hands-holding-child mission-icon"></i></div>
+                            <h2><?php echo esc_html($titre); ?></h2>
+                            <div class="engagement-icon"><i class="fas <?php echo $icons[$i-1]; ?> mission-icon"></i></div>
                             <ul class="engagement-features">
-                                <li>Accueil des chats abandonnes</li>
-                                <li>Prise en charge des chats errants</li>
-                                <li>Sauvetage d'urgence</li>
-                                <li>Refuge temporaire securise</li>
-                                <li>Evaluation du comportement</li>
+                                <?php foreach ($lignes as $ligne) : ?>
+                                <li><?php echo esc_html($ligne); ?></li>
+                                <?php endforeach; ?>
                             </ul>
-                            <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir benevole</a>
+                            <a href="<?php echo home_url($links[$i-1]); ?>" class="theme-btn-s2"><?php echo $buttons[$i-1]; ?></a>
                         </div>
                     </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="engagement-card">
-                            <h2>Soigner</h2>
-                            <div class="engagement-icon"><i class="fas fa-stethoscope mission-icon"></i></div>
-                            <ul class="engagement-features">
-                                <li>Soins veterinaires complets</li>
-                                <li>Sterilisation systematique</li>
-                                <li>Vaccination et vermifugation</li>
-                                <li>Identification par puce</li>
-                                <li>Suivi medical personnalise</li>
-                                <li>Alimentation adaptee</li>
-                                <li>Traitement antiparasitaire</li>
-                                <li>Rehabilitation comportementale</li>
-                            </ul>
-                            <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
-                        </div>
-                    </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="engagement-card">
-                            <h2>Adopter</h2>
-                            <div class="engagement-icon"><i class="fas fa-home mission-icon"></i></div>
-                            <ul class="engagement-features">
-                                <li>Recherche de familles aimantes</li>
-                                <li>Processus d'adoption encadre</li>
-                                <li>Conseils personnalises</li>
-                                <li>Suivi post-adoption</li>
-                                <li>Support continu</li>
-                            </ul>
-                            <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Adopter un chat</a>
-                        </div>
-                    </div>
+                    <?php endif; endfor; ?>
                 </div>
+                <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </section>
 
         <!-- start of values-section -->
         <section class="about-section section-padding nos-valeurs">
+            <?php
+            // Récupérer le contenu Nos Valeurs
+            $valeurs_query = new WP_Query(array(
+                'post_type' => 'page_about',
+                'posts_per_page' => 1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'about_type',
+                        'value' => 'nos_valeurs',
+                    ),
+                ),
+            ));
+            if ($valeurs_query->have_posts()) : while ($valeurs_query->have_posts()) : $valeurs_query->the_post();
+            ?>
             <div class="wraper">
                 <div class="right">
                     <span class="section-label">Nos Valeurs</span>
-                    <h2>Un engagement sincere pour les felins.</h2>
-                    <p><strong>Bienveillance :</strong> Chaque chat merite d'etre traite avec amour et respect,
-                       peu importe son passe ou son etat de sante.</p>
-                    <p><strong>Responsabilite :</strong> Nous nous engageons a assurer le bien-etre de chaque animal
-                       jusqu'a ce qu'il trouve sa famille pour la vie.</p>
-                    <p><strong>Transparence :</strong> Nous informons nos adoptants et donateurs de maniere honnete
-                       sur l'utilisation des fonds et l'etat de sante des chats.</p>
-                    <p><strong>Communaute :</strong> Ensemble, benevoles, adoptants et donateurs, nous formons une
-                       grande famille unie par l'amour des chats.</p>
+                    <h2><?php the_field('about_valeurs_titre_section'); ?></h2>
+                    <?php for ($i = 1; $i <= 4; $i++) :
+                        $valeur = get_field('about_valeurs_valeur_' . $i);
+                        if ($valeur) :
+                            // Met en gras le texte avant les deux-points
+                            if (strpos($valeur, ':') !== false) {
+                                $parts = explode(':', $valeur, 2);
+                                $valeur = '<strong>' . esc_html(trim($parts[0])) . ' :</strong>' . esc_html($parts[1]);
+                            } else {
+                                $valeur = esc_html($valeur);
+                            }
+                    ?>
+                    <p><?php echo $valeur; ?></p>
+                    <?php endif; endfor; ?>
 
                     <div class="about-btn">
-                        <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir benevole</a>
+                        <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir bénévole</a>
                     </div>
                 </div>
                 <div class="left">
@@ -202,6 +225,7 @@
                     </div>
                 </div>
             </div>
+            <?php endwhile; endif; wp_reset_postdata(); ?>
             <div class="shape">
                 <img src="<?php bloginfo("template_url")?>/assets/images/paws-6.png" alt="">
             </div>

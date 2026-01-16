@@ -24,77 +24,167 @@
                 <div class="row">
                     <div class="col-lg-12 col-12">
                         <div class="wpo-service-single-wrap">
+
+                            <!-- Section Intro -->
+                            <?php
+                            $intro_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'intro',
+                                    ),
+                                ),
+                            ));
+                            if ($intro_query->have_posts()) : while ($intro_query->have_posts()) : $intro_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
-                                <!-- <div class="wpo-service-single-main-img">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/illustrations/3_cute cat.png" alt="">
-                                </div> -->
                                 <div class="wpo-service-single-title">
-                                    <h3>Adopter un chat</h3>
+                                    <h3><?php the_field('adoption_intro_titre'); ?></h3>
                                 </div>
-                                <p>Adopter un chat du Fanal des Chats, c'est offrir une seconde chance à un animal qui a besoin d'amour et de sécurité. Nos pensionnaires félins attendent patiemment de trouver leur famille pour la vie. Chaque adoption est une victoire contre l'abandon et un nouveau départ vers le bonheur.</p>
-                                <p>Notre équipe vous accompagne dans cette belle aventure en vous aidant à trouver le compagnon idéal selon votre mode de vie, votre logement et vos attentes. Nous croyons fermement qu'il existe un chat parfait pour chaque famille.</p>
-                                <!-- <div class="row mt-4">
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-12">
-                                        <div class="wpo-p-details-img">
-                                            <img src="<?php bloginfo("template_url")?>/assets/images/service-single/3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <?php if (get_field('adoption_intro_paragraphe_1')) : ?>
+                                    <p><?php the_field('adoption_intro_paragraphe_1'); ?></p>
+                                <?php endif; ?>
+                                <?php if (get_field('adoption_intro_paragraphe_2')) : ?>
+                                    <p><?php the_field('adoption_intro_paragraphe_2'); ?></p>
+                                <?php endif; ?>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Critères -->
+                            <?php
+                            $criteres_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'criteres',
+                                    ),
+                                ),
+                            ));
+                            if ($criteres_query->have_posts()) : while ($criteres_query->have_posts()) : $criteres_query->the_post();
+                                $liste = get_field('adoption_criteres_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Critères d'adoption</h3>
+                                    <h3><?php the_field('adoption_criteres_titre'); ?></h3>
                                 </div>
-                                <p>Pour garantir le bien-être de nos chats et assurer une adoption réussie, nous demandons à tous les futurs adoptants de respecter quelques critères essentiels :</p>
+                                <?php if (get_field('adoption_criteres_texte')) : ?>
+                                    <p><?php the_field('adoption_criteres_texte'); ?></p>
+                                <?php endif; ?>
                                 <ul>
-                                    <li>Être majeur et en capacité légale d'adopter un animal</li>
-                                    <li>Disposer d'un logement adapté et sécurisé pour un chat</li>
-                                    <li>Avoir les moyens financiers pour assumer les frais vétérinaires</li>
-                                    <li>S'engager à stériliser l'animal si ce n'est pas déjà fait</li>
-                                    <li>Accepter une visite de pré-adoption et un suivi post-adoption</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Processus -->
+                            <?php
+                            $processus_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'processus',
+                                    ),
+                                ),
+                            ));
+                            if ($processus_query->have_posts()) : while ($processus_query->have_posts()) : $processus_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Le processus d'adoption</h3>
+                                    <h3><?php the_field('adoption_processus_titre'); ?></h3>
                                 </div>
-                                <p>Notre processus d'adoption est conçu pour assurer le bien-être de nos chats et la satisfaction des adoptants. Nous prenons le temps nécessaire pour créer des liens durables entre nos pensionnaires et leurs nouvelles familles. Chaque adoption fait l'objet d'un suivi personnalisé pour garantir une intégration réussie dans votre foyer.</p>
+                                <p><?php the_field('adoption_processus_texte'); ?></p>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Étapes -->
+                            <?php
+                            $etapes_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'etapes',
+                                    ),
+                                ),
+                            ));
+                            if ($etapes_query->have_posts()) : while ($etapes_query->have_posts()) : $etapes_query->the_post();
+                                $liste = get_field('adoption_etapes_liste');
+                                $lignes = preg_split('/\r\n|\r|\n/', $liste);
+                                $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                            ?>
                             <div class="wpo-service-single-item list-widget">
                                 <div class="wpo-service-single-title">
-                                    <h3>Les étapes d'adoption</h3>
+                                    <h3><?php the_field('adoption_etapes_titre'); ?></h3>
                                 </div>
                                 <ul>
-                                    <li>Première visite pour rencontrer nos chats disponibles</li>
-                                    <li>Entretien avec notre équipe pour définir vos attentes</li>
-                                    <li>Période de réflexion et visite de pré-adoption à domicile</li>
-                                    <li>Finalisation du dossier et signature du contrat d'adoption</li>
-                                    <li>Suivi post-adoption et accompagnement si nécessaire</li>
+                                    <?php foreach ($lignes as $ligne) : ?>
+                                    <li><?php echo esc_html($ligne); ?></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Quiz -->
+                            <?php
+                            $quiz_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'quiz',
+                                    ),
+                                ),
+                            ));
+                            if ($quiz_query->have_posts()) : while ($quiz_query->have_posts()) : $quiz_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Testez vos connaissances</h3>
+                                    <h3><?php the_field('adoption_quiz_titre'); ?></h3>
                                 </div>
-                                <p>Vous souhaitez adopter un chat ? Participez a notre quiz pour tester vos connaissances sur le bien-etre felin et decouvrir si vous etes pret a accueillir un nouveau compagnon.</p>
+                                <p><?php the_field('adoption_quiz_texte'); ?></p>
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                                 </div>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
+                            <!-- Section Formulaire -->
+                            <?php
+                            $formulaire_query = new WP_Query(array(
+                                'post_type' => 'page_adoption',
+                                'posts_per_page' => 1,
+                                'meta_query' => array(
+                                    array(
+                                        'key' => 'adoption_type',
+                                        'value' => 'formulaire',
+                                    ),
+                                ),
+                            ));
+                            if ($formulaire_query->have_posts()) : while ($formulaire_query->have_posts()) : $formulaire_query->the_post();
+                            ?>
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-single-title">
-                                    <h3>Faire une demande d'adoption</h3>
+                                    <h3><?php the_field('adoption_formulaire_titre'); ?></h3>
                                 </div>
-                                <p>Pret a accueillir un chat dans votre foyer ? Remplissez notre formulaire de demande d'adoption pour nous en dire plus sur vous, votre environnement et vos attentes. Notre equipe etudiera votre dossier et vous contactera rapidement.</p>
+                                <p><?php the_field('adoption_formulaire_texte'); ?></p>
                                 <div class="about-btn">
                                     <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
                                 </div>
                             </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
+
                         </div>
                     </div>
                 </div>
@@ -103,12 +193,25 @@
         <!-- service-single-area end -->
 
         <!-- start wpo-faq-section -->
+        <?php
+        $faq_query = new WP_Query(array(
+            'post_type' => 'page_adoption',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'adoption_type',
+                    'value' => 'faq',
+                ),
+            ),
+        ));
+        if ($faq_query->have_posts()) : while ($faq_query->have_posts()) : $faq_query->the_post();
+        ?>
         <section class="wpo-faq-section section-padding">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="section-title">
-                            <h2>Questions fréquentes</h2>
+                            <h2><?php the_field('adoption_faq_titre'); ?></h2>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -117,66 +220,34 @@
                                 <div class="col-lg-12 col-12">
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="accordionExample">
+                                            <?php
+                                            $faq_items = array(
+                                                array('num' => 'One', 'index' => 1, 'expanded' => 'true', 'show' => ' show'),
+                                                array('num' => 'Two', 'index' => 2, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
+                                                array('num' => 'Four', 'index' => 4, 'expanded' => 'false', 'show' => ''),
+                                            );
+                                            foreach ($faq_items as $item) :
+                                                $question = get_field('adoption_faq_question_' . $item['index']);
+                                                $reponse = get_field('adoption_faq_reponse_' . $item['index']);
+                                                if ($question && $reponse) :
+                                            ?>
                                             <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
-                                                        Quels sont les frais d'adoption ?
+                                                <h3 class="accordion-header" id="heading<?php echo $item['num']; ?>">
+                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $item['num']; ?>"
+                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapse<?php echo $item['num']; ?>">
+                                                        <?php echo esc_html($question); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapse<?php echo $item['num']; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
+                                                    aria-labelledby="heading<?php echo $item['num']; ?>" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Les frais d'adoption sont de 150€ pour un chat adulte et 200€ pour un chaton. Ces frais couvrent la stérilisation, l'identification par puce, les vaccins à jour et un bilan de santé vétérinaire complet.</p>
+                                                        <p><?php echo esc_html($reponse); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        Puis-je adopter si je vis en appartement ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Absolument ! Beaucoup de chats s'adaptent parfaitement à la vie en appartement. Nous vous aiderons à choisir un chat dont le caractère et les besoins correspondent à votre mode de vie et à votre logement.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                        aria-expanded="false" aria-controls="collapseThree">
-                                                        Combien de temps dure le processus d'adoption ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseThree" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Le processus prend généralement 1 à 2 semaines. Cela comprend la rencontre avec le chat, l'entretien, la visite de pré-adoption à domicile et la finalisation du dossier. Nous prenons le temps nécessaire pour assurer une adoption réussie.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                        aria-expanded="false" aria-controls="collapseFour">
-                                                        Que faire si l'adoption ne se passe pas bien ?
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseFour" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Nous offrons un suivi post-adoption et restons disponibles pour vous conseiller. Si malgré tous nos efforts l'adoption ne fonctionne pas, nous reprenons le chat sans jugement. L'important est le bien-être de l'animal.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <?php endif; endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -186,9 +257,23 @@
                 </div>
             </div> <!-- end container -->
         </section>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- end faq-section -->
 
         <!-- service contact area start -->
+        <?php
+        $cta_query = new WP_Query(array(
+            'post_type' => 'page_adoption',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'adoption_type',
+                    'value' => 'cta',
+                ),
+            ),
+        ));
+        if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
+        ?>
         <div class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
@@ -197,8 +282,8 @@
                             <div class="wpo-service-single-item">
                                 <div class="wpo-service-contact-area">
                                     <div class="wpo-contact-title">
-                                        <h2>Prêt à adopter ? Lancez-vous !</h2>
-                                        <p>Testez vos connaissances avec notre quiz ou remplissez directement le formulaire d'adoption</p>
+                                        <h2><?php the_field('adoption_cta_titre'); ?></h2>
+                                        <p><?php the_field('adoption_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faire le Quiz</a>
@@ -208,16 +293,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Ancien formulaire commenté
-                    <div class="wpo-contact-form-area">
-                        <form method="post" class="contact-validation-active" id="contact-form-main">
-                            ...
-                        </form>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
         <!-- service-single-area end -->
 
 

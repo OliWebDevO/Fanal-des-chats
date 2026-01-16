@@ -278,36 +278,30 @@
                     </div>
                 </div>
                 <div class="engagement-cards row g-0 align-items-center">
+                    <?php
+                    $cards = array(
+                        array('titre' => 'dons_titre_adoption', 'texte' => 'dons_texte_adoption', 'lien' => '/adoption', 'btn' => 'Adopter un chat'),
+                        array('titre' => 'dons_titre_don', 'texte' => 'dons_texte_don', 'lien' => '/don', 'btn' => 'Faire un don'),
+                        array('titre' => 'dons_titre_benevole', 'texte' => 'dons_texte_benevole', 'lien' => '/benevole', 'btn' => 'Devenir bénévole'),
+                    );
+                    foreach ($cards as $card) :
+                        $texte = get_field($card['texte']);
+                        $lignes = preg_split('/\r\n|\r|\n/', $texte);
+                        $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+                    ?>
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="engagement-card">
-                            <h2><?php the_field('dons_titre_adoption'); ?></h2>
+                            <h2><?php the_field($card['titre']); ?></h2>
                             <div class="engagement-icon"></div>
-                            <div class="engagement-features">
-                                <?php echo wpautop(get_field('dons_texte_adoption')); ?>
-                            </div>
-                            <a href="<?php echo home_url("/service-single2"); ?>" class="theme-btn-s2">Adopter un chat</a>
+                            <ul class="engagement-features">
+                                <?php foreach ($lignes as $ligne) : ?>
+                                <li><?php echo esc_html($ligne); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <a href="<?php echo home_url($card['lien']); ?>" class="theme-btn-s2"><?php echo $card['btn']; ?></a>
                         </div>
                     </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="engagement-card">
-                            <h2><?php the_field('dons_titre_don'); ?></h2>
-                            <div class="engagement-icon"></div>
-                            <div class="engagement-features">
-                                <?php echo wpautop(get_field('dons_texte_don')); ?>
-                            </div>
-                            <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
-                        </div>
-                    </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="engagement-card">
-                            <h2><?php the_field('dons_titre_benevole'); ?></h2>
-                            <div class="engagement-icon"></div>
-                            <div class="engagement-features">
-                                <?php echo wpautop(get_field('dons_texte_benevole')); ?>
-                            </div>
-                            <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir bénévole</a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
