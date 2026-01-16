@@ -24,96 +24,35 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="revues-grid clearfix">
+                            <?php
+                            $revues_query = new WP_Query(array(
+                                'post_type' => 'revue',
+                                'posts_per_page' => -1,
+                                'orderby' => 'date',
+                                'order' => 'DESC',
+                            ));
+                            if ($revues_query->have_posts()) : while ($revues_query->have_posts()) : $revues_query->the_post();
+                                $date_publication = get_field('revue_date');
+                                $lien_pdf = get_field('revue_lien');
+                            ?>
                             <div class="revue-card">
                                 <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('medium'); ?>
+                                    <?php else : ?>
+                                        <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
+                                    <?php endif; ?>
                                 </div>
                                 <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
+                                    <h3><?php the_title(); ?></h3>
+                                    <span><?php echo esc_html($date_publication); ?></span>
                                     <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
+                                        <a href="<?php echo esc_url($lien_pdf); ?>" target="_blank">Obtenir la revue</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="revue-card">
-                                <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
-                                    <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="revue-card">
-                                <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
-                                    <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="revue-card">
-                                <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
-                                    <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="revue-card">
-                                <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
-                                    <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="revue-card">
-                                <div class="img-holder">
-                                    <img src="<?php bloginfo("template_url")?>/assets/images/images/journal.png" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3><a href="<?php echo home_url('/revue-single'); ?>">Titre de la revue</a></h3>
-                                    <span>Décembre 2025</span>
-                                    <div class="revue-action">
-                                        <a href="#">Obtenir la revue</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endwhile; endif; wp_reset_postdata(); ?>
                         </div>
-                        <!-- <div class="pagination-wrapper pagination-wrapper-center">
-                            <ul class="pg-pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> -->
                     </div>
                 </div>
             </div> <!-- end container -->

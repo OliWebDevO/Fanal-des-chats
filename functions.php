@@ -46,12 +46,12 @@ function convert_youtube_to_embed($url) {
 # Custom Post Types - Une page = Un CPT
 --------------------------------------------------------------*/
 
-// CPT: Page Accueil
+// CPT: Accueil
 function register_cpt_page_accueil() {
     $labels = array(
-        'name'               => 'Page Accueil',
+        'name'               => 'Accueil',
         'singular_name'      => 'Contenu Accueil',
-        'menu_name'          => 'Page Accueil',
+        'menu_name'          => 'Accueil',
         'add_new'            => 'Ajouter du contenu',
         'add_new_item'       => 'Ajouter du contenu',
         'edit_item'          => 'Modifier le contenu',
@@ -106,12 +106,12 @@ function register_cpt_slider() {
 }
 add_action('init', 'register_cpt_slider');
 
-// CPT: Page A Propos
+// CPT: A Propos
 function register_cpt_page_about() {
     $labels = array(
-        'name'               => 'Page A Propos',
+        'name'               => 'A Propos',
         'singular_name'      => 'Contenu A Propos',
-        'menu_name'          => 'Page A Propos',
+        'menu_name'          => 'A Propos',
         'add_new'            => 'Ajouter du contenu',
         'add_new_item'       => 'Ajouter du contenu',
         'edit_item'          => 'Modifier le contenu',
@@ -136,12 +136,12 @@ function register_cpt_page_about() {
 }
 add_action('init', 'register_cpt_page_about');
 
-// CPT: Page Adoption
+// CPT: Adoption
 function register_cpt_page_adoption() {
     $labels = array(
-        'name'               => 'Page Adoption',
+        'name'               => 'Adoption',
         'singular_name'      => 'Contenu Adoption',
-        'menu_name'          => 'Page Adoption',
+        'menu_name'          => 'Adoption',
         'add_new'            => 'Ajouter du contenu',
         'add_new_item'       => 'Ajouter du contenu',
         'edit_item'          => 'Modifier le contenu',
@@ -166,12 +166,12 @@ function register_cpt_page_adoption() {
 }
 add_action('init', 'register_cpt_page_adoption');
 
-// CPT: Page Don
+// CPT: Don
 function register_cpt_page_don() {
     $labels = array(
-        'name'               => 'Page Don',
+        'name'               => 'Don',
         'singular_name'      => 'Contenu Don',
-        'menu_name'          => 'Page Don',
+        'menu_name'          => 'Don',
         'add_new'            => 'Ajouter du contenu',
         'add_new_item'       => 'Ajouter du contenu',
         'edit_item'          => 'Modifier le contenu',
@@ -196,12 +196,12 @@ function register_cpt_page_don() {
 }
 add_action('init', 'register_cpt_page_don');
 
-// CPT: Page Bénévole
+// CPT: Bénévole
 function register_cpt_page_benevole() {
     $labels = array(
-        'name'               => 'Page Bénévole',
+        'name'               => 'Bénévole',
         'singular_name'      => 'Contenu Bénévole',
-        'menu_name'          => 'Page Bénévole',
+        'menu_name'          => 'Bénévole',
         'add_new'            => 'Ajouter du contenu',
         'add_new_item'       => 'Ajouter du contenu',
         'edit_item'          => 'Modifier le contenu',
@@ -226,36 +226,35 @@ function register_cpt_page_benevole() {
 }
 add_action('init', 'register_cpt_page_benevole');
 
-// CPT: Actualités (reste séparé car c'est du contenu indépendant)
-function register_cpt_actualite() {
+// CPT: Revues
+function register_cpt_revue() {
     $labels = array(
-        'name'               => 'Actualités',
-        'singular_name'      => 'Actualité',
-        'menu_name'          => 'Actualités',
+        'name'               => 'Revues',
+        'singular_name'      => 'Revue',
+        'menu_name'          => 'Revues',
         'add_new'            => 'Ajouter',
-        'add_new_item'       => 'Ajouter une actualité',
-        'edit_item'          => 'Modifier l\'actualité',
-        'new_item'           => 'Nouvelle actualité',
-        'view_item'          => 'Voir l\'actualité',
+        'add_new_item'       => 'Ajouter une revue',
+        'edit_item'          => 'Modifier la revue',
+        'new_item'           => 'Nouvelle revue',
+        'view_item'          => 'Voir la revue',
         'search_items'       => 'Rechercher',
-        'not_found'          => 'Aucune actualité trouvée',
+        'not_found'          => 'Aucune revue trouvée',
     );
 
     $args = array(
         'labels'             => $labels,
-        'public'             => true,
+        'public'             => false,
         'show_ui'            => true,
         'show_in_menu'       => true,
-        'menu_position'      => 6,
-        'menu_icon'          => 'dashicons-megaphone',
-        'supports'           => array('title', 'thumbnail', 'editor'),
-        'has_archive'        => true,
-        'rewrite'            => array('slug' => 'actualites'),
+        'menu_position'      => 10,
+        'menu_icon'          => 'dashicons-book-alt',
+        'supports'           => array('title', 'thumbnail'),
+        'has_archive'        => false,
     );
 
-    register_post_type('actualite', $args);
+    register_post_type('revue', $args);
 }
-add_action('init', 'register_cpt_actualite');
+add_action('init', 'register_cpt_revue');
 
 
 /*--------------------------------------------------------------
@@ -263,75 +262,6 @@ add_action('init', 'register_cpt_actualite');
 --------------------------------------------------------------*/
 
 if( function_exists('acf_add_local_field_group') ) {
-
-    // ============================================================
-    // GROUPE RÉUTILISABLE: Textes
-    // Peut être lié à plusieurs CPTs
-    // ============================================================
-    acf_add_local_field_group(array(
-        'key' => 'group_textes',
-        'title' => 'Textes',
-        'fields' => array(
-            array(
-                'key' => 'field_titre',
-                'label' => 'Titre',
-                'name' => 'titre',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_sous_titre',
-                'label' => 'Sous-titre',
-                'name' => 'sous_titre',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_paragraphe_1',
-                'label' => 'Paragraphe 1',
-                'name' => 'paragraphe_1',
-                'type' => 'textarea',
-                'rows' => 3,
-            ),
-            array(
-                'key' => 'field_paragraphe_2',
-                'label' => 'Paragraphe 2',
-                'name' => 'paragraphe_2',
-                'type' => 'textarea',
-                'rows' => 3,
-            ),
-            array(
-                'key' => 'field_paragraphe_3',
-                'label' => 'Paragraphe 3',
-                'name' => 'paragraphe_3',
-                'type' => 'textarea',
-                'rows' => 3,
-            ),
-            array(
-                'key' => 'field_paragraphe_4',
-                'label' => 'Paragraphe 4',
-                'name' => 'paragraphe_4',
-                'type' => 'textarea',
-                'rows' => 3,
-            ),
-            array(
-                'key' => 'field_paragraphe_5',
-                'label' => 'Paragraphe 5',
-                'name' => 'paragraphe_5',
-                'type' => 'textarea',
-                'rows' => 3,
-            ),
-        ),
-        'location' => array(
-            // Actualités
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'actualite',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-    ));
 
     // ============================================================
     // GROUPE: Slider - Contenu spécifique
@@ -1137,33 +1067,6 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
         ),
         'menu_order' => 0,
-    ));
-
-    // ============================================================
-    // GROUPE: Actualités - Champs spécifiques
-    // ============================================================
-    acf_add_local_field_group(array(
-        'key' => 'group_actualite',
-        'title' => 'Détails de l\'actualité',
-        'fields' => array(
-            array(
-                'key' => 'field_actualite_categorie',
-                'label' => 'Catégorie',
-                'name' => 'actualite_categorie',
-                'type' => 'text',
-                'instructions' => 'Ex: News, Activité, Événement',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'actualite',
-                ),
-            ),
-        ),
-        'menu_order' => 1,
     ));
 
     // ============================================================
@@ -2882,6 +2785,42 @@ if( function_exists('acf_add_local_field_group') ) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'page_benevole',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Champs Revue
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_revue',
+        'title' => 'Informations de la revue',
+        'fields' => array(
+            array(
+                'key' => 'field_revue_date',
+                'label' => 'Date de publication',
+                'name' => 'revue_date',
+                'type' => 'text',
+                'instructions' => 'Ex: Décembre 2025',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_revue_lien',
+                'label' => 'Lien PDF',
+                'name' => 'revue_lien',
+                'type' => 'url',
+                'instructions' => 'URL vers le fichier PDF ou la page de la revue',
+                'required' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'revue',
                 ),
             ),
         ),

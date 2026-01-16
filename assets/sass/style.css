@@ -6175,8 +6175,15 @@ Revues Section (page-revue.php)
     float: none;
   }
 }
+.revues-section .revue-card .img-holder {
+  height: 280px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
 .revues-section .revue-card img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px 8px 0 0;
 }
 .revues-section .details {
