@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Typhus | Fanal Academy</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <style>
+        :root {
+            --quiz-primary: #6f42c1;
+            --quiz-secondary: #070143;
+        }
+        .quiz-header {
+            background: linear-gradient(135deg, var(--quiz-primary) 0%, #5a32a3 100%);
+        }
+        .quiz-btn.selected {
+            background-color: var(--quiz-primary);
+            border-color: var(--quiz-primary);
+        }
+        .quiz-progress-bar {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn, .quiz-submit-btn, .quiz-restart-btn {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn:hover, .quiz-submit-btn:hover, .quiz-restart-btn:hover {
+            background-color: #5a32a3;
+        }
+        .quiz-result-score.excellent { color: #28a745; }
+        .quiz-result-score.good { color: var(--quiz-primary); }
+        .quiz-result-score.average { color: #ffc107; }
+        .quiz-result-score.poor { color: #dc3545; }
+        .infection-badge {
+            display: inline-block;
+            background: var(--quiz-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning-box strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="quiz-header">
+            <a href="index.html" class="quiz-back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Retour à Fanal Academy
+            </a>
+            <h1 class="quiz-title">Quiz Typhus</h1>
+            <p class="quiz-subtitle">Protocole spécifique - Panleucopénie féline</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="quiz-content">
+            <!-- Introduction -->
+            <div class="quiz-intro" id="quizIntro">
+                <div class="quiz-intro-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </div>
+                <h2 class="quiz-intro-title">Protocole Typhus (Panleucopénie)</h2>
+                <p class="quiz-intro-text">
+                    Le Typhus félin (Panleucopénie) est une maladie virale EXTRÊMEMENT grave et contagieuse.
+                    Ce quiz teste vos connaissances sur ce protocole d'urgence.
+                    <strong>Rappel crucial : la JAVEL est le SEUL désinfectant efficace contre le Typhus.</strong>
+                </p>
+                <div class="warning-box">
+                    <strong>IMPORTANT :</strong> Contrairement aux autres infections (Giardia, Teigne, Gale),
+                    le Typhus nécessite l'utilisation de l'EAU DE JAVEL et non du C.I.D.20.
+                </div>
+                <div class="quiz-intro-details">
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">10 questions</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">3 minutes</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">Désinfectant : EAU DE JAVEL</span>
+                    </div>
+                </div>
+                <button class="quiz-start-btn" id="startQuiz">
+                    Commencer le Quiz
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Quiz Form -->
+            <form class="quiz-form" id="quizForm" style="display: none;">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="quiz-timer" id="quizTimer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span id="timerDisplay">3:00</span>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div class="quiz-navigation">
+                    <button type="button" class="quiz-prev-btn" id="prevBtn" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Précédent
+                    </button>
+                    <button type="button" class="quiz-next-btn" id="nextBtn">
+                        Suivant
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button type="submit" class="quiz-submit-btn" id="submitBtn" style="display: none;">
+                        Terminer le Quiz
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Screen -->
+            <div class="quiz-loading" id="quizLoading" style="display: none;">
+                <div class="quiz-loading-spinner"></div>
+                <p class="quiz-loading-text">Analyse de vos réponses...</p>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="quiz-result-header">
+                    <div class="quiz-result-icon" id="resultIcon"></div>
+                    <h2 class="quiz-result-title" id="resultTitle"></h2>
+                    <p class="quiz-result-score" id="resultScore"></p>
+                </div>
+                <div class="quiz-result-details" id="resultDetails"></div>
+                <div class="quiz-result-actions">
+                    <button class="quiz-restart-btn" id="restartQuiz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 2v6h6M21.5 22v-6h-6"/>
+                            <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2"/>
+                        </svg>
+                        Recommencer
+                    </button>
+                    <a href="index.html" class="quiz-home-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const QUESTIONS_DATA = {
+            1: {
+                question: "Qu'est-ce que le Typhus félin (Panleucopénie) ?",
+                answers: {
+                    a: "Une maladie virale causée par un parvovirus",
+                    b: "Un champignon dermatophyte très contagieux",
+                    c: "Une infection bactérienne intestinale",
+                    d: "Une infestation parasitaire par des acariens"
+                },
+                correct: "a",
+                explanation: "Le Typhus félin (ou Panleucopénie) est une maladie virale grave causée par un parvovirus. Il attaque les cellules à division rapide (moelle osseuse, intestins) et peut être mortel, surtout chez les jeunes chats."
+            },
+            2: {
+                question: "Quel est le SEUL désinfectant efficace contre le virus du Typhus ?",
+                answers: {
+                    a: "Le C.I.D.20, comme pour les autres infections",
+                    b: "Le Dettol utilisé en nettoyage quotidien",
+                    c: "L'alcool 70° avec temps de contact prolongé",
+                    d: "L'eau de Javel à concentration appropriée"
+                },
+                correct: "d",
+                explanation: "L'eau de Javel est le SEUL désinfectant efficace contre le parvovirus du Typhus. Le C.I.D.20, bien qu'efficace contre la Giardia, la Teigne et la Gale, ne détruit PAS le virus du Typhus. C'est l'unique exception au refuge."
+            },
+            3: {
+                question: "Quelle est la dilution correcte de l'eau de Javel pour le Typhus ?",
+                answers: {
+                    a: "Pure, non diluée pour une efficacité maximale",
+                    b: "1:32 (environ 3% de chlore actif)",
+                    c: "1:100 (très diluée, moins agressive)",
+                    d: "1:10 (concentration forte)"
+                },
+                correct: "b",
+                explanation: "La Javel doit être diluée à 1:32 (1 part de Javel pour 32 parts d'eau), soit environ 3% de chlore actif. Cette concentration est efficace contre le virus tout en étant utilisable sur les surfaces. Pure, elle serait trop corrosive."
+            },
+            4: {
+                question: "Combien de temps le virus du Typhus peut-il survivre dans l'environnement ?",
+                answers: {
+                    a: "Quelques heures seulement",
+                    b: "1 à 2 semaines maximum",
+                    c: "Plusieurs mois, voire jusqu'à 1 an",
+                    d: "Il ne survit pas hors de l'hôte"
+                },
+                correct: "c",
+                explanation: "Le parvovirus du Typhus est EXTRÊMEMENT résistant : il peut survivre plusieurs mois (jusqu'à 1 an) dans l'environnement à température ambiante. C'est pourquoi la désinfection à la Javel est absolument indispensable."
+            },
+            5: {
+                question: "Quels sont les principaux symptômes du Typhus chez le chat ?",
+                answers: {
+                    a: "Perte de poils en plaques et démangeaisons",
+                    b: "Lésions croûteuses sur la tête et les oreilles",
+                    c: "Éternuements et écoulement nasal uniquement",
+                    d: "Vomissements, diarrhée sévère, fièvre et abattement"
+                },
+                correct: "d",
+                explanation: "Le Typhus provoque des symptômes digestifs sévères (vomissements, diarrhée hémorragique), de la fièvre élevée, un abattement profond et une déshydratation. Sans traitement, le taux de mortalité est très élevé, surtout chez les chatons."
+            },
+            6: {
+                question: "Quel est le temps de contact minimum pour que la Javel soit efficace contre le Typhus ?",
+                answers: {
+                    a: "Au moins 10 minutes",
+                    b: "30 secondes suffisent",
+                    c: "2 à 3 minutes",
+                    d: "1 heure minimum"
+                },
+                correct: "a",
+                explanation: "Pour éliminer le parvovirus du Typhus, la Javel diluée à 1:32 doit rester en contact avec la surface pendant au moins 10 minutes. Un temps de contact insuffisant ne garantit pas l'élimination du virus."
+            },
+            7: {
+                question: "Pourquoi le C.I.D.20 n'est-il PAS efficace contre le Typhus ?",
+                answers: {
+                    a: "Il est trop cher pour une utilisation massive",
+                    b: "Il est réservé aux infections fongiques uniquement",
+                    c: "Le parvovirus est résistant aux désinfectants non-chlorés",
+                    d: "Il a une odeur trop forte pour les chats"
+                },
+                correct: "c",
+                explanation: "Le parvovirus du Typhus possède une structure très résistante (capside non-enveloppée) qui le rend insensible à la plupart des désinfectants. Seul le chlore de la Javel peut détruire cette structure virale."
+            },
+            8: {
+                question: "Quelle précaution spéciale doit-on prendre avec la Javel lors de son utilisation ?",
+                answers: {
+                    a: "La mélanger avec du vinaigre pour augmenter son efficacité",
+                    b: "L'appliquer sur surfaces sales sans pré-nettoyage",
+                    c: "L'utiliser uniquement à chaud pour plus d'efficacité",
+                    d: "Bien rincer après usage car résidus toxiques pour les chats"
+                },
+                correct: "d",
+                explanation: "Après désinfection à la Javel, il est ESSENTIEL de bien rincer les surfaces car les résidus de chlore peuvent être toxiques pour les chats. De plus, la Javel doit être appliquée sur surfaces propres (pré-nettoyage) pour être efficace."
+            },
+            9: {
+                question: "Lors d'un cas suspect de Typhus, quelle est la première mesure à prendre ?",
+                answers: {
+                    a: "Attendre la confirmation vétérinaire avant d'agir",
+                    b: "Isolement IMMÉDIAT en zone rouge et alerte du responsable",
+                    c: "Désinfecter immédiatement tout le refuge à la Javel",
+                    d: "Administrer un traitement préventif aux autres chats"
+                },
+                correct: "b",
+                explanation: "Face à un cas suspect de Typhus, l'ISOLEMENT IMMÉDIAT en zone rouge (quarantaine) est la priorité absolue, ainsi que l'alerte du responsable. Le Typhus étant extrêmement contagieux et potentiellement mortel, chaque minute compte."
+            },
+            10: {
+                question: "Pourquoi le Typhus est-il particulièrement dangereux pour les chatons ?",
+                answers: {
+                    a: "Les chatons sont plus sensibles à l'odeur de la Javel",
+                    b: "Le virus ne touche que les chatons, pas les adultes",
+                    c: "Leur système immunitaire immature ne peut pas combattre le virus",
+                    d: "Les chatons ne peuvent pas être vaccinés"
+                },
+                correct: "c",
+                explanation: "Les chatons ont un système immunitaire immature qui ne peut pas efficacement combattre le parvovirus. De plus, le virus cible les cellules à division rapide, très actives chez les jeunes animaux. Le taux de mortalité chez les chatons non vaccinés peut atteindre 90%."
+            }
+        };
+
+        $(document).ready(function() {
+            let currentStep = 1;
+            const totalSteps = Object.keys(QUESTIONS_DATA).length;
+            let timerInterval;
+            let timeRemaining = 180; // 3 minutes
+            let userAnswers = {};
+
+            function generateQuestions() {
+                let html = '';
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    html += `
+                        <fieldset class="quiz-step" id="step${i}" style="display: ${i === 1 ? 'block' : 'none'};">
+                            <div class="quiz-question-header">
+                                <span class="quiz-question-number">Question ${i}/${totalSteps}</span>
+                            </div>
+                            <h3 class="quiz-question-title">${q.question}</h3>
+                            <div class="quiz-options">
+                                ${Object.entries(q.answers).map(([key, value]) => `
+                                    <button type="button" class="quiz-btn" data-question="${i}" data-answer="${key}">
+                                        <span class="quiz-btn-letter">${key.toUpperCase()}</span>
+                                        <span class="quiz-btn-text">${value}</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div class="quiz-error" id="error${i}" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Veuillez sélectionner une réponse
+                            </div>
+                        </fieldset>
+                    `;
+                }
+                $('#questionsContainer').html(html);
+            }
+
+            $('#startQuiz').click(function() {
+                $('#quizIntro').hide();
+                $('#quizForm').show();
+                generateQuestions();
+                startTimer();
+            });
+
+            function startTimer() {
+                updateTimerDisplay();
+                timerInterval = setInterval(function() {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval);
+                        submitQuiz();
+                    }
+                }, 1000);
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                $('#timerDisplay').text(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+                if (timeRemaining <= 30) {
+                    $('#quizTimer').css('color', '#dc3545');
+                }
+            }
+
+            $(document).on('click', '.quiz-btn', function() {
+                const question = $(this).data('question');
+                const answer = $(this).data('answer');
+                $(`[data-question="${question}"]`).removeClass('selected');
+                $(this).addClass('selected');
+                userAnswers[question] = answer;
+                $(`#error${question}`).hide();
+            });
+
+            $('#nextBtn').click(function() {
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                if (currentStep < totalSteps) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep++;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            $('#prevBtn').click(function() {
+                if (currentStep > 1) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep--;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            function updateProgress() {
+                const progress = (currentStep / totalSteps) * 100;
+                $('#progressBar').css('width', progress + '%');
+            }
+
+            function updateNavigation() {
+                $('#prevBtn').toggle(currentStep > 1);
+                $('#nextBtn').toggle(currentStep < totalSteps);
+                $('#submitBtn').toggle(currentStep === totalSteps);
+            }
+
+            $('#quizForm').submit(function(e) {
+                e.preventDefault();
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                clearInterval(timerInterval);
+                $('#quizForm').hide();
+                $('#quizLoading').show();
+                setTimeout(function() {
+                    showResults();
+                }, 1500);
+            }
+
+            function showResults() {
+                $('#quizLoading').hide();
+                $('#quizResults').show();
+
+                let correctCount = 0;
+                let detailsHtml = '';
+
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    const userAnswer = userAnswers[i] || 'Non répondu';
+                    const isCorrect = userAnswer === q.correct;
+                    if (isCorrect) correctCount++;
+
+                    detailsHtml += `
+                        <div class="quiz-result-item ${isCorrect ? 'correct' : 'incorrect'}">
+                            <div class="quiz-result-item-header">
+                                <span class="quiz-result-item-number">Q${i}</span>
+                                <span class="quiz-result-item-status">
+                                    ${isCorrect ?
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' :
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                                    }
+                                </span>
+                            </div>
+                            <p class="quiz-result-item-question">${q.question}</p>
+                            <p class="quiz-result-item-answer">
+                                Votre réponse : <strong>${userAnswer !== 'Non répondu' ? q.answers[userAnswer] : 'Non répondu'}</strong>
+                                ${!isCorrect ? `<br>Bonne réponse : <strong class="correct-answer">${q.answers[q.correct]}</strong>` : ''}
+                            </p>
+                            <p class="quiz-result-item-explanation">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                const percentage = Math.round((correctCount / totalSteps) * 100);
+                let title, scoreClass, icon;
+
+                if (percentage >= 90) {
+                    title = "Expert Typhus !";
+                    scoreClass = "excellent";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>';
+                } else if (percentage >= 70) {
+                    title = "Bonnes connaissances";
+                    scoreClass = "good";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                } else if (percentage >= 50) {
+                    title = "À réviser";
+                    scoreClass = "average";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+                } else {
+                    title = "Formation requise";
+                    scoreClass = "poor";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                }
+
+                $('#resultIcon').html(icon);
+                $('#resultTitle').text(title);
+                $('#resultScore').html(`<span class="${scoreClass}">${correctCount}/${totalSteps}</span> (${percentage}%)`);
+                $('#resultDetails').html(detailsHtml);
+            }
+
+            $('#restartQuiz').click(function() {
+                currentStep = 1;
+                timeRemaining = 180;
+                userAnswers = {};
+                $('#quizResults').hide();
+                $('#quizIntro').show();
+                $('#progressBar').css('width', '0%');
+                $('#quizTimer').css('color', '');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Hygiène Bénévoles - Fanal Academy</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Quiz Styles -->
+    <link rel="stylesheet" href="../../assets/css/quiz-adoption.css">
+
+    <style>
+        /* Override pour thème Academy */
+        .quiz-header {
+            background: linear-gradient(135deg, #FF5B2E 0%, #ff3b05 100%);
+        }
+        .btn-back {
+            background: rgba(255,255,255,0.2);
+        }
+        .btn-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body class="quiz-adoption-page">
+
+    <!-- Header -->
+    <header class="quiz-header">
+        <div class="container">
+            <a href="index.html" class="quiz-logo">
+                <img src="../../assets/images/images/logo.gif" alt="Fanal Academy">
+            </a>
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour Academy
+            </a>
+        </div>
+    </header>
+
+    <main class="quiz-main overflow-hidden">
+        <!-- Compteur -->
+        <div class="counterContainer">
+            <svg class="counter">
+                <circle cx="50%" cy="50%" r="70" />
+            </svg>
+            <span id="countdown-timer">180</span>
+        </div>
+
+        <!-- Introduction -->
+        <section class="quiz-intro" id="quizIntro">
+            <div class="container text-center">
+                <div class="intro-content">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/7_pretty cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <h1>Quiz Hygiène Bénévoles</h1>
+                    <p class="lead">Testez vos connaissances sur les protocoles d'hygiène au Fanal des Chats !</p>
+                    <p>Ce quiz de 15 questions évaluera :</p>
+                    <ul class="intro-list">
+                        <li><i class="fas fa-broom"></i> Nettoyage quotidien</li>
+                        <li><i class="fas fa-shield-virus"></i> Principe du biofilm</li>
+                        <li><i class="fas fa-hard-hat"></i> Équipements EPI</li>
+                        <li><i class="fas fa-spray-can"></i> Utilisation produits</li>
+                    </ul>
+                    <button type="button" class="btn-start" id="startQuiz">
+                        Commencer le quiz <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Questions du Quiz -->
+        <section class="steps" id="quizSteps" style="display: none;">
+            <form novalidate onsubmit="return false" id="stepForm" class="show-section">
+
+                <!-- Question 1 -->
+                <fieldset id="step1">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/3_cute cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 1/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q1" value="a">
+                            <label>Un film plastique pour couvrir les cages</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q1" value="b">
+                            <label>Une technique de nettoyage à sec</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q1" value="c">
+                            <label>Une matrice protectrice créée par les microbes sur les surfaces</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q1" value="d">
+                            <label>Un type de désinfectant liquide</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Qu'est-ce que le biofilm ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="1"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 2 -->
+                <fieldset id="step2">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/4_playful cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 2/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q2" value="a">
+                            <label>100% si on utilise de l'eau chaude</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q2" value="b">
+                            <label>70 à 90%</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q2" value="c">
+                            <label>30 à 50%</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q2" value="d">
+                            <label>Moins de 20%</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel pourcentage de microbes élimine un bon nettoyage mécanique ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="2"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 3 -->
+                <fieldset id="step3">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/5_little cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 3/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q3" value="a">
+                            <label>Trempage, Application, Contrôle, Traitement</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q3" value="b">
+                            <label>Technique, Asepsie, Concentration, Test</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q3" value="c">
+                            <label>Température, Action mécanique, Concentration, Temps</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q3" value="d">
+                            <label>Toucher, Analyser, Compter, Trier</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Que signifie l'acronyme TACT (Cercle de Sinner) ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="3"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 4 -->
+                <fieldset id="step4">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/6_kitten.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 4/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q4" value="a">
+                            <label>C.I.D.20</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q4" value="b">
+                            <label>Eau de Javel diluée</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q4" value="c">
+                            <label>Dettol</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q4" value="d">
+                            <label>Alcool à 90°</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel produit utilise-t-on pour le nettoyage quotidien au Fanal des Chats ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="4"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 5 -->
+                <fieldset id="step5">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/8_meaow.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 5/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q5" value="a">
+                            <label>Désinfecter d'abord, puis nettoyer ensuite</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q5" value="b">
+                            <label>Nettoyer et désinfecter simultanément avec un produit 2-en-1</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q5" value="c">
+                            <label>Désinfecter directement sans nettoyage préalable</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q5" value="d">
+                            <label>Nettoyer d'abord, puis désinfecter après</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel est l'ordre correct pour les procédures d'hygiène ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="5"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 6 -->
+                <fieldset id="step6">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/9_shocked cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 6/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q6" value="a">
+                            <label>Un masque FFP2 uniquement</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q6" value="b">
+                            <label>Des gants en latex uniquement</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q6" value="c">
+                            <label>Gants, lunettes de protection et tablier</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q6" value="d">
+                            <label>Aucun équipement n'est nécessaire avec les produits modernes</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quels EPI sont obligatoires lors de la manipulation des produits d'hygiène ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="6"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 7 -->
+                <fieldset id="step7">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/10_naughty cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 7/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q7" value="a">
+                            <label>Vrai - Le désinfectant pénètre le biofilm si on augmente la concentration</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q7" value="b">
+                            <label>Vrai - Il suffit de laisser agir plus longtemps</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q7" value="c">
+                            <label>Faux - Le biofilm est imperméable, seule l'action mécanique peut le rompre</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q7" value="d">
+                            <label>Vrai - Les désinfectants modernes dissolvent le biofilm</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Vrai ou Faux : Un désinfectant seul peut éliminer le biofilm</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="7"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 8 -->
+                <fieldset id="step8">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/11_fat cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 8/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q8" value="a">
+                            <label>Elle n'a pas d'impact significatif sur l'hygiène</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q8" value="b">
+                            <label>Elle sert de nourriture aux microbes et favorise leur multiplication</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q8" value="c">
+                            <label>Elle aide les désinfectants à mieux agir</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q8" value="d">
+                            <label>Elle protège les surfaces du refuge</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Pourquoi la matière organique (salissures) est-elle dangereuse ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="8"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 9 -->
+                <fieldset id="step9">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/13_sleeping cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 9/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q9" value="a">
+                            <label>Un jet d'eau à haute pression</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q9" value="b">
+                            <label>Un désinfectant concentré appliqué longtemps</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q9" value="c">
+                            <label>De l'eau très chaude seule</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q9" value="d">
+                            <label>L'action mécanique d'une brosse combinée à un détergent</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Qu'est-ce qui permet de casser efficacement le biofilm ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="9"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 10 -->
+                <fieldset id="step10">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/14_orange cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 10/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q10" value="a">
+                            <label>Dès que les surfaces sont encore légèrement humides</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q10" value="b">
+                            <label>Immédiatement après le rinçage final</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q10" value="c">
+                            <label>Uniquement après séchage complet des surfaces</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q10" value="d">
+                            <label>Pendant le temps d'action du désinfectant</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quand peut-on réintroduire les chats après nettoyage-désinfection ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="10"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 11 -->
+                <fieldset id="step11">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/15_tabby.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 11/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q11" value="a">
+                            <label>Oui, cela permet de gagner du temps le lendemain</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q11" value="b">
+                            <label>Oui, si on le conserve au réfrigérateur</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q11" value="c">
+                            <label>Oui, jusqu'à 48h si le contenant est bien fermé</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q11" value="d">
+                            <label>Non, il perd son efficacité et doit être préparé extemporanément</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Peut-on préparer un désinfectant dilué la veille de son utilisation ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="11"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 12 -->
+                <fieldset id="step12">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/17_gray cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 12/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q12" value="a">
+                            <label>Pour des raisons esthétiques uniquement</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q12" value="b">
+                            <label>Pour économiser l'eau et les produits</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q12" value="c">
+                            <label>Parce que les microbes se multiplient dans l'humidité</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q12" value="d">
+                            <label>Le séchage n'est pas particulièrement important</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Pourquoi le séchage rapide des surfaces est-il important ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="12"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 13 -->
+                <fieldset id="step13">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/18_brown cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 13/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q13" value="a">
+                            <label>Oui, si on la désinfecte bien entre chaque zone</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q13" value="b">
+                            <label>Oui, pour des raisons économiques</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q13" value="c">
+                            <label>Oui, si on commence par les zones les plus propres</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q13" value="d">
+                            <label>Non, chaque zone a son propre matériel dédié (code couleur)</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Peut-on utiliser la même brosse pour différentes zones du refuge ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="13"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 14 -->
+                <fieldset id="step14">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/19_cute gray cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 14/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q14" value="a">
+                            <label>L'eau de Javel diluée</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q14" value="b">
+                            <label>Le Dettol concentré</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q14" value="c">
+                            <label>Le C.I.D.20</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q14" value="d">
+                            <label>Le vinaigre blanc</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel produit utilise-t-on pour désinfecter en cas de Giardia ou Teigne ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="14"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <!-- Question 15 -->
+                <fieldset id="step15">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/22_cartoon cat.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="question-number">Question 15/15</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate">
+                            <input type="radio" name="q15" value="a">
+                            <label>Désinfection, Nettoyage, Rinçage, Séchage</label>
+                        </div>
+                        <div class="option animate delay-100">
+                            <input type="radio" name="q15" value="b">
+                            <label>Rangement, Nettoyage, Rinçage, Séchage, Entretien matériel</label>
+                        </div>
+                        <div class="option animate delay-200">
+                            <input type="radio" name="q15" value="c">
+                            <label>Rinçage, Désinfection, Nettoyage, Séchage</label>
+                        </div>
+                        <div class="option animate delay-300">
+                            <input type="radio" name="q15" value="d">
+                            <label>Nettoyage rapide au jet d'eau uniquement</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelles sont les étapes du nettoyage quotidien dans l'ordre correct ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="apply" type="button" id="submitQuiz"><i class="fa-solid fa-check"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+            </form>
+        </section>
+    </main>
+
+    <!-- Ecran de chargement -->
+    <div class="loadingresult">
+        <div class="loading-content">
+            <div class="loading-cat">
+                <i class="fas fa-cat"></i>
+            </div>
+            <p>Analyse de vos réponses...</p>
+        </div>
+    </div>
+
+    <!-- Page de résultats -->
+    <div class="result_page">
+        <div class="result_inner">
+            <div class="result_content">
+                <header class="resultheader">
+                    <i class="fas fa-clipboard-check"></i>
+                    Vos Résultats
+                </header>
+
+                <div class="result_msg">
+                    <img src="../../assets/images/quiz/check.png" alt="succes">
+                    <span class="result_msg_text">Bravo !</span>
+                </div>
+
+                <span class="score-label">Votre score</span>
+                <div class="u_prcnt">0%</div>
+
+                <div class="prcnt_bar">
+                    <div class="fill"></div>
+                </div>
+                <div class="prcnt_bar_lvl">-</div>
+
+                <div class="lvl_overview">
+                    <div class="lvl-single">
+                        <div class="lvl-color low"></div>
+                        <div class="lvl-name">À revoir<br><small>0-49%</small></div>
+                    </div>
+                    <div class="lvl-single">
+                        <div class="lvl-color medium"></div>
+                        <div class="lvl-name">Bien<br><small>50-79%</small></div>
+                    </div>
+                    <div class="lvl-single">
+                        <div class="lvl-color high"></div>
+                        <div class="lvl-name">Excellent<br><small>80-100%</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result_right">
+                <div class="result_advice">
+                    <h3><i class="fas fa-lightbulb"></i> Conseils</h3>
+                    <p class="advice_text"></p>
+                </div>
+
+                <footer class="resultfooter">
+                    <a href="index.html" class="btn-adopt">
+                        <i class="fas fa-arrow-left"></i> Retour Academy
+                    </a>
+                    <button type="button" class="btn-see-errors" id="seeErrorsBtn">
+                        <i class="fas fa-arrow-down"></i> Voir mes erreurs
+                    </button>
+                    <button type="button" class="btn-retry" onclick="location.reload()">
+                        <i class="fas fa-redo"></i> Refaire le quiz
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="errors-section" id="errorsSection">
+            <h2 class="errors-title"><i class="fas fa-times-circle"></i> Vos erreurs</h2>
+            <div class="errors-list" id="errorsList"></div>
+        </div>
+    </div>
+
+    <div id="error"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    /**
+     * Quiz Hygiène Bénévoles - JavaScript
+     * Fanal Academy
+     */
+    (function($) {
+        'use strict';
+
+        const TOTAL_QUESTIONS = 15;
+        const TIME_LIMIT = 180;
+
+        const QUESTIONS_DATA = {
+            q1: {
+                question: "Qu'est-ce que le biofilm ?",
+                answers: {
+                    a: "Un film plastique pour couvrir les cages",
+                    b: "Une technique de nettoyage à sec",
+                    c: "Une matrice protectrice créée par les microbes sur les surfaces",
+                    d: "Un type de désinfectant liquide"
+                },
+                correct: "c",
+                explanation: "Le biofilm est une matrice protectrice créée par les microbes pour se protéger des agressions extérieures. Il rend les désinfectants inefficaces s'il n'est pas d'abord rompu par une action mécanique."
+            },
+            q2: {
+                question: "Quel pourcentage de microbes élimine un bon nettoyage mécanique ?",
+                answers: { a: "100% si on utilise de l'eau chaude", b: "70 à 90%", c: "30 à 50%", d: "Moins de 20%" },
+                correct: "b",
+                explanation: "Un nettoyage mécanique bien mené permet d'éliminer 70 à 90% des microbes présents sur les surfaces. La désinfection complète le travail pour atteindre près de 100%."
+            },
+            q3: {
+                question: "Que signifie l'acronyme TACT (Cercle de Sinner) ?",
+                answers: {
+                    a: "Trempage, Application, Contrôle, Traitement",
+                    b: "Technique, Asepsie, Concentration, Test",
+                    c: "Température, Action mécanique, Concentration, Temps",
+                    d: "Toucher, Analyser, Compter, Trier"
+                },
+                correct: "c",
+                explanation: "TACT = Température + Action mécanique + Concentration du produit + Temps de contact. Ce sont les 4 paramètres interdépendants du Cercle de Sinner qui déterminent l'efficacité du nettoyage."
+            },
+            q4: {
+                question: "Quel produit utilise-t-on pour le nettoyage quotidien au Fanal des Chats ?",
+                answers: { a: "C.I.D.20", b: "Eau de Javel diluée", c: "Dettol", d: "Alcool à 90°" },
+                correct: "c",
+                explanation: "Le Dettol est le détergent utilisé pour le nettoyage quotidien au Fanal des Chats. Le C.I.D.20 est réservé à la désinfection en cas d'infections."
+            },
+            q5: {
+                question: "Quel est l'ordre correct pour les procédures d'hygiène ?",
+                answers: {
+                    a: "Désinfecter d'abord, puis nettoyer ensuite",
+                    b: "Nettoyer et désinfecter simultanément avec un produit 2-en-1",
+                    c: "Désinfecter directement sans nettoyage préalable",
+                    d: "Nettoyer d'abord, puis désinfecter après"
+                },
+                correct: "d",
+                explanation: "On doit TOUJOURS nettoyer avant de désinfecter. La désinfection sans nettoyage préalable est inefficace car le biofilm et les salissures protègent les microbes."
+            },
+            q6: {
+                question: "Quels EPI sont obligatoires lors de la manipulation des produits d'hygiène ?",
+                answers: {
+                    a: "Un masque FFP2 uniquement",
+                    b: "Des gants en latex uniquement",
+                    c: "Gants, lunettes de protection et tablier",
+                    d: "Aucun équipement n'est nécessaire avec les produits modernes"
+                },
+                correct: "c",
+                explanation: "Les EPI obligatoires comprennent les gants, lunettes de protection et tablier pour se protéger des projections et du contact avec les produits chimiques."
+            },
+            q7: {
+                question: "Vrai ou Faux : Un désinfectant seul peut éliminer le biofilm",
+                answers: {
+                    a: "Vrai - Le désinfectant pénètre le biofilm si on augmente la concentration",
+                    b: "Vrai - Il suffit de laisser agir plus longtemps",
+                    c: "Faux - Le biofilm est imperméable, seule l'action mécanique peut le rompre",
+                    d: "Vrai - Les désinfectants modernes dissolvent le biofilm"
+                },
+                correct: "c",
+                explanation: "FAUX. Le biofilm est une barrière imperméable aux désinfectants. Seule une action mécanique (brosse + détergent) peut le rompre et permettre ensuite une désinfection efficace."
+            },
+            q8: {
+                question: "Pourquoi la matière organique (salissures) est-elle dangereuse ?",
+                answers: {
+                    a: "Elle n'a pas d'impact significatif sur l'hygiène",
+                    b: "Elle sert de nourriture aux microbes et favorise leur multiplication",
+                    c: "Elle aide les désinfectants à mieux agir",
+                    d: "Elle protège les surfaces du refuge"
+                },
+                correct: "b",
+                explanation: "Les matières organiques (urine, excréments, restes de nourriture) servent de nourriture aux microbes et leur permettent de se multiplier rapidement. C'est pourquoi leur élimination est prioritaire."
+            },
+            q9: {
+                question: "Qu'est-ce qui permet de casser efficacement le biofilm ?",
+                answers: {
+                    a: "Un jet d'eau à haute pression",
+                    b: "Un désinfectant concentré appliqué longtemps",
+                    c: "De l'eau très chaude seule",
+                    d: "L'action mécanique d'une brosse combinée à un détergent"
+                },
+                correct: "d",
+                explanation: "L'action mécanique d'une brosse combinée à un détergent est le seul moyen efficace de rompre le biofilm. Le jet d'eau seul ne suffit pas et peut même disperser les microbes."
+            },
+            q10: {
+                question: "Quand peut-on réintroduire les chats après nettoyage-désinfection ?",
+                answers: {
+                    a: "Dès que les surfaces sont encore légèrement humides",
+                    b: "Immédiatement après le rinçage final",
+                    c: "Uniquement après séchage complet des surfaces",
+                    d: "Pendant le temps d'action du désinfectant"
+                },
+                correct: "c",
+                explanation: "Les animaux ne peuvent être réintroduits qu'après séchage COMPLET des surfaces pour leur sécurité, afin d'éviter tout contact avec les résidus de produits."
+            },
+            q11: {
+                question: "Peut-on préparer un désinfectant dilué la veille de son utilisation ?",
+                answers: {
+                    a: "Oui, cela permet de gagner du temps le lendemain",
+                    b: "Oui, si on le conserve au réfrigérateur",
+                    c: "Oui, jusqu'à 48h si le contenant est bien fermé",
+                    d: "Non, il perd son efficacité et doit être préparé extemporanément"
+                },
+                correct: "d",
+                explanation: "NON. Un désinfectant dilué perd rapidement son efficacité avec le temps. Il doit être préparé extemporanément, c'est-à-dire au moment de son utilisation."
+            },
+            q12: {
+                question: "Pourquoi le séchage rapide des surfaces est-il important ?",
+                answers: {
+                    a: "Pour des raisons esthétiques uniquement",
+                    b: "Pour économiser l'eau et les produits",
+                    c: "Parce que les microbes se multiplient dans l'humidité",
+                    d: "Le séchage n'est pas particulièrement important"
+                },
+                correct: "c",
+                explanation: "Les microbes adorent les environnements humides où ils se multiplient rapidement. Un séchage rapide des surfaces empêche cette prolifération et maintient l'efficacité du nettoyage."
+            },
+            q13: {
+                question: "Peut-on utiliser la même brosse pour différentes zones du refuge ?",
+                answers: {
+                    a: "Oui, si on la désinfecte bien entre chaque zone",
+                    b: "Oui, pour des raisons économiques",
+                    c: "Oui, si on commence par les zones les plus propres",
+                    d: "Non, chaque zone a son propre matériel dédié (code couleur)"
+                },
+                correct: "d",
+                explanation: "NON. Chaque zone dispose de son propre matériel identifié par un code couleur (Rouge=Infirmerie, Bleu=Boxes accueil, Vert=Collectifs, Jaune=Extérieur) pour éviter les contaminations croisées."
+            },
+            q14: {
+                question: "Quel produit utilise-t-on pour désinfecter en cas de Giardia ou Teigne ?",
+                answers: { a: "L'eau de Javel diluée", b: "Le Dettol concentré", c: "Le C.I.D.20", d: "Le vinaigre blanc" },
+                correct: "c",
+                explanation: "Le C.I.D.20 est le désinfectant utilisé pour toutes les infections parasitaires et fongiques (Giardia, Teigne, Gale, Puces). Seul le Typhus nécessite l'eau de Javel."
+            },
+            q15: {
+                question: "Quelles sont les étapes du nettoyage quotidien dans l'ordre correct ?",
+                answers: {
+                    a: "Désinfection, Nettoyage, Rinçage, Séchage",
+                    b: "Rangement, Nettoyage, Rinçage, Séchage, Entretien matériel",
+                    c: "Rinçage, Désinfection, Nettoyage, Séchage",
+                    d: "Nettoyage rapide au jet d'eau uniquement"
+                },
+                correct: "b",
+                explanation: "L'ordre correct est : 1) Rangement/pré-nettoyage, 2) Nettoyage avec détergent et action mécanique, 3) Rinçage, 4) Séchage, 5) Entretien et rangement du matériel."
+            }
+        };
+
+        let currentStep = 0;
+        let timeRemaining = TIME_LIMIT;
+        let timerInterval = null;
+        let userAnswers = {};
+
+        const $intro = $('#quizIntro');
+        const $steps = $('#quizSteps');
+        const $startBtn = $('#startQuiz');
+        const $submitBtn = $('#submitQuiz');
+        const $counterContainer = $('.counterContainer');
+        const $countdownTimer = $('#countdown-timer');
+        const $svgCircle = $('.counter circle');
+        const $divs = $('#stepForm fieldset');
+
+        $(document).ready(function() {
+            init();
+        });
+
+        function init() {
+            $counterContainer.hide();
+            $divs.hide().first().show();
+
+            $startBtn.on('click', startQuiz);
+
+            $('.option input').on('click', function() {
+                $(this).closest('.options').find('.option').removeClass('selected');
+                $(this).parent().addClass('selected');
+            });
+
+            $('.next').on('click', function() {
+                const step = $(this).data('step');
+                handleNext(step);
+            });
+
+            $('.prev').on('click', handlePrev);
+            $submitBtn.on('click', handleSubmit);
+            $('#seeErrorsBtn').on('click', scrollToErrors);
+        }
+
+        function startQuiz() {
+            $intro.fadeOut(500, function() {
+                $steps.fadeIn(500);
+                $counterContainer.fadeIn(500);
+                startTimer();
+            });
+        }
+
+        function startTimer() {
+            const maxOffset = 440;
+            timerInterval = setInterval(function() {
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    handleTimeUp();
+                } else {
+                    timeRemaining--;
+                    $countdownTimer.text(timeRemaining);
+                    const offset = maxOffset - Math.floor((timeRemaining / TIME_LIMIT) * maxOffset);
+                    $svgCircle.css('stroke-dashoffset', offset);
+                    if (timeRemaining <= 30) $svgCircle.css('stroke', '#fd7e14');
+                    if (timeRemaining <= 10) $svgCircle.css('stroke', '#dc3545');
+                }
+            }, 1000);
+        }
+
+        function handleTimeUp() {
+            showError('Temps écoulé !');
+            setTimeout(calculateAndShowResults, 1500);
+        }
+
+        function handleNext(stepNumber) {
+            if (!validateStep(stepNumber)) {
+                showError('Veuillez sélectionner une réponse !');
+                return;
+            }
+            userAnswers['q' + stepNumber] = $(`#step${stepNumber} input:checked`).val();
+            $(`#step${stepNumber} .option`).removeClass('animate').addClass('animateReverse');
+            $(`#step${stepNumber} .question h2`).removeClass('animate').addClass('animateReverse');
+            setTimeout(nextStep, 400);
+        }
+
+        function handlePrev() {
+            if (currentStep > 0) prevStep();
+        }
+
+        function handleSubmit() {
+            if (!validateStep(TOTAL_QUESTIONS)) {
+                showError('Veuillez sélectionner une réponse !');
+                return;
+            }
+            userAnswers['q' + TOTAL_QUESTIONS] = $(`#step${TOTAL_QUESTIONS} input:checked`).val();
+            clearInterval(timerInterval);
+            calculateAndShowResults();
+        }
+
+        function nextStep() {
+            $divs.eq(currentStep).hide();
+            currentStep++;
+            if (currentStep < TOTAL_QUESTIONS) {
+                $divs.eq(currentStep).show();
+                updateProgressBar();
+                $(`#step${currentStep + 1} .option`).addClass('animate').removeClass('animateReverse');
+                $(`#step${currentStep + 1} .question h2`).addClass('animate').removeClass('animateReverse');
+            }
+        }
+
+        function prevStep() {
+            $divs.eq(currentStep).hide();
+            currentStep--;
+            $divs.eq(currentStep).show();
+            updateProgressBar();
+            $(`#step${currentStep + 1} .option`).addClass('animate').removeClass('animateReverse');
+            $(`#step${currentStep + 1} .question h2`).addClass('animate').removeClass('animateReverse');
+        }
+
+        function validateStep(stepNumber) {
+            return $(`#step${stepNumber} input:checked`).length > 0;
+        }
+
+        function updateProgressBar() {
+            const progress = (currentStep / TOTAL_QUESTIONS) * 100;
+            $('.question .fill').css('height', progress + '%');
+        }
+
+        function calculateAndShowResults() {
+            $('.loadingresult').css('display', 'grid');
+            setTimeout(function() {
+                let correctCount = 0;
+                for (const [q, answer] of Object.entries(userAnswers)) {
+                    if (QUESTIONS_DATA[q] && QUESTIONS_DATA[q].correct === answer) {
+                        correctCount++;
+                    }
+                }
+                const percentage = Math.round((correctCount / TOTAL_QUESTIONS) * 100);
+                displayResults(percentage, correctCount);
+            }, 1500);
+        }
+
+        function displayResults(percentage, correctCount) {
+            $('.u_prcnt').text(percentage + '%');
+            setTimeout(function() {
+                $('.prcnt_bar .fill').css('width', percentage + '%');
+            }, 500);
+
+            let level, color, message, advice;
+            if (percentage < 50) {
+                level = 'À revoir';
+                color = '#dc3545';
+                message = 'Formation nécessaire';
+                advice = "Votre score indique que les protocoles d'hygiène ne sont pas encore bien maîtrisés. Nous vous conseillons de relire le manuel PDF et de refaire le quiz. N'hésitez pas à demander une formation pratique au refuge.";
+            } else if (percentage < 80) {
+                level = 'Bien';
+                color = '#fd7e14';
+                message = 'Bon résultat !';
+                advice = "Vous avez de bonnes bases en hygiène. Quelques points restent à approfondir. Relisez les sections où vous avez fait des erreurs et refaites le quiz pour vous perfectionner.";
+            } else {
+                level = 'Excellent';
+                color = '#28a745';
+                message = 'Excellent !';
+                advice = "Félicitations ! Vous maîtrisez les protocoles d'hygiène du Fanal des Chats. Vous êtes prêt(e) à appliquer ces connaissances sur le terrain. Continuez ainsi !";
+            }
+
+            $('.u_prcnt, .prcnt_bar_lvl, .result_msg').css('color', color);
+            $('.prcnt_bar .fill').css('background-color', color);
+            $('.prcnt_bar_lvl').text(level);
+            $('.result_msg_text').text(message);
+            $('.advice_text').text(advice);
+
+            displayErrors();
+
+            setTimeout(function() {
+                $('.loadingresult').hide();
+                $('.result_page').addClass('result_page_show');
+            }, 500);
+        }
+
+        function displayErrors() {
+            const $errorsList = $('#errorsList');
+            $errorsList.empty();
+
+            let hasErrors = false;
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                const qKey = 'q' + i;
+                const userAnswer = userAnswers[qKey];
+                const qData = QUESTIONS_DATA[qKey];
+
+                if (userAnswer && qData && userAnswer !== qData.correct) {
+                    hasErrors = true;
+                    const errorHtml = `
+                        <div class="error-item">
+                            <div class="error-question-number">Question ${i}</div>
+                            <div class="error-question-text">${qData.question}</div>
+                            <div class="error-answers">
+                                <div class="error-your-answer">
+                                    <i class="fas fa-times"></i>
+                                    <span><strong>Votre réponse :</strong> ${qData.answers[userAnswer]}</span>
+                                </div>
+                                <div class="error-correct-answer">
+                                    <i class="fas fa-check"></i>
+                                    <span><strong>Bonne réponse :</strong> ${qData.answers[qData.correct]}</span>
+                                </div>
+                            </div>
+                            <div class="error-explanation">
+                                <strong><i class="fas fa-info-circle"></i> Explication :</strong> ${qData.explanation}
+                            </div>
+                        </div>
+                    `;
+                    $errorsList.append(errorHtml);
+                }
+            }
+
+            if (!hasErrors) {
+                $('#seeErrorsBtn').hide();
+                $('#errorsSection').hide();
+            } else {
+                $('#seeErrorsBtn').show();
+                $('#errorsSection').show();
+            }
+        }
+
+        function scrollToErrors() {
+            document.getElementById('errorsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            const $error = $('<div class="alert alert-danger reveal">' + message + '</div>');
+            $('#error').append($error);
+            setTimeout(function() {
+                $error.fadeOut(300, function() { $(this).remove(); });
+            }, 3000);
+        }
+    })(jQuery);
+    </script>
+
+</body>
+</html>

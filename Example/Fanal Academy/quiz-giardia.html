@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Giardia | Fanal Academy</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <style>
+        :root {
+            --quiz-primary: #17a2b8;
+            --quiz-secondary: #070143;
+        }
+        .quiz-header {
+            background: linear-gradient(135deg, var(--quiz-primary) 0%, #117a8b 100%);
+        }
+        .quiz-btn.selected {
+            background-color: var(--quiz-primary);
+            border-color: var(--quiz-primary);
+        }
+        .quiz-progress-bar {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn, .quiz-submit-btn, .quiz-restart-btn {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn:hover, .quiz-submit-btn:hover, .quiz-restart-btn:hover {
+            background-color: #117a8b;
+        }
+        .quiz-result-score.excellent { color: #28a745; }
+        .quiz-result-score.good { color: var(--quiz-primary); }
+        .quiz-result-score.average { color: #ffc107; }
+        .quiz-result-score.poor { color: #dc3545; }
+        .infection-badge {
+            display: inline-block;
+            background: var(--quiz-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="quiz-header">
+            <a href="index.html" class="quiz-back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Retour à Fanal Academy
+            </a>
+            <h1 class="quiz-title">Quiz Giardia</h1>
+            <p class="quiz-subtitle">Protocole spécifique - Infection parasitaire intestinale</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="quiz-content">
+            <!-- Introduction -->
+            <div class="quiz-intro" id="quizIntro">
+                <div class="quiz-intro-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#17a2b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h2 class="quiz-intro-title">Protocole Giardia</h2>
+                <p class="quiz-intro-text">
+                    La Giardia est une infection parasitaire intestinale très contagieuse. Ce quiz teste vos
+                    connaissances sur la reconnaissance des symptômes, les mesures d'hygiène spécifiques et
+                    l'utilisation correcte du C.I.D.20 pour la désinfection.
+                </p>
+                <div class="quiz-intro-details">
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">10 questions</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">3 minutes</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">Désinfectant : C.I.D.20</span>
+                    </div>
+                </div>
+                <button class="quiz-start-btn" id="startQuiz">
+                    Commencer le Quiz
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Quiz Form -->
+            <form class="quiz-form" id="quizForm" style="display: none;">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="quiz-timer" id="quizTimer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span id="timerDisplay">3:00</span>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div class="quiz-navigation">
+                    <button type="button" class="quiz-prev-btn" id="prevBtn" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Précédent
+                    </button>
+                    <button type="button" class="quiz-next-btn" id="nextBtn">
+                        Suivant
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button type="submit" class="quiz-submit-btn" id="submitBtn" style="display: none;">
+                        Terminer le Quiz
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Screen -->
+            <div class="quiz-loading" id="quizLoading" style="display: none;">
+                <div class="quiz-loading-spinner"></div>
+                <p class="quiz-loading-text">Analyse de vos réponses...</p>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="quiz-result-header">
+                    <div class="quiz-result-icon" id="resultIcon"></div>
+                    <h2 class="quiz-result-title" id="resultTitle"></h2>
+                    <p class="quiz-result-score" id="resultScore"></p>
+                </div>
+                <div class="quiz-result-details" id="resultDetails"></div>
+                <div class="quiz-result-actions">
+                    <button class="quiz-restart-btn" id="restartQuiz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 2v6h6M21.5 22v-6h-6"/>
+                            <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2"/>
+                        </svg>
+                        Recommencer
+                    </button>
+                    <a href="index.html" class="quiz-home-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const QUESTIONS_DATA = {
+            1: {
+                question: "Qu'est-ce que la Giardia ?",
+                answers: {
+                    a: "Un champignon dermatophyte comme celui de la teigne",
+                    b: "Une bactérie intestinale courante et bénigne",
+                    c: "Un parasite protozoaire intestinal unicellulaire",
+                    d: "Un virus respiratoire très contagieux"
+                },
+                correct: "c",
+                explanation: "La Giardia (Giardia duodenalis) est un parasite protozoaire qui infecte l'intestin grêle. C'est un organisme unicellulaire qui peut survivre longtemps dans l'environnement sous forme de kystes."
+            },
+            2: {
+                question: "Quel est le mode de transmission principal de la Giardia ?",
+                answers: {
+                    a: "Par voie oro-fécale (ingestion de kystes dans l'environnement contaminé)",
+                    b: "Par les puces qui transportent le parasite",
+                    c: "Par l'air sous forme d'aérosol",
+                    d: "Par contact direct peau à peau entre chats"
+                },
+                correct: "a",
+                explanation: "La Giardia se transmet par voie oro-fécale : le chat ingère des kystes présents dans l'environnement contaminé par les selles d'un animal infecté. L'eau et les surfaces souillées sont les principales sources de contamination."
+            },
+            3: {
+                question: "Quel est le symptôme le plus caractéristique de la Giardia chez le chat ?",
+                answers: {
+                    a: "Éternuements fréquents et écoulement nasal",
+                    b: "Perte de poils localisée en plaques",
+                    c: "Démangeaisons intenses au niveau des oreilles",
+                    d: "Diarrhée chronique, souvent malodorante et grasse"
+                },
+                correct: "d",
+                explanation: "La Giardia provoque principalement une diarrhée chronique, souvent malodorante avec un aspect graisseux (stéatorrhée). Les selles peuvent contenir du mucus. Certains chats peuvent être porteurs asymptomatiques."
+            },
+            4: {
+                question: "Quel désinfectant doit être utilisé pour éliminer les kystes de Giardia ?",
+                answers: {
+                    a: "Le Dettol, efficace contre tous les parasites",
+                    b: "L'eau de Javel diluée comme pour le Typhus",
+                    c: "Le C.I.D.20, spécifiquement efficace contre les kystes",
+                    d: "L'alcool 70° avec un temps de contact prolongé"
+                },
+                correct: "c",
+                explanation: "Le C.I.D.20 est le désinfectant de choix contre la Giardia. Il est efficace contre les kystes parasitaires qui sont résistants à de nombreux désinfectants courants. Le Dettol n'est pas suffisant."
+            },
+            5: {
+                question: "Combien de temps les kystes de Giardia peuvent-ils survivre dans un environnement humide ?",
+                answers: {
+                    a: "Quelques heures seulement, ils sont fragiles",
+                    b: "1-2 jours maximum sans hôte",
+                    c: "Une semaine au maximum",
+                    d: "Plusieurs semaines à plusieurs mois"
+                },
+                correct: "d",
+                explanation: "Les kystes de Giardia sont très résistants et peuvent survivre plusieurs semaines à plusieurs mois dans un environnement humide et frais. C'est pourquoi une désinfection rigoureuse avec le C.I.D.20 est essentielle."
+            },
+            6: {
+                question: "Quelle est la première mesure à prendre lors de la détection d'un cas de Giardia ?",
+                answers: {
+                    a: "Attendre les résultats de confirmation du laboratoire",
+                    b: "Traiter préventivement tous les chats du refuge",
+                    c: "Isoler immédiatement le chat infecté et désinfecter sa zone",
+                    d: "Augmenter la fréquence des repas pour renforcer l'immunité"
+                },
+                correct: "c",
+                explanation: "L'isolement immédiat du chat infecté est primordial pour éviter la propagation. Sa zone doit être désinfectée au C.I.D.20. Les autres chats en contact doivent être surveillés et éventuellement testés."
+            },
+            7: {
+                question: "Quelle précaution particulière concerne la litière d'un chat atteint de Giardia ?",
+                answers: {
+                    a: "Retirer les selles quotidiennement et désinfecter le bac au C.I.D.20",
+                    b: "Changer la litière une fois par semaine suffit",
+                    c: "Utiliser de la litière parfumée pour masquer les odeurs",
+                    d: "Partager la litière avec d'autres chats pour stimuler l'immunité collective"
+                },
+                correct: "a",
+                explanation: "Les selles doivent être retirées quotidiennement car elles contiennent des kystes infectieux. Le bac à litière doit être régulièrement désinfecté au C.I.D.20 et la litière changée fréquemment."
+            },
+            8: {
+                question: "La Giardia est-elle transmissible à l'homme (zoonose) ?",
+                answers: {
+                    a: "Non, c'est un parasite strictement félin",
+                    b: "Uniquement aux enfants de moins de 5 ans",
+                    c: "Oui, c'est une zoonose potentielle pour tous",
+                    d: "Uniquement par morsure profonde"
+                },
+                correct: "c",
+                explanation: "La Giardia est une zoonose : elle peut se transmettre du chat à l'homme. C'est pourquoi le port de gants lors de la manipulation des selles et une bonne hygiène des mains sont essentiels."
+            },
+            9: {
+                question: "Quel équipement de protection est recommandé pour nettoyer la zone d'un chat atteint de Giardia ?",
+                answers: {
+                    a: "Aucun équipement particulier, le risque est faible",
+                    b: "Gants jetables et blouse, avec lavage des mains rigoureux",
+                    c: "Uniquement un masque FFP2",
+                    d: "Gants réutilisables lavés à l'eau chaude"
+                },
+                correct: "b",
+                explanation: "Pour se protéger de la contamination, il faut porter des gants jetables et une blouse lors du nettoyage. Un lavage des mains rigoureux après le retrait des gants est indispensable car la Giardia est une zoonose."
+            },
+            10: {
+                question: "Quand un chat peut-il sortir de quarantaine Giardia ?",
+                answers: {
+                    a: "Dès que le traitement est commencé",
+                    b: "Après 24 heures sans symptôme de diarrhée",
+                    c: "Après 1 semaine de traitement antibiotique",
+                    d: "Après au moins 2 tests de selles négatifs post-traitement"
+                },
+                correct: "d",
+                explanation: "La fin de quarantaine nécessite au moins 2 examens de selles négatifs après le traitement, car les symptômes peuvent disparaître alors que le chat excrète encore des kystes. Cela garantit qu'il n'est plus contagieux."
+            }
+        };
+
+        $(document).ready(function() {
+            let currentStep = 1;
+            const totalSteps = Object.keys(QUESTIONS_DATA).length;
+            let timerInterval;
+            let timeRemaining = 180; // 3 minutes
+            let userAnswers = {};
+
+            function generateQuestions() {
+                let html = '';
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    html += `
+                        <fieldset class="quiz-step" id="step${i}" style="display: ${i === 1 ? 'block' : 'none'};">
+                            <div class="quiz-question-header">
+                                <span class="quiz-question-number">Question ${i}/${totalSteps}</span>
+                            </div>
+                            <h3 class="quiz-question-title">${q.question}</h3>
+                            <div class="quiz-options">
+                                ${Object.entries(q.answers).map(([key, value]) => `
+                                    <button type="button" class="quiz-btn" data-question="${i}" data-answer="${key}">
+                                        <span class="quiz-btn-letter">${key.toUpperCase()}</span>
+                                        <span class="quiz-btn-text">${value}</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div class="quiz-error" id="error${i}" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Veuillez sélectionner une réponse
+                            </div>
+                        </fieldset>
+                    `;
+                }
+                $('#questionsContainer').html(html);
+            }
+
+            $('#startQuiz').click(function() {
+                $('#quizIntro').hide();
+                $('#quizForm').show();
+                generateQuestions();
+                startTimer();
+            });
+
+            function startTimer() {
+                updateTimerDisplay();
+                timerInterval = setInterval(function() {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval);
+                        submitQuiz();
+                    }
+                }, 1000);
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                $('#timerDisplay').text(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+                if (timeRemaining <= 30) {
+                    $('#quizTimer').css('color', '#dc3545');
+                }
+            }
+
+            $(document).on('click', '.quiz-btn', function() {
+                const question = $(this).data('question');
+                const answer = $(this).data('answer');
+                $(`[data-question="${question}"]`).removeClass('selected');
+                $(this).addClass('selected');
+                userAnswers[question] = answer;
+                $(`#error${question}`).hide();
+            });
+
+            $('#nextBtn').click(function() {
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                if (currentStep < totalSteps) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep++;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            $('#prevBtn').click(function() {
+                if (currentStep > 1) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep--;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            function updateProgress() {
+                const progress = (currentStep / totalSteps) * 100;
+                $('#progressBar').css('width', progress + '%');
+            }
+
+            function updateNavigation() {
+                $('#prevBtn').toggle(currentStep > 1);
+                $('#nextBtn').toggle(currentStep < totalSteps);
+                $('#submitBtn').toggle(currentStep === totalSteps);
+            }
+
+            $('#quizForm').submit(function(e) {
+                e.preventDefault();
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                clearInterval(timerInterval);
+                $('#quizForm').hide();
+                $('#quizLoading').show();
+                setTimeout(function() {
+                    showResults();
+                }, 1500);
+            }
+
+            function showResults() {
+                $('#quizLoading').hide();
+                $('#quizResults').show();
+
+                let correctCount = 0;
+                let detailsHtml = '';
+
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    const userAnswer = userAnswers[i] || 'Non répondu';
+                    const isCorrect = userAnswer === q.correct;
+                    if (isCorrect) correctCount++;
+
+                    detailsHtml += `
+                        <div class="quiz-result-item ${isCorrect ? 'correct' : 'incorrect'}">
+                            <div class="quiz-result-item-header">
+                                <span class="quiz-result-item-number">Q${i}</span>
+                                <span class="quiz-result-item-status">
+                                    ${isCorrect ?
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' :
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                                    }
+                                </span>
+                            </div>
+                            <p class="quiz-result-item-question">${q.question}</p>
+                            <p class="quiz-result-item-answer">
+                                Votre réponse : <strong>${userAnswer !== 'Non répondu' ? q.answers[userAnswer] : 'Non répondu'}</strong>
+                                ${!isCorrect ? `<br>Bonne réponse : <strong class="correct-answer">${q.answers[q.correct]}</strong>` : ''}
+                            </p>
+                            <p class="quiz-result-item-explanation">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                const percentage = Math.round((correctCount / totalSteps) * 100);
+                let title, scoreClass, icon;
+
+                if (percentage >= 90) {
+                    title = "Expert Giardia !";
+                    scoreClass = "excellent";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>';
+                } else if (percentage >= 70) {
+                    title = "Bonnes connaissances";
+                    scoreClass = "good";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#17a2b8" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                } else if (percentage >= 50) {
+                    title = "À réviser";
+                    scoreClass = "average";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+                } else {
+                    title = "Formation requise";
+                    scoreClass = "poor";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                }
+
+                $('#resultIcon').html(icon);
+                $('#resultTitle').text(title);
+                $('#resultScore').html(`<span class="${scoreClass}">${correctCount}/${totalSteps}</span> (${percentage}%)`);
+                $('#resultDetails').html(detailsHtml);
+            }
+
+            $('#restartQuiz').click(function() {
+                currentStep = 1;
+                timeRemaining = 180;
+                userAnswers = {};
+                $('#quizResults').hide();
+                $('#quizIntro').show();
+                $('#progressBar').css('width', '0%');
+                $('#quizTimer').css('color', '');
+            });
+        });
+    </script>
+</body>
+</html>

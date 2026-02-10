@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Teigne | Fanal Academy</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <style>
+        :root {
+            --quiz-primary: #e83e8c;
+            --quiz-secondary: #070143;
+        }
+        .quiz-header {
+            background: linear-gradient(135deg, var(--quiz-primary) 0%, #c2185b 100%);
+        }
+        .quiz-btn.selected {
+            background-color: var(--quiz-primary);
+            border-color: var(--quiz-primary);
+        }
+        .quiz-progress-bar {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn, .quiz-submit-btn, .quiz-restart-btn {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn:hover, .quiz-submit-btn:hover, .quiz-restart-btn:hover {
+            background-color: #c2185b;
+        }
+        .quiz-result-score.excellent { color: #28a745; }
+        .quiz-result-score.good { color: var(--quiz-primary); }
+        .quiz-result-score.average { color: #ffc107; }
+        .quiz-result-score.poor { color: #dc3545; }
+        .infection-badge {
+            display: inline-block;
+            background: var(--quiz-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .zoonose-warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .zoonose-warning strong {
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="quiz-header">
+            <a href="index.html" class="quiz-back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Retour à Fanal Academy
+            </a>
+            <h1 class="quiz-title">Quiz Teigne</h1>
+            <p class="quiz-subtitle">Protocole spécifique - Infection fongique (dermatophytose)</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="quiz-content">
+            <!-- Introduction -->
+            <div class="quiz-intro" id="quizIntro">
+                <div class="quiz-intro-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#e83e8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h2 class="quiz-intro-title">Protocole Teigne (Dermatophytose)</h2>
+                <p class="quiz-intro-text">
+                    La Teigne est une infection fongique très contagieuse causée par des champignons dermatophytes.
+                    Ce quiz teste vos connaissances sur les symptômes, la protection individuelle et les protocoles
+                    de désinfection avec le C.I.D.20.
+                </p>
+                <div class="zoonose-warning">
+                    <strong>ATTENTION ZOONOSE :</strong> La Teigne est transmissible à l'homme !
+                    Le port d'équipements de protection (gants, blouse, charlotte) est OBLIGATOIRE.
+                </div>
+                <div class="quiz-intro-details">
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">10 questions</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">3 minutes</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">Désinfectant : C.I.D.20</span>
+                    </div>
+                </div>
+                <button class="quiz-start-btn" id="startQuiz">
+                    Commencer le Quiz
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Quiz Form -->
+            <form class="quiz-form" id="quizForm" style="display: none;">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="quiz-timer" id="quizTimer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span id="timerDisplay">3:00</span>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div class="quiz-navigation">
+                    <button type="button" class="quiz-prev-btn" id="prevBtn" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Précédent
+                    </button>
+                    <button type="button" class="quiz-next-btn" id="nextBtn">
+                        Suivant
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button type="submit" class="quiz-submit-btn" id="submitBtn" style="display: none;">
+                        Terminer le Quiz
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Screen -->
+            <div class="quiz-loading" id="quizLoading" style="display: none;">
+                <div class="quiz-loading-spinner"></div>
+                <p class="quiz-loading-text">Analyse de vos réponses...</p>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="quiz-result-header">
+                    <div class="quiz-result-icon" id="resultIcon"></div>
+                    <h2 class="quiz-result-title" id="resultTitle"></h2>
+                    <p class="quiz-result-score" id="resultScore"></p>
+                </div>
+                <div class="quiz-result-details" id="resultDetails"></div>
+                <div class="quiz-result-actions">
+                    <button class="quiz-restart-btn" id="restartQuiz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 2v6h6M21.5 22v-6h-6"/>
+                            <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2"/>
+                        </svg>
+                        Recommencer
+                    </button>
+                    <a href="index.html" class="quiz-home-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const QUESTIONS_DATA = {
+            1: {
+                question: "Qu'est-ce que la Teigne ?",
+                answers: {
+                    a: "Une infection parasitaire causée par des vers",
+                    b: "Une infection virale très contagieuse",
+                    c: "Une infestation d'acariens microscopiques",
+                    d: "Une infection fongique causée par des dermatophytes"
+                },
+                correct: "d",
+                explanation: "La Teigne (dermatophytose) est une infection fongique causée par des champignons dermatophytes, principalement Microsporum canis chez le chat. Malgré son nom, ce n'est PAS un ver parasite."
+            },
+            2: {
+                question: "Quel est le symptôme le plus caractéristique de la Teigne chez le chat ?",
+                answers: {
+                    a: "Plaques circulaires de perte de poils, souvent squameuses",
+                    b: "Diarrhée chronique et vomissements",
+                    c: "Éternuements et écoulement nasal",
+                    d: "Démangeaisons intenses avec lésions croûteuses sur la tête"
+                },
+                correct: "a",
+                explanation: "La Teigne provoque typiquement des plaques circulaires (en forme d'anneau) de perte de poils, souvent avec des squames. Les lésions apparaissent fréquemment sur la tête, les oreilles et les pattes. Certains chats peuvent être porteurs asymptomatiques."
+            },
+            3: {
+                question: "Pourquoi la Teigne nécessite-t-elle une protection particulière pour les soignants ?",
+                answers: {
+                    a: "Le champignon produit des toxines respiratoires",
+                    b: "Elle provoque des réactions allergiques graves",
+                    c: "C'est une zoonose : elle est transmissible à l'homme",
+                    d: "Le traitement utilisé est dangereux pour la peau"
+                },
+                correct: "c",
+                explanation: "La Teigne est une ZOONOSE : les spores fongiques peuvent contaminer l'homme et provoquer des lésions cutanées similaires. Le port de gants, blouse et charlotte est donc OBLIGATOIRE lors de la manipulation des chats infectés."
+            },
+            4: {
+                question: "Quel équipement de protection est OBLIGATOIRE pour manipuler un chat atteint de Teigne ?",
+                answers: {
+                    a: "Gants jetables uniquement",
+                    b: "Gants + blouse jetable + charlotte",
+                    c: "Masque FFP2 et lunettes de protection",
+                    d: "Aucun si on se lave les mains après"
+                },
+                correct: "b",
+                explanation: "L'équipement complet (gants, blouse jetable, charlotte) est OBLIGATOIRE. Les spores de Teigne peuvent rester sur les vêtements et les cheveux, puis contaminer l'environnement ou la personne. La charlotte protège les cheveux des spores."
+            },
+            5: {
+                question: "Quel désinfectant utilise-t-on contre la Teigne ?",
+                answers: {
+                    a: "L'eau de Javel, seule efficace contre les champignons",
+                    b: "Le Dettol utilisé en nettoyage quotidien",
+                    c: "Le C.I.D.20, efficace contre les spores fongiques",
+                    d: "L'alcool 70° en application directe"
+                },
+                correct: "c",
+                explanation: "Le C.I.D.20 est le désinfectant de choix contre la Teigne. Il est efficace contre les spores fongiques des dermatophytes. L'eau de Javel est réservée au Typhus uniquement."
+            },
+            6: {
+                question: "Comment les spores de Teigne se propagent-elles dans l'environnement ?",
+                answers: {
+                    a: "Uniquement par contact direct entre chats",
+                    b: "Par les selles et l'urine des chats infectés",
+                    c: "Par l'eau de boisson partagée",
+                    d: "Par l'air, les poils, les squames et les surfaces contaminées"
+                },
+                correct: "d",
+                explanation: "Les spores de Teigne se propagent par l'air, les poils tombés, les squames cutanées et toutes les surfaces contaminées (brosses, paniers, couvertures...). Elles sont très résistantes et peuvent persister longtemps dans l'environnement."
+            },
+            7: {
+                question: "Combien de temps faut-il maintenir un chat en isolement pour la Teigne ?",
+                answers: {
+                    a: "Jusqu'à 2 cultures fongiques négatives consécutives",
+                    b: "1 semaine après le début du traitement",
+                    c: "3 jours après disparition des symptômes",
+                    d: "24 heures après la fin du traitement"
+                },
+                correct: "a",
+                explanation: "L'isolement doit être maintenu jusqu'à l'obtention de 2 cultures fongiques négatives consécutives (généralement à 1-2 semaines d'intervalle). La disparition des symptômes visibles ne signifie PAS la fin de la contagiosité."
+            },
+            8: {
+                question: "Que faire du matériel (brosse, panier, jouets) d'un chat atteint de Teigne ?",
+                answers: {
+                    a: "Le jeter immédiatement, impossible à désinfecter",
+                    b: "Le laver à l'eau savonneuse suffit",
+                    c: "Le dédier au chat et le désinfecter régulièrement au C.I.D.20",
+                    d: "Le partager avec d'autres chats pour créer une immunité"
+                },
+                correct: "c",
+                explanation: "Le matériel doit être dédié exclusivement au chat infecté et désinfecté régulièrement au C.I.D.20. Les brosses et peignes sont particulièrement importants à désinfecter car ils accumulent poils et spores."
+            },
+            9: {
+                question: "Un chat peut-il être porteur de Teigne sans présenter de symptômes ?",
+                answers: {
+                    a: "Oui, certains chats sont porteurs asymptomatiques",
+                    b: "Non, tous les chats infectés ont des lésions visibles",
+                    c: "Uniquement les chatons de moins de 3 mois",
+                    d: "Uniquement les chats vaccinés"
+                },
+                correct: "a",
+                explanation: "Oui, certains chats peuvent être porteurs asymptomatiques de Teigne : ils hébergent le champignon et le transmettent sans présenter eux-mêmes de lésions visibles. C'est pourquoi les cultures fongiques sont importantes pour le dépistage."
+            },
+            10: {
+                question: "Quelle mesure supplémentaire est importante pour limiter la propagation des spores ?",
+                answers: {
+                    a: "Augmenter la température de la pièce",
+                    b: "Aspirer régulièrement et désinfecter les surfaces au C.I.D.20",
+                    c: "Ouvrir les fenêtres pour aérer",
+                    d: "Utiliser des désodorisants anti-fongiques"
+                },
+                correct: "b",
+                explanation: "L'aspiration régulière (avec élimination du sac) et la désinfection des surfaces au C.I.D.20 sont essentielles. Les poils et squames contaminés doivent être éliminés de l'environnement pour réduire la charge en spores."
+            }
+        };
+
+        $(document).ready(function() {
+            let currentStep = 1;
+            const totalSteps = Object.keys(QUESTIONS_DATA).length;
+            let timerInterval;
+            let timeRemaining = 180; // 3 minutes
+            let userAnswers = {};
+
+            function generateQuestions() {
+                let html = '';
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    html += `
+                        <fieldset class="quiz-step" id="step${i}" style="display: ${i === 1 ? 'block' : 'none'};">
+                            <div class="quiz-question-header">
+                                <span class="quiz-question-number">Question ${i}/${totalSteps}</span>
+                            </div>
+                            <h3 class="quiz-question-title">${q.question}</h3>
+                            <div class="quiz-options">
+                                ${Object.entries(q.answers).map(([key, value]) => `
+                                    <button type="button" class="quiz-btn" data-question="${i}" data-answer="${key}">
+                                        <span class="quiz-btn-letter">${key.toUpperCase()}</span>
+                                        <span class="quiz-btn-text">${value}</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div class="quiz-error" id="error${i}" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Veuillez sélectionner une réponse
+                            </div>
+                        </fieldset>
+                    `;
+                }
+                $('#questionsContainer').html(html);
+            }
+
+            $('#startQuiz').click(function() {
+                $('#quizIntro').hide();
+                $('#quizForm').show();
+                generateQuestions();
+                startTimer();
+            });
+
+            function startTimer() {
+                updateTimerDisplay();
+                timerInterval = setInterval(function() {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval);
+                        submitQuiz();
+                    }
+                }, 1000);
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                $('#timerDisplay').text(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+                if (timeRemaining <= 30) {
+                    $('#quizTimer').css('color', '#dc3545');
+                }
+            }
+
+            $(document).on('click', '.quiz-btn', function() {
+                const question = $(this).data('question');
+                const answer = $(this).data('answer');
+                $(`[data-question="${question}"]`).removeClass('selected');
+                $(this).addClass('selected');
+                userAnswers[question] = answer;
+                $(`#error${question}`).hide();
+            });
+
+            $('#nextBtn').click(function() {
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                if (currentStep < totalSteps) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep++;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            $('#prevBtn').click(function() {
+                if (currentStep > 1) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep--;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            function updateProgress() {
+                const progress = (currentStep / totalSteps) * 100;
+                $('#progressBar').css('width', progress + '%');
+            }
+
+            function updateNavigation() {
+                $('#prevBtn').toggle(currentStep > 1);
+                $('#nextBtn').toggle(currentStep < totalSteps);
+                $('#submitBtn').toggle(currentStep === totalSteps);
+            }
+
+            $('#quizForm').submit(function(e) {
+                e.preventDefault();
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                clearInterval(timerInterval);
+                $('#quizForm').hide();
+                $('#quizLoading').show();
+                setTimeout(function() {
+                    showResults();
+                }, 1500);
+            }
+
+            function showResults() {
+                $('#quizLoading').hide();
+                $('#quizResults').show();
+
+                let correctCount = 0;
+                let detailsHtml = '';
+
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    const userAnswer = userAnswers[i] || 'Non répondu';
+                    const isCorrect = userAnswer === q.correct;
+                    if (isCorrect) correctCount++;
+
+                    detailsHtml += `
+                        <div class="quiz-result-item ${isCorrect ? 'correct' : 'incorrect'}">
+                            <div class="quiz-result-item-header">
+                                <span class="quiz-result-item-number">Q${i}</span>
+                                <span class="quiz-result-item-status">
+                                    ${isCorrect ?
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' :
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                                    }
+                                </span>
+                            </div>
+                            <p class="quiz-result-item-question">${q.question}</p>
+                            <p class="quiz-result-item-answer">
+                                Votre réponse : <strong>${userAnswer !== 'Non répondu' ? q.answers[userAnswer] : 'Non répondu'}</strong>
+                                ${!isCorrect ? `<br>Bonne réponse : <strong class="correct-answer">${q.answers[q.correct]}</strong>` : ''}
+                            </p>
+                            <p class="quiz-result-item-explanation">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                const percentage = Math.round((correctCount / totalSteps) * 100);
+                let title, scoreClass, icon;
+
+                if (percentage >= 90) {
+                    title = "Expert Teigne !";
+                    scoreClass = "excellent";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>';
+                } else if (percentage >= 70) {
+                    title = "Bonnes connaissances";
+                    scoreClass = "good";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e83e8c" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                } else if (percentage >= 50) {
+                    title = "À réviser";
+                    scoreClass = "average";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+                } else {
+                    title = "Formation requise";
+                    scoreClass = "poor";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                }
+
+                $('#resultIcon').html(icon);
+                $('#resultTitle').text(title);
+                $('#resultScore').html(`<span class="${scoreClass}">${correctCount}/${totalSteps}</span> (${percentage}%)`);
+                $('#resultDetails').html(detailsHtml);
+            }
+
+            $('#restartQuiz').click(function() {
+                currentStep = 1;
+                timeRemaining = 180;
+                userAnswers = {};
+                $('#quizResults').hide();
+                $('#quizIntro').show();
+                $('#progressBar').css('width', '0%');
+                $('#quizTimer').css('color', '');
+            });
+        });
+    </script>
+</body>
+</html>

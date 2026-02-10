@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Gale & Puces | Fanal Academy</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <style>
+        :root {
+            --quiz-primary: #fd7e14;
+            --quiz-secondary: #070143;
+        }
+        .quiz-header {
+            background: linear-gradient(135deg, var(--quiz-primary) 0%, #e65c00 100%);
+        }
+        .quiz-btn.selected {
+            background-color: var(--quiz-primary);
+            border-color: var(--quiz-primary);
+        }
+        .quiz-progress-bar {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn, .quiz-submit-btn, .quiz-restart-btn {
+            background-color: var(--quiz-primary);
+        }
+        .quiz-next-btn:hover, .quiz-submit-btn:hover, .quiz-restart-btn:hover {
+            background-color: #e65c00;
+        }
+        .quiz-result-score.excellent { color: #28a745; }
+        .quiz-result-score.good { color: var(--quiz-primary); }
+        .quiz-result-score.average { color: #ffc107; }
+        .quiz-result-score.poor { color: #dc3545; }
+        .infection-badge {
+            display: inline-block;
+            background: var(--quiz-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .info-box strong {
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="quiz-header">
+            <a href="index.html" class="quiz-back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Retour à Fanal Academy
+            </a>
+            <h1 class="quiz-title">Quiz Gale & Puces</h1>
+            <p class="quiz-subtitle">Protocole spécifique - Infestations parasitaires externes</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="quiz-content">
+            <!-- Introduction -->
+            <div class="quiz-intro" id="quizIntro">
+                <div class="quiz-intro-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#fd7e14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 2v4"/>
+                        <path d="M12 18v4"/>
+                        <path d="M4.93 4.93l2.83 2.83"/>
+                        <path d="M16.24 16.24l2.83 2.83"/>
+                        <path d="M2 12h4"/>
+                        <path d="M18 12h4"/>
+                        <path d="M4.93 19.07l2.83-2.83"/>
+                        <path d="M16.24 7.76l2.83-2.83"/>
+                    </svg>
+                </div>
+                <h2 class="quiz-intro-title">Protocole Gale & Puces</h2>
+                <p class="quiz-intro-text">
+                    La Gale et les Puces sont des infestations parasitaires externes fréquentes chez le chat.
+                    Ce quiz teste vos connaissances sur les symptômes, les risques associés et les protocoles
+                    de désinfection avec le C.I.D.20.
+                </p>
+                <div class="info-box">
+                    <strong>À RETENIR :</strong> Le C.I.D.20 est utilisé pour désinfecter l'environnement.
+                    Les puces peuvent transmettre le ténia et causer une anémie chez les chatons.
+                </div>
+                <div class="quiz-intro-details">
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">10 questions</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">3 minutes</span>
+                    </div>
+                    <div class="quiz-detail-item">
+                        <span class="quiz-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </span>
+                        <span class="quiz-detail-text">Désinfectant : C.I.D.20</span>
+                    </div>
+                </div>
+                <button class="quiz-start-btn" id="startQuiz">
+                    Commencer le Quiz
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Quiz Form -->
+            <form class="quiz-form" id="quizForm" style="display: none;">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="quiz-timer" id="quizTimer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span id="timerDisplay">3:00</span>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div class="quiz-navigation">
+                    <button type="button" class="quiz-prev-btn" id="prevBtn" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Précédent
+                    </button>
+                    <button type="button" class="quiz-next-btn" id="nextBtn">
+                        Suivant
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button type="submit" class="quiz-submit-btn" id="submitBtn" style="display: none;">
+                        Terminer le Quiz
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Screen -->
+            <div class="quiz-loading" id="quizLoading" style="display: none;">
+                <div class="quiz-loading-spinner"></div>
+                <p class="quiz-loading-text">Analyse de vos réponses...</p>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="quiz-result-header">
+                    <div class="quiz-result-icon" id="resultIcon"></div>
+                    <h2 class="quiz-result-title" id="resultTitle"></h2>
+                    <p class="quiz-result-score" id="resultScore"></p>
+                </div>
+                <div class="quiz-result-details" id="resultDetails"></div>
+                <div class="quiz-result-actions">
+                    <button class="quiz-restart-btn" id="restartQuiz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2.5 2v6h6M21.5 22v-6h-6"/>
+                            <path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2"/>
+                        </svg>
+                        Recommencer
+                    </button>
+                    <a href="index.html" class="quiz-home-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const QUESTIONS_DATA = {
+            1: {
+                question: "Qu'est-ce que la Gale du chat (gale notoédrique) ?",
+                answers: {
+                    a: "Une allergie aux puces",
+                    b: "Une infection virale cutanée",
+                    c: "Une infection fongique de la peau",
+                    d: "Une infestation par l'acarien Notoedres cati"
+                },
+                correct: "d",
+                explanation: "La gale du chat (gale notoédrique) est causée par l'acarien Notoedres cati qui creuse des galeries dans la peau, provoquant des démangeaisons intenses et des lésions croûteuses, principalement sur la tête et les oreilles."
+            },
+            2: {
+                question: "Quels sont les symptômes caractéristiques de la Gale chez le chat ?",
+                answers: {
+                    a: "Démangeaisons intenses et lésions croûteuses sur la tête",
+                    b: "Diarrhée chronique et vomissements",
+                    c: "Éternuements et écoulement nasal",
+                    d: "Plaques circulaires de perte de poils"
+                },
+                correct: "a",
+                explanation: "La Gale provoque des démangeaisons intenses (prurit sévère) et des lésions croûteuses, typiquement localisées sur la tête, les oreilles et le cou. Le chat se gratte frénétiquement, aggravant les lésions."
+            },
+            3: {
+                question: "Quel danger principal représentent les puces pour les chatons ?",
+                answers: {
+                    a: "Elles transmettent le Typhus",
+                    b: "Elles provoquent des problèmes respiratoires",
+                    c: "Elles peuvent causer une anémie sévère par piqûres répétées",
+                    d: "Elles sont uniquement un problème esthétique"
+                },
+                correct: "c",
+                explanation: "Les puces se nourrissent de sang. Chez les chatons ou chats affaiblis, des infestations massives peuvent provoquer une anémie sévère (baisse des globules rouges) potentiellement mortelle. C'est une urgence médicale."
+            },
+            4: {
+                question: "Quel parasite les puces peuvent-elles transmettre au chat ?",
+                answers: {
+                    a: "La Giardia",
+                    b: "Le ténia (Dipylidium caninum)",
+                    c: "La Teigne",
+                    d: "Le virus du Typhus"
+                },
+                correct: "b",
+                explanation: "Les puces sont les hôtes intermédiaires du ténia Dipylidium caninum. Quand le chat ingère une puce en se toilettant, il peut être contaminé par ce ver intestinal. C'est pourquoi le traitement anti-puces et vermifuge sont souvent associés."
+            },
+            5: {
+                question: "Quel désinfectant utilise-t-on pour l'environnement en cas de Gale ou Puces ?",
+                answers: {
+                    a: "Le C.I.D.20",
+                    b: "L'eau de Javel uniquement",
+                    c: "L'alcool 70° en spray",
+                    d: "Le Dettol en concentration forte"
+                },
+                correct: "a",
+                explanation: "Le C.I.D.20 est le désinfectant de choix pour traiter l'environnement en cas de Gale ou Puces. Il élimine les parasites et leurs œufs présents sur les surfaces. L'eau de Javel est réservée au Typhus uniquement."
+            },
+            6: {
+                question: "Où se développent principalement les œufs et larves de puces ?",
+                answers: {
+                    a: "Dans l'eau stagnante",
+                    b: "Uniquement sur le chat infesté",
+                    c: "Uniquement à l'extérieur",
+                    d: "Dans l'environnement (paniers, tapis, fissures du sol)"
+                },
+                correct: "d",
+                explanation: "Les puces adultes vivent sur le chat, mais les œufs tombent dans l'environnement où les larves se développent. Paniers, tapis, fissures du parquet sont des réservoirs. C'est pourquoi traiter l'environnement est aussi important que traiter l'animal."
+            },
+            7: {
+                question: "La Gale du chat est-elle transmissible à l'homme ?",
+                answers: {
+                    a: "Non, c'est strictement félin",
+                    b: "Uniquement chez les enfants",
+                    c: "Oui, elle peut provoquer des lésions temporaires chez l'humain",
+                    d: "Uniquement par morsure"
+                },
+                correct: "c",
+                explanation: "La gale notoédrique du chat peut temporairement infester l'homme et provoquer des démangeaisons et lésions. Cependant, l'acarien ne peut pas compléter son cycle sur la peau humaine, les symptômes disparaissent donc spontanément une fois le chat traité."
+            },
+            8: {
+                question: "Pourquoi faut-il traiter TOUT l'environnement en cas d'infestation de puces ?",
+                answers: {
+                    a: "Uniquement par mesure de précaution",
+                    b: "Pour éliminer l'odeur des puces",
+                    c: "Pour éviter que les puces ne sautent sur les humains",
+                    d: "Parce que 95% de l'infestation se trouve dans l'environnement, pas sur le chat"
+                },
+                correct: "d",
+                explanation: "Seulement 5% des puces (les adultes) vivent sur le chat. Les 95% restants (œufs, larves, pupes) sont dans l'environnement. Traiter uniquement l'animal est donc inefficace : l'environnement doit être aspiré et désinfecté au C.I.D.20."
+            },
+            9: {
+                question: "Comment reconnaître la présence de puces sur un chat ?",
+                answers: {
+                    a: "Présence de petits points noirs (déjections) dans le pelage",
+                    b: "Le chat éternue fréquemment",
+                    c: "Le chat a de la fièvre",
+                    d: "Le chat perd l'appétit"
+                },
+                correct: "a",
+                explanation: "Les déjections de puces apparaissent comme de petits points noirs dans le pelage. Si on les mouille sur un papier blanc, elles laissent une trace rouge-brun (sang digéré). Le chat peut aussi se gratter excessivement, surtout à la base de la queue."
+            },
+            10: {
+                question: "Quelle mesure environnementale est essentielle pour éliminer les puces ?",
+                answers: {
+                    a: "Augmenter la température de la pièce",
+                    b: "Aspirer régulièrement et traiter l'environnement au C.I.D.20",
+                    c: "Ouvrir les fenêtres pour aérer",
+                    d: "Utiliser des parfums d'ambiance répulsifs"
+                },
+                correct: "b",
+                explanation: "L'aspiration régulière (éliminer le sac ensuite) capture les œufs, larves et adultes. La désinfection au C.I.D.20 élimine les parasites restants. Cette combinaison, répétée régulièrement, est la clé pour éradiquer une infestation."
+            }
+        };
+
+        $(document).ready(function() {
+            let currentStep = 1;
+            const totalSteps = Object.keys(QUESTIONS_DATA).length;
+            let timerInterval;
+            let timeRemaining = 180; // 3 minutes
+            let userAnswers = {};
+
+            function generateQuestions() {
+                let html = '';
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    html += `
+                        <fieldset class="quiz-step" id="step${i}" style="display: ${i === 1 ? 'block' : 'none'};">
+                            <div class="quiz-question-header">
+                                <span class="quiz-question-number">Question ${i}/${totalSteps}</span>
+                            </div>
+                            <h3 class="quiz-question-title">${q.question}</h3>
+                            <div class="quiz-options">
+                                ${Object.entries(q.answers).map(([key, value]) => `
+                                    <button type="button" class="quiz-btn" data-question="${i}" data-answer="${key}">
+                                        <span class="quiz-btn-letter">${key.toUpperCase()}</span>
+                                        <span class="quiz-btn-text">${value}</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div class="quiz-error" id="error${i}" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Veuillez sélectionner une réponse
+                            </div>
+                        </fieldset>
+                    `;
+                }
+                $('#questionsContainer').html(html);
+            }
+
+            $('#startQuiz').click(function() {
+                $('#quizIntro').hide();
+                $('#quizForm').show();
+                generateQuestions();
+                startTimer();
+            });
+
+            function startTimer() {
+                updateTimerDisplay();
+                timerInterval = setInterval(function() {
+                    timeRemaining--;
+                    updateTimerDisplay();
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval);
+                        submitQuiz();
+                    }
+                }, 1000);
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                $('#timerDisplay').text(`${minutes}:${seconds.toString().padStart(2, '0')}`);
+                if (timeRemaining <= 30) {
+                    $('#quizTimer').css('color', '#dc3545');
+                }
+            }
+
+            $(document).on('click', '.quiz-btn', function() {
+                const question = $(this).data('question');
+                const answer = $(this).data('answer');
+                $(`[data-question="${question}"]`).removeClass('selected');
+                $(this).addClass('selected');
+                userAnswers[question] = answer;
+                $(`#error${question}`).hide();
+            });
+
+            $('#nextBtn').click(function() {
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                if (currentStep < totalSteps) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep++;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            $('#prevBtn').click(function() {
+                if (currentStep > 1) {
+                    $(`#step${currentStep}`).hide();
+                    currentStep--;
+                    $(`#step${currentStep}`).show();
+                    updateProgress();
+                    updateNavigation();
+                }
+            });
+
+            function updateProgress() {
+                const progress = (currentStep / totalSteps) * 100;
+                $('#progressBar').css('width', progress + '%');
+            }
+
+            function updateNavigation() {
+                $('#prevBtn').toggle(currentStep > 1);
+                $('#nextBtn').toggle(currentStep < totalSteps);
+                $('#submitBtn').toggle(currentStep === totalSteps);
+            }
+
+            $('#quizForm').submit(function(e) {
+                e.preventDefault();
+                if (!userAnswers[currentStep]) {
+                    $(`#error${currentStep}`).show();
+                    return;
+                }
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                clearInterval(timerInterval);
+                $('#quizForm').hide();
+                $('#quizLoading').show();
+                setTimeout(function() {
+                    showResults();
+                }, 1500);
+            }
+
+            function showResults() {
+                $('#quizLoading').hide();
+                $('#quizResults').show();
+
+                let correctCount = 0;
+                let detailsHtml = '';
+
+                for (let i = 1; i <= totalSteps; i++) {
+                    const q = QUESTIONS_DATA[i];
+                    const userAnswer = userAnswers[i] || 'Non répondu';
+                    const isCorrect = userAnswer === q.correct;
+                    if (isCorrect) correctCount++;
+
+                    detailsHtml += `
+                        <div class="quiz-result-item ${isCorrect ? 'correct' : 'incorrect'}">
+                            <div class="quiz-result-item-header">
+                                <span class="quiz-result-item-number">Q${i}</span>
+                                <span class="quiz-result-item-status">
+                                    ${isCorrect ?
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' :
+                                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                                    }
+                                </span>
+                            </div>
+                            <p class="quiz-result-item-question">${q.question}</p>
+                            <p class="quiz-result-item-answer">
+                                Votre réponse : <strong>${userAnswer !== 'Non répondu' ? q.answers[userAnswer] : 'Non répondu'}</strong>
+                                ${!isCorrect ? `<br>Bonne réponse : <strong class="correct-answer">${q.answers[q.correct]}</strong>` : ''}
+                            </p>
+                            <p class="quiz-result-item-explanation">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                const percentage = Math.round((correctCount / totalSteps) * 100);
+                let title, scoreClass, icon;
+
+                if (percentage >= 90) {
+                    title = "Expert Gale & Puces !";
+                    scoreClass = "excellent";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>';
+                } else if (percentage >= 70) {
+                    title = "Bonnes connaissances";
+                    scoreClass = "good";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fd7e14" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                } else if (percentage >= 50) {
+                    title = "À réviser";
+                    scoreClass = "average";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+                } else {
+                    title = "Formation requise";
+                    scoreClass = "poor";
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                }
+
+                $('#resultIcon').html(icon);
+                $('#resultTitle').text(title);
+                $('#resultScore').html(`<span class="${scoreClass}">${correctCount}/${totalSteps}</span> (${percentage}%)`);
+                $('#resultDetails').html(detailsHtml);
+            }
+
+            $('#restartQuiz').click(function() {
+                currentStep = 1;
+                timeRemaining = 180;
+                userAnswers = {};
+                $('#quizResults').hide();
+                $('#quizIntro').show();
+                $('#progressBar').css('width', '0%');
+                $('#quizTimer').css('color', '');
+            });
+        });
+    </script>
+</body>
+</html>

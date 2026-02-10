@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Hygiène Employés - Fanal Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/quiz-adoption.css">
+    <style>
+        .quiz-header { background: linear-gradient(135deg, #070143 0%, #1a1a5e 100%); }
+        .btn-back { background: rgba(255,255,255,0.2); }
+        .btn-back:hover { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body class="quiz-adoption-page">
+
+    <header class="quiz-header">
+        <div class="container">
+            <a href="index.html" class="quiz-logo">
+                <img src="../../assets/images/images/logo.gif" alt="Fanal Academy">
+            </a>
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour Academy
+            </a>
+        </div>
+    </header>
+
+    <main class="quiz-main overflow-hidden">
+        <div class="counterContainer">
+            <svg class="counter"><circle cx="50%" cy="50%" r="70" /></svg>
+            <span id="countdown-timer">300</span>
+        </div>
+
+        <section class="quiz-intro" id="quizIntro">
+            <div class="container text-center">
+                <div class="intro-content">
+                    <div class="slide-illustration">
+                        <img src="../../assets/images/images/illustrations/14_orange cat.png" alt="">
+                    </div>
+                    <h1>Quiz Hygiène Employés</h1>
+                    <p class="lead">Quiz avancé sur les protocoles d'hygiène pour le personnel permanent</p>
+                    <p>Ce quiz de 20 questions évaluera :</p>
+                    <ul class="intro-list">
+                        <li><i class="fas fa-flask"></i> Dilutions et concentrations</li>
+                        <li><i class="fas fa-procedures"></i> Protocoles complets</li>
+                        <li><i class="fas fa-virus"></i> Gestion des infections</li>
+                        <li><i class="fas fa-clipboard-list"></i> Normes et réglementations</li>
+                    </ul>
+                    <button type="button" class="btn-start" id="startQuiz">
+                        Commencer le quiz <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps" id="quizSteps" style="display: none;">
+            <form novalidate onsubmit="return false" id="stepForm" class="show-section">
+
+                <fieldset id="step1">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/3_cute cat.png" alt=""></div>
+                    <div class="question-number">Question 1/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q1" value="a"><label>60-80°C pour une meilleure efficacité</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q1" value="b"><label>100°C pour stériliser l'eau</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q1" value="c"><label>20-40°C (tiède) pour préserver les principes actifs</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q1" value="d"><label>Eau froide (0-10°C) uniquement</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelle est la température d'eau recommandée pour diluer les détergents et pourquoi ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="1"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step2">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/4_playful cat.png" alt=""></div>
+                    <div class="question-number">Question 2/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q2" value="a"><label>Toutes les zones du refuge quotidiennement</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q2" value="b"><label>Uniquement les zones extérieures</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q2" value="c"><label>Les espaces de vie stable et le bureau</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q2" value="d"><label>Les zones à haute pression sanitaire : quarantaine et infirmerie</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelles zones nécessitent impérativement une désinfection quotidienne ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="2"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step3">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/5_little cat.png" alt=""></div>
+                    <div class="question-number">Question 3/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q3" value="a"><label>Le C.I.D.20 à concentration renforcée</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q3" value="b"><label>Le Dettol combiné au C.I.D.20</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q3" value="c"><label>L'eau de Javel (hypochlorite de sodium)</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q3" value="d"><label>L'alcool à 70° en pulvérisation</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel est le SEUL désinfectant efficace contre le virus du Typhus (panleucopénie féline) ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="3"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step4">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/6_kitten.png" alt=""></div>
+                    <div class="question-number">Question 4/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q4" value="a"><label>Ne pas rincer pour maximiser l'efficacité du désinfectant</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q4" value="b"><label>Mélanger détergent et désinfectant dans le même seau</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q4" value="c"><label>Utiliser uniquement le désinfectant sans nettoyage préalable</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q4" value="d"><label>Rincer abondamment après le nettoyage, avant d'appliquer le désinfectant</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelle est la procédure correcte entre l'étape de nettoyage et celle de désinfection ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="4"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step5">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/7_pretty cat.png" alt=""></div>
+                    <div class="question-number">Question 5/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q5" value="a"><label>Ils sont moins chers mais moins efficaces</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q5" value="b"><label>Ils ont une odeur désagréable pour les chats</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q5" value="c"><label>Ils sont recommandés pour les chatons</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q5" value="d"><label>Ils sont TOXIQUES et peuvent provoquer des intoxications graves chez les félins</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Pourquoi les désinfectants contenant des composés phénolés sont-ils PROSCRITS en refuge félin ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="5"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step6">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/8_meaow.png" alt=""></div>
+                    <div class="question-number">Question 6/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q6" value="a"><label>Le nombre de bénévoles disponibles</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q6" value="b"><label>La concentration d'animaux, leurs statuts sanitaires et les mouvements</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q6" value="c"><label>La taille des locaux uniquement</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q6" value="d"><label>L'ancienneté de l'établissement</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quels facteurs définissent la "pression sanitaire" d'un établissement hébergeant des animaux ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="6"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step7">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/9_shocked cat.png" alt=""></div>
+                    <div class="question-number">Question 7/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q7" value="a"><label>Aucun temps particulier n'est nécessaire</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q7" value="b"><label>30 minutes suffisent</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q7" value="c"><label>24 heures minimum</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q7" value="d"><label>2 à 3 heures minimum pour éviter la dilution par la pluie</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Après désinfection d'une surface bétonnée extérieure, combien de temps doit-elle être protégée de la pluie ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="7"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step8">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/10_naughty cat.png" alt=""></div>
+                    <div class="question-number">Question 8/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q8" value="a"><label>En le rangeant directement après utilisation</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q8" value="b"><label>Par un simple rinçage à l'eau claire</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q8" value="c"><label>Par trempage dans un bac de désinfectant selon le temps de contact requis</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q8" value="d"><label>En le laissant sécher à l'air libre</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Comment doit-on procéder à la désinfection du matériel de nettoyage après chaque utilisation ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="8"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step9">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/11_fat cat.png" alt=""></div>
+                    <div class="question-number">Question 9/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q9" value="a"><label>Rouge=Extérieur, Bleu=Infirmerie, Vert=Accueil, Jaune=Collectifs</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q9" value="b"><label>Une seule couleur pour simplifier la gestion</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q9" value="c"><label>Rouge=Infirmerie/Quarantaine, Bleu=Boxes accueil, Vert=Collectifs, Jaune=Extérieur</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q9" value="d"><label>Pas de système de couleur défini</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel est le code couleur exact du matériel de nettoyage au Fanal des Chats ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="9"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step10">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/13_sleeping cat.png" alt=""></div>
+                    <div class="question-number">Question 10/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q10" value="a"><label>Sentir bon et avoir une couleur agréable</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q10" value="b"><label>Être le moins cher possible</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q10" value="c"><label>Posséder un large spectre : virucide, bactéricide et fongicide</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q10" value="d"><label>Être naturel et bio</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelle caractéristique fondamentale doit posséder un désinfectant professionnel en refuge ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="10"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step11">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/14_orange cat.png" alt=""></div>
+                    <div class="question-number">Question 11/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q11" value="a"><label>Oui, c'est recommandé pour un nettoyage en profondeur hebdomadaire</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q11" value="b"><label>Oui, si on sèche rapidement après</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q11" value="c"><label>Non, cela stresse les chats et crée un environnement humide propice aux microbes</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q11" value="d"><label>Oui, uniquement avec de l'eau chaude</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Les hébergements félins peuvent-ils être nettoyés à grande eau (jet haute pression) ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="11"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step12">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/15_tabby.png" alt=""></div>
+                    <div class="question-number">Question 12/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q12" value="a"><label>Un nettoyage simple sans désinfection suffit</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q12" value="b"><label>On peut attendre l'arrivée du prochain occupant</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q12" value="c"><label>Une désinfection complète systématique de l'espace et du matériel</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q12" value="d"><label>Rien de particulier si le chat était en bonne santé</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelle procédure s'impose systématiquement après le départ d'un chat du refuge ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="12"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step13">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/17_gray cat.png" alt=""></div>
+                    <div class="question-number">Question 13/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q13" value="a"><label>N'importe où, pourvu qu'ils soient accessibles</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q13" value="b"><label>Dans un local spécifique, fermé, ventilé, sec, à l'abri de la lumière et du gel</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q13" value="c"><label>Près des points d'eau pour faciliter la dilution</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q13" value="d"><label>Dans les hébergements félins pour plus de praticité</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelles sont les conditions réglementaires de stockage des produits d'hygiène ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="13"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step14">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/18_brown cat.png" alt=""></div>
+                    <div class="question-number">Question 14/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q14" value="a"><label>Dans un dossier personnel du responsable</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q14" value="b"><label>Uniquement en version numérique sur le cloud</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q14" value="c"><label>Dans le Règlement Sanitaire, accessible aux agents de contrôle et au vétérinaire</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q14" value="d"><label>Affichés uniquement dans le local de stockage</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Où doit obligatoirement être conservée la documentation des protocoles d'hygiène ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="14"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step15">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/19_cute gray cat.png" alt=""></div>
+                    <div class="question-number">Question 15/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q15" value="a"><label>Uniquement des bactéries pathogènes</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q15" value="b"><label>Des bactéries, virus, champignons et parasites en équilibre variable</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q15" value="c"><label>Uniquement des virus respiratoires</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q15" value="d"><label>Aucun agent pathogène si l'hygiène est correcte</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">De quels agents est composé le "microbisme ambiant" d'un établissement hébergeant des animaux ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="15"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step16">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/20_tiger cat.png" alt=""></div>
+                    <div class="question-number">Question 16/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q16" value="a"><label>Le temps de contact est facultatif si la concentration est élevée</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q16" value="b"><label>On peut rincer immédiatement après application</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q16" value="c"><label>Plus le contact est rapide, meilleure est l'efficacité</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q16" value="d"><label>Le temps de contact indiqué sur la fiche technique est OBLIGATOIRE pour garantir l'efficacité</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelle est l'importance du paramètre "Temps" dans le principe TACT ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="16"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step17">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/21_cat turned away.png" alt=""></div>
+                    <div class="question-number">Question 17/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q17" value="a"><label>Oui, pour augmenter l'efficacité</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q17" value="b"><label>Oui, si on connaît bien les produits</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q17" value="c"><label>JAMAIS - Risque de réactions chimiques dangereuses (gaz toxiques)</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q17" value="d"><label>Oui, uniquement le Dettol avec la Javel</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Peut-on mélanger plusieurs produits d'hygiène pour renforcer leur action ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="17"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step18">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/22_cartoon cat.png" alt=""></div>
+                    <div class="question-number">Question 18/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q18" value="a"><label>Nettoyage renforcé sans désinfection</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q18" value="b"><label>Désinfection quotidienne obligatoire + protocole renforcé adapté à l'agent pathogène</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q18" value="c"><label>Attendre la guérison des animaux</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q18" value="d"><label>Désinfection hebdomadaire suffit</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quel protocole s'applique en cas de maladie contagieuse déclarée dans le refuge ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="18"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step19">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/23_cute cat illustration.png" alt=""></div>
+                    <div class="question-number">Question 19/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q19" value="a"><label>Le prix et la couleur du matériel</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q19" value="b"><label>La marque et le design</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q19" value="c"><label>Efficacité démontrée, facilité d'utilisation, facilité d'entretien et de désinfection</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q19" value="d"><label>La disponibilité en grande surface</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quels critères professionnels déterminent le choix du matériel de nettoyage ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next" type="button" data-step="19"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="step20">
+                    <div class="slide-illustration"><img src="../../assets/images/images/illustrations/24_cat illustration.png" alt=""></div>
+                    <div class="question-number">Question 20/20</div>
+                    <div class="d-flex flex-wrap options">
+                        <div class="option animate"><input type="radio" name="q20" value="a"><label>Désinfection → Nettoyage → Séchage</label></div>
+                        <div class="option animate delay-100"><input type="radio" name="q20" value="b"><label>Nettoyage → Rinçage intermédiaire → Désinfection → Rinçage final → Séchage</label></div>
+                        <div class="option animate delay-200"><input type="radio" name="q20" value="c"><label>Un seul produit combiné pour tout faire</label></div>
+                        <div class="option animate delay-300"><input type="radio" name="q20" value="d"><label>Rinçage à l'eau uniquement</label></div>
+                    </div>
+                    <div class="question">
+                        <h2 class="animate">Quelles sont les 5 étapes de la procédure complète de nettoyage-désinfection ?</h2>
+                        <div class="nextPrev">
+                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="apply" type="button" id="submitQuiz"><i class="fa-solid fa-check"></i></button>
+                        </div>
+                        <div class="fill"></div>
+                    </div>
+                </fieldset>
+
+            </form>
+        </section>
+    </main>
+
+    <div class="loadingresult">
+        <div class="loading-content">
+            <div class="loading-cat"><i class="fas fa-cat"></i></div>
+            <p>Analyse de vos réponses...</p>
+        </div>
+    </div>
+
+    <div class="result_page">
+        <div class="result_inner">
+            <div class="result_content">
+                <header class="resultheader"><i class="fas fa-user-tie"></i> Résultats Employé</header>
+                <div class="result_msg">
+                    <img src="../../assets/images/quiz/check.png" alt="">
+                    <span class="result_msg_text">Résultat</span>
+                </div>
+                <span class="score-label">Votre score</span>
+                <div class="u_prcnt">0%</div>
+                <div class="prcnt_bar"><div class="fill"></div></div>
+                <div class="prcnt_bar_lvl">-</div>
+                <div class="lvl_overview">
+                    <div class="lvl-single"><div class="lvl-color low"></div><div class="lvl-name">À revoir<br><small>0-59%</small></div></div>
+                    <div class="lvl-single"><div class="lvl-color medium"></div><div class="lvl-name">Bien<br><small>60-79%</small></div></div>
+                    <div class="lvl-single"><div class="lvl-color high"></div><div class="lvl-name">Expert<br><small>80-100%</small></div></div>
+                </div>
+            </div>
+            <div class="result_right">
+                <div class="result_advice">
+                    <h3><i class="fas fa-lightbulb"></i> Évaluation</h3>
+                    <p class="advice_text"></p>
+                </div>
+                <footer class="resultfooter">
+                    <a href="index.html" class="btn-adopt"><i class="fas fa-arrow-left"></i> Retour</a>
+                    <button type="button" class="btn-see-errors" id="seeErrorsBtn"><i class="fas fa-arrow-down"></i> Voir erreurs</button>
+                    <button type="button" class="btn-retry" onclick="location.reload()"><i class="fas fa-redo"></i> Refaire</button>
+                </footer>
+            </div>
+        </div>
+        <div class="errors-section" id="errorsSection">
+            <h2 class="errors-title"><i class="fas fa-times-circle"></i> Vos erreurs</h2>
+            <div class="errors-list" id="errorsList"></div>
+        </div>
+    </div>
+
+    <div id="error"></div>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    (function($) {
+        'use strict';
+
+        const TOTAL_QUESTIONS = 20;
+        const TIME_LIMIT = 300;
+
+        const QUESTIONS_DATA = {
+            q1: {
+                question: "Quelle est la température d'eau recommandée pour diluer les détergents et pourquoi ?",
+                answers: {
+                    a: "60-80°C pour une meilleure efficacité",
+                    b: "100°C pour stériliser l'eau",
+                    c: "20-40°C (tiède) pour préserver les principes actifs",
+                    d: "Eau froide (0-10°C) uniquement"
+                },
+                correct: "c",
+                explanation: "L'eau tiède (20-40°C) est recommandée car elle permet une dilution optimale tout en préservant les principes actifs des détergents. L'eau trop chaude peut dénaturer certains composants."
+            },
+            q2: {
+                question: "Quelles zones nécessitent impérativement une désinfection quotidienne ?",
+                answers: {
+                    a: "Toutes les zones du refuge quotidiennement",
+                    b: "Uniquement les zones extérieures",
+                    c: "Les espaces de vie stable et le bureau",
+                    d: "Les zones à haute pression sanitaire : quarantaine et infirmerie"
+                },
+                correct: "d",
+                explanation: "Les zones à haute pression sanitaire (quarantaine, infirmerie) hébergent des animaux potentiellement malades ou immunodéprimés. Elles nécessitent une désinfection quotidienne obligatoire."
+            },
+            q3: {
+                question: "Quel est le SEUL désinfectant efficace contre le virus du Typhus (panleucopénie féline) ?",
+                answers: {
+                    a: "Le C.I.D.20 à concentration renforcée",
+                    b: "Le Dettol combiné au C.I.D.20",
+                    c: "L'eau de Javel (hypochlorite de sodium)",
+                    d: "L'alcool à 70° en pulvérisation"
+                },
+                correct: "c",
+                explanation: "Seule l'eau de Javel (hypochlorite de sodium) à concentration appropriée peut éliminer le parvovirus du Typhus, extrêmement résistant dans l'environnement. C'est la seule exception au protocole standard avec C.I.D.20."
+            },
+            q4: {
+                question: "Quelle est la procédure correcte entre l'étape de nettoyage et celle de désinfection ?",
+                answers: {
+                    a: "Ne pas rincer pour maximiser l'efficacité du désinfectant",
+                    b: "Mélanger détergent et désinfectant dans le même seau",
+                    c: "Utiliser uniquement le désinfectant sans nettoyage préalable",
+                    d: "Rincer abondamment après le nettoyage, avant d'appliquer le désinfectant"
+                },
+                correct: "d",
+                explanation: "Le rinçage intermédiaire est obligatoire pour éliminer les résidus de détergent qui pourraient interférer avec l'action du désinfectant. Les deux produits ne doivent jamais être mélangés."
+            },
+            q5: {
+                question: "Pourquoi les désinfectants contenant des composés phénolés sont-ils PROSCRITS en refuge félin ?",
+                answers: {
+                    a: "Ils sont moins chers mais moins efficaces",
+                    b: "Ils ont une odeur désagréable pour les chats",
+                    c: "Ils sont recommandés pour les chatons",
+                    d: "Ils sont TOXIQUES et peuvent provoquer des intoxications graves chez les félins"
+                },
+                correct: "d",
+                explanation: "Les composés phénolés sont TOXIQUES pour les chats qui ne peuvent pas les métaboliser correctement. L'exposition peut provoquer des intoxications graves, voire mortelles. Leur utilisation est strictement interdite."
+            },
+            q6: {
+                question: "Quels facteurs définissent la 'pression sanitaire' d'un établissement hébergeant des animaux ?",
+                answers: {
+                    a: "Le nombre de bénévoles disponibles",
+                    b: "La concentration d'animaux, leurs statuts sanitaires et les mouvements",
+                    c: "La taille des locaux uniquement",
+                    d: "L'ancienneté de l'établissement"
+                },
+                correct: "b",
+                explanation: "La pression sanitaire dépend de la concentration d'animaux, de la diversité de leurs statuts sanitaires (sains, malades, inconnus) et des mouvements (entrées/sorties fréquentes). Ces facteurs augmentent le risque de propagation des maladies."
+            },
+            q7: {
+                question: "Après désinfection d'une surface bétonnée extérieure, combien de temps doit-elle être protégée de la pluie ?",
+                answers: {
+                    a: "Aucun temps particulier n'est nécessaire",
+                    b: "30 minutes suffisent",
+                    c: "24 heures minimum",
+                    d: "2 à 3 heures minimum pour éviter la dilution par la pluie"
+                },
+                correct: "d",
+                explanation: "Les surfaces extérieures doivent être protégées de la pluie pendant 2-3 heures minimum après désinfection pour que le produit ait le temps d'agir avant d'être dilué ou lessivé."
+            },
+            q8: {
+                question: "Comment doit-on procéder à la désinfection du matériel de nettoyage après chaque utilisation ?",
+                answers: {
+                    a: "En le rangeant directement après utilisation",
+                    b: "Par un simple rinçage à l'eau claire",
+                    c: "Par trempage dans un bac de désinfectant selon le temps de contact requis",
+                    d: "En le laissant sécher à l'air libre"
+                },
+                correct: "c",
+                explanation: "Le matériel doit être désinfecté par trempage dans un bac contenant une solution désinfectante, en respectant le temps de contact indiqué sur la fiche technique, puis rincé et mis à sécher."
+            },
+            q9: {
+                question: "Quel est le code couleur exact du matériel de nettoyage au Fanal des Chats ?",
+                answers: {
+                    a: "Rouge=Extérieur, Bleu=Infirmerie, Vert=Accueil, Jaune=Collectifs",
+                    b: "Une seule couleur pour simplifier la gestion",
+                    c: "Rouge=Infirmerie/Quarantaine, Bleu=Boxes accueil, Vert=Collectifs, Jaune=Extérieur",
+                    d: "Pas de système de couleur défini"
+                },
+                correct: "c",
+                explanation: "Le code couleur est : ROUGE pour l'Infirmerie/Quarantaine (zones à haut risque), BLEU pour les Boxes d'accueil, VERT pour les espaces Collectifs, JAUNE pour l'Extérieur. Ce système évite les contaminations croisées."
+            },
+            q10: {
+                question: "Quelle caractéristique fondamentale doit posséder un désinfectant professionnel en refuge ?",
+                answers: {
+                    a: "Sentir bon et avoir une couleur agréable",
+                    b: "Être le moins cher possible",
+                    c: "Posséder un large spectre : virucide, bactéricide et fongicide",
+                    d: "Être naturel et bio"
+                },
+                correct: "c",
+                explanation: "Un désinfectant professionnel doit avoir un large spectre d'action : virucide (contre les virus), bactéricide (contre les bactéries) et fongicide (contre les champignons) pour couvrir les différents types de pathogènes."
+            },
+            q11: {
+                question: "Les hébergements félins peuvent-ils être nettoyés à grande eau (jet haute pression) ?",
+                answers: {
+                    a: "Oui, c'est recommandé pour un nettoyage en profondeur hebdomadaire",
+                    b: "Oui, si on sèche rapidement après",
+                    c: "Non, cela stresse les chats et crée un environnement humide propice aux microbes",
+                    d: "Oui, uniquement avec de l'eau chaude"
+                },
+                correct: "c",
+                explanation: "NON. Le nettoyage à grande eau est proscrit car il stresse considérablement les chats, crée un environnement humide favorisant les microbes, et peut disperser les agents pathogènes. Le nettoyage doit se faire avec des quantités d'eau maîtrisées."
+            },
+            q12: {
+                question: "Quelle procédure s'impose systématiquement après le départ d'un chat du refuge ?",
+                answers: {
+                    a: "Un nettoyage simple sans désinfection suffit",
+                    b: "On peut attendre l'arrivée du prochain occupant",
+                    c: "Une désinfection complète systématique de l'espace et du matériel",
+                    d: "Rien de particulier si le chat était en bonne santé"
+                },
+                correct: "c",
+                explanation: "Une désinfection complète systématique de l'espace et de tout le matériel (gamelles, litière, couvertures) est obligatoire après chaque départ, même si l'animal semblait en bonne santé. Des maladies peuvent être asymptomatiques."
+            },
+            q13: {
+                question: "Quelles sont les conditions réglementaires de stockage des produits d'hygiène ?",
+                answers: {
+                    a: "N'importe où, pourvu qu'ils soient accessibles",
+                    b: "Dans un local spécifique, fermé, ventilé, sec, à l'abri de la lumière et du gel",
+                    c: "Près des points d'eau pour faciliter la dilution",
+                    d: "Dans les hébergements félins pour plus de praticité"
+                },
+                correct: "b",
+                explanation: "Les produits doivent être stockés dans un local dédié, fermé à clé, bien ventilé, sec, à l'abri de la lumière directe et du gel. Ces conditions préservent leur efficacité et assurent la sécurité."
+            },
+            q14: {
+                question: "Où doit obligatoirement être conservée la documentation des protocoles d'hygiène ?",
+                answers: {
+                    a: "Dans un dossier personnel du responsable",
+                    b: "Uniquement en version numérique sur le cloud",
+                    c: "Dans le Règlement Sanitaire, accessible aux agents de contrôle et au vétérinaire",
+                    d: "Affichés uniquement dans le local de stockage"
+                },
+                correct: "c",
+                explanation: "Les protocoles doivent être intégrés au Règlement Sanitaire de l'établissement et être accessibles aux agents de contrôle des services vétérinaires et au vétérinaire sanitaire lors de leurs visites. C'est une obligation réglementaire."
+            },
+            q15: {
+                question: "De quels agents est composé le 'microbisme ambiant' d'un établissement hébergeant des animaux ?",
+                answers: {
+                    a: "Uniquement des bactéries pathogènes",
+                    b: "Des bactéries, virus, champignons et parasites en équilibre variable",
+                    c: "Uniquement des virus respiratoires",
+                    d: "Aucun agent pathogène si l'hygiène est correcte"
+                },
+                correct: "b",
+                explanation: "Le microbisme ambiant comprend des bactéries, virus, champignons et parasites naturellement présents dans l'environnement. Leur équilibre varie selon les conditions d'hygiène, mais il est impossible de les éliminer totalement."
+            },
+            q16: {
+                question: "Quelle est l'importance du paramètre 'Temps' dans le principe TACT ?",
+                answers: {
+                    a: "Le temps de contact est facultatif si la concentration est élevée",
+                    b: "On peut rincer immédiatement après application",
+                    c: "Plus le contact est rapide, meilleure est l'efficacité",
+                    d: "Le temps de contact indiqué sur la fiche technique est OBLIGATOIRE pour garantir l'efficacité"
+                },
+                correct: "d",
+                explanation: "Le temps de contact est un paramètre ESSENTIEL du principe TACT. Il doit être respecté scrupuleusement selon la fiche technique du produit. Un temps insuffisant rend la désinfection inefficace, même avec une concentration correcte."
+            },
+            q17: {
+                question: "Peut-on mélanger plusieurs produits d'hygiène pour renforcer leur action ?",
+                answers: {
+                    a: "Oui, pour augmenter l'efficacité",
+                    b: "Oui, si on connaît bien les produits",
+                    c: "JAMAIS - Risque de réactions chimiques dangereuses (gaz toxiques)",
+                    d: "Oui, uniquement le Dettol avec la Javel"
+                },
+                correct: "c",
+                explanation: "JAMAIS. Le mélange de produits chimiques peut provoquer des réactions dangereuses et libérer des gaz toxiques (ex: Javel + acide = chlore gazeux mortel). Chaque produit doit être utilisé séparément, avec rinçage entre les applications."
+            },
+            q18: {
+                question: "Quel protocole s'applique en cas de maladie contagieuse déclarée dans le refuge ?",
+                answers: {
+                    a: "Nettoyage renforcé sans désinfection",
+                    b: "Désinfection quotidienne obligatoire + protocole renforcé adapté à l'agent pathogène",
+                    c: "Attendre la guérison des animaux",
+                    d: "Désinfection hebdomadaire suffit"
+                },
+                correct: "b",
+                explanation: "En cas de maladie contagieuse déclarée, le protocole impose une désinfection quotidienne obligatoire de toutes les zones concernées, plus un protocole renforcé adapté à l'agent pathogène identifié (ex: Javel pour Typhus, C.I.D.20 pour Giardia)."
+            },
+            q19: {
+                question: "Quels critères professionnels déterminent le choix du matériel de nettoyage ?",
+                answers: {
+                    a: "Le prix et la couleur du matériel",
+                    b: "La marque et le design",
+                    c: "Efficacité démontrée, facilité d'utilisation, facilité d'entretien et de désinfection",
+                    d: "La disponibilité en grande surface"
+                },
+                correct: "c",
+                explanation: "Le choix du matériel professionnel repose sur des critères objectifs : efficacité prouvée, ergonomie d'utilisation, facilité d'entretien et capacité à être correctement désinfecté. Le matériel doit supporter les désinfections répétées."
+            },
+            q20: {
+                question: "Quelles sont les 5 étapes de la procédure complète de nettoyage-désinfection ?",
+                answers: {
+                    a: "Désinfection → Nettoyage → Séchage",
+                    b: "Nettoyage → Rinçage intermédiaire → Désinfection → Rinçage final → Séchage",
+                    c: "Un seul produit combiné pour tout faire",
+                    d: "Rinçage à l'eau uniquement"
+                },
+                correct: "b",
+                explanation: "L'ordre complet est : 1) Nettoyage avec détergent et action mécanique, 2) Rinçage intermédiaire, 3) Désinfection avec temps de contact respecté, 4) Rinçage final, 5) Séchage complet avant réintroduction des animaux."
+            }
+        };
+
+        let currentStep = 0, timeRemaining = TIME_LIMIT, timerInterval = null, userAnswers = {};
+        const $divs = $('#stepForm fieldset');
+
+        $(document).ready(function() {
+            $('.counterContainer').hide();
+            $divs.hide().first().show();
+            $('#startQuiz').on('click', function() {
+                $('#quizIntro').fadeOut(500, function() {
+                    $('#quizSteps').fadeIn(500);
+                    $('.counterContainer').fadeIn(500);
+                    startTimer();
+                });
+            });
+            $('.option input').on('click', function() {
+                $(this).closest('.options').find('.option').removeClass('selected');
+                $(this).parent().addClass('selected');
+            });
+            $('.next').on('click', function() { handleNext($(this).data('step')); });
+            $('.prev').on('click', function() { if (currentStep > 0) prevStep(); });
+            $('#submitQuiz').on('click', handleSubmit);
+            $('#seeErrorsBtn').on('click', function() { document.getElementById('errorsSection').scrollIntoView({ behavior: 'smooth' }); });
+        });
+
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                if (timeRemaining <= 0) { clearInterval(timerInterval); calculateAndShowResults(); return; }
+                timeRemaining--;
+                $('#countdown-timer').text(timeRemaining);
+                $('.counter circle').css('stroke-dashoffset', 440 - Math.floor((timeRemaining / TIME_LIMIT) * 440));
+                if (timeRemaining <= 60) $('.counter circle').css('stroke', '#fd7e14');
+                if (timeRemaining <= 20) $('.counter circle').css('stroke', '#dc3545');
+            }, 1000);
+        }
+
+        function handleNext(step) {
+            if (!$(`#step${step} input:checked`).length) { showError('Veuillez sélectionner une réponse !'); return; }
+            userAnswers['q' + step] = $(`#step${step} input:checked`).val();
+            $divs.eq(currentStep).hide(); currentStep++;
+            if (currentStep < TOTAL_QUESTIONS) { $divs.eq(currentStep).show(); $('.question .fill').css('height', (currentStep / TOTAL_QUESTIONS) * 100 + '%'); }
+        }
+
+        function prevStep() { $divs.eq(currentStep).hide(); currentStep--; $divs.eq(currentStep).show(); $('.question .fill').css('height', (currentStep / TOTAL_QUESTIONS) * 100 + '%'); }
+
+        function handleSubmit() {
+            if (!$(`#step${TOTAL_QUESTIONS} input:checked`).length) { showError('Veuillez sélectionner une réponse !'); return; }
+            userAnswers['q' + TOTAL_QUESTIONS] = $(`#step${TOTAL_QUESTIONS} input:checked`).val();
+            clearInterval(timerInterval);
+            calculateAndShowResults();
+        }
+
+        function calculateAndShowResults() {
+            $('.loadingresult').css('display', 'grid');
+            setTimeout(function() {
+                let correct = 0;
+                for (const [q, ans] of Object.entries(userAnswers)) {
+                    if (QUESTIONS_DATA[q] && QUESTIONS_DATA[q].correct === ans) correct++;
+                }
+                const pct = Math.round((correct / TOTAL_QUESTIONS) * 100);
+                displayResults(pct, correct);
+            }, 1500);
+        }
+
+        function displayResults(pct, correct) {
+            $('.u_prcnt').text(pct + '%');
+            setTimeout(() => $('.prcnt_bar .fill').css('width', pct + '%'), 500);
+
+            let level, color, msg, advice;
+            if (pct < 60) { level = 'À revoir'; color = '#dc3545'; msg = 'Formation requise'; advice = "Score insuffisant pour un employé. Ce niveau de connaissance ne permet pas d'assurer correctement les protocoles d'hygiène. Une formation complète et un accompagnement pratique sont nécessaires avant de pouvoir travailler en autonomie."; }
+            else if (pct < 80) { level = 'Bien'; color = '#fd7e14'; msg = 'Niveau acceptable'; advice = "Bon niveau de base mais des lacunes subsistent sur certains protocoles techniques. Revoyez attentivement les points faibles identifiés et effectuez des sessions pratiques supervisées pour consolider vos acquis."; }
+            else { level = 'Expert'; color = '#28a745'; msg = 'Excellent !'; advice = "Vous maîtrisez parfaitement les protocoles d'hygiène professionnels. Vous êtes qualifié(e) pour travailler en autonomie et pour accompagner la formation des nouveaux arrivants et bénévoles."; }
+
+            $('.u_prcnt, .prcnt_bar_lvl, .result_msg').css('color', color);
+            $('.prcnt_bar .fill').css('background-color', color);
+            $('.prcnt_bar_lvl').text(level);
+            $('.result_msg_text').text(msg);
+            $('.advice_text').text(advice);
+
+            displayErrors();
+            setTimeout(() => { $('.loadingresult').hide(); $('.result_page').addClass('result_page_show'); }, 500);
+        }
+
+        function displayErrors() {
+            const $list = $('#errorsList').empty();
+            let hasErrors = false;
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                const q = 'q' + i, ans = userAnswers[q], data = QUESTIONS_DATA[q];
+                if (ans && data && ans !== data.correct) {
+                    hasErrors = true;
+                    $list.append(`
+                        <div class="error-item">
+                            <div class="error-question-number">Question ${i}</div>
+                            <div class="error-question-text">${data.question}</div>
+                            <div class="error-answers">
+                                <div class="error-your-answer">
+                                    <i class="fas fa-times"></i>
+                                    <span><strong>Votre réponse :</strong> ${data.answers[ans]}</span>
+                                </div>
+                                <div class="error-correct-answer">
+                                    <i class="fas fa-check"></i>
+                                    <span><strong>Bonne réponse :</strong> ${data.answers[data.correct]}</span>
+                                </div>
+                            </div>
+                            <div class="error-explanation">
+                                <strong><i class="fas fa-info-circle"></i> Explication :</strong> ${data.explanation}
+                            </div>
+                        </div>
+                    `);
+                }
+            }
+            $('#seeErrorsBtn, #errorsSection').toggle(hasErrors);
+        }
+
+        function showError(msg) {
+            const $e = $('<div class="alert alert-danger reveal">' + msg + '</div>');
+            $('#error').append($e);
+            setTimeout(() => $e.fadeOut(300, function() { $(this).remove(); }), 3000);
+        }
+    })(jQuery);
+    </script>
+
+</body>
+</html>

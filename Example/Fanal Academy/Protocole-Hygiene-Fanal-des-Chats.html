@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocole d'Hygiène au Fanal des Chats</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+        :root {
+            --orange-primary: #FF5B2E;
+            --orange-light: #FF7A54;
+            --orange-dark: #ff3b05;
+            --beige-bg: #FCF1E8;
+            --navy-blue: #070143;
+            --text-gray: #687693;
+            --text-dark: #333;
+            --white: #ffffff;
+            --green-success: #2E7D32;
+            --red-danger: #C62828;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm 20mm;
+        }
+
+        @media print {
+            body {
+                font-size: 10pt;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .no-print {
+                display: none;
+            }
+            /* Éviter les coupures au milieu des éléments */
+            .intro-box, .warning-box, .important-box, .success-box, .danger-box, .quote {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .section-title, .section-subtitle {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            .step, .tact-item, .objective-card, .epi-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .steps-container, .tact-circle, .objectives-grid, .epi-grid {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            table {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .section-with-illus {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .toc {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .checklist {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            .page-footer {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .container {
+                page-break-inside: auto;
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-dark) 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .header h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 14pt;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .header .logo-text {
+            font-size: 18pt;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header .cat-icon {
+            font-size: 40pt;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--beige-bg);
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 9pt;
+            color: var(--text-gray);
+            border-top: 3px solid var(--orange-primary);
+            margin-top: 40px;
+        }
+
+        .footer .page-number {
+            background-color: var(--orange-primary);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+            color: var(--white);
+            padding: 15px 25px;
+            font-size: 16pt;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            color: var(--orange-primary);
+            font-size: 14pt;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--beige-bg);
+        }
+
+        /* Content Boxes */
+        .intro-box {
+            background-color: var(--beige-bg);
+            border-left: 5px solid var(--orange-primary);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .intro-box p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .warning-box {
+            background-color: #FFF3E0;
+            border: 2px solid var(--orange-primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box .icon {
+            font-size: 24pt;
+            margin-right: 10px;
+        }
+
+        .warning-box h4 {
+            color: var(--orange-dark);
+            font-size: 12pt;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .important-box {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #1a1a5e 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .important-box h3 {
+            font-size: 14pt;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .important-box p {
+            font-size: 11pt;
+            opacity: 0.9;
+        }
+
+        .success-box {
+            background-color: #E8F5E9;
+            border-left: 5px solid var(--green-success);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .danger-box {
+            background-color: #FFEBEE;
+            border-left: 5px solid var(--red-danger);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Lists */
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        ul li::marker {
+            color: var(--orange-primary);
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background-color: var(--beige-bg);
+            border-radius: 8px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: "●";
+            position: absolute;
+            left: 12px;
+            color: var(--orange-primary);
+            font-weight: bold;
+            font-size: 10pt;
+            top: 12px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+
+        table th {
+            background-color: var(--orange-primary);
+            color: var(--white);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tr:nth-child(even) {
+            background-color: var(--beige-bg);
+        }
+
+        table tr:hover {
+            background-color: #fff3e0;
+        }
+
+        /* Steps */
+        .steps-container {
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-light));
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14pt;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 5px;
+        }
+
+        .step-content h4 {
+            color: var(--navy-blue);
+            margin-bottom: 5px;
+            font-size: 12pt;
+        }
+
+        /* TACT Circle */
+        .tact-circle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .tact-item {
+            background-color: var(--beige-bg);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tact-item.temperature {
+            border-color: #E53935;
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+        }
+
+        .tact-item.action {
+            border-color: #43A047;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+        }
+
+        .tact-item.concentration {
+            border-color: #1E88E5;
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+        }
+
+        .tact-item.temps {
+            border-color: #FFA000;
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+        }
+
+        .tact-item h4 {
+            font-size: 12pt;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .tact-item p {
+            font-size: 10pt;
+            color: var(--text-gray);
+        }
+
+        /* EPI Icons */
+        .epi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .epi-item {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--beige-bg);
+            border-radius: 10px;
+        }
+
+        .epi-item .icon {
+            font-size: 30pt;
+            margin-bottom: 10px;
+        }
+
+        .epi-item p {
+            font-size: 9pt;
+            color: var(--text-gray);
+        }
+
+        /* Procedure Table */
+        .procedure-table {
+            margin: 20px 0;
+        }
+
+        .procedure-row {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .procedure-label {
+            width: 180px;
+            background-color: var(--orange-primary);
+            color: var(--white);
+            padding: 15px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .procedure-content {
+            flex: 1;
+            padding: 15px;
+            background-color: var(--white);
+        }
+
+        .procedure-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        /* Objectives */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .objective-card {
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 15px;
+            color: var(--white);
+        }
+
+        .objective-card.primary {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+        }
+
+        .objective-card.secondary {
+            background: linear-gradient(135deg, var(--green-success), #1B5E20);
+        }
+
+        .objective-card.tertiary {
+            background: linear-gradient(135deg, var(--navy-blue), #1a1a5e);
+        }
+
+        .objective-card h4 {
+            color: var(--white);
+            font-size: 14pt;
+            margin-bottom: 8px;
+        }
+
+        .objective-card p {
+            font-size: 10pt;
+            opacity: 0.9;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--beige-bg) 0%, var(--white) 100%);
+            padding: 40px;
+            position: relative;
+        }
+
+        .cover-logo {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 40px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-title {
+            font-size: 36pt;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .cover-subtitle {
+            font-size: 18pt;
+            color: var(--orange-primary);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .cover-description {
+            max-width: 600px;
+            color: var(--text-gray);
+            font-size: 12pt;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .cover-info {
+            background-color: var(--white);
+            padding: 25px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cover-info p {
+            margin: 5px 0;
+            color: var(--text-gray);
+        }
+
+        .cover-info strong {
+            color: var(--navy-blue);
+        }
+
+        .cover-cats {
+            position: absolute;
+            bottom: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .cover-cats img {
+            width: 80px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        /* TOC */
+        .toc {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin: 30px 0;
+        }
+
+        .toc h2 {
+            color: var(--navy-blue);
+            font-size: 18pt;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--orange-primary);
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .toc-item:hover {
+            background-color: var(--beige-bg);
+            padding-left: 10px;
+            margin-left: -10px;
+            padding-right: 10px;
+            margin-right: -10px;
+        }
+
+        .toc-item span:first-child {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .toc-item span:last-child {
+            color: var(--orange-primary);
+            font-weight: 600;
+        }
+
+        /* Quote */
+        .quote {
+            background-color: var(--beige-bg);
+            padding: 25px 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 60pt;
+            color: var(--orange-primary);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .quote p {
+            font-style: italic;
+            font-size: 12pt;
+            color: var(--navy-blue);
+            padding-left: 40px;
+        }
+
+        /* Illustrations */
+        .illustration {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .illustration img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .illustration-small img {
+            max-width: 80px;
+        }
+
+        .illustration-medium img {
+            max-width: 120px;
+        }
+
+        .illustration-large img {
+            max-width: 200px;
+        }
+
+        .float-right {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .float-left {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Section with illustration */
+        .section-with-illus {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .section-with-illus .content {
+            flex: 1;
+        }
+
+        .section-with-illus .illus {
+            flex-shrink: 0;
+        }
+
+        /* Decorative cat */
+        .deco-cat {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        /* Utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-orange {
+            color: var(--orange-primary);
+        }
+
+        .text-navy {
+            color: var(--navy-blue);
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* Page Footer */
+        .page-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 2px solid var(--beige-bg);
+            margin-top: 30px;
+            font-size: 9pt;
+            color: var(--text-gray);
+        }
+
+        .page-footer .cat-mascot {
+            width: 40px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE DE COUVERTURE -->
+<div class="cover-page">
+    <div class="cover-logo">
+        <img src="../../assets/images/images/illustrations/14_orange cat.png" alt="Chat mascotte">
+    </div>
+    <h1 class="cover-title">Protocole d'Hygiène</h1>
+    <h2 class="cover-subtitle">Le Fanal des Chats</h2>
+    <p class="cover-description">
+        Manuel pratique à destination des travailleurs et bénévoles pour garantir
+        le bien-être et la santé des chats hébergés au refuge. Ce guide présente
+        les bonnes pratiques de nettoyage et de désinfection à appliquer
+        rigoureusement au quotidien.
+    </p>
+    <div class="cover-info">
+        <p><strong>Le Fanal des Chats</strong></p>
+        <p>Refuge pour chats - Association de protection animale</p>
+        <p>Version 1.0 - 2024</p>
+    </div>
+    <div class="cover-cats">
+        <img src="../../assets/images/images/illustrations/3_cute cat.png" alt="Chat mignon">
+        <img src="../../assets/images/images/illustrations/6_kitten.png" alt="Chaton">
+        <img src="../../assets/images/images/illustrations/17_gray cat.png" alt="Chat gris">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- TABLE DES MATIERES -->
+<div class="container">
+    <div class="toc">
+        <h2>Sommaire</h2>
+        <div class="toc-item">
+            <span>1. Introduction</span>
+            <span>3</span>
+        </div>
+        <div class="toc-item">
+            <span>2. La préparation des produits d'hygiène</span>
+            <span>5</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;2.1 Stockage des produits</span>
+            <span>5</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;2.2 Équipements de Protection Individuelle (EPI)</span>
+            <span>6</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;2.3 Préparation et dosage</span>
+            <span>7</span>
+        </div>
+        <div class="toc-item">
+            <span>3. La procédure de nettoyage</span>
+            <span>9</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;3.1 Comprendre le biofilm</span>
+            <span>9</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;3.2 Le principe TACT (Cercle de Sinner)</span>
+            <span>10</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;3.3 Étapes du nettoyage quotidien</span>
+            <span>11</span>
+        </div>
+        <div class="toc-item">
+            <span>4. La procédure de nettoyage-désinfection</span>
+            <span>13</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;4.1 Choisir son désinfectant</span>
+            <span>14</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;4.2 Fréquence de désinfection</span>
+            <span>15</span>
+        </div>
+        <div class="toc-item">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;4.3 Étapes de nettoyage-désinfection</span>
+            <span>16</span>
+        </div>
+        <div class="toc-item">
+            <span>5. Entretien du matériel</span>
+            <span>18</span>
+        </div>
+        <div class="toc-item">
+            <span>6. Fiches pratiques récapitulatives</span>
+            <span>20</span>
+        </div>
+    </div>
+
+    <div class="illustration">
+        <img src="../../assets/images/images/illustrations/13_sleeping cat.png" alt="Chat qui dort" style="max-width: 100px;">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<div class="container">
+    <h2 class="section-title">1. Introduction</h2>
+
+    <div class="section-with-illus">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    Les personnes chargées de l'entretien des lieux d'hébergement des chats au
+                    <strong>Fanal des Chats</strong> doivent respecter des bonnes pratiques permettant
+                    de gérer les risques de contamination des animaux.
+                </p>
+                <p>
+                    Ces bonnes pratiques passent par le respect des protocoles de nettoyage et de
+                    désinfection des locaux, le respect de la marche en avant tant pour les animaux,
+                    le personnel que pour le public.
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/7_pretty cat.png" alt="Joli chat">
+        </div>
+    </div>
+
+    <div class="warning-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/9_shocked cat.png" alt="Chat surpris">
+        </div>
+        <h4><span class="icon">&#9888;</span> Important</h4>
+        <p>
+            Toute transgression des règles peut avoir des conséquences sur la sécurité
+            et la santé des animaux. Le personnel doit avoir la capacité de lire, comprendre
+            et appliquer rigoureusement les protocoles de nettoyage et de désinfection.
+        </p>
+    </div>
+
+    <h3 class="section-subtitle">À qui s'adresse ce manuel ?</h3>
+
+    <p>Ce manuel est constitué de deux types de fiches :</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div class="intro-box" style="margin: 0;">
+            <h4 class="text-orange bold">EN PRATIQUE</h4>
+            <p>
+                À destination des bénévoles et nouveaux arrivants. Simple et ludique,
+                chaque fiche permet de déterminer les attentes étape par étape du
+                protocole de nettoyage et de désinfection.
+            </p>
+        </div>
+        <div class="intro-box" style="margin: 0; border-left-color: var(--navy-blue);">
+            <h4 class="text-navy bold">POUR ALLER PLUS LOIN</h4>
+            <p>
+                À destination des responsables et bénévoles expérimentés. Les sujets
+                sont approfondis et permettent d'affiner la capacité de lecture et
+                de choix des produits d'hygiène.
+            </p>
+        </div>
+    </div>
+
+    <h3 class="section-subtitle">Les personnes chargées de l'entretien doivent être en capacité de :</h3>
+
+    <ul class="checklist">
+        <li>Lire, comprendre et appliquer la <strong>fiche de préparation des produits d'hygiène</strong> : repérer les produits à utiliser, effectuer la bonne dilution, respecter les principes de sécurité en utilisant les Équipements de Protection Individuelle.</li>
+        <li>Lire, comprendre et appliquer le <strong>protocole de nettoyage et de désinfection</strong> : savoir expliquer pour chaque étape ce qu'il se passe sur les surfaces à traiter.</li>
+        <li>Prendre conscience de l'importance d'une technique parfaitement exécutée pour la santé des chats.</li>
+    </ul>
+
+    <div class="important-box">
+        <h3>Les protocoles sont affichés dans chaque local</h3>
+        <p>Une copie est conservée dans le Règlement Sanitaire de l'établissement et mise à disposition des agents de contrôle ainsi que du vétérinaire sanitaire.</p>
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/5_little cat.png" alt="Petit chat" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 2: PREPARATION DES PRODUITS -->
+<div class="container">
+    <h2 class="section-title">2. La Préparation des Produits d'Hygiène</h2>
+
+    <div class="section-with-illus">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    Dans le cadre des activités d'entretien des lieux d'hébergement des chats,
+                    le personnel stocke et manipule divers produits susceptibles d'être dangereux
+                    pour lui-même, pour les animaux ou l'environnement. Des bonnes pratiques
+                    doivent être prises lors du stockage et de la manipulation.
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/24_cat illustration.png" alt="Illustration chat">
+        </div>
+    </div>
+
+    <h3 class="section-subtitle">2.1 Stockage des produits</h3>
+
+    <div class="success-box">
+        <strong>Règles de stockage :</strong>
+        <ul>
+            <li>Stocker dans un local spécifique ou une armoire fermée et ventilée</li>
+            <li>Conserver dans un endroit sec, à l'abri de la lumière, de la chaleur et du gel</li>
+            <li>Stocker hors de portée des animaux et des enfants</li>
+            <li>Respecter les dates d'expiration des produits</li>
+            <li>Étiqueter clairement tous les contenants</li>
+        </ul>
+    </div>
+
+    <div class="danger-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/10_naughty cat.png" alt="Chat coquin">
+        </div>
+        <strong>&#9888; À éviter absolument :</strong>
+        <ul>
+            <li>Ne jamais stocker les produits à proximité des aliments pour animaux</li>
+            <li>Ne jamais réutiliser les emballages vides pour d'autres usages</li>
+            <li>Ne jamais mélanger différents produits chimiques</li>
+            <li>Ne pas stocker dans les locaux où se trouvent les animaux</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle">2.2 Équipements de Protection Individuelle (EPI)</h3>
+
+    <p>
+        L'Équipement de Protection Individuelle (EPI) est un dispositif destiné à protéger
+        contre les risques susceptibles de menacer votre santé et sécurité.
+        <strong class="text-orange">Il ne s'agit pas d'une simple information mais d'une consigne OBLIGATOIRE.</strong>
+    </p>
+
+    <div class="epi-grid">
+        <div class="epi-item">
+            <div class="icon">&#128080;</div>
+            <p><strong>Gants</strong><br>Protection des mains</p>
+        </div>
+        <div class="epi-item">
+            <div class="icon">&#128083;</div>
+            <p><strong>Lunettes</strong><br>Protection des yeux</p>
+        </div>
+        <div class="epi-item">
+            <div class="icon">&#129510;</div>
+            <p><strong>Tablier</strong><br>Protection du corps</p>
+        </div>
+        <div class="epi-item">
+            <div class="icon">&#128095;</div>
+            <p><strong>Chaussures</strong><br>Protection des pieds</p>
+        </div>
+        <div class="epi-item">
+            <div class="icon">&#128567;</div>
+            <p><strong>Masque</strong><br>Protection respiratoire</p>
+        </div>
+        <div class="epi-item">
+            <div class="icon">&#127869;</div>
+            <p><strong>Charlotte</strong><br>Protection de la tête</p>
+        </div>
+    </div>
+
+    <h3 class="section-subtitle">2.3 Préparation et dosage des produits</h3>
+
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>S'équiper des EPI</h4>
+                <p>Mettre les gants, lunettes et autres équipements nécessaires avant toute manipulation.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>Utiliser le matériel dédié</h4>
+                <p>Utiliser le bidon et le verre doseur réservés au produit à préparer. Aucune interversion n'est tolérée.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Prélever la bonne quantité</h4>
+                <p>Ni plus, ni moins. Effectuer la manipulation au-dessus d'un bac de rétention pour éviter les déversements.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>Diluer correctement</h4>
+                <p>Ajouter la bonne quantité d'eau à la bonne température selon la fiche technique du produit.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="important-box">
+        <h3>&#9888; Règle d'or</h3>
+        <p>Aucun produit n'est dilué la veille de son usage.<br>
+        Un désinfectant est dilué au moment où il est utilisé (risque de perte d'efficacité).</p>
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/4_playful cat.png" alt="Chat joueur" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 3: PROCEDURE DE NETTOYAGE -->
+<div class="container">
+    <h2 class="section-title">3. La Procédure de Nettoyage</h2>
+
+    <h3 class="section-subtitle">3.1 Comprendre le biofilm</h3>
+
+    <div class="section-with-illus">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    Des microbes (bactéries, virus, champignons, parasites) sont naturellement présents
+                    dans tous les établissements hébergeant des chats. Cela constitue le <strong>microbisme
+                    de l'établissement</strong>. Ces microbes ont pour mission de se multiplier et, arrivés
+                    à un certain seuil, certains d'entre eux peuvent devenir pathogènes.
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/11_fat cat.png" alt="Gros chat">
+        </div>
+    </div>
+
+    <p>
+        Les microbes produisent une matrice nommée <strong class="text-orange">« biofilm »</strong>
+        qui leur permet de :
+    </p>
+
+    <ul>
+        <li><strong>Se protéger</strong> des agressions extérieures (désinfectants, antibiotiques)</li>
+        <li><strong>Se nourrir</strong> via les matières organiques présentes sur les surfaces</li>
+        <li><strong>Se multiplier</strong> dans un environnement favorable</li>
+    </ul>
+
+    <div class="warning-box">
+        <h4><span class="icon">&#128161;</span> À retenir</h4>
+        <p>
+            Le biofilm est impénétrable aux antibiotiques, antiseptiques et désinfectants.<br>
+            <strong>Seule une action mécanique couplée à un détergent peut rompre le biofilm.</strong>
+        </p>
+    </div>
+
+    <div class="important-box">
+        <h3>Une procédure de nettoyage bien menée</h3>
+        <p>permet d'éliminer de <strong>70 à 90% des microbes</strong> présents sur les surfaces.</p>
+    </div>
+
+    <h3 class="section-subtitle">3.2 Le principe TACT (Cercle de Sinner)</h3>
+
+    <p>Un bon nettoyage efficace et raisonné n'est possible qu'en respectant <strong>4 paramètres</strong> :</p>
+
+    <div class="tact-circle">
+        <div class="tact-item temperature">
+            <h4>&#127777; Température</h4>
+            <p>Température de l'eau à laquelle est ajouté le produit (généralement 20-40°C)</p>
+        </div>
+        <div class="tact-item action">
+            <h4>&#128170; Action Mécanique</h4>
+            <p>Effectuer une action mécanique efficace avec une brosse pour casser le biofilm</p>
+        </div>
+        <div class="tact-item concentration">
+            <h4>&#129514; Concentration</h4>
+            <p>Utiliser un produit de nettoyage adapté à la bonne dilution</p>
+        </div>
+        <div class="tact-item temps">
+            <h4>&#9203; Temps</h4>
+            <p>Respecter le temps de contact nécessaire pour que le produit agisse</p>
+        </div>
+    </div>
+
+    <div class="quote">
+        <p>
+            L'action mécanique est la phase physique du nettoyage. Cette pratique, bien qu'énergivore,
+            est incontournable pour effectuer un nettoyage efficace. Votre détergent est votre allié
+            mais il lui faut de l'aide...
+        </p>
+    </div>
+
+    <div class="illustration">
+        <img src="../../assets/images/images/illustrations/8_meaow.png" alt="Chat miaou" style="max-width: 100px;">
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/2_meow.png" alt="Chat miaou" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="container">
+    <h3 class="section-subtitle">3.3 Étapes du nettoyage quotidien au Fanal des Chats</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="25%">ÉTAPE</th>
+                <th>DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. RANGEMENT ET PRÉ-NETTOYAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Éliminer les poussières, poils et résidus de litières au sol et sur les mobiliers</li>
+                        <li>Surélever les éléments au sol</li>
+                        <li>Retirer les gamelles, fontaines à eau, etc.</li>
+                        <li>Nettoyer les recoins non visibles, les endroits d'accès délicats, le matériel (couchages, arbres à chats)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2. NETTOYAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Préparer le détergent selon la fiche technique</li>
+                        <li>Respecter la <span class="highlight">température de l'eau</span> préconisée</li>
+                        <li>Épandre le détergent au sol</li>
+                        <li><span class="highlight">Action mécanique (brosse)</span> - INDISPENSABLE</li>
+                        <li>Respecter le temps de pause</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>3. RINÇAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Utilisation d'un seau d'eau claire et d'une serpillère</li>
+                        <li>Changer l'eau autant que nécessaire</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>4. SÉCHAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>User de tous procédés permettant d'assécher rapidement la surface</li>
+                        <li>Raclette, courant d'air, ventilation</li>
+                        <li><strong>Les microbes aiment l'humidité !</strong></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>5. ENTRETIEN DU MATÉRIEL</strong></td>
+                <td>
+                    <ul>
+                        <li>Nettoyer les accessoires utilisés</li>
+                        <li>Désinfecter par trempage (à chaque utilisation)</li>
+                        <li>Rincer puis faire sécher</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="danger-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/19_cute gray cat.png" alt="Chat gris mignon">
+        </div>
+        <strong>&#128167; Attention</strong><br>
+        Les hébergements félins ne sont PAS lessivés à grandes eaux (jet d'eau).
+        Cette pratique peut stresser les chats et créer un environnement humide propice
+        aux microbes.
+    </div>
+
+    <div class="objectives-grid">
+        <div class="objective-card primary">
+            <h4>&#128049; Bien-être</h4>
+            <p>des animaux</p>
+        </div>
+        <div class="objective-card secondary">
+            <h4>&#129657; Santé</h4>
+            <p>des animaux</p>
+        </div>
+        <div class="objective-card tertiary">
+            <h4>&#128067; Maîtrise</h4>
+            <p>des nuisances visuelles et olfactives</p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/15_tabby.png" alt="Chat tabby" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 4: NETTOYAGE-DESINFECTION -->
+<div class="container">
+    <h2 class="section-title">4. La Procédure de Nettoyage-Désinfection</h2>
+
+    <div class="section-with-illus">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    La <strong>désinfection</strong> est la réduction, au moyen d'agents chimiques (biocides),
+                    du nombre de microorganismes présents dans l'environnement jusqu'à l'obtention d'un niveau
+                    ne risquant pas de compromettre la sécurité ou la salubrité des animaux.
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/22_cartoon cat.png" alt="Chat cartoon">
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <h4><span class="icon">&#9888;</span> Règle fondamentale</h4>
+        <p>
+            La désinfection est <strong>TOUJOURS</strong> effectuée après un nettoyage rigoureux.<br>
+            Il n'est pas toléré d'utiliser un produit 2 en 1 (nettoyant désinfectant) et d'effectuer
+            ces deux protocoles en un seul geste. Aucun désinfectant ne tolère la présence de
+            matière organique.
+        </p>
+    </div>
+
+    <h3 class="section-subtitle">4.1 Choisir son désinfectant</h3>
+
+    <p>On attend d'un désinfectant plusieurs caractéristiques :</p>
+
+    <ul class="checklist">
+        <li>Un large spectre d'action (bactéricide, virucide, fongicide)</li>
+        <li>Un temps de contact compatible avec notre emploi du temps</li>
+        <li>Être efficace à faible concentration</li>
+        <li>Ne pas être toxique pour l'homme et les animaux</li>
+        <li>Ne pas être agressif pour l'environnement</li>
+        <li>Ne pas être corrosif pour les surfaces à traiter</li>
+    </ul>
+
+    <div class="danger-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/21_cat turned away.png" alt="Chat de dos">
+        </div>
+        <strong>&#128561; ATTENTION - Produits interdits au Fanal des Chats :</strong>
+        <ul>
+            <li>Les désinfectants contenant des <strong>composés phénolés</strong> sont à PROSCRIRE (toxiques pour les chats)</li>
+            <li>Vérifiez toujours la composition avant d'utiliser un nouveau produit</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle">4.2 Fréquence de désinfection au refuge</h3>
+
+    <p>
+        La fréquence de désinfection dépend de la <strong>pression sanitaire</strong> :
+        concentration d'animaux, statuts sanitaires différents, mouvements d'animaux.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Zone / Situation</th>
+                <th>Fréquence recommandée</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Boxes d'accueil / Quarantaine</td>
+                <td><strong class="text-orange">Quotidienne</strong></td>
+            </tr>
+            <tr>
+                <td>Infirmerie / Chats malades</td>
+                <td><strong class="text-orange">Quotidienne</strong></td>
+            </tr>
+            <tr>
+                <td>Espaces collectifs (forte rotation)</td>
+                <td><strong>2 à 3 fois par semaine</strong></td>
+            </tr>
+            <tr>
+                <td>Espaces de vie stable (chats résidents)</td>
+                <td><strong>1 fois par semaine</strong></td>
+            </tr>
+            <tr>
+                <td>Après le départ d'un chat</td>
+                <td><strong class="text-orange">Systématique</strong></td>
+            </tr>
+            <tr>
+                <td>En cas de maladie contagieuse déclarée</td>
+                <td><strong class="text-orange">Quotidienne + protocole renforcé</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <h4><span class="icon">&#127783;</span> Attention à la météo !</h4>
+        <p>
+            Sur les surfaces bétonnées, s'il est annoncé des précipitations le jour de la désinfection,
+            il est préférable de différer le traitement. La surface ne doit pas être exposée à la pluie
+            pendant 2 à 3 heures après le traitement.
+        </p>
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/18_brown cat.png" alt="Chat brun" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="container">
+    <h3 class="section-subtitle">4.3 Étapes de la procédure Nettoyage-Désinfection</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="25%">ÉTAPE</th>
+                <th>DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. RANGEMENT ET PRÉ-NETTOYAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Éliminer les poussières, poils et résidus de litières</li>
+                        <li>Surélever les éléments au sol, retirer gamelles et fontaines</li>
+                        <li>Nettoyer les recoins et le matériel</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2. NETTOYAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Préparer le détergent (dilution + température)</li>
+                        <li>Épandre le détergent au sol</li>
+                        <li><span class="highlight">Action mécanique (brosse)</span></li>
+                        <li>Respecter le temps de pause</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>3. RINÇAGE INTERMÉDIAIRE</strong></td>
+                <td>
+                    <ul>
+                        <li>Utilisation d'un seau d'eau claire et d'une serpillère</li>
+                        <li>Changer l'eau autant que nécessaire</li>
+                        <li><strong>Éliminer toute trace de détergent</strong></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>4. DÉSINFECTION</strong></td>
+                <td>
+                    <ul>
+                        <li>Préparer le désinfectant (dilution + température)</li>
+                        <li>Épandre le désinfectant sur les surfaces</li>
+                        <li>Répartir le produit uniformément (brosse)</li>
+                        <li><span class="highlight">Respecter IMPÉRATIVEMENT le temps de pause</span></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>5. RINÇAGE FINAL</strong></td>
+                <td>
+                    <ul>
+                        <li>Si nécessaire selon le produit utilisé</li>
+                        <li>Seau d'eau claire et serpillère</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>6. SÉCHAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Éliminer l'eau avec raclette ou serpillère</li>
+                        <li>User de tous procédés d'assèchement rapide</li>
+                        <li><strong>Surface sèche = animaux en sécurité</strong></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>7. ENTRETIEN DU MATÉRIEL</strong></td>
+                <td>
+                    <ul>
+                        <li>Nettoyer tous les accessoires utilisés</li>
+                        <li>Désinfecter par trempage</li>
+                        <li>Rincer et faire sécher complètement</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="important-box">
+        <h3>&#128049; Réintroduction des chats</h3>
+        <p>Les animaux ne peuvent être réintroduits qu'après <strong>séchage complet</strong> des surfaces.</p>
+    </div>
+
+    <div class="illustration">
+        <img src="../../assets/images/images/illustrations/23_cute cat illustration.png" alt="Illustration chat mignon" style="max-width: 100px;">
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/16_cat vector.png" alt="Chat vecteur" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 5: ENTRETIEN DU MATERIEL -->
+<div class="container">
+    <h2 class="section-title">5. Entretien du Matériel</h2>
+
+    <h3 class="section-subtitle">Choix du matériel adapté</h3>
+
+    <p>Le matériel de nettoyage-désinfection doit être choisi pour :</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+        <div class="intro-box" style="margin: 0; text-align: center;">
+            <strong class="text-orange">Son efficacité</strong>
+            <p style="font-size: 10pt;">Brosses lave-pont aux normes alimentaires, raclettes adaptées au sol</p>
+        </div>
+        <div class="intro-box" style="margin: 0; text-align: center;">
+            <strong class="text-orange">Son aisance d'utilisation</strong>
+            <p style="font-size: 10pt;">Facile à manier pour éviter les troubles musculosquelettiques</p>
+        </div>
+        <div class="intro-box" style="margin: 0; text-align: center;">
+            <strong class="text-orange">Sa facilité d'entretien</strong>
+            <p style="font-size: 10pt;">Facile à nettoyer et désinfecter après chaque utilisation</p>
+        </div>
+    </div>
+
+    <h3 class="section-subtitle">Éviter les contaminations croisées</h3>
+
+    <div class="warning-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/20_tiger cat.png" alt="Chat tigré">
+        </div>
+        <h4><span class="icon">&#128308;</span> Règle impérative</h4>
+        <p>
+            Chaque zone/pièce dispose de <strong>son propre matériel</strong> de nettoyage et de désinfection.
+            À aucun moment ce matériel ne doit être utilisé dans une autre zone.
+        </p>
+        <p style="margin-top: 10px;">
+            <strong>Système de codes couleurs au Fanal des Chats :</strong>
+        </p>
+        <ul>
+            <li><span style="color: #E53935;">&#9632; ROUGE</span> : Infirmerie / Quarantaine</li>
+            <li><span style="color: #1E88E5;">&#9632; BLEU</span> : Boxes d'accueil</li>
+            <li><span style="color: #43A047;">&#9632; VERT</span> : Espaces de vie collectifs</li>
+            <li><span style="color: #FFA000;">&#9632; JAUNE</span> : Espaces extérieurs / Chatteries</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle">Procédure d'entretien du matériel</h3>
+
+    <p>L'entretien doit être effectué <strong>après chaque utilisation</strong>, même les jours sans désinfection.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="25%">ÉTAPE</th>
+                <th>DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>NETTOYAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Éliminer les débris entre les poils de la brosse, sur la serpillère, la raclette</li>
+                        <li>Vider le seau</li>
+                        <li>Démonter les éléments au besoin</li>
+                        <li>Nettoyer à grande eau</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>DÉSINFECTION PAR TREMPAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Remplir le bac de trempage avec le désinfectant dilué</li>
+                        <li>Placer tout le matériel en immersion complète</li>
+                        <li><span class="highlight">Respecter le temps de pause</span></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>RINÇAGE</strong></td>
+                <td>
+                    <ul>
+                        <li>Rinçage à l'eau claire (si nécessaire selon le produit)</li>
+                        <li>Évacuer les eaux vers les évacuations</li>
+                        <li>Vider et rincer le bac de trempage</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>SÉCHAGE (TOUJOURS)</strong></td>
+                <td>
+                    <ul>
+                        <li>Suspendre ou retourner le matériel</li>
+                        <li><strong>Objectif : séchage complet obligatoire</strong></li>
+                        <li>Un matériel humide = développement de microbes</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/25_furry cat.png" alt="Chat poilu" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 6: FICHES PRATIQUES -->
+<div class="container">
+    <h2 class="section-title">6. Fiches Pratiques Récapitulatives</h2>
+
+    <h3 class="section-subtitle">FICHE 1 : Nettoyage Quotidien (EN PRATIQUE)</h3>
+
+    <div style="background: var(--beige-bg); padding: 25px; border-radius: 15px; margin: 20px 0;">
+        <div class="quote" style="background: var(--white); margin-bottom: 20px;">
+            <p style="font-style: normal; padding-left: 20px;">
+                Je respecte la procédure de nettoyage qui est affichée dans le local à entretenir.
+            </p>
+        </div>
+
+        <div class="tact-circle">
+            <div class="tact-item temperature">
+                <h4>&#127777; Température</h4>
+                <p>Eau à la bonne température selon le produit</p>
+            </div>
+            <div class="tact-item action">
+                <h4>&#128170; Action</h4>
+                <p>Brosser énergiquement les surfaces</p>
+            </div>
+            <div class="tact-item concentration">
+                <h4>&#129514; Concentration</h4>
+                <p>Respecter la dilution indiquée</p>
+            </div>
+            <div class="tact-item temps">
+                <h4>&#9203; Temps</h4>
+                <p>Laisser agir le produit</p>
+            </div>
+        </div>
+
+        <div class="objectives-grid">
+            <div class="objective-card primary">
+                <h4>&#128049;</h4>
+                <p>Bien-être des animaux</p>
+            </div>
+            <div class="objective-card secondary">
+                <h4>&#129657;</h4>
+                <p>Garantir leur santé</p>
+            </div>
+            <div class="objective-card tertiary">
+                <h4>&#128067;</h4>
+                <p>Maîtriser les nuisances</p>
+            </div>
+        </div>
+
+        <div class="important-box" style="margin-top: 20px;">
+            <p>Un nettoyage bien mené élimine <strong>70 à 90% des microbes</strong></p>
+        </div>
+    </div>
+
+    <h3 class="section-subtitle">FICHE 2 : Nettoyage-Désinfection (EN PRATIQUE)</h3>
+
+    <div style="background: var(--beige-bg); padding: 25px; border-radius: 15px; margin: 20px 0;">
+        <div class="quote" style="background: var(--white); margin-bottom: 20px;">
+            <p style="font-style: normal; padding-left: 20px;">
+                Je respecte la procédure de nettoyage-désinfection qui est affichée dans le local à entretenir.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+            <div class="intro-box" style="margin: 0; text-align: center; background: #FFEBEE;">
+                <span style="font-size: 30pt;">&#9888;</span>
+                <p><strong>S'équiper obligatoirement des E.P.I.</strong></p>
+            </div>
+            <div class="intro-box" style="margin: 0; text-align: center; background: #E8F5E9;">
+                <span style="font-size: 30pt;">&#128049;</span>
+                <p><strong>Introduire les animaux qu'après séchage complet</strong></p>
+            </div>
+            <div class="intro-box" style="margin: 0; text-align: center; background: #E3F2FD;">
+                <span style="font-size: 30pt;">&#127793;</span>
+                <p><strong>Éviter tout déversement dans la nature</strong></p>
+            </div>
+        </div>
+
+        <div class="danger-box">
+            <strong>Rappel :</strong> La désinfection se fait TOUJOURS après un nettoyage complet.
+            Jamais de produit 2-en-1 !
+        </div>
+    </div>
+
+    <div class="illustration text-center">
+        <img src="../../assets/images/images/illustrations/1_meow cat.png" alt="Chat miaou" style="max-width: 120px;">
+    </div>
+
+    <div class="page-footer">
+        <span>Le Fanal des Chats - Protocole d'Hygiène</span>
+        <img src="../../assets/images/images/illustrations/3_cute cat.png" alt="Chat mignon" class="cat-mascot">
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="container">
+    <h3 class="section-subtitle">FICHE 3 : Tableau des produits (à compléter)</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>PRODUIT 1<br><small>(Détergent)</small></th>
+                <th>PRODUIT 2<br><small>(Désinfectant)</small></th>
+                <th>PRODUIT 3<br><small>(Détartrant)</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nom commercial</strong></td>
+                <td style="text-align: center;">_______________</td>
+                <td style="text-align: center;">_______________</td>
+                <td style="text-align: center;">_______________</td>
+            </tr>
+            <tr>
+                <td><strong>Action</strong></td>
+                <td style="text-align: center;">Nettoyant</td>
+                <td style="text-align: center;">Désinfectant</td>
+                <td style="text-align: center;">Détartrant</td>
+            </tr>
+            <tr>
+                <td><strong>Dilution</strong></td>
+                <td style="text-align: center;">_____ %</td>
+                <td style="text-align: center;">_____ %</td>
+                <td style="text-align: center;">_____ %</td>
+            </tr>
+            <tr>
+                <td><strong>Température de l'eau</strong></td>
+                <td style="text-align: center;">_____ °C</td>
+                <td style="text-align: center;">_____ °C</td>
+                <td style="text-align: center;">_____ °C</td>
+            </tr>
+            <tr>
+                <td><strong>Temps de contact</strong></td>
+                <td style="text-align: center;">_____ min</td>
+                <td style="text-align: center;">_____ min</td>
+                <td style="text-align: center;">_____ min</td>
+            </tr>
+            <tr>
+                <td><strong>Action mécanique</strong></td>
+                <td style="text-align: center;">Brosser - Rincer</td>
+                <td style="text-align: center;">Pulvérisation</td>
+                <td style="text-align: center;">Brosser - Rincer</td>
+            </tr>
+            <tr>
+                <td><strong>Rinçage nécessaire</strong></td>
+                <td style="text-align: center;">&#9744; Oui &#9744; Non</td>
+                <td style="text-align: center;">&#9744; Oui &#9744; Non</td>
+                <td style="text-align: center;">&#9744; Oui &#9744; Non</td>
+            </tr>
+            <tr>
+                <td><strong>E.P.I. requis</strong></td>
+                <td style="text-align: center;">_______________</td>
+                <td style="text-align: center;">_______________</td>
+                <td style="text-align: center;">_______________</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <h4><span class="icon">&#128203;</span> À afficher dans le local de stockage des produits</h4>
+        <p>
+            Complétez ce tableau avec les produits utilisés au Fanal des Chats et affichez-le
+            dans le local de préparation des produits d'hygiène.
+        </p>
+    </div>
+
+    <h3 class="section-subtitle">Contacts utiles</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Responsable hygiène</strong></td>
+                <td>___________________________</td>
+                <td>Tél : _______________</td>
+            </tr>
+            <tr>
+                <td><strong>Vétérinaire sanitaire</strong></td>
+                <td>___________________________</td>
+                <td>Tél : _______________</td>
+            </tr>
+            <tr>
+                <td><strong>Fournisseur produits</strong></td>
+                <td>___________________________</td>
+                <td>Tél : _______________</td>
+            </tr>
+            <tr>
+                <td><strong>Centre antipoison</strong></td>
+                <td>___________________________</td>
+                <td>Tél : _______________</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="important-box" style="margin-top: 40px;">
+        <h3>&#128049; Le Fanal des Chats</h3>
+        <p>
+            Ce protocole est un document vivant qui doit être mis à jour régulièrement.<br>
+            Pour toute question, contactez le responsable hygiène de l'association.
+        </p>
+        <p style="margin-top: 15px; font-size: 10pt; opacity: 0.8;">
+            Document basé sur les recommandations du SNPCC (Syndicat National des Professions du Chien et du Chat)
+        </p>
+    </div>
+
+    <div class="illustration text-center" style="margin-top: 30px;">
+        <img src="../../assets/images/images/illustrations/14_orange cat.png" alt="Chat orange" style="max-width: 150px;">
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>
+        <strong>Protocole d'Hygiène au Fanal des Chats</strong> - Version 1.0 - 2024<br>
+        Ce document doit être accessible à tout le personnel et aux bénévoles.<br>
+        <em>Fanal Academy - Formation et bonnes pratiques</em>
+    </p>
+</div>
+
+</body>
+</html>
