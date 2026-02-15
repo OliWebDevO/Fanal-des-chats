@@ -469,6 +469,24 @@ img {
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
+@media (min-width: 1800px) {
+  .wpo-page-title {
+    min-height: 700px;
+    background-position: center 65%;
+  }
+}
+@media (min-width: 2100px) {
+  .wpo-page-title {
+    min-height: 800px;
+    background-position: center 72%;
+  }
+}
+@media (min-width: 2500px) {
+  .wpo-page-title {
+    min-height: 900px;
+    background-position: center 78%;
+  }
+}
 @media (max-width: 767px) {
   .wpo-page-title {
     min-height: 250px;
@@ -4851,7 +4869,7 @@ background-color: #FCF1E8;
   left: 0;
   right: 0;
   top: 100%;
-  height: 700px;
+  height: 1000px;
   background-color: #FCF1E8;
   z-index: 0;
 }
