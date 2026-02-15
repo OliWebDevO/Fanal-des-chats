@@ -20,7 +20,7 @@
         <!-- end page-title -->
 
         <!-- start of about-section -->
-        <section class="about-section section-padding orange qui-sommes-nous">
+        <section class="about-section section-padding orange benevole-block">
             <?php
             // Récupérer le contenu Qui sommes-nous
             $qsn_query = new WP_Query(array(
@@ -175,7 +175,7 @@
         </section>
 
         <!-- start of values-section -->
-        <section class="about-section section-padding nos-valeurs">
+        <section class="about-section section-padding benevole-block">
             <?php
             // Récupérer le contenu Nos Valeurs
             $valeurs_query = new WP_Query(array(
