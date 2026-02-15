@@ -92,6 +92,18 @@
     <script src="<?php bloginfo("template_url")?>/assets/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="<?php bloginfo("template_url")?>/assets/js/script.js"></script>
+    <!-- Smooth scroll for anchor links -->
+    <script>
+    (function($) {
+        $('a[href^="#"]').not('.back-to-top').on('click', function(e) {
+            var target = $(this.getAttribute('href'));
+            if (target.length) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: target.offset().top }, 700);
+            }
+        });
+    })(jQuery);
+    </script>
     <?php wp_footer(); ?>
 </body>
 

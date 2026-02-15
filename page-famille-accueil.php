@@ -49,6 +49,9 @@
                     <?php if (get_field('famille_mission_paragraphe_2')) : ?>
                         <p><?php the_field('famille_mission_paragraphe_2'); ?></p>
                     <?php endif; ?>
+                    <div class="about-btn">
+                        <a href="#cta" class="theme-btn-s2">Devenir Famille d'accueil</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -298,7 +301,7 @@
         ));
         if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
         ?>
-        <div class="wpo-service-single-area section-padding">
+        <div id="cta" class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-12">

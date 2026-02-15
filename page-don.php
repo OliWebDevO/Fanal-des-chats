@@ -48,6 +48,9 @@
                     <?php if (get_field('don_intro_paragraphe_2')) : ?>
                         <p><?php the_field('don_intro_paragraphe_2'); ?></p>
                     <?php endif; ?>
+                    <div class="about-btn">
+                        <a href="#cta" class="theme-btn-s2">Faire un don</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -188,9 +191,6 @@
                     <div class="about-btn">
                         <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Participez au Quiz</a>
                     </div>
-                    <div class="givewp-form-container">
-                        <?php echo do_shortcode('[give_form id="43"]'); ?>
-                    </div>
                 </div>
             </div>
         </section>
@@ -267,7 +267,7 @@
         ));
         if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
         ?>
-        <div class="wpo-service-single-area section-padding">
+        <div id="cta" class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-12">
@@ -281,7 +281,7 @@
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faire le Quiz</a>
                                     </div>
-                                    <div class="givewp-form-container">
+                                    <div id="faire-un-don" class="givewp-form-container">
                                         <?php echo do_shortcode('[give_form id="43"]'); ?>
                                     </div>
                                 </div>
