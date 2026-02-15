@@ -450,27 +450,20 @@ img {
 
 .wpo-page-title {
   /* background: url(../images/page-title.jpg) no-repeat center top/cover; */
-  background: url(../images/images/jerry-banner.webp) no-repeat center right/cover;
-  min-height: 600px;
+  background: url(../images/images/jerry-banner.webp) no-repeat center center/cover;
+  height: 500px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 1;
-  /* border-radius: 58px; */
   overflow: hidden;
   padding: 120px 80px;
 }
 @media (max-width: 767px) {
   .wpo-page-title {
-    min-height: 250px;
-  }
-}
-@media (min-width: 1600px) {
-  .wpo-page-title {
-    min-height: 600px;
-    max-height: 650px;
+    height: 250px;
   }
 }
 
