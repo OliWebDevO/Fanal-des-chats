@@ -1867,38 +1867,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('adoption', 'field_adoption_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_adoption_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'adoption_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'adoption_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('adoption', 'field_adoption_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -2282,38 +2252,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('abandon', 'field_abandon_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_abandon_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'abandon_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'abandon_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('abandon', 'field_abandon_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -3078,38 +3018,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('benevole', 'field_benevole_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_benevole_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'benevole_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'benevole_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('benevole', 'field_benevole_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -3493,38 +3403,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('emploi', 'field_emploi_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_emploi_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'emploi_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'emploi_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('emploi', 'field_emploi_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -3908,38 +3788,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('stage', 'field_stage_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_stage_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'stage_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'stage_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('stage', 'field_stage_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -4359,38 +4209,8 @@ if( function_exists('acf_add_local_field_group') ) {
             // === CHAMPS QUIZ === (générés dynamiquement)
             ...generate_quiz_acf_fields('famille', 'field_famille_type'),
 
-            // === CHAMPS FORMULAIRE ===
-            array(
-                'key' => 'field_famille_formulaire_titre',
-                'label' => 'Titre Section',
-                'name' => 'famille_formulaire_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_formulaire_texte',
-                'label' => 'Texte',
-                'name' => 'famille_formulaire_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'formulaire',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('famille', 'field_famille_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -5369,4 +5189,444 @@ function generate_quiz_acf_fields($prefix, $type_field_key) {
 
     return $fields;
 }
+
+/**
+ * Génère les champs ACF pour un formulaire dynamique multi-étapes.
+ * Même pattern que generate_quiz_acf_fields().
+ */
+function generate_form_acf_fields($prefix, $type_field_key) {
+    $fields = array();
+    $form_condition = array(
+        array(
+            array(
+                'field' => $type_field_key,
+                'operator' => '==',
+                'value' => 'formulaire',
+            ),
+        ),
+    );
+
+    // === Onglet Paramètres globaux ===
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_settings_tab',
+        'label' => 'Paramètres du formulaire',
+        'type' => 'tab',
+        'conditional_logic' => $form_condition,
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_nb_etapes',
+        'label' => 'Nombre d\'étapes',
+        'name' => $prefix . '_form_nb_etapes',
+        'type' => 'number',
+        'default_value' => 5,
+        'min' => 1,
+        'max' => 10,
+        'conditional_logic' => $form_condition,
+        'wrapper' => array('width' => '25'),
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_action_name',
+        'label' => 'Nom de l\'action POST',
+        'name' => $prefix . '_form_action_name',
+        'type' => 'text',
+        'instructions' => 'Ex: submit_adoption_form',
+        'conditional_logic' => $form_condition,
+        'wrapper' => array('width' => '25'),
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_success_titre',
+        'label' => 'Titre du modal de succès',
+        'name' => $prefix . '_form_success_titre',
+        'type' => 'text',
+        'default_value' => 'Demande envoyée !',
+        'conditional_logic' => $form_condition,
+        'wrapper' => array('width' => '25'),
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_success_message',
+        'label' => 'Message du modal de succès',
+        'name' => $prefix . '_form_success_message',
+        'type' => 'textarea',
+        'rows' => 3,
+        'conditional_logic' => $form_condition,
+        'wrapper' => array('width' => '25'),
+    );
+
+    // === Onglets Étapes (jusqu'à 10) ===
+    for ($n = 1; $n <= 10; $n++) {
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_etape_' . $n . '_tab',
+            'label' => 'Étape ' . $n,
+            'type' => 'tab',
+            'conditional_logic' => $form_condition,
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_etape_' . $n . '_titre',
+            'label' => 'Titre de l\'étape ' . $n,
+            'name' => $prefix . '_form_etape_' . $n . '_titre',
+            'type' => 'text',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '40'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_etape_' . $n . '_description',
+            'label' => 'Description',
+            'name' => $prefix . '_form_etape_' . $n . '_description',
+            'type' => 'textarea',
+            'rows' => 2,
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '40'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_etape_' . $n . '_sidebar_label',
+            'label' => 'Label sidebar',
+            'name' => $prefix . '_form_etape_' . $n . '_sidebar_label',
+            'type' => 'text',
+            'instructions' => 'Label court pour la sidebar',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '20'),
+        );
+    }
+
+    // === Onglets Questions (jusqu'à 60) ===
+    for ($q = 1; $q <= 60; $q++) {
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_tab',
+            'label' => 'Question ' . $q,
+            'type' => 'tab',
+            'conditional_logic' => $form_condition,
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_etape',
+            'label' => 'Étape',
+            'name' => $prefix . '_form_q' . $q . '_etape',
+            'type' => 'number',
+            'instructions' => 'Numéro de l\'étape (1 à 10)',
+            'min' => 1,
+            'max' => 10,
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '10'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_label',
+            'label' => 'Libellé du champ',
+            'name' => $prefix . '_form_q' . $q . '_label',
+            'type' => 'text',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '40'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_type',
+            'label' => 'Type',
+            'name' => $prefix . '_form_q' . $q . '_type',
+            'type' => 'select',
+            'choices' => array(
+                'text' => 'Texte',
+                'email' => 'Email',
+                'tel' => 'Téléphone',
+                'number' => 'Nombre',
+                'date' => 'Date',
+                'textarea' => 'Zone de texte',
+                'radio' => 'Boutons radio',
+                'checkbox' => 'Cases à cocher',
+                'select' => 'Liste déroulante',
+            ),
+            'default_value' => 'text',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '15'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_options',
+            'label' => 'Options',
+            'name' => $prefix . '_form_q' . $q . '_options',
+            'type' => 'textarea',
+            'rows' => 3,
+            'instructions' => 'Pour radio/checkbox/select. Format: valeur|Label (un par ligne)',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '35'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_disposition',
+            'label' => 'Disposition',
+            'name' => $prefix . '_form_q' . $q . '_disposition',
+            'type' => 'select',
+            'choices' => array(
+                'stacked' => 'Empilé (stacked)',
+                'inline' => 'En ligne (inline)',
+            ),
+            'default_value' => 'stacked',
+            'instructions' => 'Pour radio/checkbox',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '15'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_placeholder',
+            'label' => 'Placeholder',
+            'name' => $prefix . '_form_q' . $q . '_placeholder',
+            'type' => 'text',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '25'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_largeur',
+            'label' => 'Largeur',
+            'name' => $prefix . '_form_q' . $q . '_largeur',
+            'type' => 'select',
+            'choices' => array(
+                '12' => '12 (pleine largeur)',
+                '8' => '8 (2/3)',
+                '6' => '6 (1/2)',
+                '4' => '4 (1/3)',
+                '3' => '3 (1/4)',
+            ),
+            'default_value' => '12',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '15'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_required',
+            'label' => 'Obligatoire ?',
+            'name' => $prefix . '_form_q' . $q . '_required',
+            'type' => 'true_false',
+            'ui' => 1,
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '15'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_correct',
+            'label' => 'Bonne(s) réponse(s)',
+            'name' => $prefix . '_form_q' . $q . '_correct',
+            'type' => 'textarea',
+            'rows' => 2,
+            'instructions' => 'Une par ligne. Si vide = question non importante.',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '30'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_section_titre',
+            'label' => 'Titre de section',
+            'name' => $prefix . '_form_q' . $q . '_section_titre',
+            'type' => 'text',
+            'instructions' => 'Optionnel : titre h3 avant ce champ',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '50'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_q' . $q . '_section_icone',
+            'label' => 'Icône de section',
+            'name' => $prefix . '_form_q' . $q . '_section_icone',
+            'type' => 'text',
+            'instructions' => 'Classe FA (ex: fas fa-user)',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '20'),
+        );
+    }
+
+    // === Onglet Consentements ===
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_consent_tab',
+        'label' => 'Consentements',
+        'type' => 'tab',
+        'conditional_logic' => $form_condition,
+    );
+
+    for ($c = 1; $c <= 5; $c++) {
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_consent_' . $c . '_label',
+            'label' => 'Consentement ' . $c . ' - Texte',
+            'name' => $prefix . '_form_consent_' . $c . '_label',
+            'type' => 'text',
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '80'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_form_consent_' . $c . '_required',
+            'label' => 'Obligatoire ?',
+            'name' => $prefix . '_form_consent_' . $c . '_required',
+            'type' => 'true_false',
+            'ui' => 1,
+            'conditional_logic' => $form_condition,
+            'wrapper' => array('width' => '20'),
+        );
+    }
+
+    return $fields;
+}
+
 add_action('wp_enqueue_scripts', 'enable_threaded_comments');
+
+/**
+ * Handler générique de soumission de formulaire.
+ * Collecte les champs, parse le sommaire des questions importantes,
+ * construit un email HTML et l'envoie à l'admin.
+ */
+function handle_generic_form_submit() {
+    $prefix = isset($_POST['form_prefix']) ? sanitize_text_field($_POST['form_prefix']) : '';
+    $post_id = isset($_POST['form_post_id']) ? intval($_POST['form_post_id']) : 0;
+
+    // Vérifier le nonce
+    $nonce_field = $prefix . '_nonce';
+    $nonce_action = $prefix . '_form_nonce';
+    if (!isset($_POST[$nonce_field]) || !wp_verify_nonce($_POST[$nonce_field], $nonce_action)) {
+        wp_send_json_error(array('message' => 'Erreur de sécurité.'));
+        return;
+    }
+
+    // Collecter les données
+    $nb_etapes = $post_id ? intval(get_field($prefix . '_form_nb_etapes', $post_id)) : 5;
+    $excluded_fields = array('action', 'form_prefix', 'form_post_id', $nonce_field, '_wp_http_referer', 'important_summary');
+
+    // Lire les labels des questions depuis ACF
+    $question_labels = array();
+    for ($q = 1; $q <= 60; $q++) {
+        $label = $post_id ? get_field($prefix . '_form_q' . $q . '_label', $post_id) : '';
+        if ($label) {
+            $question_labels['q' . $q] = $label;
+        }
+    }
+
+    // Lire les étapes
+    $etape_titres = array();
+    for ($n = 1; $n <= $nb_etapes; $n++) {
+        $etape_titres[$n] = $post_id ? get_field($prefix . '_form_etape_' . $n . '_titre', $post_id) : 'Étape ' . $n;
+    }
+
+    // Lire les étapes des questions
+    $question_etapes = array();
+    for ($q = 1; $q <= 60; $q++) {
+        $etape = $post_id ? intval(get_field($prefix . '_form_q' . $q . '_etape', $post_id)) : 0;
+        if ($etape) {
+            $question_etapes['q' . $q] = $etape;
+        }
+    }
+
+    // Parser le sommaire des questions importantes
+    $important_summary = array();
+    if (isset($_POST['important_summary'])) {
+        $important_summary = json_decode(stripslashes($_POST['important_summary']), true);
+        if (!is_array($important_summary)) {
+            $important_summary = array();
+        }
+    }
+
+    // Construire le corps de l'email HTML
+    $admin_email = get_option('admin_email');
+    $form_label = ucfirst($prefix);
+    $subject = '[Le Fanal des Chats] Nouvelle soumission - Formulaire ' . $form_label;
+
+    $body = '<html><body style="font-family: Arial, sans-serif; color: #333;">';
+    $body .= '<h1 style="color: #FF5B2E;">Nouvelle soumission - Formulaire ' . esc_html($form_label) . '</h1>';
+    $body .= '<p>Date : ' . date_i18n('d/m/Y H:i') . '</p>';
+    $body .= '<hr style="border: 1px solid #eee;">';
+
+    // Organiser les réponses par étape
+    $responses_by_etape = array();
+    foreach ($_POST as $key => $value) {
+        if (in_array($key, $excluded_fields)) continue;
+
+        $label = isset($question_labels[$key]) ? $question_labels[$key] : $key;
+        $etape = isset($question_etapes[$key]) ? $question_etapes[$key] : 1;
+
+        if (is_array($value)) {
+            $display_value = implode(', ', array_map('sanitize_text_field', $value));
+        } else {
+            $display_value = sanitize_text_field($value);
+        }
+
+        if (!isset($responses_by_etape[$etape])) {
+            $responses_by_etape[$etape] = array();
+        }
+        $responses_by_etape[$etape][] = array(
+            'label' => $label,
+            'value' => $display_value,
+        );
+    }
+
+    // Ajouter les réponses par étape
+    for ($n = 1; $n <= $nb_etapes; $n++) {
+        if (!isset($responses_by_etape[$n]) || empty($responses_by_etape[$n])) continue;
+
+        $etape_titre = isset($etape_titres[$n]) ? $etape_titres[$n] : 'Étape ' . $n;
+        $body .= '<h2 style="color: #070143; margin-top: 20px;">' . esc_html($etape_titre) . '</h2>';
+        $body .= '<table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">';
+
+        foreach ($responses_by_etape[$n] as $response) {
+            $body .= '<tr>';
+            $body .= '<td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold; width: 40%; vertical-align: top;">' . esc_html($response['label']) . '</td>';
+            $body .= '<td style="padding: 8px; border-bottom: 1px solid #eee;">' . esc_html($response['value']) . '</td>';
+            $body .= '</tr>';
+        }
+
+        $body .= '</table>';
+    }
+
+    // Section Questions Importantes
+    if (!empty($important_summary)) {
+        $body .= '<hr style="border: 2px solid #FF5B2E; margin: 30px 0;">';
+        $body .= '<h2 style="color: #FF5B2E;">Questions importantes - Sommaire</h2>';
+        $body .= '<table style="width: 100%; border-collapse: collapse;">';
+
+        foreach ($important_summary as $item) {
+            $is_correct = isset($item['isCorrect']) && $item['isCorrect'];
+            $color = $is_correct ? '#28a745' : '#dc3545';
+            $icon = $is_correct ? '✓' : '✗';
+            $bg = $is_correct ? '#f0fff0' : '#fff0f0';
+
+            $body .= '<tr style="background: ' . $bg . ';">';
+            $body .= '<td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: ' . $color . ';">' . $icon . ' ' . esc_html($item['label']) . '</td>';
+            $body .= '<td style="padding: 10px; border-bottom: 1px solid #eee; color: ' . $color . ';">' . esc_html($item['answer']) . '</td>';
+            $body .= '</tr>';
+        }
+
+        $body .= '</table>';
+    }
+
+    $body .= '</body></html>';
+
+    // Envoyer l'email
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: Le Fanal des Chats <' . $admin_email . '>',
+    );
+
+    $sent = wp_mail($admin_email, $subject, $body, $headers);
+
+    if ($sent) {
+        wp_send_json_success(array('message' => 'Formulaire envoyé avec succès.'));
+    } else {
+        wp_send_json_error(array('message' => 'Erreur lors de l\'envoi.'));
+    }
+}
+
+// Hooks pour les 6 formulaires
+$form_actions = array(
+    'submit_adoption_form',
+    'submit_abandon_form',
+    'submit_benevole_form',
+    'submit_emploi_form',
+    'submit_stage_form',
+    'submit_famille_accueil_form',
+);
+foreach ($form_actions as $action) {
+    add_action('admin_post_nopriv_' . $action, 'handle_generic_form_submit');
+    add_action('admin_post_' . $action, 'handle_generic_form_submit');
+}

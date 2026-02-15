@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocole d'Hygiène au Fanal des Chats - Version PDF Optimisée</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+        :root {
+            --orange-primary: #FF5B2E;
+            --orange-light: #FF7A54;
+            --orange-dark: #ff3b05;
+            --beige-bg: #FCF1E8;
+            --navy-blue: #070143;
+            --text-gray: #687693;
+            --text-dark: #333;
+            --white: #ffffff;
+            --green-success: #2E7D32;
+            --red-danger: #C62828;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            font-size: 15pt;
+            line-height: 1.35;
+            color: var(--text-dark);
+            background-color: #e0e0e0;
+        }
+
+        /* PAGE SYSTEM - Format A4 */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 10mm 15mm;
+            margin: 10px auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                width: 100%;
+                height: 297mm;
+                margin: 0;
+                padding: 8mm 12mm;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        /* COVER PAGE */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .cover-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-title {
+            font-size: 48pt;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .cover-subtitle {
+            font-size: 24pt;
+            color: var(--orange-primary);
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .cover-description {
+            max-width: 500px;
+            color: var(--text-gray);
+            font-size: 16.5pt;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .cover-info {
+            background-color: var(--beige-bg);
+            padding: 20px 35px;
+            border-radius: 12px;
+        }
+
+        .cover-info p {
+            margin: 4px 0;
+            color: var(--text-gray);
+            font-size: 15pt;
+        }
+
+        .cover-info strong {
+            color: var(--navy-blue);
+        }
+
+        /* TOC */
+        .toc {
+            padding: 20px 25px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .toc h2 {
+            color: var(--navy-blue);
+            font-size: 21pt;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--orange-primary);
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+            font-size: 13.5pt;
+        }
+
+        .toc-item span:first-child {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .toc-item span:last-child {
+            color: var(--orange-primary);
+            font-weight: 600;
+        }
+
+        /* Section Titles */
+        .section-title {
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+            color: var(--white);
+            padding: 8px 16px;
+            font-size: 19.5pt;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            color: var(--orange-primary);
+            font-size: 16.5pt;
+            font-weight: 600;
+            margin: 12px 0 8px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid var(--beige-bg);
+        }
+
+        /* Content Boxes */
+        .intro-box {
+            background-color: var(--beige-bg);
+            border-left: 4px solid var(--orange-primary);
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .intro-box p {
+            margin-bottom: 5px;
+            text-align: justify;
+            font-size: 13.5pt;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background-color: #FFF3E0;
+            border: 2px solid var(--orange-primary);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+        }
+
+        .warning-box h4 {
+            color: var(--orange-dark);
+            font-size: 15pt;
+            margin-bottom: 4px;
+        }
+
+        .warning-box p {
+            font-size: 13.5pt;
+        }
+
+        .important-box {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #1a1a5e 100%);
+            color: var(--white);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .important-box h3 {
+            font-size: 16.5pt;
+            margin-bottom: 4px;
+            color: var(--white);
+        }
+
+        .important-box p {
+            font-size: 13.5pt;
+            opacity: 0.9;
+        }
+
+        .success-box {
+            background-color: #E8F5E9;
+            border-left: 4px solid var(--green-success);
+            padding: 8px 14px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .success-box strong {
+            font-size: 13.5pt;
+        }
+
+        .danger-box {
+            background-color: #FFEBEE;
+            border-left: 4px solid var(--red-danger);
+            padding: 8px 14px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Lists */
+        ul {
+            margin: 5px 0;
+            padding-left: 22px;
+            font-size: 13.5pt;
+        }
+
+        ul li {
+            margin-bottom: 2px;
+        }
+
+        ul li::marker {
+            color: var(--orange-primary);
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 6px 12px 6px 28px;
+            margin-bottom: 5px;
+            background-color: var(--beige-bg);
+            border-radius: 6px;
+            position: relative;
+            font-size: 13.5pt;
+        }
+
+        .checklist li::before {
+            content: "●";
+            position: absolute;
+            left: 10px;
+            color: var(--orange-primary);
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 12pt;
+        }
+
+        table th {
+            background-color: var(--orange-primary);
+            color: var(--white);
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tr:nth-child(even) {
+            background-color: var(--beige-bg);
+        }
+
+        /* TACT Circle */
+        .tact-circle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .tact-item {
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .tact-item.temperature {
+            border-color: #E53935;
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+        }
+
+        .tact-item.action {
+            border-color: #43A047;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+        }
+
+        .tact-item.concentration {
+            border-color: #1E88E5;
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+        }
+
+        .tact-item.temps {
+            border-color: #FFA000;
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+        }
+
+        .tact-item h4 {
+            font-size: 13.5pt;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .tact-item p {
+            font-size: 12pt;
+            color: var(--text-gray);
+        }
+
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .epi-item {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--beige-bg);
+            border-radius: 8px;
+        }
+
+        .epi-item p {
+            font-size: 12pt;
+            color: var(--text-gray);
+        }
+
+        .epi-item strong {
+            color: var(--text-dark);
+            font-size: 13.5pt;
+        }
+
+        /* Objectives */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .objective-card {
+            text-align: center;
+            padding: 12px 10px;
+            border-radius: 10px;
+            color: var(--white);
+        }
+
+        .objective-card.primary {
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+        }
+
+        .objective-card.secondary {
+            background: linear-gradient(135deg, var(--green-success), #1B5E20);
+        }
+
+        .objective-card.tertiary {
+            background: linear-gradient(135deg, var(--navy-blue), #1a1a5e);
+        }
+
+        .objective-card h4 {
+            color: var(--white);
+            font-size: 16.5pt;
+            margin-bottom: 5px;
+        }
+
+        .objective-card p {
+            font-size: 12pt;
+            opacity: 0.9;
+        }
+
+        /* Quote */
+        .quote {
+            background-color: var(--beige-bg);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 60pt;
+            color: var(--orange-primary);
+            opacity: 0.3;
+            position: absolute;
+            top: 5px;
+            left: 12px;
+            line-height: 1;
+        }
+
+        .quote p {
+            font-style: italic;
+            font-size: 13.5pt;
+            color: var(--navy-blue);
+            padding-left: 30px;
+        }
+
+        /* Illustrations */
+        .illustration-small img {
+            max-width: 60px;
+        }
+
+        .illustration-medium img {
+            max-width: 90px;
+        }
+
+        .float-right {
+            float: right;
+            margin-left: 15px;
+            margin-bottom: 8px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .section-with-illus {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .section-with-illus .content {
+            flex: 1;
+        }
+
+        /* Utility */
+        .text-orange { color: var(--orange-primary); }
+        .text-navy { color: var(--navy-blue); }
+        .bold { font-weight: 700; }
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .mb-0 { margin-bottom: 0 !important; }
+        .mt-0 { margin-top: 0 !important; }
+        .small { font-size: 12pt; }
+        p { font-size: 13.5pt; margin-bottom: 4px; }
+
+        /* Footer */
+        .final-footer {
+            background-color: var(--beige-bg);
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 12pt;
+            color: var(--text-gray);
+            border-top: 3px solid var(--orange-primary);
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COUVERTURE ==================== -->
+<div class="page">
+    <div class="cover-page">
+        <div class="cover-logo">
+            <img src="fanal-logo.gif" alt="Logo Fanal des Chats">
+        </div>
+        <h1 class="cover-title">Protocole d'Hygiène</h1>
+        <h2 class="cover-subtitle">Le Fanal des Chats</h2>
+        <p class="cover-description">
+            Manuel pratique à destination des travailleurs et bénévoles pour garantir
+            le bien-être et la santé des chats hébergés au refuge. Ce guide présente
+            les bonnes pratiques de nettoyage et de désinfection à appliquer
+            rigoureusement au quotidien.
+        </p>
+        <div class="cover-info">
+            <p><strong>Le Fanal des Chats</strong></p>
+            <p>Refuge pour chats - Association de protection animale</p>
+            <p>Version 1.0 - 2026</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2: SOMMAIRE ==================== -->
+<div class="page">
+    <div class="toc" style="padding: 20px 24px; height: calc(100% - 0mm); display: flex; flex-direction: column;">
+        <h2 style="margin-bottom: 15px; flex-shrink: 0; font-size: 18pt;">Sommaire</h2>
+        <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>1. Introduction</span><span>3</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;1.1 À qui s'adresse ce manuel ?</span><span>3</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;1.2 Règle d'or</span><span>3</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>2. Les Produits d'Hygiène</span><span>4</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;2.1 Tableau des produits</span><span>4</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;2.2 Tableau de dosage pratique</span><span>5</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;2.3 Stockage et EPI</span><span>5</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>3. La Procédure de Nettoyage-Désinfection</span><span>6</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;3.1 Comprendre le biofilm</span><span>6</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;3.2 Le principe TACT</span><span>7</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;3.3 Les 7 étapes de la procédure</span><span>7</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>4. Les Types de Nettoyage</span><span>8</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;4.1 Light Clean</span><span>8</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;4.2 Deep Clean</span><span>9</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;4.3 Protocoles spécifiques</span><span>9</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>5. Gestion Quotidienne</span><span>10</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;5.1 Équipements par cage</span><span>10</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;5.2 Gestion des litières</span><span>10</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;5.3 Gestion des draps</span><span>11</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;5.4 Organisation des zones</span><span>11</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;5.5 Code couleur du matériel</span><span>12</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>6. La Contamination Croisée</span><span>13</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;6.1 Comment se produit-elle ?</span><span>13</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;6.2 Le principe de la marche en avant</span><span>13</span></div>
+            <div class="toc-item" style="padding: 5px 0; font-size: 11pt;"><span>&nbsp;&nbsp;&nbsp;6.3 Comment l'éviter ?</span><span>14</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 3: INTRODUCTION ==================== -->
+<div class="page">
+    <h2 class="section-title">1. Introduction</h2>
+
+    <div class="section-with-illus">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    Les personnes chargées de l'entretien des lieux d'hébergement des chats au
+                    <strong>Fanal des Chats</strong> doivent respecter des bonnes pratiques permettant
+                    de gérer les risques de contamination des animaux.
+                </p>
+                <p>
+                    Ce protocole est l'explication générale du fonctionnement du refuge : les produits utilisés,
+                    les types de nettoyage, la désinfection. C'est un protocole complet qui doit permettre à tout
+                    nouveau travailleur ou bénévole d'être <strong>entièrement autonome</strong>.
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/7_pretty cat.png" alt="Joli chat">
+        </div>
+    </div>
+
+    <div class="warning-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/9_shocked cat.png" alt="Chat surpris">
+        </div>
+        <h4>Important</h4>
+        <p>
+            Toute transgression des règles peut avoir des conséquences sur la sécurité
+            et la santé des animaux. Le personnel doit avoir la capacité de lire, comprendre
+            et appliquer rigoureusement les protocoles de nettoyage et de désinfection.
+        </p>
+    </div>
+
+    <h3 class="section-subtitle">1.1 À qui s'adresse ce manuel ?</h3>
+
+    <p>Ce manuel est constitué de deux types d'informations :</p>
+
+    <div class="grid-2">
+        <div class="intro-box mb-0">
+            <h4 class="text-orange bold">EN PRATIQUE</h4>
+            <p>
+                À destination des bénévoles, des membres de l'équipe et nouveaux arrivants.
+                Simple et ludique, chaque fiche permet de déterminer les attentes étape par étape.
+            </p>
+        </div>
+        <div class="intro-box mb-0" style="border-left-color: var(--navy-blue);">
+            <h4 class="text-navy bold">POUR ALLER PLUS LOIN</h4>
+            <p>
+                À destination des responsables et bénévoles expérimentés. Les sujets
+                sont approfondis pour comprendre le pourquoi de chaque geste.
+            </p>
+        </div>
+    </div>
+
+    <div class="intro-box" style="margin-top: 15px;">
+        <p>
+            <strong>Les protocoles sont affichés dans chaque local.</strong>
+            Une copie est conservée dans le Règlement Sanitaire de l'établissement et mise à disposition
+            des agents de contrôle ainsi que du vétérinaire sanitaire.
+        </p>
+    </div>
+
+    <h3 class="section-subtitle" style="font-size: 12pt;">1.2 Règle d'or</h3>
+
+    <div class="important-box" style="padding: 6px 10px;">
+        <h3 style="font-size: 11pt; margin-bottom: 2px;">NETTOYAGE puis DÉSINFECTION</h3>
+        <p style="font-size: 9pt;">
+            La désinfection est <strong>TOUJOURS</strong> effectuée après un nettoyage rigoureux.<br>
+            Il n'est pas toléré d'utiliser un produit 2 en 1 et d'effectuer ces deux protocoles en un seul geste.<br>
+            <strong>Aucun désinfectant ne tolère la présence de matière organique.</strong>
+        </p>
+    </div>
+
+    <div class="objectives-grid" style="gap: 5px;">
+        <div class="objective-card primary" style="padding: 6px 5px;">
+            <h4 style="font-size: 11pt; margin-bottom: 2px;">Bien-être</h4>
+            <p style="font-size: 8pt;">des animaux</p>
+        </div>
+        <div class="objective-card secondary" style="padding: 6px 5px;">
+            <h4 style="font-size: 11pt; margin-bottom: 2px;">Santé</h4>
+            <p style="font-size: 8pt;">des animaux</p>
+        </div>
+        <div class="objective-card tertiary" style="padding: 6px 5px;">
+            <h4 style="font-size: 11pt; margin-bottom: 2px;">Maîtrise</h4>
+            <p style="font-size: 8pt;">des nuisances visuelles et olfactives</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ==================== PAGE 4: PRODUITS D'HYGIENE ==================== -->
+<div class="page">
+    <h2 class="section-title" style="margin-bottom: 20px;">2. Les Produits d'Hygiène</h2>
+
+    <div class="section-with-illus" style="margin-bottom: 15px;">
+        <div class="content">
+            <div class="intro-box" style="padding: 14px 18px;">
+                <p>
+                    On nettoie <strong>toujours avec un produit nettoyant</strong>. Au Fanal des Chats, nous privilégions
+                    les produits sans danger pour les chats : <strong>Le nettoie-tout de la marque Dettol, le C.I.D. 20,
+                    ou vinaigre blanc</strong> (attention : jamais de vinaigre sur la pierre).
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/24_cat illustration.png" alt="Illustration chat">
+        </div>
+    </div>
+
+    <div class="danger-box" style="margin: 15px 0; padding: 12px 16px;">
+        <strong>ATTENTION - Produits INTERDITS au Fanal des Chats :</strong>
+        <ul style="margin: 8px 0;">
+            <li style="margin-bottom: 5px;">Les désinfectants contenant des <strong>composés phénolés</strong> sont à PROSCRIRE (toxiques pour les chats)</li>
+            <li style="margin-bottom: 5px;">Cela inclut le <strong>Dettol</strong> qui est phénolique et donc <strong>dangereux pour les chats</strong></li>
+            <li>Vérifiez toujours la composition avant d'utiliser un nouveau produit</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle" style="margin-top: 20px;">2.1 Tableau des produits</h3>
+
+    <table style="margin: 15px 0;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nettoie-tout<br><small>(Nettoyant)</small></th>
+                <th>CID 20<br><small>(Désinfectant)</small></th>
+                <th>JAVEL<br><small>(Désinfectant)</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Action</strong></td>
+                <td style="text-align: center;">Nettoyant</td>
+                <td style="text-align: center;">Désinfectant</td>
+                <td style="text-align: center;">Désinfectant</td>
+            </tr>
+            <tr>
+                <td><strong>Dilution</strong></td>
+                <td style="text-align: center;">1.50 %</td>
+                <td style="text-align: center;">2.00 %</td>
+                <td style="text-align: center;">5.00 %</td>
+            </tr>
+            <tr>
+                <td><strong>Température de l'eau</strong></td>
+                <td style="text-align: center;">30-60 °C (chaud)</td>
+                <td style="text-align: center;">Entre 20° et 60°C</td>
+                <td style="text-align: center;">Froide (max 20°C)</td>
+            </tr>
+            <tr>
+                <td><strong>Temps de contact</strong></td>
+                <td style="text-align: center;">-</td>
+                <td style="text-align: center;">5 à 20 min</td>
+                <td style="text-align: center;">10 à 15 min</td>
+            </tr>
+            <tr>
+                <td><strong>Action mécanique</strong></td>
+                <td style="text-align: center;">Frotter et sécher</td>
+                <td style="text-align: center;">Pulvérisation</td>
+                <td style="text-align: center;">Pulvérisation</td>
+            </tr>
+            <tr>
+                <td><strong>Rinçage nécessaire</strong></td>
+                <td style="text-align: center;"><strong>Non</strong></td>
+                <td style="text-align: center;"><strong>Oui</strong></td>
+                <td style="text-align: center;"><strong>Oui</strong></td>
+            </tr>
+            <tr>
+                <td><strong>E.P.I. requis</strong></td>
+                <td style="text-align: center;">Recommandé</td>
+                <td style="text-align: center;"><strong>Obligatoire</strong></td>
+                <td style="text-align: center;"><strong>Obligatoire</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="danger-box">
+        <strong>Rappel Javel :</strong> L'eau de Javel s'utilise <strong>toujours à eau froide</strong>, maximum 20°C.
+        L'eau chaude décompose l'hypochlorite de sodium et rend le produit inefficace.
+    </div>
+</div>
+
+<!-- ==================== PAGE 6: DOSAGE + STOCKAGE ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0">2.2 Tableau de dosage pratique</h3>
+
+    <p>Nos contenants disponibles au refuge : <strong>bidons de 5L et 2L</strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Dilution</th>
+                <th>Pour 2L d'eau</th>
+                <th>Pour 5L d'eau</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nettoie-tout</strong></td>
+                <td>1.5%</td>
+                <td style="text-align: center;">30 ml ou 2 bouchons</td>
+                <td style="text-align: center;">75 ml ou 3 bouchons</td>
+            </tr>
+            <tr>
+                <td><strong>CID 20</strong></td>
+                <td>2%</td>
+                <td style="text-align: center;">40 ml</td>
+                <td style="text-align: center;">100 ml</td>
+            </tr>
+            <tr>
+                <td><strong>Javel</strong></td>
+                <td>5%</td>
+                <td style="text-align: center;">100 ml</td>
+                <td style="text-align: center;">250 ml</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="important-box">
+        <h3>Un désinfectant est le plus efficace lorsqu'il est préparé juste avant d'être utilisé.</h3>
+        <p>Aucun produit n'est dilué la veille de son usage.</p>
+    </div>
+
+    <h3 class="section-subtitle">2.3 Stockage et Équipements de Protection Individuelle (EPI)</h3>
+
+    <div class="success-box">
+        <strong>Règles de stockage :</strong>
+        <ul>
+            <li>Stocker dans un local spécifique ou une armoire fermée et ventilée</li>
+            <li>Conserver dans un endroit sec, à l'abri de la lumière, de la chaleur et du gel</li>
+            <li>Stocker hors de portée des animaux et des enfants</li>
+            <li>Respecter les dates d'expiration des produits</li>
+            <li>Étiqueter clairement tous les contenants</li>
+            <li>Ne jamais stocker les produits à proximité des aliments pour animaux</li>
+            <li>Ne jamais mélanger différents produits chimiques</li>
+        </ul>
+    </div>
+
+    <p>
+        L'Équipement de Protection Individuelle (EPI) est un dispositif destiné à protéger
+        contre les risques susceptibles de menacer votre santé et sécurité.
+        <strong class="text-orange">Il ne s'agit pas d'une simple information mais d'une consigne OBLIGATOIRE.</strong>
+    </p>
+
+    <div class="grid-2">
+        <div class="epi-item">
+            <p><strong>Gants</strong><br>Protection des mains</p>
+        </div>
+        <div class="epi-item">
+            <p><strong>Lunettes</strong><br>Protection des yeux</p>
+        </div>
+        <div class="epi-item">
+            <p><strong>Tablier</strong><br>Protection du corps</p>
+        </div>
+        <div class="epi-item">
+            <p><strong>Chaussures</strong><br>Protection des pieds</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 6: BIOFILM ==================== -->
+<div class="page">
+    <h2 class="section-title" style="margin-bottom: 10px;">3. La Procédure de Nettoyage-Désinfection</h2>
+
+    <h3 class="section-subtitle mt-0" style="margin-bottom: 8px;">3.1 Comprendre le biofilm</h3>
+
+    <div class="section-with-illus" style="margin-bottom: 10px;">
+        <div class="content">
+            <div class="intro-box">
+                <p>
+                    Des microbes (bactéries, virus, champignons, parasites) sont naturellement présents
+                    dans tous les établissements hébergeant des chats. Cela constitue le <strong>microbisme
+                    de l'établissement</strong>. Ces microbes ont pour mission de se multiplier et arrivés
+                    à un certain seuil, certains d'entre eux peuvent devenir pathogènes (coryza, giardia, coronavirus...).
+                </p>
+            </div>
+        </div>
+        <div class="illus illustration-medium">
+            <img src="../../assets/images/images/illustrations/11_fat cat.png" alt="Gros chat">
+        </div>
+    </div>
+
+    <p style="margin: 8px 0;">Les microbes produisent une matrice nommée <strong class="text-orange">« biofilm »</strong> qui leur permet de :</p>
+
+    <ul style="margin: 8px 0;">
+        <li style="margin-bottom: 4px;"><strong>Se protéger</strong> des agressions extérieures (désinfectants, antibiotiques)</li>
+        <li style="margin-bottom: 4px;"><strong>Se nourrir</strong> via les matières organiques présentes sur les surfaces</li>
+        <li><strong>Se multiplier</strong> dans un environnement favorable</li>
+    </ul>
+
+    <div class="warning-box" style="margin: 10px 0; padding: 10px 14px;">
+        <h4>À retenir</h4>
+        <p>
+            Le biofilm est impénétrable aux antibiotiques, antiseptiques et désinfectants.<br>
+            <strong>Seule une action mécanique couplée à un détergent peut rompre le biofilm.</strong>
+        </p>
+    </div>
+
+    <div class="important-box" style="margin: 10px 0; padding: 12px 16px;">
+        <h3>Une procédure de nettoyage bien menée</h3>
+        <p>permet d'éliminer de <strong>70 à 90% des microbes</strong> présents sur les surfaces.</p>
+    </div>
+
+    <div class="quote" style="margin: 10px 0; padding: 12px 16px;">
+        <p>
+            Imaginez un <strong>kyste de giardia</strong> (parasite intestinal très résistant) caché sous un simple poil de chat.
+            Si le poil n'est pas éliminé lors du pré-nettoyage, le désinfectant ne pourra jamais atteindre le kyste.
+            <strong>Résultat :</strong> le parasite survit et peut contaminer le prochain chat hébergé dans cet espace.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== PAGE 8: TACT + 7 ÉTAPES ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0">3.2 Le principe TACT (Cercle de Sinner)</h3>
+
+    <p>Un bon nettoyage efficace et raisonné n'est possible qu'en respectant <strong>4 paramètres</strong> :</p>
+
+    <div class="tact-circle">
+        <div class="tact-item temperature">
+            <h4>Température</h4>
+            <p>Température de l'eau selon le protocole de chaque produit</p>
+        </div>
+        <div class="tact-item action">
+            <h4>Action Mécanique</h4>
+            <p>Frotter avec un outil (brosse, microfibre, raclette) pour casser le biofilm</p>
+        </div>
+        <div class="tact-item concentration">
+            <h4>Concentration</h4>
+            <p>Utiliser un produit adapté à la bonne dilution</p>
+        </div>
+        <div class="tact-item temps">
+            <h4>Temps</h4>
+            <p>Respecter le temps de contact nécessaire</p>
+        </div>
+    </div>
+
+    <div class="quote">
+        <p>
+            L'action mécanique est la phase physique du nettoyage. Cette pratique, bien qu'énergivore,
+            est incontournable pour effectuer un nettoyage efficace. Votre détergent est votre allié
+            mais il lui faut de l'aide...
+        </p>
+    </div>
+
+    <div class="danger-box clearfix">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/19_cute gray cat.png" alt="Chat gris mignon">
+        </div>
+        <strong>Attention</strong><br>
+        Les hébergements félins ne sont PAS lessivés à grandes eaux (jet d'eau).
+        Cette pratique peut stresser les chats, les intoxiquer et créer un environnement humide propice
+        aux microbes.
+    </div>
+
+    <h3 class="section-subtitle">3.3 Les 7 étapes de la procédure de nettoyage-désinfection</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="28%">ÉTAPE</th>
+                <th>DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. RANGEMENT ET PRÉ-NETTOYAGE</strong></td>
+                <td>Éliminer les poussières, poils et résidus. Retirer tous les objets. Nettoyer les recoins.</td>
+            </tr>
+            <tr>
+                <td><strong>2. NETTOYAGE</strong></td>
+                <td>Préparer le détergent. Épandre. <span class="highlight">Action mécanique (frotter) - INDISPENSABLE</span></td>
+            </tr>
+            <tr>
+                <td><strong>3. RINÇAGE INTERMÉDIAIRE</strong></td>
+                <td>Rincer à l'eau claire. <strong>Éliminer toute trace de détergent.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>4. DÉSINFECTION</strong></td>
+                <td>Préparer le désinfectant. Épandre. <span class="highlight">Respecter IMPÉRATIVEMENT le temps de pause</span></td>
+            </tr>
+            <tr>
+                <td><strong>5. RINÇAGE FINAL</strong></td>
+                <td>Rincer à l'eau froide</td>
+            </tr>
+            <tr>
+                <td><strong>6. SÉCHAGE</strong></td>
+                <td>Sécher complètement (raclette, mop, courant d'air). <strong>Les microbes aiment l'humidité !</strong></td>
+            </tr>
+            <tr>
+                <td><strong>7. ENTRETIEN DU MATÉRIEL</strong></td>
+                <td>Nettoyer, désinfecter et sécher le matériel utilisé</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- ==================== PAGE 8: TYPES DE NETTOYAGE ==================== -->
+<div class="page">
+    <div class="important-box">
+        <h3>Réintroduction des chats</h3>
+        <p>Les animaux ne peuvent être réintroduits qu'après <strong>séchage complet</strong> des surfaces.</p>
+    </div>
+
+    <h2 class="section-title" style="margin-bottom: 12px;">4. Les Types de Nettoyage</h2>
+
+    <p style="margin-bottom: 10px; font-size: 15pt; line-height: 1.4;">Le Fanal des Chats applique différents types de nettoyage selon la situation :</p>
+
+    <h3 class="section-subtitle" style="margin: 12px 0 8px 0;">4.1 Light Clean (nettoyage superficiel)</h3>
+
+    <div class="intro-box" style="margin: 10px 0; padding: 10px 14px;">
+        <h4 class="text-orange bold" style="margin-bottom: 6px; font-size: 16.5pt;">LIGHT CLEAN = Nettoyage rapide dans un environnement propre</h4>
+        <p style="margin: 0; font-size: 15pt; line-height: 1.4;">Utilisé quotidiennement pour l'entretien courant des espaces de vie stables.</p>
+    </div>
+
+    <table style="margin: 10px 0;">
+        <thead>
+            <tr>
+                <th width="25%" style="padding: 8px 10px;">TÂCHE</th>
+                <th style="padding: 8px 10px;">DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>1. Gamelles</strong></td>
+                <td style="padding: 8px 10px;">Nettoyer au nettoie-tout ou liquide vaisselle les gamelles ensuite les rincer à l'eau clair et les sécher</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>2. Surfaces</strong></td>
+                <td style="padding: 8px 10px;">Nettoyer les surfaces avec un nettoyant + eau</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>3. Sol</strong></td>
+                <td style="padding: 8px 10px;">Ramasser les débris au sol</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>4. Poussières</strong></td>
+                <td style="padding: 8px 10px;">Faire les poussières sur les surfaces</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>5. Entretien des litières</strong></td>
+                <td style="padding: 8px 10px;">Nettoyer ou désinfecter les litières</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>6. Lavage sol</strong></td>
+                <td style="padding: 8px 10px;">Laver le sol avec du nettoie-tout de la marque Dettol</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>7. Lavage mur</strong></td>
+                <td style="padding: 8px 10px;">Laver les murs avec du nettoie-tout de la marque Dettol</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>8. Nettoyage des cages ou pièces refuges</strong></td>
+                <td style="padding: 8px 10px;">À l'aide d'un nettoyant, nettoyage des cages (barreaux, plateau, plexi...)</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>9. Nettoyage des structures à litières</strong></td>
+                <td style="padding: 8px 10px;">À l'aide d'un nettoyant, nettoyage des structures</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>10. Lavage des vitres</strong></td>
+                <td style="padding: 8px 10px;">Nettoyer les vitres à l'aide d'un nettoyant et d'outils adaptés</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== PAGE 10: DEEP CLEAN + PROTOCOLES ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0">4.2 Deep Clean (nettoyage en profondeur)</h3>
+
+    <div class="intro-box" style="border-left-color: var(--navy-blue);">
+        <h4 class="text-navy bold">DEEP CLEAN = Nettoyage complet au CID 20</h4>
+        <p>
+            Peut s'appliquer à un objet, une cage, un meuble. Utilisé après le départ d'un chat,
+            pour des surfaces très sales, ou comme nettoyage à fond effectué régulièrement.
+        </p>
+        <p><strong>Un Deep Clean se fait toujours au CID 20 : nettoyage et pause.</strong></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="25%">ÉTAPE</th>
+                <th>DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>1. Rincer</strong></td><td>Rincer la surface ou l'objet à l'eau</td></tr>
+            <tr><td><strong>2. Frotter</strong></td><td>Action mécanique avec détergent</td></tr>
+            <tr><td><strong>3. Appliquer CID 20</strong></td><td>Faire poser le produit CID 20 à l'aide du pulvérisateur</td></tr>
+            <tr><td><strong>4. Rincer</strong></td><td>Rincer à l'eau froide</td></tr>
+            <tr><td><strong>5. Sécher</strong></td><td>Sécher complètement</td></tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <h4>Protocole de départ d'un chat</h4>
+        <p>
+            Lorsqu'un chat quitte définitivement sa cage, le protocole de départ implique un <strong>Deep Clean
+            de la cage</strong> et une désinfection de tous les objets que le chat a utilisés durant son séjour (boîte de transport,
+            litière, jouets, gamelles, draps...).
+        </p>
+        <p style="margin-top: 8px;">
+            <strong>Se référer au tableau se trouvant sur la cage</strong> pour connaître le type de protocole
+            à mettre en place (Light Clean, Deep Clean, Giardia, Typhus...).
+        </p>
+    </div>
+
+    <div class="success-box">
+        <strong>Pourquoi ranger les objets à l'envers dans la cage ?</strong>
+        <ul>
+            <li>Pour qu'ils ne prennent pas la poussière sur le côté qui sera utilisé par le prochain chat</li>
+            <li>C'est visuel pour se rendre compte que la cage est libre et disponible</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ==================== PAGE: PROTOCOLES + GESTION QUOTIDIENNE + LITIÈRES ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0" style="margin-bottom: 4px;">4.3 Protocoles spécifiques (Giardia, Typhus...)</h3>
+
+    <div class="intro-box" style="margin: 4px 0; padding: 6px 12px;">
+        <p style="margin: 0; font-size: 12pt;">
+            Les protocoles spécifiques (Giardia, Typhus, Teigne...) sont <strong>affichés individuellement</strong>
+            dans les locaux concernés. En cas de maladie contagieuse déclarée, se référer au protocole correspondant.
+        </p>
+    </div>
+
+    <div class="grid-2" style="margin-top: 5px; gap: 8px;">
+        <div class="success-box mb-0" style="padding: 6px 10px; margin: 0; font-size: 9pt;">
+            <strong>PROTOCOLE GIARDIA</strong>
+            <p style="margin: 1px 0; font-size: 9pt;">Désinfectant : CID 20</p>
+            <ul style="margin: 3px 0; font-size: 9pt; padding-left: 16px;">
+                <li style="margin-bottom: 0;">Enlever tous les résidus</li>
+                <li style="margin-bottom: 0;">Éliminer tout biofilm</li>
+                <li style="margin-bottom: 0;">Rincer à l'eau chaude</li>
+                <li style="margin-bottom: 0;">Mélanger 2% de C.I.D. 20 + eau tiède</li>
+                <li style="margin-bottom: 0;">Pulvériser sur toutes les surfaces</li>
+                <li style="margin-bottom: 0;">Laisser agir minimum 20 min</li>
+                <li style="margin-bottom: 0;">Rincer et sécher</li>
+            </ul>
+        </div>
+        <div class="danger-box mb-0" style="padding: 6px 10px; margin: 0; font-size: 9pt;">
+            <strong>PROTOCOLE TYPHUS</strong>
+            <p style="margin: 1px 0; font-size: 9pt;">Désinfectant : Javel 5%</p>
+            <ul style="margin: 3px 0; font-size: 9pt; padding-left: 16px;">
+                <li style="margin-bottom: 0;">Enlever tous les résidus</li>
+                <li style="margin-bottom: 0;">Éliminer tout biofilm</li>
+                <li style="margin-bottom: 0;">Rincer à l'eau chaude</li>
+                <li style="margin-bottom: 0;">Mélanger 5% Javel + eau froide</li>
+                <li style="margin-bottom: 0;">Pulvériser sur toutes les surfaces</li>
+                <li style="margin-bottom: 0;">Laisser agir minimum 15min</li>
+                <li style="margin-bottom: 0;">Rincer et sécher</li>
+            </ul>
+            <p style="margin: 2px 0 0 0; font-size: 9pt;"><strong>ATTENTION : Maladie mortelle !</strong></p>
+        </div>
+    </div>
+
+    <h2 class="section-title" style="margin: 8px 0 6px 0; padding: 6px 14px; font-size: 18pt;">5. Gestion Quotidienne</h2>
+
+    <h3 class="section-subtitle mt-0" style="margin-bottom: 4px; font-size: 15pt;">5.1 Équipements obligatoires par cage</h3>
+
+    <p style="margin-bottom: 4px; font-size: 12pt;">Chaque cage doit contenir les éléments suivants :</p>
+
+    <div class="grid-3" style="gap: 5px; margin: 4px 0;">
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Boîte/Cachette</strong><br>Pour se cacher et se poser en hauteur</p>
+        </div>
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Griffoir</strong><br>Grattoir ou griffoir</p>
+        </div>
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Eau fraîche</strong><br>Gamelle d'eau constamment disponible</p>
+        </div>
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Croquettes</strong><br>Gamelle pour la nourriture</p>
+        </div>
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Draps propres</strong><br>Literie confortable</p>
+        </div>
+        <div class="epi-item" style="padding: 5px 8px;">
+            <p style="font-size: 10pt; margin: 0;"><strong>Jouet</strong><br>Un jeu pour l'enrichissement</p>
+        </div>
+    </div>
+
+    <h3 class="section-subtitle" style="margin: 6px 0 4px 0; font-size: 15pt;">5.2 Gestion des litières</h3>
+
+    <table style="margin: 4px 0; font-size: 10pt;">
+        <thead>
+            <tr>
+                <th style="padding: 4px 8px;">Zone / Situation</th>
+                <th style="padding: 4px 8px;">Type de litière</th>
+                <th style="padding: 4px 8px;">Fréquence de nettoyage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 4px 8px;"><strong>Quarantaine</strong></td>
+                <td style="padding: 4px 8px;">Autant de bacs que de chats +1</td>
+                <td style="padding: 4px 8px;"><strong>1 fois par jour</strong></td>
+            </tr>
+            <tr>
+                <td style="padding: 4px 8px;"><strong>Grande pièce de vie</strong></td>
+                <td style="padding: 4px 8px;">1 litière pour 2 chats</td>
+                <td style="padding: 4px 8px;"><strong class="text-orange">2 fois par jour</strong></td>
+            </tr>
+            <tr>
+                <td style="padding: 4px 8px;"><strong>Cages (chat sain)</strong></td>
+                <td style="padding: 4px 8px;">1 litière par cage</td>
+                <td style="padding: 4px 8px;"><strong>1 fois par jour</strong></td>
+            </tr>
+            <tr>
+                <td style="padding: 4px 8px;"><strong>Cages (chat malade)</strong></td>
+                <td style="padding: 4px 8px;">Litière pellets</td>
+                <td style="padding: 4px 8px;"><strong class="text-orange">Changer entièrement et nettoyer min. 2X/jour</strong></td>
+            </tr>
+            <tr>
+                <td style="padding: 4px 8px;"><strong>Litières communes/individuelles</strong></td>
+                <td style="padding: 4px 8px;">Litière au soja</td>
+                <td style="padding: 4px 8px;"><strong>Quotidien</strong> - Bac à désinfecter min. 1X/sem</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="important-box" style="margin: 6px 0 0 0; padding: 8px 14px;">
+        <h3 style="font-size: 14pt; margin-bottom: 2px;">Nettoyage et désinfection des bacs à litière</h3>
+        <p style="font-size: 12pt;">Les bacs à litière doivent être <strong>nettoyés et désinfectés au moins une fois par semaine</strong>.</p>
+    </div>
+
+</div>
+
+<!-- ==================== PAGE: DRAPS + QUARANTAINES ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0" style="margin-bottom: 8px;">5.3 Gestion des draps</h3>
+
+    <div class="intro-box" style="margin: 8px 0; padding: 10px 14px;">
+        <p>
+            <strong>Les draps</strong> désignent tout ce que nous utilisons pour rendre la vie des chats plus confortable :
+            plaids, housses de coussins, coussins, essuies, etc.
+        </p>
+    </div>
+
+    <table style="margin: 8px 0;">
+        <thead>
+            <tr>
+                <th>Situation</th>
+                <th>Fréquence de changement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chat sain en cage</td>
+                <td><strong>2 à 3 fois par semaine</strong></td>
+            </tr>
+            <tr>
+                <td>Chat malade</td>
+                <td><strong class="text-orange">Tous les jours</strong></td>
+            </tr>
+            <tr>
+                <td>Chat sale / qui perd ses poils</td>
+                <td><strong class="text-orange">À chaque drap sale</strong> (même si quotidien)</td>
+            </tr>
+            <tr>
+                <td>Chat dans pièce stable</td>
+                <td><strong>1X par semaine minimum</strong>, à vérifier tous les jours</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box" style="margin: 10px 0; padding: 10px 14px;">
+        <h4>Manipulation des draps contaminés</h4>
+        <p>
+            Quand on manipule des draps sales ou contaminés, on pense à nos petits protégés !
+            En les posant sur une table, un chariot ou le sol, on risque de <strong>transférer des microbes</strong>
+            sur ces surfaces. C'est la contamination croisée en action.
+        </p>
+        <p style="margin-top: 10px;">
+            <strong>Le bon réflexe :</strong> Placer directement les draps dans un sac, le fermer,
+            et l'emmener au lavage. Ainsi, on protège les autres chats !
+        </p>
+    </div>
+
+    <h3 class="section-subtitle" style="margin: 12px 0 8px 0;">5.4 Organisation des zones (Quarantaines)</h3>
+
+    <div class="grid-2" style="gap: 10px; margin-top: 8px;">
+        <div class="warning-box mb-0" style="padding: 10px 14px;">
+            <h4>QUARANTAINE 1</h4>
+            <p>C'est la pièce où arrivent les chats lors de leur <strong>admission au refuge</strong>.</p>
+            <p style="margin-top: 4px;"><strong>Durée :</strong> Les chats y passent <strong>10 jours</strong>.</p>
+        </div>
+        <div class="intro-box mb-0" style="border-left-color: var(--navy-blue); padding: 10px 14px;">
+            <h4 class="text-navy bold">QUARANTAINE 2</h4>
+            <p>C'est la pièce où les chats attendent leur <strong>rappel de vaccin</strong> et se préparent à intégrer le refuge.</p>
+            <p style="margin-top: 4px;">Ils y restent jusqu'à ce qu'ils soient prêts.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 12: CODE COULEUR ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0" style="margin-bottom: 8px;">5.5 Code couleur du matériel</h3>
+
+    <div class="warning-box clearfix" style="margin: 8px 0; padding: 10px 14px;">
+        <div class="float-right illustration-small">
+            <img src="../../assets/images/images/illustrations/20_tiger cat.png" alt="Chat tigré">
+        </div>
+        <h4>Règle impérative</h4>
+        <p>
+            Chaque zone/pièce dispose de <strong>son propre matériel</strong> de nettoyage et de désinfection.
+            À aucun moment ce matériel ne doit être utilisé dans une autre zone.
+        </p>
+        <p style="margin-top: 8px;"><strong>Système de codes couleurs au Fanal des Chats :</strong></p>
+        <ul>
+            <li><span style="color: #E53935;">&#9632; ROUGE</span>/<span style="color: #ffffff; background: #333; padding: 0 4px;">BLANC</span> : Quarantaines</li>
+            <li><span style="color: #1E88E5;">&#9632; BLEU</span>/<span style="color: #ffffff; background: #333; padding: 0 4px;">NOIR</span> : Espace de vie stable</li>
+            <li><span style="color: #43A047;">&#9632; VERT</span> : Contagieux</li>
+            <li><span style="color: #FFA000;">&#9632; JAUNE</span> : Infirmerie</li>
+            <li><span style="color: #FF5B2E;">&#9632; ORANGE</span> : Espace pour humain</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle" style="margin: 12px 0 8px 0;">Entretien du matériel</h3>
+
+    <div class="intro-box" style="margin: 0 0 8px 0; padding: 10px 14px;">
+        <p>
+            L'entretien doit être effectué <strong>après chaque utilisation</strong>.
+            Nettoyer, désinfecter par trempage, rincer si nécessaire, et <strong>sécher complètement</strong>.
+            Un matériel humide = développement de microbes.
+        </p>
+    </div>
+
+    <table style="margin-top: 0;">
+        <thead>
+            <tr>
+                <th style="padding: 8px 10px;">ÉTAPE</th>
+                <th style="padding: 8px 10px;">DÉMARCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>NETTOYAGE</strong></td>
+                <td style="padding: 8px 10px;">Éliminer les débris, vider le seau, démonter au besoin, nettoyer à grande eau</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>DÉSINFECTION PAR TREMPAGE</strong></td>
+                <td style="padding: 8px 10px;">Remplir le bac avec le désinfectant dilué, immerger complètement, respecter le temps de pause</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>RINÇAGE</strong></td>
+                <td style="padding: 8px 10px;">Rincer à l'eau claire si nécessaire, vider et rincer le bac</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 10px;"><strong>SÉCHAGE (TOUJOURS)</strong></td>
+                <td style="padding: 8px 10px;">Suspendre ou retourner le matériel - <strong>Séchage complet obligatoire</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== PAGE 13: CONTAMINATION CROISÉE ==================== -->
+<div class="page">
+    <h2 class="section-title" style="margin-bottom: 10px;">6. La Contamination Croisée</h2>
+
+    <div class="intro-box" style="margin: 8px 0; padding: 10px 14px;">
+        <p>
+            La <strong>contamination croisée</strong> est le transfert involontaire de microorganismes pathogènes
+            (bactéries, virus, parasites, champignons) d'une source contaminée vers une surface, un objet ou un animal sain.
+            <strong>C'est l'un des principaux vecteurs de propagation des maladies en refuge.</strong>
+        </p>
+        <p style="margin-top: 10px;">Comprendre ce principe de base est essentiel. Tout geste a des conséquences.</p>
+    </div>
+
+    <h3 class="section-subtitle" style="margin: 12px 0 8px 0;">6.1 Comment la contamination croisée se produit-elle ?</h3>
+
+    <p style="margin: 8px 0;">
+        Dans un refuge, les mains des personnes manipulant les animaux ou nettoyant les enclos servent de
+        <strong>vecteur de transmission (fomite)</strong>, pouvant transférer des pathogènes d'un animal à l'autre.
+        De plus, certains animaux peuvent être porteurs de virus ou bactéries sans présenter de symptômes visibles.
+    </p>
+
+    <div class="danger-box" style="margin: 10px 0; padding: 10px 14px;">
+        <strong>Sources de contamination :</strong>
+        <ul style="margin: 5px 0 0 0;">
+            <li style="margin-bottom: 3px;">Mains non lavées entre deux manipulations</li>
+            <li style="margin-bottom: 3px;">Matériel partagé entre zones (brosses, serpillères)</li>
+            <li style="margin-bottom: 3px;">Vêtements et chaussures contaminés</li>
+            <li style="margin-bottom: 3px;">Surfaces de travail non désinfectées</li>
+            <li style="margin-bottom: 3px;">Objets posés sur des surfaces sales</li>
+            <li>Litières nettoyées au même endroit que les gamelles</li>
+        </ul>
+    </div>
+
+    <h3 class="section-subtitle" style="margin: 12px 0 8px 0;">6.2 Le principe de la marche en avant</h3>
+
+    <p style="margin: 8px 0;">
+        Recommandé par la réglementation européenne, le principe de la <strong>marche en avant</strong>
+        consiste à organiser le travail de manière à ce que les éléments propres ne croisent jamais les éléments sales.
+        Cela s'applique dans l'espace (zones séparées) et/ou dans le temps (ordre des tâches).
+    </p>
+
+    <div class="important-box" style="margin: 10px 0; padding: 12px 16px;">
+        <h3>Préparer une surface saine</h3>
+        <p>
+            Avant de poser un objet fraîchement désinfecté (gamelle, jouet, litière), assurez-vous que la surface
+            de réception est elle-même <strong>propre et désinfectée</strong>. Poser un objet propre sur une surface
+            contaminée annule tout le travail de désinfection !
+        </p>
+    </div>
+</div>
+
+<!-- ==================== PAGE 15: ÉVITER LA CONTAMINATION ==================== -->
+<div class="page">
+    <h3 class="section-subtitle mt-0" style="font-size: 19.5pt; margin-bottom: 20px;">6.3 Comment l'éviter ?</h3>
+
+    <div class="success-box" style="padding: 16px 20px; margin: 20px 0;">
+        <strong style="font-size: 16.5pt;">Les bons réflexes :</strong>
+        <ul style="margin: 10px 0 0 0; font-size: 15pt;">
+            <li style="margin-bottom: 8px;">Se laver les mains entre chaque animal</li>
+            <li style="margin-bottom: 8px;">Utiliser du matériel dédié par zone (code couleur)</li>
+            <li style="margin-bottom: 8px;">Porter des EPI adaptés (gants, tablier)</li>
+            <li style="margin-bottom: 8px;">Respecter la marche en avant</li>
+            <li style="margin-bottom: 8px;">Préparer une surface saine avant d'y poser du matériel propre</li>
+            <li>Séparer les zones de nettoyage (litières ≠ gamelles)</li>
+        </ul>
+    </div>
+
+    <div class="quote" style="padding: 16px 20px; margin: 20px 0;">
+        <p style="font-size: 15pt; line-height: 1.5;">
+            « L'hygiène des mains est l'un des facteurs déterminants pour maîtriser les infections.
+            La friction hydro-alcoolique est le protocole le plus efficace entre chaque manipulation. »
+        </p>
+    </div>
+
+    <h4 style="color: var(--orange-primary); margin-top: 25px; font-size: 16.5pt;">Cas particuliers à risque élevé</h4>
+
+    <p style="margin: 15px 0; font-size: 15pt; line-height: 1.5;">
+        Les animaux issus de refuges doivent être considérés comme <strong>à haut risque du point de vue infectieux</strong>
+        et gérés de manière appropriée pour prévenir la transmission de maladies.
+    </p>
+
+    <ul class="checklist" style="margin-top: 15px;">
+        <li style="padding: 10px 16px 10px 32px; margin-bottom: 10px; font-size: 14pt; line-height: 1.4;"><strong>Chats en quarantaine 1, infirmerie pour cause de maladie, pièce contagieuse</strong> : manipulation en dernier, EPI complets, matériel strictement dédié, précautions +++ avec les objets ayant été en contact avec le chat contagieux, infesté,...</li>
+        <li style="padding: 10px 16px 10px 32px; margin-bottom: 10px; font-size: 14pt; line-height: 1.4;"><strong>Animaux malades ou contagieux</strong> : isolement dans un local dédié</li>
+        <li style="padding: 10px 16px 10px 32px; margin-bottom: 10px; font-size: 14pt; line-height: 1.4;"><strong>Nouveaux arrivants</strong> : considérés comme potentiellement porteurs jusqu'à évaluation vétérinaire</li>
+    </ul>
+
+</div>
+
+<!-- ==================== PAGE: FOOTER ==================== -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 210px;">
+    <div class="important-box" style="margin-bottom: 15px;">
+        <h3>Le Fanal des Chats</h3>
+        <p>
+            Ce protocole est un document évolutif qui doit être mis à jour régulièrement.<br>
+            Pour toute question, contactez le responsable hygiène de l'association.
+        </p>
+        <p style="margin-top: 10px; font-size: 12pt; opacity: 0.8;">
+            Document basé sur les recommandations de Bruxelles Environnement, du Bien-Être Animal et du SNPCC
+        </p>
+    </div>
+
+    <div class="final-footer">
+        <p>
+            <strong>Protocole d'Hygiène au Fanal des Chats</strong> - Version 1.0 - 2026<br>
+            Ce document doit être accessible à tout le personnel et aux bénévoles.<br>
+            <em>Fanal Academy - Formation et bonnes pratiques</em>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
