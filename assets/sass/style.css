@@ -1863,6 +1863,51 @@ img {
   z-index: -11;
   margin-right: auto;
 }
+@media (min-width: 2500px) {
+  .hero-section {
+    height: 1200px;
+  }
+  .hero-slider {
+    max-width: 1600px;
+    max-height: 1100px;
+  }
+  .hero-slider .hero-slider-main {
+    max-width: 900px;
+  }
+  .hero-slider .hero-slider-main::before {
+    width: 870px;
+    height: 870px;
+  }
+  .hero-section .hero-content {
+    max-width: 900px;
+    margin-left: 200px;
+  }
+}
+@media (min-width: 2100px) and (max-width: 2499px) {
+  .hero-section {
+    height: 1100px;
+  }
+  .hero-slider {
+    max-width: 1500px;
+    max-height: 1000px;
+  }
+  .hero-slider .hero-slider-main {
+    max-width: 820px;
+  }
+  .hero-slider .hero-slider-main::before {
+    width: 790px;
+    height: 790px;
+  }
+  .hero-section .hero-content {
+    max-width: 850px;
+    margin-left: 180px;
+  }
+}
+@media (min-width: 1800px) and (max-width: 2099px) {
+  .hero-section {
+    height: 1050px;
+  }
+}
 @media (max-width: 1699px) {
   .hero-slider {
     max-width: 780px;
@@ -5364,6 +5409,30 @@ background-color: #FCF1E8;
     height: 600px;
     object-fit: cover;
     object-position: center;
+}
+@media (min-width: 1800px) {
+    .funfact-section.about-funfact {
+        padding-top: 510px;
+    }
+    .funfact-section.about-funfact .section-top-image img {
+        height: 700px;
+    }
+}
+@media (min-width: 2100px) {
+    .funfact-section.about-funfact {
+        padding-top: 610px;
+    }
+    .funfact-section.about-funfact .section-top-image img {
+        height: 800px;
+    }
+}
+@media (min-width: 2500px) {
+    .funfact-section.about-funfact {
+        padding-top: 710px;
+    }
+    .funfact-section.about-funfact .section-top-image img {
+        height: 900px;
+    }
 }
 
 

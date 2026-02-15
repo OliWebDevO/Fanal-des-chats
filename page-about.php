@@ -79,7 +79,7 @@
         <!-- start of funfact-section -->
         <section class="funfact-section about-funfact">
             <div class="section-top-image">
-                <img src="<?php bloginfo("template_url")?>/assets/images/images/Les-chats-a-adopter.jpg" alt="Nos chats">
+                <img src="<?php bloginfo("template_url")?>/assets/images/images/home_banner.webp" alt="Nos chats">
             </div>
             <div class="container">
                 <?php
