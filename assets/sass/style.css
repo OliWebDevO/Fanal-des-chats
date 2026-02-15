@@ -483,22 +483,22 @@ img {
   box-shadow: 0 0 5px 0 #ff8361;
 }
 .form ::-webkit-input-placeholder {
-  font-style: 14px;
+  font-size: 14px;
   font-style: italic;
   color: #595959;
 }
 .form :-moz-placeholder {
-  font-style: 14px;
+  font-size: 14px;
   font-style: italic;
   color: #595959;
 }
 .form ::-moz-placeholder {
-  font-style: 14px;
+  font-size: 14px;
   font-style: italic;
   color: #595959;
 }
 .form :-ms-input-placeholder {
-  font-style: 14px;
+  font-size: 14px;
   font-style: italic;
   color: #595959;
 }
@@ -738,9 +738,6 @@ img {
   background: #2c2d44;
   background-image: linear-gradient(45deg, #3f3251 2%, #002025 100%);
 }
-.preloader lesshat-selector {
-  -lh-property: 0;
-}
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -748,12 +745,6 @@ img {
   100% {
     transform: rotate(360deg);
   }
-}
-.preloader [not-existing] {
-  zoom: 1;
-}
-.preloader lesshat-selector {
-  -lh-property: 0;
 }
 @keyframes fade {
   0% {
@@ -763,12 +754,6 @@ img {
     opacity: 0.25;
   }
 }
-.preloader [not-existing] {
-  zoom: 1;
-}
-.preloader lesshat-selector {
-  -lh-property: 0;
-}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -776,9 +761,6 @@ img {
   100% {
     opacity: 1;
   }
-}
-.preloader [not-existing] {
-  zoom: 1;
 }
 
 /*------------------------------------
@@ -2094,8 +2076,46 @@ img {
 @media (max-width: 991px) {
   .hero-section {
     height: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 150px 0 100px;
+  }
+  .hero-section .hero-content {
+    display: contents;
+  }
+  .hero-section .hero-content .hero-text {
+    display: contents;
+  }
+  .hero-section .hero-content .hero-text h3 {
+    order: 1;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
+  .hero-section .hero-slider {
+    order: 2;
+    width: 100%;
+  }
+  .hero-section .hero-content .hero-text p {
+    order: 3;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero-section .hero-content .hero-text .theme-btn-s2 {
+    order: 4;
+    align-self: center;
+  }
+  .hero-section .paw-1,
+  .hero-section .paw-2,
+  .hero-section .paw-3,
+  .hero-section .paw-4 {
+    order: 99;
   }
 }
 .hero-section .hero-content {
@@ -2361,7 +2381,6 @@ img {
 .hero-slider .hero-slider-thumb.slick-slider .item::before {
   position: absolute;
   content: "";
-  top: 0;
   top: 0;
   width: 200px;
   height: 120px;
@@ -5516,9 +5535,6 @@ img {
 .pf-terms-section .pf-faq-section {
   margin-top: 30px;
 }
-.pf-terms-section .pf-faq-section {
-  margin-top: 30px;
-}
 .pf-terms-section .accordion-item {
   border: 0;
   border: 1px solid #fafbfe;
@@ -6307,9 +6323,29 @@ background-color: #FCF1E8;
    Custom utility classes - Replacing inline styles
    ========================================================================== */
 
-/* Hero section images - drop shadow */
+/* Hero section images - uniform size + drop shadow */
 .hero-section .hero-slider-main .item img {
+    width: 100%;
+    max-width: 729px;
+    height: 650px;
+    object-fit: contain;
     filter: drop-shadow(-8px 12px 20px rgba(0, 0, 0, 0.3)) drop-shadow(-4px 8px 10px rgba(0, 0, 0, 0.15));
+}
+@media (max-width: 1499px) {
+    .hero-section .hero-slider-main .item img {
+        height: 470px;
+    }
+}
+@media (max-width: 991px) {
+    .hero-section .hero-slider-main .item img {
+        height: 350px;
+        max-width: 100%;
+    }
+}
+@media (max-width: 575px) {
+    .hero-section .hero-slider-main .item img {
+        height: 250px;
+    }
 }
 
 .hero-section .hero-slider-thumb .item img {
