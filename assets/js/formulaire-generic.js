@@ -353,20 +353,17 @@
             contentType: false,
             success: function(response) {
                 setAdoptionCookie();
-                displaySummary(summary);
                 $('#successModal').addClass('show');
             },
             error: function(xhr, status, error) {
                 // Show success anyway (graceful degradation)
                 setAdoptionCookie();
-                displaySummary(summary);
                 $('#successModal').addClass('show');
             }
         });
 
         // Fallback: show success after delay
         setTimeout(function() {
-            displaySummary(summary);
             $('#successModal').addClass('show');
         }, 1500);
     }

@@ -356,7 +356,6 @@ $template_dir = get_template_directory_uri();
             </div>
             <h2><?php echo esc_html($success_titre); ?></h2>
             <p><?php echo nl2br(esc_html($success_message)); ?></p>
-            <div id="importantSummary"></div>
             <img src="<?php echo $template_dir; ?>/assets/images/images/illustrations/5_little cat.png" alt="" class="success-cat">
             <a href="<?php echo home_url('/'); ?>" class="btn-home">
                 <i class="fas fa-home"></i> Retour à l'accueil
