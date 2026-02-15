@@ -3,6 +3,98 @@
  * Template Name: Quiz Adoption
  * Description: Quiz pour les futurs adoptants de chat
  */
+
+// Charger le post ACF du quiz
+$quiz_post = null;
+$quiz_query = new WP_Query(array(
+    'post_type' => 'page_adoption',
+    'meta_key' => 'adoption_type',
+    'meta_value' => 'quiz',
+    'posts_per_page' => 1,
+));
+if ($quiz_query->have_posts()) {
+    $quiz_query->the_post();
+    $quiz_post = get_the_ID();
+}
+wp_reset_postdata();
+
+// Illustrations par question (hardcodées)
+$illustrations = array(
+    0 => '1_meow cat.png',       // intro
+    1 => '3_cute cat.png',
+    2 => '4_playful cat.png',
+    3 => '5_little cat.png',
+    4 => '6_kitten.png',
+    5 => '7_pretty cat.png',
+    6 => '8_meaow.png',
+    7 => '9_shocked cat.png',
+    8 => '13_sleeping cat.png',
+    9 => '10_naughty cat.png',
+    10 => '14_orange cat.png',
+);
+
+// Charger les données ACF
+$timer = get_field('adoption_quiz_timer', $quiz_post) ?: 90;
+$intro_desc = get_field('adoption_quiz_intro_description', $quiz_post) ?: 'Testez vos connaissances sur le bien-être félin avant d\'adopter votre futur compagnon !';
+$intro_liste_raw = get_field('adoption_quiz_intro_liste', $quiz_post) ?: '';
+$intro_liste = array_filter(array_map('trim', explode("\n", $intro_liste_raw)));
+
+// Charger les questions
+$questions = array();
+$questions_js = array();
+$lettres = array('a', 'b', 'c', 'd');
+
+for ($i = 1; $i <= 10; $i++) {
+    $q_text = get_field('adoption_quiz_q' . $i . '_question', $quiz_post);
+    if (empty($q_text)) continue;
+
+    $reponses = array();
+    $correct = array();
+    foreach ($lettres as $l) {
+        $reponses[$l] = get_field('adoption_quiz_q' . $i . '_reponse_' . $l, $quiz_post) ?: '';
+        if (get_field('adoption_quiz_q' . $i . '_correct_' . $l, $quiz_post)) {
+            $correct[] = $l;
+        }
+    }
+
+    $explication = get_field('adoption_quiz_q' . $i . '_explication', $quiz_post) ?: '';
+
+    $questions[] = array(
+        'num' => $i,
+        'question' => $q_text,
+        'reponses' => $reponses,
+        'correct' => $correct,
+        'explication' => $explication,
+    );
+
+    $questions_js[] = array(
+        'question' => $q_text,
+        'answers' => $reponses,
+        'correct' => $correct,
+        'explanation' => $explication,
+    );
+}
+
+$total_questions = count($questions);
+
+// Messages de résultat
+$results = array();
+foreach (array('low', 'mid', 'high') as $level) {
+    $results[$level] = array(
+        'label' => get_field('adoption_quiz_result_' . $level . '_label', $quiz_post) ?: '',
+        'message' => get_field('adoption_quiz_result_' . $level . '_message', $quiz_post) ?: '',
+        'advice' => get_field('adoption_quiz_result_' . $level . '_advice', $quiz_post) ?: '',
+    );
+}
+
+// Données pour le JS
+$quiz_data = array(
+    'totalQuestions' => $total_questions,
+    'timeLimit' => (int) $timer,
+    'questions' => $questions_js,
+    'results' => $results,
+    'scoringMode' => 'correct',
+);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -47,7 +139,7 @@
             <svg class="counter">
                 <circle cx="50%" cy="50%" r="70" />
             </svg>
-            <span id="countdown-timer">90</span>
+            <span id="countdown-timer"><?php echo (int) $timer; ?></span>
         </div>
 
         <!-- Introduction -->
@@ -55,17 +147,22 @@
             <div class="container text-center">
                 <div class="intro-content">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/1_meow cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illustrations[0]); ?>" alt="" aria-hidden="true">
                     </div>
                     <h1>Quiz Adoption</h1>
-                    <p class="lead">Testez vos connaissances sur le bien-etre felin avant d'adopter votre futur compagnon !</p>
-                    <p>Ce quiz de 10 questions evaluera vos connaissances sur :</p>
+                    <p class="lead"><?php echo esc_html($intro_desc); ?></p>
+                    <?php if (!empty($intro_liste)) : ?>
+                    <p>Ce quiz de <?php echo $total_questions; ?> questions évaluera vos connaissances sur :</p>
                     <ul class="intro-list">
-                        <li><i class="fas fa-heart"></i> Le bien-etre des chats</li>
-                        <li><i class="fas fa-home"></i> Leurs besoins quotidiens</li>
-                        <li><i class="fas fa-utensils"></i> Leur alimentation</li>
-                        <li><i class="fas fa-stethoscope"></i> Leur sante</li>
+                        <?php
+                        $icons = array('fa-heart', 'fa-home', 'fa-utensils', 'fa-stethoscope', 'fa-paw', 'fa-cat', 'fa-shield-cat', 'fa-hand-holding-heart');
+                        foreach ($intro_liste as $idx => $item) :
+                            $icon = $icons[$idx % count($icons)];
+                        ?>
+                        <li><i class="fas <?php echo $icon; ?>"></i> <?php echo esc_html($item); ?></li>
+                        <?php endforeach; ?>
                     </ul>
+                    <?php endif; ?>
                     <button type="button" class="btn-start" id="startQuiz">
                         Commencer le quiz <i class="fas fa-arrow-right"></i>
                     </button>
@@ -77,345 +174,41 @@
         <section class="steps" id="quizSteps" style="display: none;">
             <form novalidate onsubmit="return false" id="stepForm" class="show-section">
 
-                <!-- Question 1: Alimentation -->
-                <fieldset id="step1">
+                <?php foreach ($questions as $index => $q) :
+                    $step_num = $index + 1;
+                    $is_last = ($step_num === $total_questions);
+                    $illus = isset($illustrations[$step_num]) ? $illustrations[$step_num] : $illustrations[1];
+                    $delay_classes = array('', 'delay-100', 'delay-200', 'delay-300');
+                ?>
+                <fieldset id="step<?php echo $step_num; ?>">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/3_cute cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illus); ?>" alt="" aria-hidden="true">
                     </div>
-                    <div class="question-number">Question 1/10</div>
+                    <div class="question-number">Question <?php echo $step_num; ?>/<?php echo $total_questions; ?></div>
                     <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q1" value="a">
-                            <label>Une fois par jour</label>
+                        <?php foreach ($lettres as $li => $l) :
+                            if (empty($q['reponses'][$l])) continue;
+                        ?>
+                        <div class="option animate <?php echo $delay_classes[$li]; ?>">
+                            <input type="radio" name="q<?php echo $step_num; ?>" value="<?php echo $l; ?>">
+                            <label><?php echo esc_html($q['reponses'][$l]); ?></label>
                         </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q1" value="b">
-                            <label>Deux fois par jour</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q1" value="c">
-                            <label>A volonte en permanence</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q1" value="d">
-                            <label>Trois fois par semaine</label>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="question">
-                        <h2 class="animate">A quelle frequence doit-on nourrir un chat adulte ?</h2>
+                        <h2 class="animate"><?php echo esc_html($q['question']); ?></h2>
                         <div class="nextPrev">
                             <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="1"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 2: Eau -->
-                <fieldset id="step2">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/4_playful cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 2/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q2" value="a">
-                            <label>Une fois par semaine</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q2" value="b">
-                            <label>Tous les jours</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q2" value="c">
-                            <label>Quand elle est vide</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q2" value="d">
-                            <label>Une fois par mois</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">A quelle frequence faut-il changer l'eau d'un chat ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="2"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 3: Litiere -->
-                <fieldset id="step3">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/5_little cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 3/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q3" value="a">
-                            <label>Dans un coin isole et calme</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q3" value="b">
-                            <label>Pres de sa gamelle</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q3" value="c">
-                            <label>Dans un lieu de passage</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q3" value="d">
-                            <label>Dehors uniquement</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Ou doit-on placer la litiere d'un chat ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="3"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 4: Veterinaire -->
-                <fieldset id="step4">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/6_kitten.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 4/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q4" value="a">
-                            <label>Uniquement s'il est malade</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q4" value="b">
-                            <label>Jamais si bien nourri</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q4" value="c">
-                            <label>Au moins une fois par an</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q4" value="d">
-                            <label>Tous les mois</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">A quelle frequence un chat doit-il voir le veterinaire ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="4"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 5: Sterilisation -->
-                <fieldset id="step5">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/7_pretty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 5/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q5" value="a">
-                            <label>Evite les portees non desirees et problemes de sante</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q5" value="b">
-                            <label>Rend le chat triste</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q5" value="c">
-                            <label>N'a aucun interet</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q5" value="d">
-                            <label>Fait grossir automatiquement</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quel est l'interet principal de la sterilisation ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="5"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 6: Aliments toxiques -->
-                <fieldset id="step6">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/8_meaow.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 6/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q6" value="a">
-                            <label>Poulet cuit</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q6" value="b">
-                            <label>Chocolat</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q6" value="c">
-                            <label>Croquettes pour chat</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q6" value="d">
-                            <label>Courgette cuite</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quel aliment est toxique pour les chats ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="6"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 7: Griffoir -->
-                <fieldset id="step7">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/9_shocked cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 7/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q7" value="a">
-                            <label>Pour l'occuper uniquement</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q7" value="b">
-                            <label>Pour entretenir ses griffes et marquer son territoire</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q7" value="c">
-                            <label>Ce n'est pas necessaire</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q7" value="d">
-                            <label>Pour le punir</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Pourquoi un chat a-t-il besoin d'un griffoir ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="7"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 8: Sommeil -->
-                <fieldset id="step8">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/13_sleeping cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 8/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q8" value="a">
-                            <label>4 a 6 heures</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q8" value="b">
-                            <label>8 a 10 heures</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q8" value="c">
-                            <label>12 a 16 heures</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q8" value="d">
-                            <label>20 a 24 heures</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Combien d'heures par jour un chat adulte dort-il en moyenne ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="8"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 9: Signes de stress -->
-                <fieldset id="step9">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 9/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q9" value="a">
-                            <label>Ronronnement constant</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q9" value="b">
-                            <label>Lechage excessif ou perte d'appetit</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q9" value="c">
-                            <label>Jouer activement</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q9" value="d">
-                            <label>Dormir normalement</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quel comportement peut indiquer qu'un chat est stresse ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="9"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 10: Adoption -->
-                <fieldset id="step10">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/14_orange cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 10/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q10" value="a">
-                            <label>Le forcer a explorer</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q10" value="b">
-                            <label>L'isoler completement</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q10" value="c">
-                            <label>Lui laisser du temps dans un espace securise</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q10" value="d">
-                            <label>Inviter beaucoup de monde</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment accueillir un nouveau chat a la maison ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <?php if ($is_last) : ?>
                             <button class="apply" type="button" id="submitQuiz"><i class="fa-solid fa-check"></i></button>
+                            <?php else : ?>
+                            <button class="next" type="button" data-step="<?php echo $step_num; ?>"><i class="fa-solid fa-arrow-right"></i></button>
+                            <?php endif; ?>
                         </div>
                         <div class="fill"></div>
                     </div>
                 </fieldset>
+                <?php endforeach; ?>
 
             </form>
         </section>
@@ -427,7 +220,7 @@
             <div class="loading-cat">
                 <i class="fas fa-cat"></i>
             </div>
-            <p>Calcul de vos resultats...</p>
+            <p>Calcul de vos résultats...</p>
         </div>
     </div>
 
@@ -438,12 +231,12 @@
             <div class="result_content">
                 <header class="resultheader">
                     <i class="fas fa-trophy"></i>
-                    Vos Resultats
+                    Vos Résultats
                 </header>
 
                 <div class="result_msg">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/quiz/check.png" alt="succes">
-                    <span class="result_msg_text">Felicitations !</span>
+                    <span class="result_msg_text">Félicitations !</span>
                 </div>
 
                 <span class="score-label">Votre score</span>
@@ -457,15 +250,15 @@
                 <div class="lvl_overview">
                     <div class="lvl-single">
                         <div class="lvl-color low"></div>
-                        <div class="lvl-name">Debutant<br><small>0-49%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['low']['label'] ?: 'Débutant'); ?><br><small>0-49%</small></div>
                     </div>
                     <div class="lvl-single">
                         <div class="lvl-color medium"></div>
-                        <div class="lvl-name">Bon<br><small>50-79%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['mid']['label'] ?: 'Bon'); ?><br><small>50-79%</small></div>
                     </div>
                     <div class="lvl-single">
                         <div class="lvl-color high"></div>
-                        <div class="lvl-name">Expert<br><small>80-100%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['high']['label'] ?: 'Expert'); ?><br><small>80-100%</small></div>
                     </div>
                 </div>
             </div>
@@ -502,10 +295,15 @@
 
     <div id="error"></div>
 
+    <!-- Quiz Data -->
+    <script>
+        window.quizData = <?php echo wp_json_encode($quiz_data); ?>;
+    </script>
+
     <!-- Scripts -->
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-adoption.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-generic.js"></script>
 
     <?php wp_footer(); ?>
 </body>

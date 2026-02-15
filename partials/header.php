@@ -93,15 +93,6 @@
                                             <a href="<?php echo home_url('/about'); ?>">A Propos</a>
                                         </li>
                                         <li class="menu-item-has-children">
-                                            <span class="nav-trigger">Participer</span>
-                                            <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Bénévole</a></li>
-                                                <li><a href="<?php echo home_url('/emploi'); ?>">Trouver un Emploi</a></li>
-                                                <li><a href="<?php echo home_url('/stage'); ?>">Faire un Stage</a></li>
-                                                <li><a href="<?php echo home_url('/famille-accueil'); ?>">Famille d'accueil</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
                                             <span class="nav-trigger">Adoption</span>
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/adoption'); ?>">Adoption</a></li>
@@ -114,6 +105,15 @@
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
                                                 <li><a href="<?php echo home_url('/leguer'); ?>">Faire un legs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <span class="nav-trigger">Participer</span>
+                                            <ul class="sub-menu">
+                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Bénévole</a></li>
+                                                <li><a href="<?php echo home_url('/emploi'); ?>">Trouver un Emploi</a></li>
+                                                <li><a href="<?php echo home_url('/stage'); ?>">Faire un Stage</a></li>
+                                                <li><a href="<?php echo home_url('/famille-accueil'); ?>">Famille d'accueil</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">

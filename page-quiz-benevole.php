@@ -1,15 +1,111 @@
 <?php
 /**
  * Template Name: Quiz Benevole
- * Description: Quiz pour les candidats benevoles
+ * Description: Quiz pour les bénévoles
  */
+
+// Charger le post ACF du quiz
+$quiz_post = null;
+$quiz_query = new WP_Query(array(
+    'post_type' => 'page_benevole',
+    'meta_key' => 'benevole_type',
+    'meta_value' => 'quiz',
+    'posts_per_page' => 1,
+));
+if ($quiz_query->have_posts()) {
+    $quiz_query->the_post();
+    $quiz_post = get_the_ID();
+}
+wp_reset_postdata();
+
+// Illustrations par question (hardcodées)
+$illustrations = array(
+    0 => '1_meow cat.png',         // intro
+    1 => '3_cute cat.png',
+    2 => '4_playful cat.png',
+    3 => '5_little cat.png',
+    4 => '6_kitten.png',
+    5 => '7_pretty cat.png',
+    6 => '8_meaow.png',
+    7 => '9_shocked cat.png',
+    8 => '13_sleeping cat.png',
+    9 => '10_naughty cat.png',
+    10 => '14_orange cat.png',
+);
+
+// Charger les données ACF
+$prefix = 'benevole';
+$timer = get_field($prefix . '_quiz_timer', $quiz_post) ?: 120;
+$intro_desc = get_field($prefix . '_quiz_intro_description', $quiz_post) ?: 'Testez vos connaissances sur le bénévolat dans les associations félines.';
+$intro_liste_raw = get_field($prefix . '_quiz_intro_liste', $quiz_post) ?: '';
+$intro_liste = array_filter(array_map('trim', explode("\n", $intro_liste_raw)));
+
+// Charger les questions
+$questions = array();
+$questions_js = array();
+$lettres = array('a', 'b', 'c', 'd');
+
+for ($i = 1; $i <= 10; $i++) {
+    $q_text = get_field($prefix . '_quiz_q' . $i . '_question', $quiz_post);
+    if (empty($q_text)) continue;
+
+    $reponses = array();
+    $correct = array();
+    foreach ($lettres as $l) {
+        $reponses[$l] = get_field($prefix . '_quiz_q' . $i . '_reponse_' . $l, $quiz_post) ?: '';
+        if (get_field($prefix . '_quiz_q' . $i . '_correct_' . $l, $quiz_post)) {
+            $correct[] = $l;
+        }
+    }
+
+    $explication = get_field($prefix . '_quiz_q' . $i . '_explication', $quiz_post) ?: '';
+
+    $questions[] = array(
+        'num' => $i,
+        'question' => $q_text,
+        'reponses' => $reponses,
+        'correct' => $correct,
+        'explication' => $explication,
+    );
+
+    $questions_js[] = array(
+        'question' => $q_text,
+        'answers' => $reponses,
+        'correct' => $correct,
+        'explanation' => $explication,
+    );
+}
+
+$total_questions = count($questions);
+
+// Messages de résultat
+$results = array();
+foreach (array('low', 'mid', 'high') as $level) {
+    $results[$level] = array(
+        'label' => get_field($prefix . '_quiz_result_' . $level . '_label', $quiz_post) ?: '',
+        'message' => get_field($prefix . '_quiz_result_' . $level . '_message', $quiz_post) ?: '',
+        'advice' => get_field($prefix . '_quiz_result_' . $level . '_advice', $quiz_post) ?: '',
+    );
+}
+
+// Données pour le JS
+// NOTE: benevole quiz ideally uses 'points' scoringMode, but the current ACF structure
+// does not support arbitrary point values per answer. Using 'correct' mode for now.
+// To enable points mode later, add ACF point fields and change scoringMode to 'points'.
+$quiz_data = array(
+    'totalQuestions' => $total_questions,
+    'timeLimit' => (int) $timer,
+    'questions' => $questions_js,
+    'results' => $results,
+    'scoringMode' => 'correct',
+);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Benevole - <?php bloginfo('name'); ?></title>
+    <title>Quiz Bénévole - <?php bloginfo('name'); ?></title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +118,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- Quiz Styles (meme design que quiz adoption) -->
+    <!-- Quiz Styles -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/quiz-adoption.css">
 
     <?php wp_head(); ?>
@@ -35,8 +131,8 @@
             <a href="<?php echo home_url('/'); ?>" class="quiz-logo">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/logo.gif" alt="<?php bloginfo('name'); ?>">
             </a>
-            <a href="<?php echo home_url('/benevole'); ?>" class="btn-back">
-                <i class="fas fa-arrow-left"></i> Retour
+            <a href="<?php echo home_url('/'); ?>" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour au site
             </a>
         </div>
     </header>
@@ -47,7 +143,7 @@
             <svg class="counter">
                 <circle cx="50%" cy="50%" r="70" />
             </svg>
-            <span id="countdown-timer">120</span>
+            <span id="countdown-timer"><?php echo (int) $timer; ?></span>
         </div>
 
         <!-- Introduction -->
@@ -55,17 +151,22 @@
             <div class="container text-center">
                 <div class="intro-content">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/1_meow cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illustrations[0]); ?>" alt="" aria-hidden="true">
                     </div>
-                    <h1>Quiz Benevole</h1>
-                    <p class="lead">Evaluez votre profil de benevole pour rejoindre notre equipe au Fanal des Chats !</p>
-                    <p>Ce quiz de 10 questions evaluera :</p>
+                    <h1>Quiz Bénévole</h1>
+                    <p class="lead"><?php echo esc_html($intro_desc); ?></p>
+                    <?php if (!empty($intro_liste)) : ?>
+                    <p>Ce quiz de <?php echo $total_questions; ?> questions évaluera vos connaissances sur :</p>
                     <ul class="intro-list">
-                        <li><i class="fas fa-heart"></i> Votre motivation</li>
-                        <li><i class="fas fa-clock"></i> Vos disponibilites</li>
-                        <li><i class="fas fa-paw"></i> Votre experience</li>
-                        <li><i class="fas fa-hands-helping"></i> Vos aptitudes</li>
+                        <?php
+                        $icons = array('fa-heart', 'fa-home', 'fa-utensils', 'fa-stethoscope', 'fa-paw', 'fa-cat', 'fa-shield-cat', 'fa-hand-holding-heart');
+                        foreach ($intro_liste as $idx => $item) :
+                            $icon = $icons[$idx % count($icons)];
+                        ?>
+                        <li><i class="fas <?php echo $icon; ?>"></i> <?php echo esc_html($item); ?></li>
+                        <?php endforeach; ?>
                     </ul>
+                    <?php endif; ?>
                     <button type="button" class="btn-start" id="startQuiz">
                         Commencer le quiz <i class="fas fa-arrow-right"></i>
                     </button>
@@ -77,345 +178,41 @@
         <section class="steps" id="quizSteps" style="display: none;">
             <form novalidate onsubmit="return false" id="stepForm" class="show-section">
 
-                <!-- Question 1: Experience avec les animaux -->
-                <fieldset id="step1">
+                <?php foreach ($questions as $index => $q) :
+                    $step_num = $index + 1;
+                    $is_last = ($step_num === $total_questions);
+                    $illus = isset($illustrations[$step_num]) ? $illustrations[$step_num] : $illustrations[1];
+                    $delay_classes = array('', 'delay-100', 'delay-200', 'delay-300');
+                ?>
+                <fieldset id="step<?php echo $step_num; ?>">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/3_cute cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illus); ?>" alt="" aria-hidden="true">
                     </div>
-                    <div class="question-number">Question 1/10</div>
+                    <div class="question-number">Question <?php echo $step_num; ?>/<?php echo $total_questions; ?></div>
                     <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q1" value="a">
-                            <label>Aucune experience</label>
+                        <?php foreach ($lettres as $li => $l) :
+                            if (empty($q['reponses'][$l])) continue;
+                        ?>
+                        <div class="option animate <?php echo $delay_classes[$li]; ?>">
+                            <input type="radio" name="q<?php echo $step_num; ?>" value="<?php echo $l; ?>">
+                            <label><?php echo esc_html($q['reponses'][$l]); ?></label>
                         </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q1" value="b">
-                            <label>J'ai eu des animaux de compagnie</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q1" value="c">
-                            <label>Experience en refuge ou association</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q1" value="d">
-                            <label>Formation professionnelle animaliere</label>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="question">
-                        <h2 class="animate">Quelle est votre experience avec les animaux ?</h2>
+                        <h2 class="animate"><?php echo esc_html($q['question']); ?></h2>
                         <div class="nextPrev">
                             <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="1"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 2: Disponibilites -->
-                <fieldset id="step2">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/4_playful cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 2/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q2" value="a">
-                            <label>Moins de 2 heures par semaine</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q2" value="b">
-                            <label>2 a 4 heures par semaine</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q2" value="c">
-                            <label>4 a 8 heures par semaine</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q2" value="d">
-                            <label>Plus de 8 heures par semaine</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Combien de temps pouvez-vous consacrer au benevolat ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="2"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 3: Capacites physiques -->
-                <fieldset id="step3">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/5_little cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 3/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q3" value="a">
-                            <label>Je prefere les taches legeres</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q3" value="b">
-                            <label>Je peux faire des efforts moderes</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q3" value="c">
-                            <label>Bonne condition physique</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q3" value="d">
-                            <label>Tres bonne endurance</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment evaluez-vous vos capacites physiques pour le travail au refuge ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="3"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 4: Situation professionnelle -->
-                <fieldset id="step4">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/6_kitten.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 4/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q4" value="a">
-                            <label>En activite professionnelle</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q4" value="b">
-                            <label>Etudiant(e)</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q4" value="c">
-                            <label>Retraite(e)</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q4" value="d">
-                            <label>Sans emploi / En recherche</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quelle est votre situation actuelle ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="4"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 5: Animaux malades -->
-                <fieldset id="step5">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/7_pretty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 5/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q5" value="a">
-                            <label>Je prefere eviter cette situation</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q5" value="b">
-                            <label>Je peux le faire avec accompagnement</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q5" value="c">
-                            <label>Je suis a l'aise avec ca</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q5" value="d">
-                            <label>J'ai deja de l'experience dans ce domaine</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment reagiriez-vous face a un animal malade ou blesse ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="5"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 6: Type de taches -->
-                <fieldset id="step6">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/8_meaow.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 6/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q6" value="a">
-                            <label>Soins et nourrissage des chats</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q6" value="b">
-                            <label>Nettoyage et entretien</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q6" value="c">
-                            <label>Accueil et communication</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q6" value="d">
-                            <label>Toutes les taches m'interessent</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quel type de taches vous interesse le plus ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="6"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 7: Travail en equipe -->
-                <fieldset id="step7">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/9_shocked cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 7/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q7" value="a">
-                            <label>Je prefere travailler seul(e)</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q7" value="b">
-                            <label>En petit groupe de 2-3 personnes</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q7" value="c">
-                            <label>En equipe plus large</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q7" value="d">
-                            <label>Je m'adapte a toutes les situations</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment preferez-vous travailler ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="7"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 8: Motivation -->
-                <fieldset id="step8">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/13_sleeping cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 8/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q8" value="a">
-                            <label>Occuper mon temps libre</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q8" value="b">
-                            <label>Acquerir de l'experience</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q8" value="c">
-                            <label>Amour des animaux</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q8" value="d">
-                            <label>M'engager pour une cause</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quelle est votre principale motivation pour devenir benevole ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="8"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 9: Situations difficiles -->
-                <fieldset id="step9">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 9/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q9" value="a">
-                            <label>Cela serait tres difficile pour moi</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q9" value="b">
-                            <label>J'aurais besoin de soutien</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q9" value="c">
-                            <label>Je peux gerer mes emotions</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q9" value="d">
-                            <label>J'ai deja vecu ce type de situation</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment gerer la fin de vie ou le deces d'un animal du refuge ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="9"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 10: Engagement -->
-                <fieldset id="step10">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/14_orange cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 10/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q10" value="a">
-                            <label>Quelques semaines pour essayer</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q10" value="b">
-                            <label>Quelques mois</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q10" value="c">
-                            <label>Au moins un an</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q10" value="d">
-                            <label>Le plus longtemps possible</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Sur quelle duree envisagez-vous de vous engager ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <?php if ($is_last) : ?>
                             <button class="apply" type="button" id="submitQuiz"><i class="fa-solid fa-check"></i></button>
+                            <?php else : ?>
+                            <button class="next" type="button" data-step="<?php echo $step_num; ?>"><i class="fa-solid fa-arrow-right"></i></button>
+                            <?php endif; ?>
                         </div>
                         <div class="fill"></div>
                     </div>
                 </fieldset>
+                <?php endforeach; ?>
 
             </form>
         </section>
@@ -427,23 +224,23 @@
             <div class="loading-cat">
                 <i class="fas fa-cat"></i>
             </div>
-            <p>Analyse de votre profil...</p>
+            <p>Calcul de vos résultats...</p>
         </div>
     </div>
 
-    <!-- Page de resultats -->
+    <!-- Page de resultats - Format paysage -->
     <div class="result_page">
         <div class="result_inner">
             <!-- Partie gauche - Score -->
             <div class="result_content">
                 <header class="resultheader">
-                    <i class="fas fa-user-check"></i>
-                    Votre Profil
+                    <i class="fas fa-trophy"></i>
+                    Vos Résultats
                 </header>
 
                 <div class="result_msg">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/quiz/check.png" alt="succes">
-                    <span class="result_msg_text">Felicitations !</span>
+                    <span class="result_msg_text">Félicitations !</span>
                 </div>
 
                 <span class="score-label">Votre score</span>
@@ -457,15 +254,15 @@
                 <div class="lvl_overview">
                     <div class="lvl-single">
                         <div class="lvl-color low"></div>
-                        <div class="lvl-name">Debutant<br><small>0-49%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['low']['label'] ?: 'Débutant'); ?><br><small>0-49%</small></div>
                     </div>
                     <div class="lvl-single">
                         <div class="lvl-color medium"></div>
-                        <div class="lvl-name">Motive<br><small>50-79%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['mid']['label'] ?: 'Bon'); ?><br><small>50-79%</small></div>
                     </div>
                     <div class="lvl-single">
                         <div class="lvl-color high"></div>
-                        <div class="lvl-name">Ideal<br><small>80-100%</small></div>
+                        <div class="lvl-name"><?php echo esc_html($results['high']['label'] ?: 'Expert'); ?><br><small>80-100%</small></div>
                     </div>
                 </div>
             </div>
@@ -473,16 +270,16 @@
             <!-- Partie droite - Conseil et boutons -->
             <div class="result_right">
                 <div class="result_advice">
-                    <h3><i class="fas fa-lightbulb"></i> Notre avis</h3>
+                    <h3><i class="fas fa-lightbulb"></i> Conseil</h3>
                     <p class="advice_text"></p>
                 </div>
 
                 <footer class="resultfooter">
-                    <a href="<?php echo home_url('/benevole'); ?>" class="btn-adopt">
-                        <i class="fas fa-arrow-left"></i> Retour
+                    <a href="<?php echo home_url('/'); ?>" class="btn-adopt">
+                        <i class="fas fa-home"></i> Retour au site
                     </a>
                     <button type="button" class="btn-see-errors" id="seeErrorsBtn" style="display: none;">
-                        <i class="fas fa-arrow-down"></i> Voir mes reponses
+                        <i class="fas fa-arrow-down"></i> Voir mes erreurs
                     </button>
                     <button type="button" class="btn-retry" onclick="location.reload()">
                         <i class="fas fa-redo"></i> Refaire le quiz
@@ -491,21 +288,26 @@
             </div>
         </div>
 
-        <!-- Section reponses -->
+        <!-- Section erreurs -->
         <div class="errors-section" id="errorsSection">
-            <h2 class="errors-title"><i class="fas fa-clipboard-list"></i> Vos reponses</h2>
+            <h2 class="errors-title"><i class="fas fa-times-circle"></i> Vos erreurs</h2>
             <div class="errors-list" id="errorsList">
-                <!-- Les reponses seront ajoutees dynamiquement par JS -->
+                <!-- Les erreurs seront ajoutees dynamiquement par JS -->
             </div>
         </div>
     </div>
 
     <div id="error"></div>
 
+    <!-- Quiz Data -->
+    <script>
+        window.quizData = <?php echo wp_json_encode($quiz_data); ?>;
+    </script>
+
     <!-- Scripts -->
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-benevole.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-generic.js"></script>
 
     <?php wp_footer(); ?>
 </body>

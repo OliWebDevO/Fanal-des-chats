@@ -1864,38 +1864,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_adoption_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'adoption_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'adoption_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('adoption', 'field_adoption_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -2309,38 +2279,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_abandon_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'abandon_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'abandon_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('abandon', 'field_abandon_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -2753,38 +2693,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_don_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'don_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'don_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('don', 'field_don_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -3165,38 +3075,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_benevole_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'benevole_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'benevole_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('benevole', 'field_benevole_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -3610,38 +3490,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_emploi_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'emploi_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'emploi_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('emploi', 'field_emploi_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -4055,38 +3905,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_stage_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'stage_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'stage_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('stage', 'field_stage_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -4536,38 +4356,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_famille_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'famille_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'famille_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('famille', 'field_famille_type'),
 
             // === CHAMPS FORMULAIRE ===
             array(
@@ -5023,38 +4813,8 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
             ),
 
-            // === CHAMPS QUIZ ===
-            array(
-                'key' => 'field_legue_quiz_titre',
-                'label' => 'Titre Section',
-                'name' => 'legue_quiz_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_quiz_texte',
-                'label' => 'Texte',
-                'name' => 'legue_quiz_texte',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'quiz',
-                        ),
-                    ),
-                ),
-            ),
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('legue', 'field_legue_type'),
 
             // === CHAMPS FAQ ===
             array(
@@ -5446,5 +5206,167 @@ function enable_threaded_comments() {
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
+}
+
+// === HELPER : Générer les champs ACF pour un quiz ===
+function generate_quiz_acf_fields($prefix, $type_field_key) {
+    $fields = array();
+    $quiz_condition = array(
+        array(
+            array(
+                'field' => $type_field_key,
+                'operator' => '==',
+                'value' => 'quiz',
+            ),
+        ),
+    );
+
+    // Titre (existant)
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_titre',
+        'label' => 'Titre Section',
+        'name' => $prefix . '_quiz_titre',
+        'type' => 'text',
+        'conditional_logic' => $quiz_condition,
+    );
+
+    // Texte (existant)
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_texte',
+        'label' => 'Texte',
+        'name' => $prefix . '_quiz_texte',
+        'type' => 'textarea',
+        'rows' => 3,
+        'conditional_logic' => $quiz_condition,
+    );
+
+    // Timer
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_timer',
+        'label' => 'Durée du timer (secondes)',
+        'name' => $prefix . '_quiz_timer',
+        'type' => 'number',
+        'default_value' => 90,
+        'conditional_logic' => $quiz_condition,
+    );
+
+    // Intro description
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_intro_description',
+        'label' => 'Description d\'intro',
+        'name' => $prefix . '_quiz_intro_description',
+        'type' => 'textarea',
+        'rows' => 2,
+        'instructions' => 'Texte affiché sous le titre du quiz.',
+        'conditional_logic' => $quiz_condition,
+    );
+
+    // Intro liste
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_intro_liste',
+        'label' => 'Liste de points d\'intro',
+        'name' => $prefix . '_quiz_intro_liste',
+        'type' => 'textarea',
+        'rows' => 4,
+        'instructions' => 'Un point par ligne (ex: Le bien-être des chats).',
+        'conditional_logic' => $quiz_condition,
+    );
+
+    // 10 questions
+    for ($i = 1; $i <= 10; $i++) {
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_q' . $i . '_tab',
+            'label' => 'Question ' . $i,
+            'type' => 'tab',
+            'conditional_logic' => $quiz_condition,
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_q' . $i . '_question',
+            'label' => 'Question ' . $i,
+            'name' => $prefix . '_quiz_q' . $i . '_question',
+            'type' => 'text',
+            'conditional_logic' => $quiz_condition,
+        );
+
+        // 4 réponses avec checkbox "bonne réponse" chacune
+        $lettres = array('a', 'b', 'c', 'd');
+        foreach ($lettres as $lettre) {
+            $fields[] = array(
+                'key' => 'field_' . $prefix . '_quiz_q' . $i . '_reponse_' . $lettre,
+                'label' => 'Réponse ' . strtoupper($lettre),
+                'name' => $prefix . '_quiz_q' . $i . '_reponse_' . $lettre,
+                'type' => 'text',
+                'conditional_logic' => $quiz_condition,
+                'wrapper' => array('width' => '80'),
+            );
+
+            $fields[] = array(
+                'key' => 'field_' . $prefix . '_quiz_q' . $i . '_correct_' . $lettre,
+                'label' => strtoupper($lettre) . ' = bonne réponse ?',
+                'name' => $prefix . '_quiz_q' . $i . '_correct_' . $lettre,
+                'type' => 'true_false',
+                'ui' => 1,
+                'conditional_logic' => $quiz_condition,
+                'wrapper' => array('width' => '20'),
+            );
+        }
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_q' . $i . '_explication',
+            'label' => 'Explication',
+            'name' => $prefix . '_quiz_q' . $i . '_explication',
+            'type' => 'textarea',
+            'rows' => 3,
+            'conditional_logic' => $quiz_condition,
+        );
+    }
+
+    // Messages de résultat
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_quiz_result_tab',
+        'label' => 'Résultats',
+        'type' => 'tab',
+        'conditional_logic' => $quiz_condition,
+    );
+
+    $levels = array(
+        'low' => array('label' => 'Débutant', 'message' => 'Continuez à apprendre !'),
+        'mid' => array('label' => 'Bon', 'message' => 'Bien joué !'),
+        'high' => array('label' => 'Expert', 'message' => 'Félicitations !'),
+    );
+
+    foreach ($levels as $level_key => $level_defaults) {
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_result_' . $level_key . '_label',
+            'label' => 'Niveau ' . $level_defaults['label'] . ' - Label',
+            'name' => $prefix . '_quiz_result_' . $level_key . '_label',
+            'type' => 'text',
+            'default_value' => $level_defaults['label'],
+            'conditional_logic' => $quiz_condition,
+            'wrapper' => array('width' => '50'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_result_' . $level_key . '_message',
+            'label' => 'Niveau ' . $level_defaults['label'] . ' - Message',
+            'name' => $prefix . '_quiz_result_' . $level_key . '_message',
+            'type' => 'text',
+            'default_value' => $level_defaults['message'],
+            'conditional_logic' => $quiz_condition,
+            'wrapper' => array('width' => '50'),
+        );
+
+        $fields[] = array(
+            'key' => 'field_' . $prefix . '_quiz_result_' . $level_key . '_advice',
+            'label' => 'Niveau ' . $level_defaults['label'] . ' - Conseil',
+            'name' => $prefix . '_quiz_result_' . $level_key . '_advice',
+            'type' => 'textarea',
+            'rows' => 3,
+            'conditional_logic' => $quiz_condition,
+        );
+    }
+
+    return $fields;
 }
 add_action('wp_enqueue_scripts', 'enable_threaded_comments');

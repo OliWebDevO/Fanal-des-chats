@@ -1,8 +1,101 @@
 <?php
 /**
  * Template Name: Quiz Famille Accueil
- * Description: Quiz pour les candidats famille d'accueil
+ * Description: Quiz pour les candidats familles d'accueil
  */
+
+// Charger le post ACF du quiz
+$quiz_post = null;
+$quiz_query = new WP_Query(array(
+    'post_type' => 'page_famille_accueil',
+    'meta_key' => 'famille_type',
+    'meta_value' => 'quiz',
+    'posts_per_page' => 1,
+));
+if ($quiz_query->have_posts()) {
+    $quiz_query->the_post();
+    $quiz_post = get_the_ID();
+}
+wp_reset_postdata();
+
+// Illustrations par question (hardcodées)
+$illustrations = array(
+    0 => '1_meow cat.png',
+    1 => '3_cute cat.png',
+    2 => '4_playful cat.png',
+    3 => '5_little cat.png',
+    4 => '6_kitten.png',
+    5 => '7_pretty cat.png',
+    6 => '8_meaow.png',
+    7 => '9_shocked cat.png',
+    8 => '13_sleeping cat.png',
+    9 => '10_naughty cat.png',
+    10 => '14_orange cat.png',
+);
+
+// Charger les données ACF
+$prefix = 'famille';
+$timer = get_field($prefix . '_quiz_timer', $quiz_post) ?: 120;
+$intro_desc = get_field($prefix . '_quiz_intro_description', $quiz_post) ?: 'Évaluez votre profil pour devenir famille d\'accueil au Fanal des Chats !';
+$intro_liste_raw = get_field($prefix . '_quiz_intro_liste', $quiz_post) ?: '';
+$intro_liste = array_filter(array_map('trim', explode("\n", $intro_liste_raw)));
+
+// Charger les questions
+$questions = array();
+$questions_js = array();
+$lettres = array('a', 'b', 'c', 'd');
+
+for ($i = 1; $i <= 10; $i++) {
+    $q_text = get_field($prefix . '_quiz_q' . $i . '_question', $quiz_post);
+    if (empty($q_text)) continue;
+
+    $reponses = array();
+    $correct = array();
+    foreach ($lettres as $l) {
+        $reponses[$l] = get_field($prefix . '_quiz_q' . $i . '_reponse_' . $l, $quiz_post) ?: '';
+        if (get_field($prefix . '_quiz_q' . $i . '_correct_' . $l, $quiz_post)) {
+            $correct[] = $l;
+        }
+    }
+
+    $explication = get_field($prefix . '_quiz_q' . $i . '_explication', $quiz_post) ?: '';
+
+    $questions[] = array(
+        'num' => $i,
+        'question' => $q_text,
+        'reponses' => $reponses,
+        'correct' => $correct,
+        'explication' => $explication,
+    );
+
+    $questions_js[] = array(
+        'question' => $q_text,
+        'answers' => $reponses,
+        'correct' => $correct,
+        'explanation' => $explication,
+    );
+}
+
+$total_questions = count($questions);
+
+// Messages de résultat
+$results = array();
+foreach (array('low', 'mid', 'high') as $level) {
+    $results[$level] = array(
+        'label' => get_field($prefix . '_quiz_result_' . $level . '_label', $quiz_post) ?: '',
+        'message' => get_field($prefix . '_quiz_result_' . $level . '_message', $quiz_post) ?: '',
+        'advice' => get_field($prefix . '_quiz_result_' . $level . '_advice', $quiz_post) ?: '',
+    );
+}
+
+// Données pour le JS
+$quiz_data = array(
+    'totalQuestions' => $total_questions,
+    'timeLimit' => (int) $timer,
+    'questions' => $questions_js,
+    'results' => $results,
+    'scoringMode' => 'correct',
+);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -10,62 +103,52 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Famille d'accueil - <?php bloginfo('name'); ?></title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <!-- Quiz Styles -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/quiz-adoption.css">
-
     <?php wp_head(); ?>
 </head>
 <body class="quiz-adoption-page">
-
-    <!-- Header simplifié -->
     <header class="quiz-header">
         <div class="container">
             <a href="<?php echo home_url('/'); ?>" class="quiz-logo">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/logo.gif" alt="<?php bloginfo('name'); ?>">
             </a>
-            <a href="<?php echo home_url('/famille-accueil'); ?>" class="btn-back">
-                <i class="fas fa-arrow-left"></i> Retour
+            <a href="<?php echo home_url('/'); ?>" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour au site
             </a>
         </div>
     </header>
 
     <main class="quiz-main overflow-hidden">
-        <!-- Compteur -->
         <div class="counterContainer">
-            <svg class="counter">
-                <circle cx="50%" cy="50%" r="70" />
-            </svg>
-            <span id="countdown-timer">120</span>
+            <svg class="counter"><circle cx="50%" cy="50%" r="70" /></svg>
+            <span id="countdown-timer"><?php echo (int) $timer; ?></span>
         </div>
 
-        <!-- Introduction -->
         <section class="quiz-intro" id="quizIntro">
             <div class="container text-center">
                 <div class="intro-content">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/1_meow cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illustrations[0]); ?>" alt="" aria-hidden="true">
                     </div>
                     <h1>Quiz Famille d'accueil</h1>
-                    <p class="lead">Évaluez votre profil pour devenir famille d'accueil au Fanal des Chats !</p>
-                    <p>Ce quiz de 10 questions évaluera :</p>
+                    <p class="lead"><?php echo esc_html($intro_desc); ?></p>
+                    <?php if (!empty($intro_liste)) : ?>
+                    <p>Ce quiz de <?php echo $total_questions; ?> questions évaluera :</p>
                     <ul class="intro-list">
-                        <li><i class="fas fa-home"></i> Votre logement</li>
-                        <li><i class="fas fa-clock"></i> Vos disponibilités</li>
-                        <li><i class="fas fa-paw"></i> Votre expérience avec les animaux</li>
-                        <li><i class="fas fa-heart"></i> Votre motivation</li>
+                        <?php
+                        $icons = array('fa-heart', 'fa-home', 'fa-utensils', 'fa-stethoscope', 'fa-paw', 'fa-cat', 'fa-shield-cat', 'fa-hand-holding-heart');
+                        foreach ($intro_liste as $idx => $item) :
+                            $icon = $icons[$idx % count($icons)];
+                        ?>
+                        <li><i class="fas <?php echo $icon; ?>"></i> <?php echo esc_html($item); ?></li>
+                        <?php endforeach; ?>
                     </ul>
+                    <?php endif; ?>
                     <button type="button" class="btn-start" id="startQuiz">
                         Commencer le quiz <i class="fas fa-arrow-right"></i>
                     </button>
@@ -73,439 +156,96 @@
             </div>
         </section>
 
-        <!-- Questions du Quiz -->
         <section class="steps" id="quizSteps" style="display: none;">
             <form novalidate onsubmit="return false" id="stepForm" class="show-section">
-
-                <!-- Question 1: Logement -->
-                <fieldset id="step1">
+                <?php foreach ($questions as $index => $q) :
+                    $step_num = $index + 1;
+                    $is_last = ($step_num === $total_questions);
+                    $illus = isset($illustrations[$step_num]) ? $illustrations[$step_num] : $illustrations[1];
+                    $delay_classes = array('', 'delay-100', 'delay-200', 'delay-300');
+                ?>
+                <fieldset id="step<?php echo $step_num; ?>">
                     <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/3_cute cat.png" alt="" aria-hidden="true">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/<?php echo esc_attr($illus); ?>" alt="" aria-hidden="true">
                     </div>
-                    <div class="question-number">Question 1/10</div>
+                    <div class="question-number">Question <?php echo $step_num; ?>/<?php echo $total_questions; ?></div>
                     <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q1" value="a">
-                            <label>Studio ou petit appartement</label>
+                        <?php foreach ($lettres as $li => $l) :
+                            if (empty($q['reponses'][$l])) continue;
+                        ?>
+                        <div class="option animate <?php echo $delay_classes[$li]; ?>">
+                            <input type="radio" name="q<?php echo $step_num; ?>" value="<?php echo $l; ?>">
+                            <label><?php echo esc_html($q['reponses'][$l]); ?></label>
                         </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q1" value="b">
-                            <label>Appartement avec plusieurs pièces</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q1" value="c">
-                            <label>Maison sans jardin</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q1" value="d">
-                            <label>Maison avec jardin sécurisé</label>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="question">
-                        <h2 class="animate">Quel type de logement occupez-vous ?</h2>
+                        <h2 class="animate"><?php echo esc_html($q['question']); ?></h2>
                         <div class="nextPrev">
                             <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="1"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 2: Disponibilité quotidienne -->
-                <fieldset id="step2">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/4_playful cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 2/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q2" value="a">
-                            <label>Absent(e) plus de 10 heures par jour</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q2" value="b">
-                            <label>Absent(e) 6 à 8 heures par jour</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q2" value="c">
-                            <label>Présent(e) une bonne partie de la journée</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q2" value="d">
-                            <label>Présent(e) quasi en permanence</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Combien de temps êtes-vous présent(e) à la maison chaque jour ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="2"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 3: Expérience avec les chats -->
-                <fieldset id="step3">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/5_little cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 3/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q3" value="a">
-                            <label>Aucune expérience avec les chats</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q3" value="b">
-                            <label>J'ai côtoyé des chats chez des proches</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q3" value="c">
-                            <label>J'ai ou j'ai eu des chats</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q3" value="d">
-                            <label>Expérience avec des chatons ou chats nécessitant des soins</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quelle est votre expérience avec les chats ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="3"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 4: Autres animaux au foyer -->
-                <fieldset id="step4">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/6_kitten.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 4/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q4" value="a">
-                            <label>J'ai un chien non habitué aux chats</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q4" value="b">
-                            <label>J'ai d'autres animaux compatibles</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q4" value="c">
-                            <label>J'ai un chat sociable</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q4" value="d">
-                            <label>Aucun autre animal au foyer</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Avez-vous d'autres animaux à la maison ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="4"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 5: Enfants -->
-                <fieldset id="step5">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/7_pretty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 5/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q5" value="a">
-                            <label>Enfants en bas âge (moins de 3 ans)</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q5" value="b">
-                            <label>Enfants entre 3 et 10 ans</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q5" value="c">
-                            <label>Adolescents ou enfants sensibilisés</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q5" value="d">
-                            <label>Pas d'enfants au foyer</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Y a-t-il des enfants dans votre foyer ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="5"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 6: Durée d'accueil -->
-                <fieldset id="step6">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/8_meaow.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 6/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q6" value="a">
-                            <label>Quelques jours seulement</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q6" value="b">
-                            <label>1 à 2 semaines</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q6" value="c">
-                            <label>1 à 2 mois</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q6" value="d">
-                            <label>Jusqu'à 3 mois ou plus si nécessaire</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Combien de temps pourriez-vous accueillir un chat ou des chatons ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="6"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 7: Soins médicaux -->
-                <fieldset id="step7">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/9_shocked cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 7/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q7" value="a">
-                            <label>Je ne suis pas à l'aise avec les soins</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q7" value="b">
-                            <label>Je peux administrer des soins simples</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q7" value="c">
-                            <label>Je suis capable de donner des médicaments</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q7" value="d">
-                            <label>J'ai l'habitude des soins vétérinaires courants</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Êtes-vous à l'aise pour administrer des soins aux chats ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="7"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 8: Séparation -->
-                <fieldset id="step8">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/13_sleeping cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 8/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q8" value="a">
-                            <label>Cela serait très difficile pour moi</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q8" value="b">
-                            <label>J'aurais du mal mais je comprends la démarche</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q8" value="c">
-                            <label>Je sais que c'est pour leur bien</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q8" value="d">
-                            <label>J'ai déjà vécu ce type de séparation</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Comment réagiriez-vous au moment de rendre le chat pour son adoption ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="8"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 9: Pièce dédiée -->
-                <fieldset id="step9">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/10_naughty cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 9/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q9" value="a">
-                            <label>Non, pas de pièce disponible</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q9" value="b">
-                            <label>Un coin aménageable dans une pièce</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q9" value="c">
-                            <label>Une pièce pouvant être isolée temporairement</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q9" value="d">
-                            <label>Une pièce entièrement dédiée à l'accueil</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Disposez-vous d'une pièce calme pour accueillir le chat ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next" type="button" data-step="9"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                        <div class="fill"></div>
-                    </div>
-                </fieldset>
-
-                <!-- Question 10: Motivation -->
-                <fieldset id="step10">
-                    <div class="slide-illustration">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/14_orange cat.png" alt="" aria-hidden="true">
-                    </div>
-                    <div class="question-number">Question 10/10</div>
-                    <div class="d-flex flex-wrap options">
-                        <div class="option animate">
-                            <input type="radio" name="q10" value="a">
-                            <label>Par curiosité, pour voir si ça me plaît</label>
-                        </div>
-                        <div class="option animate delay-100">
-                            <input type="radio" name="q10" value="b">
-                            <label>Pour aider ponctuellement en cas d'urgence</label>
-                        </div>
-                        <div class="option animate delay-200">
-                            <input type="radio" name="q10" value="c">
-                            <label>Pour offrir un foyer temporaire aux chats dans le besoin</label>
-                        </div>
-                        <div class="option animate delay-300">
-                            <input type="radio" name="q10" value="d">
-                            <label>C'est un engagement que je souhaite sur le long terme</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <h2 class="animate">Quelle est votre principale motivation pour devenir famille d'accueil ?</h2>
-                        <div class="nextPrev">
-                            <button class="prev" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <?php if ($is_last) : ?>
                             <button class="apply" type="button" id="submitQuiz"><i class="fa-solid fa-check"></i></button>
+                            <?php else : ?>
+                            <button class="next" type="button" data-step="<?php echo $step_num; ?>"><i class="fa-solid fa-arrow-right"></i></button>
+                            <?php endif; ?>
                         </div>
                         <div class="fill"></div>
                     </div>
                 </fieldset>
-
+                <?php endforeach; ?>
             </form>
         </section>
     </main>
 
-    <!-- Écran de chargement résultat -->
     <div class="loadingresult">
         <div class="loading-content">
-            <div class="loading-cat">
-                <i class="fas fa-cat"></i>
-            </div>
-            <p>Analyse de votre profil...</p>
+            <div class="loading-cat"><i class="fas fa-cat"></i></div>
+            <p>Calcul de vos résultats...</p>
         </div>
     </div>
 
-    <!-- Page de résultats -->
     <div class="result_page">
         <div class="result_inner">
-            <!-- Partie gauche - Score -->
             <div class="result_content">
-                <header class="resultheader">
-                    <i class="fas fa-home"></i>
-                    Votre Profil
-                </header>
-
+                <header class="resultheader"><i class="fas fa-trophy"></i> Vos Résultats</header>
                 <div class="result_msg">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/quiz/check.png" alt="succès">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/quiz/check.png" alt="succes">
                     <span class="result_msg_text">Félicitations !</span>
                 </div>
-
                 <span class="score-label">Votre score</span>
                 <div class="u_prcnt">0%</div>
-
-                <div class="prcnt_bar">
-                    <div class="fill"></div>
-                </div>
+                <div class="prcnt_bar"><div class="fill"></div></div>
                 <div class="prcnt_bar_lvl">-</div>
-
                 <div class="lvl_overview">
-                    <div class="lvl-single">
-                        <div class="lvl-color low"></div>
-                        <div class="lvl-name">À préparer<br><small>0-49%</small></div>
-                    </div>
-                    <div class="lvl-single">
-                        <div class="lvl-color medium"></div>
-                        <div class="lvl-name">Prometteur<br><small>50-79%</small></div>
-                    </div>
-                    <div class="lvl-single">
-                        <div class="lvl-color high"></div>
-                        <div class="lvl-name">Idéal<br><small>80-100%</small></div>
-                    </div>
+                    <div class="lvl-single"><div class="lvl-color low"></div><div class="lvl-name"><?php echo esc_html($results['low']['label'] ?: 'Débutant'); ?><br><small>0-49%</small></div></div>
+                    <div class="lvl-single"><div class="lvl-color medium"></div><div class="lvl-name"><?php echo esc_html($results['mid']['label'] ?: 'Bon'); ?><br><small>50-79%</small></div></div>
+                    <div class="lvl-single"><div class="lvl-color high"></div><div class="lvl-name"><?php echo esc_html($results['high']['label'] ?: 'Expert'); ?><br><small>80-100%</small></div></div>
                 </div>
             </div>
-
-            <!-- Partie droite - Conseil et boutons -->
             <div class="result_right">
                 <div class="result_advice">
-                    <h3><i class="fas fa-lightbulb"></i> Notre avis</h3>
+                    <h3><i class="fas fa-lightbulb"></i> Conseil</h3>
                     <p class="advice_text"></p>
                 </div>
-
                 <footer class="resultfooter">
-                    <a href="<?php echo home_url('/famille-accueil'); ?>" class="btn-adopt">
-                        <i class="fas fa-arrow-left"></i> Retour
-                    </a>
-                    <button type="button" class="btn-see-errors" id="seeErrorsBtn" style="display: none;">
-                        <i class="fas fa-arrow-down"></i> Voir mes réponses
-                    </button>
-                    <button type="button" class="btn-retry" onclick="location.reload()">
-                        <i class="fas fa-redo"></i> Refaire le quiz
-                    </button>
+                    <a href="<?php echo home_url('/'); ?>" class="btn-adopt"><i class="fas fa-home"></i> Retour au site</a>
+                    <button type="button" class="btn-see-errors" id="seeErrorsBtn" style="display: none;"><i class="fas fa-arrow-down"></i> Voir mes erreurs</button>
+                    <button type="button" class="btn-retry" onclick="location.reload()"><i class="fas fa-redo"></i> Refaire le quiz</button>
                 </footer>
             </div>
         </div>
-
-        <!-- Section réponses -->
         <div class="errors-section" id="errorsSection">
-            <h2 class="errors-title"><i class="fas fa-clipboard-list"></i> Vos réponses</h2>
-            <div class="errors-list" id="errorsList">
-            </div>
+            <h2 class="errors-title"><i class="fas fa-times-circle"></i> Vos erreurs</h2>
+            <div class="errors-list" id="errorsList"></div>
         </div>
     </div>
 
     <div id="error"></div>
 
-    <!-- Scripts -->
+    <script>window.quizData = <?php echo wp_json_encode($quiz_data); ?>;</script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-famille-accueil.js"></script>
-
+    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/quiz-generic.js"></script>
     <?php wp_footer(); ?>
 </body>
 </html>

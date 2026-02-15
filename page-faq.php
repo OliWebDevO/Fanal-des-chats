@@ -34,6 +34,7 @@
                 'prefix'       => 'adoption',
                 'accordion_id' => 'accordionAdoption',
                 'titre'        => "Questions fréquentes sur l'adoption",
+                'page_slug'    => 'adoption',
             ),
             array(
                 'post_type'    => 'page_famille_accueil',
@@ -41,6 +42,7 @@
                 'prefix'       => 'famille',
                 'accordion_id' => 'accordionFamille',
                 'titre'        => "Questions fréquentes sur les familles d'accueil",
+                'page_slug'    => 'famille-accueil',
             ),
             array(
                 'post_type'    => 'page_abandon',
@@ -48,6 +50,7 @@
                 'prefix'       => 'abandon',
                 'accordion_id' => 'accordionAbandon',
                 'titre'        => "Questions fréquentes sur l'abandon",
+                'page_slug'    => 'abandon',
             ),
             array(
                 'post_type'    => 'page_don',
@@ -55,6 +58,7 @@
                 'prefix'       => 'don',
                 'accordion_id' => 'accordionDon',
                 'titre'        => 'Questions fréquentes sur les dons',
+                'page_slug'    => 'don',
             ),
             array(
                 'post_type'    => 'page_legue',
@@ -62,6 +66,7 @@
                 'prefix'       => 'legue',
                 'accordion_id' => 'accordionLegue',
                 'titre'        => 'Questions fréquentes sur les legs',
+                'page_slug'    => 'leguer',
             ),
             array(
                 'post_type'    => 'page_emploi',
@@ -69,6 +74,7 @@
                 'prefix'       => 'emploi',
                 'accordion_id' => 'accordionEmploi',
                 'titre'        => "Questions fréquentes sur l'emploi",
+                'page_slug'    => 'emploi',
             ),
             array(
                 'post_type'    => 'page_benevole',
@@ -76,6 +82,7 @@
                 'prefix'       => 'benevole',
                 'accordion_id' => 'accordionBenevole',
                 'titre'        => 'Questions fréquentes sur le bénévolat',
+                'page_slug'    => 'benevole',
             ),
             array(
                 'post_type'    => 'page_stage',
@@ -83,6 +90,7 @@
                 'prefix'       => 'stage',
                 'accordion_id' => 'accordionStage',
                 'titre'        => 'Questions fréquentes sur le stage',
+                'page_slug'    => 'stage',
             ),
         );
 
@@ -150,6 +158,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-12 text-center" style="margin-top: 30px;">
+                        <a href="<?php echo home_url('/' . $section['page_slug']); ?>" class="theme-btn-s2">En Savoir Plus</a>
                     </div>
                 </div>
             </div> <!-- end container -->

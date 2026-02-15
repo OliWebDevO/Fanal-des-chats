@@ -69,6 +69,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="row g-0">
+                    <div class="col col-12">
+                        <p class="site-credit">Ce site web a été réalisé par <a href="https://olivervdb.com/" target="_blank" rel="noopener">Oliver Van Droogenbroeck</a></p>
+                    </div>
+                </div>
             </div>
         </footer>
 
