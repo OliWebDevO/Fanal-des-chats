@@ -299,6 +299,15 @@
         $container.html(html);
     }
 
+    // Set cookie after adoption form submission
+    function setAdoptionCookie() {
+        var prefix = $('input[name="form_prefix"]').val();
+        if (prefix === 'adoption') {
+            var expires = new Date(Date.now() + 30 * 24 * 3600 * 1000).toUTCString();
+            document.cookie = 'adoption_form_done=1; expires=' + expires + '; path=/';
+        }
+    }
+
     // Handle form submission
     function handleSubmit(e) {
         e.preventDefault();
@@ -343,11 +352,13 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                setAdoptionCookie();
                 displaySummary(summary);
                 $('#successModal').addClass('show');
             },
             error: function(xhr, status, error) {
                 // Show success anyway (graceful degradation)
+                setAdoptionCookie();
                 displaySummary(summary);
                 $('#successModal').addClass('show');
             }

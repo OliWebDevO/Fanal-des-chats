@@ -126,6 +126,9 @@
                                         <li>
                                             <a href="<?php echo home_url('/faq'); ?>">FAQ</a>
                                         </li>
+                                        <li>
+                                            <a href="<?php echo home_url('/rendez-vous'); ?>">Rendez-Vous</a>
+                                        </li>
                                     </ul>
 
                                 </div><!-- end of nav-collapse -->

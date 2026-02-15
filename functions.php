@@ -5610,6 +5610,11 @@ function handle_generic_form_submit() {
 
     $sent = wp_mail($admin_email, $subject, $body, $headers);
 
+    // Placer un cookie si le formulaire d'adoption a été soumis avec succès
+    if ($prefix === 'adoption') {
+        setcookie('adoption_form_done', '1', time() + (30 * 24 * 3600), '/');
+    }
+
     if ($sent) {
         wp_send_json_success(array('message' => 'Formulaire envoyé avec succès.'));
     } else {

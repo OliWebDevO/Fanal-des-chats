@@ -19,24 +19,27 @@
         </section>
         <!-- end page-title -->
 
-        <!-- Intro section -->
-        <div class="wpo-service-single-area section-padding orange">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-12">
-                        <div class="wpo-service-single-wrap">
-                            <div class="wpo-service-single-item">
-                                <div class="wpo-service-single-title">
-                                    <h3>Offrez votre soutien à un chat du refuge</h3>
-                                </div>
-                                <p>En parrainant un chat du Fanal des Chats, vous contribuez directement à ses soins quotidiens, sa nourriture et ses frais vétérinaires. Chaque parrainage fait une réelle différence dans la vie de nos pensionnaires.</p>
-                                <p>Parcourez les profils de nos chats ci-dessous et cliquez sur celui que vous souhaitez parrainer pour effectuer un don en son nom.</p>
-                            </div>
+        <!-- Intro section : texte gauche, illustration droite -->
+        <section class="about-section section-padding orange benevole-block">
+            <div class="wraper">
+                <div class="right">
+                    <span class="section-label">Parrainage</span>
+                    <h2>Offrez votre soutien à un chat du refuge</h2>
+                    <p>En parrainant un chat du Fanal des Chats, vous contribuez directement à ses soins quotidiens, sa nourriture et ses frais vétérinaires. Chaque parrainage fait une réelle différence dans la vie de nos pensionnaires.</p>
+                    <p>Parcourez les profils de nos chats ci-dessous et cliquez sur celui que vous souhaitez parrainer pour effectuer un don en son nom.</p>
+                </div>
+                <div class="left">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/7_pretty cat.png" alt="Chat du refuge">
+                        <div class="shape">
+                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
+                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FBDABF" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Galerie des chats à parrainer -->
         <section class="wpo-team-section section-padding orange">
