@@ -450,7 +450,7 @@ img {
 
 .wpo-page-title {
   /* background: url(../images/page-title.jpg) no-repeat center top/cover; */
-  background: url(../images/images/titlepicture3.png) no-repeat center right/cover;
+  background: url(../images/images/jerry-banner.webp) no-repeat center right/cover;
   min-height: 600px;
   position: relative;
   display: flex;
@@ -4872,7 +4872,6 @@ background-color: #FCF1E8;
 }
 .benevole-block .image {
   isolation: isolate;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4894,9 +4893,35 @@ background-color: #FCF1E8;
   z-index: 1;
 }
 .benevole-block .image .shape svg {
-  width: 180%;
-  height: auto;
-  aspect-ratio: 1;
+  width: 720px;
+  height: 720px;
+}
+@media (max-width: 1799px) {
+  .benevole-block .image img {
+    max-height: 340px;
+  }
+  .benevole-block .image .shape svg {
+    width: 620px;
+    height: 620px;
+  }
+}
+@media (max-width: 1599px) {
+  .benevole-block .image img {
+    max-height: 300px;
+  }
+  .benevole-block .image .shape svg {
+    width: 550px;
+    height: 550px;
+  }
+}
+@media (max-width: 1499px) {
+  .benevole-block .image img {
+    max-height: 270px;
+  }
+  .benevole-block .image .shape svg {
+    width: 500px;
+    height: 500px;
+  }
 }
 @media (max-width: 1399px) {
   .benevole-block .image {
@@ -4906,6 +4931,37 @@ background-color: #FCF1E8;
   }
   .benevole-block .image img {
     max-height: 220px;
+  }
+  .benevole-block .image .shape svg {
+    width: 420px;
+    height: 420px;
+  }
+}
+@media (min-width: 1800px) {
+  .benevole-block .image img {
+    max-height: 450px;
+  }
+  .benevole-block .image .shape svg {
+    width: 820px;
+    height: 820px;
+  }
+}
+@media (min-width: 2100px) {
+  .benevole-block .image img {
+    max-height: 500px;
+  }
+  .benevole-block .image .shape svg {
+    width: 920px;
+    height: 920px;
+  }
+}
+@media (min-width: 2500px) {
+  .benevole-block .image img {
+    max-height: 560px;
+  }
+  .benevole-block .image .shape svg {
+    width: 1020px;
+    height: 1020px;
   }
 }
 /* Section-label : couleur différente sur fond beige pour rester visible */
