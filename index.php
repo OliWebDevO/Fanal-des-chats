@@ -136,7 +136,7 @@
         </section>
 
         <!-- start of about-section -->
-        <section class="about-section section-padding pt-0">
+        <section class="about-section section-padding pt-0 homepage-apropos">
             <?php
             // Récupérer le contenu A propos de la page accueil
             $apropos_query = new WP_Query(array(

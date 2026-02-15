@@ -90,53 +90,41 @@
                                     <button class="menu-close"><i class="ti-close"></i></button>
                                     <ul class="nav navbar-nav mb-2 mb-lg-0">
                                         <li>
-                                            <a href="<?php echo home_url('/'); ?>">Accueil</a>
-                                            <!-- Sous-menu Accueil (desactive)
-                                            <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/'); ?>">Home style 1</a></li>
-                                                <li><a href="<?php echo home_url('/index-2'); ?>">Home style 2</a></li>
-                                            </ul>
-                                            -->
-                                        </li>
-                                        <li>
                                             <a href="<?php echo home_url('/about'); ?>">A Propos</a>
-                                            <!-- Sous-menu A Propos (desactive)
-                                            <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/about'); ?>">About</a></li>
-                                                <li><a href="<?php echo home_url('/pricing'); ?>">Pricing</a></li>
-                                                <li><a href="<?php echo home_url('/faq'); ?>">Faq</a></li>
-                                                <li><a href="<?php echo home_url('/404'); ?>">404</a></li>
-                                            </ul>
-                                            -->
                                         </li>
                                         <li class="menu-item-has-children">
                                             <span class="nav-trigger">Participer</span>
                                             <ul class="sub-menu">
-                                                <!-- <li><a href="<?php echo home_url('/service'); ?>">Services</a></li> -->
-                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adopter un Chat</a></li>
-                                                <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
-                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Benevole</a></li>
+                                                <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Bénévole</a></li>
+                                                <li><a href="<?php echo home_url('/emploi'); ?>">Trouver un Emploi</a></li>
+                                                <li><a href="<?php echo home_url('/stage'); ?>">Faire un Stage</a></li>
+                                                <li><a href="<?php echo home_url('/famille-accueil'); ?>">Famille d'accueil</a></li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="<?php echo home_url('/revue'); ?>">Revue</a>
-                                            <!-- Sous-menu Revue (desactive)
+                                        <li class="menu-item-has-children">
+                                            <span class="nav-trigger">Adoption</span>
+                                            <ul class="sub-menu">
+                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adoption</a></li>
+                                                <li><a href="<?php echo home_url('/abandon'); ?>">Abandon</a></li>
+                                                <li><a href="<?php echo home_url('/parrainer'); ?>">Parrainer un chat</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <span class="nav-trigger">Don</span>
+                                            <ul class="sub-menu">
+                                                <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
+                                                <li><a href="<?php echo home_url('/leguer'); ?>">Faire un legs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <span class="nav-trigger">News</span>
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/revue'); ?>">Revue</a></li>
-                                                <li><a href="<?php echo home_url('/revue-single'); ?>">Revue Single</a></li>
-                                                <li><a href="<?php echo home_url('/cart'); ?>">Cart</a></li>
-                                                <li><a href="<?php echo home_url('/checkout'); ?>">Checkout</a></li>
+                                                <li><a href="<?php echo home_url('/histoires'); ?>">Livre d'Or</a></li>
                                             </ul>
-                                            -->
                                         </li>
                                         <li>
-                                            <a href="<?php echo home_url('/histoires'); ?>">Histoires</a>
-                                            <!-- Sous-menu Histoires (desactive)
-                                            <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/histoires'); ?>">Histoires</a></li>
-                                                <li><a href="<?php echo home_url('/histoire-single'); ?>">Histoire Single</a></li>
-                                            </ul>
-                                            -->
+                                            <a href="<?php echo home_url('/faq'); ?>">FAQ</a>
                                         </li>
                                     </ul>
 

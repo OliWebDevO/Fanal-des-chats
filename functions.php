@@ -166,6 +166,36 @@ function register_cpt_page_adoption() {
 }
 add_action('init', 'register_cpt_page_adoption');
 
+// CPT: Abandon
+function register_cpt_page_abandon() {
+    $labels = array(
+        'name'               => 'Abandon',
+        'singular_name'      => 'Contenu Abandon',
+        'menu_name'          => 'Abandon',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 8,
+        'menu_icon'          => 'dashicons-dismiss',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_abandon', $args);
+}
+add_action('init', 'register_cpt_page_abandon');
+
 // CPT: Don
 function register_cpt_page_don() {
     $labels = array(
@@ -186,7 +216,7 @@ function register_cpt_page_don() {
         'public'             => false,
         'show_ui'            => true,
         'show_in_menu'       => true,
-        'menu_position'      => 8,
+        'menu_position'      => 9,
         'menu_icon'          => 'dashicons-money-alt',
         'supports'           => array('title'),
         'has_archive'        => false,
@@ -216,7 +246,7 @@ function register_cpt_page_benevole() {
         'public'             => false,
         'show_ui'            => true,
         'show_in_menu'       => true,
-        'menu_position'      => 9,
+        'menu_position'      => 10,
         'menu_icon'          => 'dashicons-groups',
         'supports'           => array('title'),
         'has_archive'        => false,
@@ -225,6 +255,156 @@ function register_cpt_page_benevole() {
     register_post_type('page_benevole', $args);
 }
 add_action('init', 'register_cpt_page_benevole');
+
+// CPT: Emploi
+function register_cpt_page_emploi() {
+    $labels = array(
+        'name'               => 'Emploi',
+        'singular_name'      => 'Contenu Emploi',
+        'menu_name'          => 'Emploi',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 11,
+        'menu_icon'          => 'dashicons-businessman',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_emploi', $args);
+}
+add_action('init', 'register_cpt_page_emploi');
+
+// CPT: Stage
+function register_cpt_page_stage() {
+    $labels = array(
+        'name'               => 'Stage',
+        'singular_name'      => 'Contenu Stage',
+        'menu_name'          => 'Stage',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 12,
+        'menu_icon'          => 'dashicons-welcome-learn-more',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_stage', $args);
+}
+add_action('init', 'register_cpt_page_stage');
+
+// CPT: Famille d'accueil
+function register_cpt_page_famille_accueil() {
+    $labels = array(
+        'name'               => 'Famille d\'accueil',
+        'singular_name'      => 'Contenu Famille d\'accueil',
+        'menu_name'          => 'Famille d\'accueil',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 13,
+        'menu_icon'          => 'dashicons-heart',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_famille_accueil', $args);
+}
+add_action('init', 'register_cpt_page_famille_accueil');
+
+// CPT: Chats à parrainer
+function register_cpt_chat_parrainage() {
+    $labels = array(
+        'name'               => 'Parrainer un chat',
+        'singular_name'      => 'Chat à parrainer',
+        'menu_name'          => 'Parrainer un chat',
+        'add_new'            => 'Ajouter un chat',
+        'add_new_item'       => 'Ajouter un chat à parrainer',
+        'edit_item'          => 'Modifier le chat',
+        'new_item'           => 'Nouveau chat',
+        'view_item'          => 'Voir le chat',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun chat trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 14,
+        'menu_icon'          => 'dashicons-pets',
+        'supports'           => array('title', 'thumbnail'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('chat_parrainage', $args);
+}
+add_action('init', 'register_cpt_chat_parrainage');
+
+// CPT: Lègue
+function register_cpt_page_legue() {
+    $labels = array(
+        'name'               => 'Lègue',
+        'singular_name'      => 'Contenu Lègue',
+        'menu_name'          => 'Lègue',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 10,
+        'menu_icon'          => 'dashicons-portfolio',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_legue', $args);
+}
+add_action('init', 'register_cpt_page_legue');
 
 // CPT: Revues
 function register_cpt_revue() {
@@ -246,7 +426,7 @@ function register_cpt_revue() {
         'public'             => false,
         'show_ui'            => true,
         'show_in_menu'       => true,
-        'menu_position'      => 10,
+        'menu_position'      => 15,
         'menu_icon'          => 'dashicons-book-alt',
         'supports'           => array('title', 'thumbnail'),
         'has_archive'        => false,
@@ -1936,6 +2116,451 @@ if( function_exists('acf_add_local_field_group') ) {
     ));
 
     // ============================================================
+    // GROUPE: Contenu spécifique Page Abandon
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_abandon',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_abandon_type',
+                'label' => 'Type de contenu',
+                'name' => 'abandon_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'intro' => 'Introduction',
+                    'criteres' => 'Alternatives à l\'abandon',
+                    'processus' => 'Processus d\'abandon',
+                    'etapes' => 'Étapes de la prise en charge',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'intro',
+            ),
+
+            // === CHAMPS INTRO ===
+            array(
+                'key' => 'field_abandon_intro_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_intro_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_intro_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'abandon_intro_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_intro_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'abandon_intro_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CRITÈRES (Alternatives) ===
+            array(
+                'key' => 'field_abandon_criteres_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_criteres_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'criteres',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_criteres_texte',
+                'label' => 'Texte introduction',
+                'name' => 'abandon_criteres_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'criteres',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_criteres_liste',
+                'label' => 'Liste des alternatives',
+                'name' => 'abandon_criteres_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'criteres',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS PROCESSUS ===
+            array(
+                'key' => 'field_abandon_processus_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_processus_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'processus',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_processus_texte',
+                'label' => 'Texte',
+                'name' => 'abandon_processus_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'processus',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS ÉTAPES ===
+            array(
+                'key' => 'field_abandon_etapes_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_etapes_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'etapes',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_etapes_liste',
+                'label' => 'Liste des étapes',
+                'name' => 'abandon_etapes_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'etapes',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_abandon_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'abandon_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FORMULAIRE ===
+            array(
+                'key' => 'field_abandon_formulaire_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_formulaire_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_formulaire_texte',
+                'label' => 'Texte',
+                'name' => 'abandon_formulaire_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_abandon_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'abandon_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'abandon_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'abandon_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'abandon_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'abandon_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'abandon_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'abandon_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'abandon_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'abandon_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_abandon_cta_titre',
+                'label' => 'Titre',
+                'name' => 'abandon_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_abandon_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'abandon_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_abandon',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
     // GROUPE: Contenu spécifique Page Don
     // ============================================================
     acf_add_local_field_group(array(
@@ -2792,6 +3417,896 @@ if( function_exists('acf_add_local_field_group') ) {
     ));
 
     // ============================================================
+    // GROUPE: Contenu spécifique Page Emploi
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_emploi',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_emploi_type',
+                'label' => 'Type de contenu',
+                'name' => 'emploi_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'mission' => 'Notre mission',
+                    'besoins' => 'Nos besoins',
+                    'approche' => 'Notre approche',
+                    'quotidien' => 'Le quotidien au Fanal',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'mission',
+            ),
+
+            // === CHAMPS MISSION ===
+            array(
+                'key' => 'field_emploi_mission_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_mission_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_mission_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'emploi_mission_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_mission_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'emploi_mission_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS BESOINS ===
+            array(
+                'key' => 'field_emploi_besoins_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_besoins_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_besoins_texte',
+                'label' => 'Texte introduction',
+                'name' => 'emploi_besoins_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_besoins_liste',
+                'label' => 'Liste',
+                'name' => 'emploi_besoins_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS APPROCHE ===
+            array(
+                'key' => 'field_emploi_approche_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_approche_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_approche_texte',
+                'label' => 'Texte',
+                'name' => 'emploi_approche_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUOTIDIEN ===
+            array(
+                'key' => 'field_emploi_quotidien_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_quotidien_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_quotidien_liste',
+                'label' => 'Liste',
+                'name' => 'emploi_quotidien_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_emploi_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'emploi_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FORMULAIRE ===
+            array(
+                'key' => 'field_emploi_formulaire_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_formulaire_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_formulaire_texte',
+                'label' => 'Texte',
+                'name' => 'emploi_formulaire_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_emploi_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'emploi_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'emploi_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'emploi_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'emploi_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'emploi_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'emploi_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'emploi_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'emploi_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'emploi_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_emploi_cta_titre',
+                'label' => 'Titre',
+                'name' => 'emploi_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_emploi_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'emploi_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_emploi',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Contenu spécifique Page Stage
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_stage',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_stage_type',
+                'label' => 'Type de contenu',
+                'name' => 'stage_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'mission' => 'Notre mission',
+                    'besoins' => 'Nos besoins',
+                    'approche' => 'Notre approche',
+                    'quotidien' => 'Le quotidien au Fanal',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'mission',
+            ),
+
+            // === CHAMPS MISSION ===
+            array(
+                'key' => 'field_stage_mission_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_mission_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_mission_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'stage_mission_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_mission_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'stage_mission_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS BESOINS ===
+            array(
+                'key' => 'field_stage_besoins_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_besoins_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_besoins_texte',
+                'label' => 'Texte introduction',
+                'name' => 'stage_besoins_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_besoins_liste',
+                'label' => 'Liste',
+                'name' => 'stage_besoins_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS APPROCHE ===
+            array(
+                'key' => 'field_stage_approche_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_approche_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_approche_texte',
+                'label' => 'Texte',
+                'name' => 'stage_approche_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUOTIDIEN ===
+            array(
+                'key' => 'field_stage_quotidien_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_quotidien_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_quotidien_liste',
+                'label' => 'Liste',
+                'name' => 'stage_quotidien_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_stage_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'stage_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FORMULAIRE ===
+            array(
+                'key' => 'field_stage_formulaire_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_formulaire_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_formulaire_texte',
+                'label' => 'Texte',
+                'name' => 'stage_formulaire_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_stage_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'stage_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'stage_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'stage_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'stage_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'stage_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'stage_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'stage_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'stage_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'stage_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_stage_cta_titre',
+                'label' => 'Titre',
+                'name' => 'stage_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_stage_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'stage_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_stage',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
     // GROUPE: Champs Revue
     // ============================================================
     acf_add_local_field_group(array(
@@ -2821,6 +4336,905 @@ if( function_exists('acf_add_local_field_group') ) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'revue',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Contenu spécifique Page Famille d'accueil
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_famille_accueil',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_famille_type',
+                'label' => 'Type de contenu',
+                'name' => 'famille_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'mission' => 'Notre mission',
+                    'besoins' => 'Nos besoins',
+                    'approche' => 'Notre approche',
+                    'quotidien' => 'Le quotidien en famille d\'accueil',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'mission',
+            ),
+
+            // === CHAMPS MISSION ===
+            array(
+                'key' => 'field_famille_mission_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_mission_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_mission_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'famille_mission_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_mission_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'famille_mission_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'mission',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS BESOINS ===
+            array(
+                'key' => 'field_famille_besoins_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_besoins_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_besoins_texte',
+                'label' => 'Texte introduction',
+                'name' => 'famille_besoins_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_besoins_liste',
+                'label' => 'Liste',
+                'name' => 'famille_besoins_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'besoins',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS APPROCHE ===
+            array(
+                'key' => 'field_famille_approche_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_approche_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_approche_texte',
+                'label' => 'Texte',
+                'name' => 'famille_approche_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'approche',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUOTIDIEN ===
+            array(
+                'key' => 'field_famille_quotidien_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_quotidien_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_quotidien_liste',
+                'label' => 'Liste',
+                'name' => 'famille_quotidien_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'quotidien',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_famille_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'famille_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FORMULAIRE ===
+            array(
+                'key' => 'field_famille_formulaire_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_formulaire_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_formulaire_texte',
+                'label' => 'Texte',
+                'name' => 'famille_formulaire_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'formulaire',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_famille_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'famille_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'famille_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'famille_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'famille_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'famille_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'famille_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'famille_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'famille_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'famille_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_famille_cta_titre',
+                'label' => 'Titre',
+                'name' => 'famille_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_famille_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'famille_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_famille_accueil',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Champs Chat à parrainer
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_chat_parrainage',
+        'title' => 'Informations du chat',
+        'fields' => array(
+            array(
+                'key' => 'field_parrainage_description',
+                'label' => 'Description courte',
+                'name' => 'parrainage_description',
+                'type' => 'textarea',
+                'rows' => 3,
+                'instructions' => 'Courte description du chat (personnalité, histoire...)',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_parrainage_age',
+                'label' => 'Âge',
+                'name' => 'parrainage_age',
+                'type' => 'text',
+                'instructions' => 'Ex: 3 ans, 6 mois',
+            ),
+            array(
+                'key' => 'field_parrainage_lien_don',
+                'label' => 'Lien don',
+                'name' => 'parrainage_lien_don',
+                'type' => 'url',
+                'instructions' => 'URL personnalisée vers la page de don (par défaut /don)',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'chat_parrainage',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Contenu spécifique Page Lègue
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_legue',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            // Type de contenu
+            array(
+                'key' => 'field_legue_type',
+                'label' => 'Type de contenu',
+                'name' => 'legue_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'intro' => 'Introduction',
+                    'types' => 'Types de legs',
+                    'demarches' => 'Comment léguer',
+                    'avantages' => 'Avantages fiscaux',
+                    'quiz' => 'Quiz',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'intro',
+            ),
+
+            // === CHAMPS INTRO ===
+            array(
+                'key' => 'field_legue_intro_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_intro_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_intro_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'legue_intro_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_intro_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'legue_intro_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'intro',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS TYPES DE LEGS ===
+            array(
+                'key' => 'field_legue_types_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_types_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'types',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_types_texte',
+                'label' => 'Texte introduction',
+                'name' => 'legue_types_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'types',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_types_liste',
+                'label' => 'Liste des types',
+                'name' => 'legue_types_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'types',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS DEMARCHES ===
+            array(
+                'key' => 'field_legue_demarches_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_demarches_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'demarches',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_demarches_texte',
+                'label' => 'Texte',
+                'name' => 'legue_demarches_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'demarches',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS AVANTAGES ===
+            array(
+                'key' => 'field_legue_avantages_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_avantages_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'avantages',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_avantages_liste',
+                'label' => 'Liste des avantages',
+                'name' => 'legue_avantages_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne (touche Entrée entre chaque point).',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'avantages',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS QUIZ ===
+            array(
+                'key' => 'field_legue_quiz_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_quiz_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_quiz_texte',
+                'label' => 'Texte',
+                'name' => 'legue_quiz_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'quiz',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_legue_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'legue_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'legue_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'legue_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'legue_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'legue_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'legue_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'legue_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'legue_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'legue_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_legue_cta_titre',
+                'label' => 'Titre',
+                'name' => 'legue_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_legue_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'legue_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_legue',
                 ),
             ),
         ),
