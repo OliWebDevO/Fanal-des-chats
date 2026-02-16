@@ -314,6 +314,7 @@
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faire le Quiz</a>
                                         <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Formulaire d'adoption</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
                                     </div>
                                 </div>
                             </div>

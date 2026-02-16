@@ -11,6 +11,14 @@
 (function($) {
     'use strict';
 
+    // Hauteur reelle du viewport (fix iOS Chrome)
+    function setAppHeight() {
+        document.documentElement.style.setProperty('--app-height', window.innerHeight + 'px');
+    }
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', function() { setTimeout(setAppHeight, 100); });
+
     // Donnees injectees par PHP
     var data = window.quizData;
     if (!data) return;

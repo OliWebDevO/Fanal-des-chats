@@ -315,6 +315,7 @@
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-stage'); ?>" class="theme-btn-s2">Faire le Quiz</a>
                                         <a href="<?php echo home_url('/formulaire-stage'); ?>" class="theme-btn-s2">Postuler pour un stage</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
                                     </div>
                                 </div>
                             </div>

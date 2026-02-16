@@ -450,7 +450,7 @@ img {
 
 .wpo-page-title {
   /* background: url(../images/page-title.jpg) no-repeat center top/cover; */
-  background: url(../images/images/picturejerrybanniere.webp) no-repeat center center/cover;
+  background: url(../images/images/jerrybanner2.webp) no-repeat center 70%/cover;
   min-height: 600px;
   position: relative;
   display: flex;
@@ -472,19 +472,16 @@ img {
 @media (min-width: 1800px) {
   .wpo-page-title {
     min-height: 700px;
-    background-position: center 65%;
   }
 }
 @media (min-width: 2100px) {
   .wpo-page-title {
     min-height: 800px;
-    background-position: center 72%;
   }
 }
 @media (min-width: 2500px) {
   .wpo-page-title {
     min-height: 900px;
-    background-position: center 78%;
   }
 }
 @media (max-width: 767px) {

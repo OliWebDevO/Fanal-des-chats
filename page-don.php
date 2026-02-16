@@ -280,6 +280,7 @@
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faire le Quiz</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
                                     </div>
                                     <div id="faire-un-don" class="givewp-form-container">
                                         <?php echo do_shortcode('[give_form id="43"]'); ?>

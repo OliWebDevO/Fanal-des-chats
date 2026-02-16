@@ -312,6 +312,7 @@
                                         <p><?php the_field('abandon_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
+                                        <a href="<?php echo home_url('/quiz-abandon'); ?>" class="theme-btn-s2">Faire le Quiz</a>
                                         <a href="<?php echo home_url('/formulaire-abandon'); ?>" class="theme-btn-s2">Demander une prise en charge</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
                                     </div>

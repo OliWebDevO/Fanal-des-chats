@@ -1288,38 +1288,73 @@ fieldset:nth-child(even) > .slide-illustration {
 }
 
 @media (max-width: 768px) {
-    .counterContainer {
+    /* Header mobile - logo uniquement */
+    .quiz-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        background: transparent;
+        box-shadow: none;
+        padding: 8px 0;
+    }
+
+    .quiz-header .btn-back {
         display: none;
     }
 
-    /* Conteneurs principaux mobile - forcer pas d'espace en bas */
+    .quiz-header .quiz-logo img {
+        max-height: 35px;
+    }
+
+    /* Timer mobile - compact en haut a droite */
+    .counterContainer {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        z-index: 1001;
+    }
+
+    .counter {
+        width: 55px;
+        height: 55px;
+    }
+
+    .counterContainer span {
+        font-size: 16px;
+    }
+
+    /* Conteneurs principaux mobile - var(--app-height) defini par JS */
     html, body, body.quiz-adoption-page {
-        height: 100%;
-        height: 100dvh;
-        overflow-x: hidden;
+        height: var(--app-height, 100vh);
+        max-height: var(--app-height, 100vh);
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
     }
 
     body.quiz-adoption-page .page-wrapper {
-        min-height: 100%;
-        min-height: 100dvh;
+        height: var(--app-height, 100vh);
+        max-height: var(--app-height, 100vh);
+        overflow: hidden;
     }
 
     .quiz-main {
-        height: 100vh;
-        height: 100dvh;
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: var(--app-height, 100vh);
+        max-height: var(--app-height, 100vh);
+        min-height: 0;
+        padding-top: 0;
         padding-bottom: 0;
         overflow: hidden;
     }
 
-    .steps {
-        height: calc(100vh - 80px);
-        height: calc(100dvh - 80px);
-        overflow: hidden;
+    .quiz-intro {
+        height: var(--app-height, 100vh);
+        max-height: var(--app-height, 100vh);
     }
 
-    #stepForm {
+    .steps, #stepForm {
         height: 100%;
         overflow: hidden;
     }
@@ -1328,8 +1363,8 @@ fieldset:nth-child(even) > .slide-illustration {
     fieldset {
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 80px);
-        height: calc(100dvh - 80px);
+        height: 100%;
+        max-height: 100%;
         min-height: 0;
         padding-bottom: 0;
         overflow: hidden;
@@ -1343,22 +1378,23 @@ fieldset:nth-child(even) > .slide-illustration {
         right: auto !important;
         height: auto;
         width: 100%;
-        padding: 15px 10px;
+        padding: 5px 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         order: 1;
-        margin-top: 60px;
+        margin-top: 10px;
+        flex-shrink: 0;
     }
 
     fieldset .slide-illustration img {
-        max-width: 120px;
-        max-height: 120px;
+        max-width: 90px;
+        max-height: 90px;
     }
 
     .intro-content .slide-illustration img {
-        max-width: 140px;
-        max-height: 140px;
+        max-width: 120px;
+        max-height: 120px;
     }
 
     /* Question number */
@@ -1367,8 +1403,10 @@ fieldset:nth-child(even) > .slide-illustration {
         top: auto;
         left: auto;
         transform: none;
-        margin: 10px auto;
+        margin: 8px auto;
         order: 2;
+        flex-shrink: 0;
+        font-size: 13px;
     }
 
     /* Options au milieu */
@@ -1378,42 +1416,48 @@ fieldset:nth-child(even) > .slide-illustration {
         left: auto;
         transform: none;
         order: 3;
-        padding: 15px;
+        padding: 10px 12px;
         margin: 0 auto;
         flex: 1;
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
+        align-content: center;
+        gap: 12px;
+        min-height: 0;
     }
 
     .option {
         width: calc(50% - 10px);
-        height: 100px;
-        margin-bottom: 10px;
+        height: 95px;
+        margin-bottom: 0;
     }
 
     .option label {
         font-size: 13px;
+        padding: 8px;
     }
 
     .option::before {
-        width: 45px;
-        height: 28px;
-        font-size: 14px;
-        bottom: -14px;
+        width: 35px;
+        height: 22px;
+        font-size: 11px;
+        bottom: -11px;
     }
 
     /* Zone orange avec la question dedans */
     .question {
         height: auto;
-        min-height: 180px;
-        border-top-right-radius: 50px;
-        border-top-left-radius: 50px;
+        min-height: 130px;
+        border-top-right-radius: 35px;
+        border-top-left-radius: 35px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        padding: 30px 20px 80px;
+        padding: 18px 20px 55px;
         order: 4;
         margin-top: auto;
-        margin-bottom: 0 !important;
+        margin-bottom: 0;
         flex-shrink: 0;
     }
 
@@ -1424,7 +1468,7 @@ fieldset:nth-child(even) > .slide-illustration {
         left: auto;
         right: auto;
         transform: none;
-        font-size: 18px;
+        font-size: 16px;
         width: 100%;
         max-width: 100%;
         padding: 0;
@@ -1439,16 +1483,16 @@ fieldset:nth-child(even) > .slide-illustration {
     /* Navigation dans la zone orange */
     .nextPrev {
         position: absolute;
-        bottom: 20px;
+        bottom: 10px;
         left: 0;
         right: 0;
         margin: 0 auto;
     }
 
     .nextPrev button {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
     }
 
     .intro-content {
@@ -1502,20 +1546,10 @@ fieldset:nth-child(even) > .slide-illustration {
 }
 
 @media (max-width: 576px) {
-    .quiz-header .container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .btn-back {
-        font-size: 12px;
-        padding: 8px 15px;
-    }
-
     /* Illustration plus petite sur petit ecran */
     fieldset > .slide-illustration {
         padding: 10px 5px;
-        margin-top: 50px;
+        margin-top: 10px;
     }
 
     fieldset .slide-illustration img {
