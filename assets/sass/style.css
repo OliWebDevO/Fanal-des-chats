@@ -1999,6 +1999,14 @@ img {
     box-sizing: border-box;
   }
 }
+@media (max-width: 768px) {
+  .hero-slider .hero-slider-thumb {
+    display: none;
+  }
+  .hero-slider {
+    margin-bottom: 100px;
+  }
+}
 .hero-slider .hero-slider-thumb.slick-slider .item {
   position: relative;
   margin: 15px 0;
