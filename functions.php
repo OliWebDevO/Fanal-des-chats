@@ -1872,6 +1872,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_adoption_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_adoption_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_adoption_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'adoption_faq_titre',
@@ -2012,6 +2026,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_adoption_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_adoption_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_adoption_cta_titre',
                 'label' => 'Titre',
@@ -2257,6 +2285,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_abandon_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_abandon_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'abandon_faq_titre',
@@ -2397,6 +2439,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_abandon_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_abandon_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_abandon_cta_titre',
                 'label' => 'Titre',
@@ -2638,6 +2694,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_don_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_don_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_don_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'don_faq_titre',
@@ -2778,6 +2848,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_don_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_don_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_don_cta_titre',
                 'label' => 'Titre',
@@ -3023,6 +3107,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_benevole_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_benevole_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'benevole_faq_titre',
@@ -3163,6 +3261,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_benevole_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_benevole_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_benevole_cta_titre',
                 'label' => 'Titre',
@@ -3408,6 +3520,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_emploi_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_emploi_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'emploi_faq_titre',
@@ -3548,6 +3674,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_emploi_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_emploi_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_emploi_cta_titre',
                 'label' => 'Titre',
@@ -3793,6 +3933,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_stage_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_stage_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'stage_faq_titre',
@@ -3933,6 +4087,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_stage_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_stage_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_stage_cta_titre',
                 'label' => 'Titre',
@@ -4214,6 +4382,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_famille_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_famille_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'famille_faq_titre',
@@ -4354,6 +4536,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_famille_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_famille_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_famille_cta_titre',
                 'label' => 'Titre',
@@ -4638,6 +4834,20 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS FAQ ===
             array(
+                'key' => 'field_legue_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'faq',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_legue_faq_titre',
                 'label' => 'Titre Section',
                 'name' => 'legue_faq_titre',
@@ -4778,6 +4988,20 @@ if( function_exists('acf_add_local_field_group') ) {
             ),
 
             // === CHAMPS CTA ===
+            array(
+                'key' => 'field_legue_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_legue_type',
+                            'operator' => '==',
+                            'value' => 'cta',
+                        ),
+                    ),
+                ),
+            ),
             array(
                 'key' => 'field_legue_cta_titre',
                 'label' => 'Titre',

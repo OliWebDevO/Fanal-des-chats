@@ -49,7 +49,7 @@
                         <p><?php the_field('abandon_intro_paragraphe_2'); ?></p>
                     <?php endif; ?>
                     <div class="about-btn">
-                        <a href="#cta" class="theme-btn-s2">Signaler un abandon</a>
+                        <a href="#cta" class="theme-btn-s2">Prise en charge</a>
                     </div>
                 </div>
             </div>
