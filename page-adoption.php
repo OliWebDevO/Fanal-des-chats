@@ -310,6 +310,7 @@
                                     <div class="wpo-contact-title">
                                         <h2><?php the_field('adoption_cta_titre'); ?></h2>
                                         <p><?php the_field('adoption_cta_sous_titre'); ?></p>
+                                        <p style="margin-top: 10px; font-size: 15px; color: #666;"><i class="fas fa-info-circle" style="color: #FF5B2E;"></i> Remplissez le formulaire d'adoption pour accéder à la prise de rendez-vous.</p>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faire le Quiz</a>

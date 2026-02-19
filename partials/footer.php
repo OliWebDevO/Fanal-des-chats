@@ -100,7 +100,13 @@
             var target = $(this.getAttribute('href'));
             if (target.length) {
                 e.preventDefault();
-                $('html, body').animate({ scrollTop: target.offset().top }, 700);
+                // Center target in viewport for hero arrow, normal scroll for others
+                if ($(this).hasClass('hero-scroll-arrow')) {
+                    var scrollTo = target.offset().top - ($(window).height() / 2) + (target.outerHeight() / 2);
+                    $('html, body').animate({ scrollTop: scrollTo }, 900);
+                } else {
+                    $('html, body').animate({ scrollTop: target.offset().top }, 700);
+                }
             }
         });
     })(jQuery);

@@ -56,76 +56,6 @@
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
-        <!-- Section Utilisation : texte gauche, image droite -->
-        <?php
-        $utilisation_query = new WP_Query(array(
-            'post_type' => 'page_don',
-            'posts_per_page' => 1,
-            'meta_query' => array(array('key' => 'don_type', 'value' => 'utilisation')),
-        ));
-        if ($utilisation_query->have_posts()) : while ($utilisation_query->have_posts()) : $utilisation_query->the_post();
-            $liste = get_field('don_utilisation_liste');
-            $lignes = preg_split('/\r\n|\r|\n/', $liste);
-            $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
-        ?>
-        <section class="about-section section-padding benevole-block">
-            <div class="wraper">
-                <div class="right">
-                    <span class="section-label">Utilisation</span>
-                    <h2><?php the_field('don_utilisation_titre'); ?></h2>
-                    <?php if (get_field('don_utilisation_texte')) : ?>
-                        <p><?php the_field('don_utilisation_texte'); ?></p>
-                    <?php endif; ?>
-                    <ul class="benevole-list">
-                        <?php foreach ($lignes as $ligne) : ?>
-                        <li><?php echo esc_html($ligne); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                <div class="left">
-                    <div class="image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/8_meaow.png" alt="">
-                        <div class="shape">
-                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
-                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <?php endwhile; endif; wp_reset_postdata(); ?>
-
-        <!-- Section Comment : image gauche, texte droite -->
-        <?php
-        $comment_query = new WP_Query(array(
-            'post_type' => 'page_don',
-            'posts_per_page' => 1,
-            'meta_query' => array(array('key' => 'don_type', 'value' => 'comment')),
-        ));
-        if ($comment_query->have_posts()) : while ($comment_query->have_posts()) : $comment_query->the_post();
-        ?>
-        <section class="about-section section-padding orange benevole-block">
-            <div class="wraper">
-                <div class="left">
-                    <div class="image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/15_tabby.png" alt="">
-                        <div class="shape">
-                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
-                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FBDABF" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="right">
-                    <span class="section-label">Comment donner</span>
-                    <h2><?php the_field('don_comment_titre'); ?></h2>
-                    <p><?php the_field('don_comment_texte'); ?></p>
-                </div>
-            </div>
-        </section>
-        <?php endwhile; endif; wp_reset_postdata(); ?>
-
         <!-- Section Avantages : texte gauche, image droite -->
         <?php
         $avantages_query = new WP_Query(array(
@@ -152,6 +82,76 @@
                 <div class="left">
                     <div class="image">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/16_cat vector.png" alt="">
+                        <div class="shape">
+                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
+                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
+
+        <!-- Section Utilisation : image gauche, texte droite -->
+        <?php
+        $utilisation_query = new WP_Query(array(
+            'post_type' => 'page_don',
+            'posts_per_page' => 1,
+            'meta_query' => array(array('key' => 'don_type', 'value' => 'utilisation')),
+        ));
+        if ($utilisation_query->have_posts()) : while ($utilisation_query->have_posts()) : $utilisation_query->the_post();
+            $liste = get_field('don_utilisation_liste');
+            $lignes = preg_split('/\r\n|\r|\n/', $liste);
+            $lignes = array_filter(array_map('trim', $lignes), function($l) { return $l !== ''; });
+        ?>
+        <section class="about-section section-padding orange benevole-block">
+            <div class="wraper">
+                <div class="left">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/8_meaow.png" alt="">
+                        <div class="shape">
+                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
+                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FBDABF" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <span class="section-label">Utilisation</span>
+                    <h2><?php the_field('don_utilisation_titre'); ?></h2>
+                    <?php if (get_field('don_utilisation_texte')) : ?>
+                        <p><?php the_field('don_utilisation_texte'); ?></p>
+                    <?php endif; ?>
+                    <ul class="benevole-list">
+                        <?php foreach ($lignes as $ligne) : ?>
+                        <li><?php echo esc_html($ligne); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
+
+        <!-- Section Comment : texte gauche, image droite -->
+        <?php
+        $comment_query = new WP_Query(array(
+            'post_type' => 'page_don',
+            'posts_per_page' => 1,
+            'meta_query' => array(array('key' => 'don_type', 'value' => 'comment')),
+        ));
+        if ($comment_query->have_posts()) : while ($comment_query->have_posts()) : $comment_query->the_post();
+        ?>
+        <section class="about-section section-padding benevole-block">
+            <div class="wraper">
+                <div class="right">
+                    <span class="section-label">Comment donner</span>
+                    <h2><?php the_field('don_comment_titre'); ?></h2>
+                    <p><?php the_field('don_comment_texte'); ?></p>
+                </div>
+                <div class="left">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/15_tabby.png" alt="">
                         <div class="shape">
                             <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
                                 <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />

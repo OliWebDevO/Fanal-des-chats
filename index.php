@@ -21,7 +21,15 @@
                     <h3><?php the_field('slider_titre'); ?></h3>
                     <p><?php the_field('slider_texte'); ?></p>
                     <?php endwhile; endif; wp_reset_postdata(); ?>
-                    <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
+                    <div class="hero-cta-row">
+                        <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
+                        <a href="#services" class="hero-scroll-arrow" aria-label="Défiler vers le bas">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="hero-slider">
@@ -95,7 +103,7 @@
         </section>
 
         <!-- start of services-section -->
-        <section class="services-section section-padding">
+        <section id="services" class="services-section section-padding">
             <div class="wraper">
                 <?php
                 // Récupérer le contenu Services de la page accueil

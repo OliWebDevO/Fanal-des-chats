@@ -114,10 +114,10 @@ $quiz_data = array(
 <body class="quiz-adoption-page">
     <header class="quiz-header">
         <div class="container">
-            <a href="<?php echo home_url('/'); ?>" class="quiz-logo">
+            <a href="javascript:history.back()" class="quiz-logo">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/logo.gif" alt="<?php bloginfo('name'); ?>">
             </a>
-            <a href="<?php echo home_url('/'); ?>" class="btn-back">
+            <a href="javascript:history.back()" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Retour au site
             </a>
         </div>
@@ -228,7 +228,7 @@ $quiz_data = array(
                     <p class="advice_text"></p>
                 </div>
                 <footer class="resultfooter">
-                    <a href="<?php echo home_url('/'); ?>" class="btn-adopt"><i class="fas fa-home"></i> Retour au site</a>
+                    <a href="javascript:history.back()" class="btn-adopt"><i class="fas fa-home"></i> Retour au site</a>
                     <button type="button" class="btn-see-errors" id="seeErrorsBtn" style="display: none;"><i class="fas fa-arrow-down"></i> Voir mes erreurs</button>
                     <button type="button" class="btn-retry" onclick="location.reload()"><i class="fas fa-redo"></i> Refaire le quiz</button>
                 </footer>

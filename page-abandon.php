@@ -163,7 +163,8 @@
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
-        <!-- Section Quiz : image gauche, texte droite -->
+        <!-- Section Quiz abandon : DÉSACTIVÉ TEMPORAIREMENT -->
+        <?php /*
         <?php
         $quiz_query = new WP_Query(array(
             'post_type' => 'page_abandon',
@@ -195,6 +196,7 @@
             </div>
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
+        */ ?>
 
         <!-- Section Formulaire : texte gauche, image droite -->
         <?php
@@ -312,7 +314,6 @@
                                         <p><?php the_field('abandon_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-abandon'); ?>" class="theme-btn-s2">Faire le Quiz</a>
                                         <a href="<?php echo home_url('/formulaire-abandon'); ?>" class="theme-btn-s2">Demander une prise en charge</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
                                     </div>

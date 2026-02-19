@@ -313,25 +313,28 @@
 
     function stickyMenu($targetMenu, $toggleClass) {
         var st = $(window).scrollTop();
-        var mainMenuTop = $('.wpo-site-header .navigation');
 
-        if ($(window).scrollTop() > 1000) {
-            if (st > lastScrollTop) {
-                // hide sticky menu on scroll down
-                $targetMenu.removeClass($toggleClass);
-
-            } else {
-                // active sticky menu on scroll up
+        // Desktop: always show sticky header when scrolled past nav
+        if ($(window).width() > 991) {
+            if (st > 200) {
                 $targetMenu.addClass($toggleClass);
+            } else {
+                $targetMenu.removeClass($toggleClass);
             }
-
         } else {
-            $targetMenu.removeClass($toggleClass);
+            // Mobile: keep original show-on-scroll-up behavior
+            if (st > 1000) {
+                if (st > lastScrollTop) {
+                    $targetMenu.removeClass($toggleClass);
+                } else {
+                    $targetMenu.addClass($toggleClass);
+                }
+            } else {
+                $targetMenu.removeClass($toggleClass);
+            }
         }
 
         lastScrollTop = st;
-
-
     }
 
 

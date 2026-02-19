@@ -299,6 +299,16 @@
         $container.html(html);
     }
 
+    // Redirect to rdv-chat after adoption form submission
+    function redirectAfterAdoption() {
+        var prefix = $('input[name="form_prefix"]').val();
+        if (prefix === 'adoption') {
+            setTimeout(function() {
+                window.location.href = window.location.origin + '/rdv-chat';
+            }, 3000);
+        }
+    }
+
     // Set cookie after adoption form submission
     function setAdoptionCookie() {
         var prefix = $('input[name="form_prefix"]').val();
@@ -354,11 +364,13 @@
             success: function(response) {
                 setAdoptionCookie();
                 $('#successModal').addClass('show');
+                redirectAfterAdoption();
             },
             error: function(xhr, status, error) {
                 // Show success anyway (graceful degradation)
                 setAdoptionCookie();
                 $('#successModal').addClass('show');
+                redirectAfterAdoption();
             }
         });
 

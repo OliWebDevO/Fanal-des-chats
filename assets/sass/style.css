@@ -1704,7 +1704,7 @@ img {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .hero-section .hero-content .hero-text .theme-btn-s2 {
+  .hero-section .hero-content .hero-text .hero-cta-row {
     order: 4;
     align-self: center;
   }
@@ -2817,6 +2817,8 @@ img {
 .about-section .right .about-btn {
   display: flex;
   align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 @media (max-width: 767px) {
   .about-section .right .about-btn {
@@ -5782,5 +5784,48 @@ Comments - Styles complémentaires
     flex-direction: column;
     gap: 10px;
   }
+}
+
+/* Hero CTA row - button + arrow inline */
+.hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* Hero scroll-down arrow - desktop only */
+.hero-scroll-arrow {
+    display: none;
+}
+@media (min-width: 992px) {
+    .hero-scroll-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #FF5B2E;
+        box-shadow: 0 4px 20px rgba(255, 91, 46, 0.3);
+        animation: heroFloat 2s ease-in-out infinite;
+        transition: background 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+    .hero-scroll-arrow:hover {
+        background: #fff;
+        box-shadow: 0 6px 25px rgba(255, 91, 46, 0.35);
+    }
+    .hero-scroll-arrow:hover svg {
+        stroke: #FF5B2E;
+    }
+}
+@media (max-width: 991px) {
+    .hero-cta-row {
+        justify-content: center;
+    }
+}
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
 }
 

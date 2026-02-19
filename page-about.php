@@ -63,6 +63,7 @@
 
                     <div class="about-btn">
                         <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Adopter un chat</a>
+                        <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
                     </div>
                 </div>
             </div>

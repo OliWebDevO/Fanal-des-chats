@@ -111,7 +111,7 @@
                                             <span class="nav-trigger">Participer</span>
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/benevole'); ?>">Devenir Bénévole</a></li>
-                                                <li><a href="<?php echo home_url('/emploi'); ?>">Trouver un Emploi</a></li>
+                                                <!-- <li><a href="<?php echo home_url('/emploi'); ?>">Trouver un Emploi</a></li> -->
                                                 <li><a href="<?php echo home_url('/stage'); ?>">Faire un Stage</a></li>
                                                 <li><a href="<?php echo home_url('/famille-accueil'); ?>">Famille d'accueil</a></li>
                                             </ul>
@@ -126,8 +126,12 @@
                                         <li>
                                             <a href="<?php echo home_url('/faq'); ?>">FAQ</a>
                                         </li>
-                                        <li>
-                                            <a href="<?php echo home_url('/rendez-vous'); ?>">Rendez-Vous</a>
+                                        <li class="menu-item-has-children">
+                                            <span class="nav-trigger">Rendez-Vous</span>
+                                            <ul class="sub-menu">
+                                                <li><a href="<?php echo home_url('/rdv-chat'); ?>">Adoption Chat</a></li>
+                                                <li><a href="<?php echo home_url('/rdv-chaton'); ?>">Adoption Chaton</a></li>
+                                            </ul>
                                         </li>
                                     </ul>
 
