@@ -49,7 +49,7 @@
                         <p><?php the_field('adoption_intro_paragraphe_2'); ?></p>
                     <?php endif; ?>
                     <div class="about-btn">
-                        <a href="#cta" class="theme-btn-s2">Adopter</a>
+                        <a href="#cta" class="theme-btn-s2">Adoptez</a>
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                     <h2><?php the_field('adoption_formulaire_titre'); ?></h2>
                     <p><?php the_field('adoption_formulaire_texte'); ?></p>
                     <div class="about-btn">
-                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                     </div>
                 </div>
                 <div class="left">
@@ -313,9 +313,9 @@
                                         <p style="margin-top: 10px; font-size: 15px; color: #666;"><i class="fas fa-info-circle" style="color: #FF5B2E;"></i> Remplissez le formulaire d'adoption pour accéder à la prise de rendez-vous.</p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faire le Quiz</a>
-                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Formulaire d'adoption</a>
-                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                        <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>
                             </div>

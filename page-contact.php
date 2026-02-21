@@ -27,7 +27,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-12">
                                 <div class="section-title">
-                                    <h2>Nous contacter</h2>
+                                    <h2>Contactez-nous</h2>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 <li>Stérilisation</li>
                                 <li>Soins et suivi</li>
                             </ul>
-                            <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Adopter un chat</a>
+                            <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Adoptez un chat</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -121,7 +121,7 @@
                                 <li>Chauffage et climatisation</li>
                                 <li>Jouets et accessoires</li>
                             </ul>
-                            <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
+                            <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faites un don</a>
                         </div>
                     </div>
                     <div class="col col-lg-4 col-md-6 col-12">
@@ -134,7 +134,7 @@
                                 <li>Entretien des installations</li>
                                 <li>Sensibilisation du public</li>
                             </ul>
-                            <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenir bénévole</a>
+                            <a href="<?php echo home_url('/benevole'); ?>" class="theme-btn-s2">Devenez bénévole</a>
                         </div>
                     </div>
                 </div>

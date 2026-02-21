@@ -110,7 +110,7 @@ $histoires_query = new WP_Query(array(
                             <h3>Partagez votre histoire</h3>
                             <p>Vous avez adopté un chat au Fanal des Chats ? Nous serions ravis de publier son histoire et de montrer son évolution. Contactez-nous avec vos photos et témoignages !</p>
                             <div class="about-btn" style="margin-top: 15px;">
-                                <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                             </div>
                         </div>
                         <div class="widget recent-post-widget">

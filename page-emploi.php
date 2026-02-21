@@ -313,9 +313,9 @@
                                         <p><?php the_field('emploi_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-emploi'); ?>" class="theme-btn-s2">Faire le Quiz</a>
+                                        <a href="<?php echo home_url('/quiz-emploi'); ?>" class="theme-btn-s2">Faites le Quiz</a>
                                         <a href="<?php echo home_url('/formulaire-emploi'); ?>" class="theme-btn-s2">Postuler</a>
-                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>
                             </div>

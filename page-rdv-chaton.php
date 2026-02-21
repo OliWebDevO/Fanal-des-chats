@@ -99,7 +99,7 @@ $adoption_form_done = isset($_COOKIE['adoption_form_done']) && $_COOKIE['adoptio
                                                 <div class="accordion-body">
                                                     <p>Avant de prendre rendez-vous, assurez-vous d'avoir rempli le formulaire d'adoption. Le formulaire est obligatoire pour toute demande de rencontre avec nos chatons.</p>
                                                     <div class="rdv-buttons">
-                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Formulaire d'adoption</a>
+                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                                                         <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Quiz Adoption</a>
                                                         <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Page Adoption</a>
                                                     </div>
@@ -113,7 +113,7 @@ $adoption_form_done = isset($_COOKIE['adoption_form_done']) && $_COOKIE['adoptio
                                                         <i class="fas fa-lock"></i>
                                                         <p>Vous devez d'abord remplir le <strong>formulaire d'adoption</strong> avant de pouvoir prendre rendez-vous.</p>
                                                         <p>Lorsque vous aurez complété le formulaire, le calendrier des rendez-vous apparaîtra juste ici.</p>
-                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                                                     </div>
                                                     <?php endif; ?>
                                                 </div>

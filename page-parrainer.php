@@ -94,7 +94,7 @@
                         <div class="wpo-service-single-item">
                             <p>Aucun chat n'est disponible au parrainage pour le moment. Revenez bientôt !</p>
                             <div class="about-btn">
-                                <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don général</a>
+                                <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faites un don général</a>
                             </div>
                         </div>
                     </div>

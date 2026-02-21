@@ -22,7 +22,7 @@
                     <p><?php the_field('slider_texte'); ?></p>
                     <?php endwhile; endif; wp_reset_postdata(); ?>
                     <div class="hero-cta-row">
-                        <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faire un don</a>
+                        <a href="<?php echo home_url('/don'); ?>" class="theme-btn-s2">Faites un don</a>
                         <a href="#services" class="hero-scroll-arrow" aria-label="Défiler vers le bas">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -298,9 +298,9 @@
                 <div class="engagement-cards row g-0 align-items-center">
                     <?php
                     $cards = array(
-                        array('titre' => 'dons_titre_adoption', 'texte' => 'dons_texte_adoption', 'lien' => '/adoption', 'btn' => 'Adopter un chat'),
-                        array('titre' => 'dons_titre_don', 'texte' => 'dons_texte_don', 'lien' => '/don', 'btn' => 'Faire un don'),
-                        array('titre' => 'dons_titre_benevole', 'texte' => 'dons_texte_benevole', 'lien' => '/benevole', 'btn' => 'Devenir bénévole'),
+                        array('titre' => 'dons_titre_adoption', 'texte' => 'dons_texte_adoption', 'lien' => '/adoption', 'btn' => 'Adoptez un chat'),
+                        array('titre' => 'dons_titre_don', 'texte' => 'dons_texte_don', 'lien' => '/don', 'btn' => 'Faites un don'),
+                        array('titre' => 'dons_titre_benevole', 'texte' => 'dons_texte_benevole', 'lien' => '/benevole', 'btn' => 'Devenez bénévole'),
                     );
                     foreach ($cards as $card) :
                         $texte = get_field($card['texte']);

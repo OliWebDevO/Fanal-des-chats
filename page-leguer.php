@@ -49,7 +49,7 @@
                         <p><?php the_field('legue_intro_paragraphe_2'); ?></p>
                     <?php endif; ?>
                     <div class="about-btn">
-                        <a href="#cta" class="theme-btn-s2">Faire un legs</a>
+                        <a href="#cta" class="theme-btn-s2">Faites un legs</a>
                     </div>
                 </div>
             </div>
@@ -279,8 +279,8 @@
                                         <p><?php the_field('legue_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-legs'); ?>" class="theme-btn-s2">Faire le Quiz</a>
-                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                        <a href="<?php echo home_url('/quiz-legs'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>
                             </div>

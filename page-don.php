@@ -49,7 +49,7 @@
                         <p><?php the_field('don_intro_paragraphe_2'); ?></p>
                     <?php endif; ?>
                     <div class="about-btn">
-                        <a href="#cta" class="theme-btn-s2">Faire un don</a>
+                        <a href="#cta" class="theme-btn-s2">Faites un don</a>
                     </div>
                 </div>
             </div>
@@ -279,8 +279,8 @@
                                         <p><?php the_field('don_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faire le Quiz</a>
-                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                        <a href="<?php echo home_url('/quiz-don'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                     <div id="faire-un-don" class="givewp-form-container">
                                         <?php echo do_shortcode('[give_form id="43"]'); ?>

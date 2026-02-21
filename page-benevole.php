@@ -50,7 +50,7 @@
                         <p><?php the_field('benevole_mission_paragraphe_2'); ?></p>
                     <?php endif; ?>
                     <div class="about-btn">
-                        <a href="#cta" class="theme-btn-s2">Devenir Bénévole</a>
+                        <a href="#cta" class="theme-btn-s2">Devenez Bénévole</a>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                     <h2><?php the_field('benevole_formulaire_titre'); ?></h2>
                     <p><?php the_field('benevole_formulaire_texte'); ?></p>
                     <div class="about-btn">
-                        <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                        <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                     </div>
                 </div>
                 <div class="left">
@@ -313,9 +313,9 @@
                                         <p><?php the_field('benevole_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Faire le Quiz</a>
-                                        <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Formulaire de candidature</a>
-                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Nous contacter</a>
+                                        <a href="<?php echo home_url('/quiz-benevole'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <a href="<?php echo home_url('/formulaire-benevole'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                                        <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>
                             </div>
