@@ -69,7 +69,13 @@
                 <nav class="navigation navbar navbar-expand-lg navbar-light">
                     <div class="container-fluid">
                         <div class="row align-items-center">
-                            <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
+                            <div class="col-lg-2 col-md-6 col-6">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
+                                            alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6 d-lg-none dl-block">
                                 <div class="mobail-menu">
                                     <button type="button" class="navbar-toggler open-btn">
                                         <span class="sr-only">Toggle navigation</span>
@@ -77,12 +83,6 @@
                                         <span class="icon-bar middle-angle"></span>
                                         <span class="icon-bar last-angle"></span>
                                     </button>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-6">
-                                <div class="navbar-header">
-                                    <a class="navbar-brand" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
-                                            alt=""></a>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-1 col-1">
@@ -101,7 +101,7 @@
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
-                                            <span class="nav-trigger">Don</span>
+                                            <span class="nav-trigger">Aider</span>
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
                                                 <li><a href="<?php echo home_url('/leguer'); ?>">Faire un legs</a></li>

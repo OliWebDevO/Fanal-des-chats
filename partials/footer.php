@@ -93,6 +93,10 @@
     <script src="<?php bloginfo("template_url")?>/assets/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="<?php bloginfo("template_url")?>/assets/js/script.js"></script>
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="<?php bloginfo("template_url")?>/assets/js/section-animations.js"></script>
     <!-- Smooth scroll for anchor links -->
     <script>
     (function($) {

@@ -200,6 +200,16 @@
                     </div>
                 </div>
             </div>
+            <div class="mobile-only-illustration">
+                <div class="image">
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/20_tiger cat.png" alt="">
+                    <div class="shape">
+                        <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
+                            <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
             <?php endwhile; endif; wp_reset_postdata(); ?>
             <div class="shape">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-6.png" alt="">

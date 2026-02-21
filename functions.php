@@ -1340,6 +1340,23 @@ if( function_exists('acf_add_local_field_group') ) {
 
             // === CHAMPS STATISTIQUES ===
             array(
+                'key' => 'field_about_stats_banner',
+                'label' => 'Image bannière',
+                'name' => 'about_stats_banner',
+                'type' => 'image',
+                'return_format' => 'url',
+                'preview_size' => 'medium',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_about_type',
+                            'operator' => '==',
+                            'value' => 'statistiques',
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'key' => 'field_about_stats_titre_1',
                 'label' => 'Titre 1',
                 'name' => 'about_stats_titre_1',

@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="wpo-faq-section">
+                        <div class="wpo-faq-inner">
                             <div class="row">
                                 <div class="col-lg-12 col-12">
                                     <div class="wpo-benefits-item">

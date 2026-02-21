@@ -79,9 +79,6 @@
 
         <!-- start of funfact-section -->
         <section class="funfact-section about-funfact">
-            <div class="section-top-image">
-                <img src="<?php bloginfo("template_url")?>/assets/images/images/home_banner.webp" alt="Nos chats">
-            </div>
             <div class="container">
                 <?php
                 // Récupérer le contenu Statistiques
@@ -96,9 +93,16 @@
                     ),
                 ));
                 if ($stats_query->have_posts()) : while ($stats_query->have_posts()) : $stats_query->the_post();
+                    $banner_image = get_field('about_stats_banner');
+                    $banner_url = $banner_image ? $banner_image : get_bloginfo('template_url') . '/assets/images/images/home_banner.webp';
                     $icons = array('1.svg', '2.svg', '3.svg', '4.svg');
                     $suffixes = array('+', '+', '+', '%');
                 ?>
+            </div>
+            <div class="section-top-image">
+                <img src="<?php echo esc_url($banner_url); ?>" alt="Nos chats">
+            </div>
+            <div class="container">
                 <div class="row">
                     <?php for ($i = 1; $i <= 4; $i++) :
                         $titre = get_field('about_stats_titre_' . $i);
