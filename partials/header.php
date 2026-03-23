@@ -27,10 +27,6 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
       <!-- Swiper Js -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-      <!-- animate css -->
-      <link rel="stylesheet" href="<?php bloginfo("template_url")?>/plugins/animate.css/animate.css">
-      <link rel="stylesheet" href="<?php bloginfo("template_url")?>/plugins/simple-lightbox.min.css">
-  	  <link rel="stylesheet" href="<?php bloginfo("template_url")?>/plugins/fashion-slider.css">
       <!-- Font Awesome -->
       <script src="https://kit.fontawesome.com/0144f75b4e.js" crossorigin="anonymous"></script>
    	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo("template_url")?>/img/favicon/apple-touch-icon.png">
