@@ -318,6 +318,86 @@
         }
     }
 
+    // Format slug value: "oui_personne" → "Oui personne"
+    function formatValue(val) {
+        if (!val) return val;
+        val = val.replace(/_/g, ' ');
+        return val.charAt(0).toUpperCase() + val.slice(1);
+    }
+
+    // Build HTML email body from form data
+    function buildEmailBody() {
+        const formDataInfo = window.formData || {};
+        const steps = window.formSteps || {};
+        const prefix = window.formPrefix || '';
+        const formLabel = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('fr-BE') + ' ' + now.toLocaleTimeString('fr-BE', { hour: '2-digit', minute: '2-digit' });
+
+        let html = '<div style="font-family: Arial, sans-serif; color: #333;">';
+        html += '<h1 style="color: #FF5B2E;">Nouvelle soumission - Formulaire ' + formLabel + '</h1>';
+        html += '<p>Date : ' + dateStr + '</p>';
+        html += '<hr style="border: 1px solid #eee;">';
+
+        // Group responses by step
+        const responsesByStep = {};
+        Object.keys(formDataInfo).forEach(function(qKey) {
+            const q = formDataInfo[qKey];
+            const etape = q.etape || 1;
+            if (!responsesByStep[etape]) responsesByStep[etape] = [];
+
+            let userAnswer = '';
+            if (q.type === 'checkbox') {
+                const checked = [];
+                $('input[name="' + qKey + '[]"]:checked').each(function() { checked.push(formatValue($(this).val())); });
+                userAnswer = checked.join(', ');
+            } else if (q.type === 'radio') {
+                const checked = $('input[name="' + qKey + '"]:checked');
+                userAnswer = checked.length ? formatValue(checked.val()) : '';
+            } else {
+                const field = $('[name="' + qKey + '"]');
+                userAnswer = field.length ? field.val() : '';
+            }
+
+            responsesByStep[etape].push({ label: q.label, value: userAnswer || '(non renseigné)' });
+        });
+
+        // Render responses by step
+        Object.keys(responsesByStep).sort(function(a, b) { return a - b; }).forEach(function(stepNum) {
+            const stepTitle = (steps[stepNum] && steps[stepNum].titre) ? steps[stepNum].titre : 'Étape ' + stepNum;
+            html += '<h2 style="color: #070143; margin-top: 20px;">' + stepTitle + '</h2>';
+            html += '<table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">';
+            responsesByStep[stepNum].forEach(function(r) {
+                html += '<tr>';
+                html += '<td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold; width: 40%; vertical-align: top;">' + r.label + '</td>';
+                html += '<td style="padding: 8px; border-bottom: 1px solid #eee;">' + r.value + '</td>';
+                html += '</tr>';
+            });
+            html += '</table>';
+        });
+
+        // Important questions summary
+        const summary = buildImportantSummary();
+        if (summary.length > 0) {
+            html += '<hr style="border: 2px solid #FF5B2E; margin: 30px 0;">';
+            html += '<h2 style="color: #FF5B2E;">Questions importantes - Sommaire</h2>';
+            html += '<table style="width: 100%; border-collapse: collapse;">';
+            summary.forEach(function(item) {
+                const color = item.isCorrect ? '#28a745' : '#dc3545';
+                const icon = item.isCorrect ? '✓' : '✗';
+                const bg = item.isCorrect ? '#f0fff0' : '#fff0f0';
+                html += '<tr style="background: ' + bg + ';">';
+                html += '<td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: ' + color + ';">' + icon + ' ' + item.label + '</td>';
+                html += '<td style="padding: 10px; border-bottom: 1px solid #eee; color: ' + color + ';">' + item.answer + '</td>';
+                html += '</tr>';
+            });
+            html += '</table>';
+        }
+
+        html += '</div>';
+        return html;
+    }
+
     // Handle form submission
     function handleSubmit(e) {
         e.preventDefault();
@@ -341,43 +421,30 @@
             return;
         }
 
-        // Build important summary
-        const summary = buildImportantSummary();
-
         // Disable submit button
         const $submitBtn = $('#submitBtn');
         $submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Envoi en cours...');
 
-        // Collect form data
-        const formDataObj = new FormData(document.getElementById('wizard'));
+        // Build email content
+        const prefix = window.formPrefix || '';
+        const formLabel = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+        const emailBody = buildEmailBody();
 
-        // Add important summary as hidden JSON
-        formDataObj.append('important_summary', JSON.stringify(summary));
-
-        // Send via AJAX
-        $.ajax({
-            url: $('#wizard').attr('action'),
-            type: 'POST',
-            data: formDataObj,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                setAdoptionCookie();
-                $('#successModal').addClass('show');
-                redirectAfterAdoption();
-            },
-            error: function(xhr, status, error) {
-                // Show success anyway (graceful degradation)
-                setAdoptionCookie();
-                $('#successModal').addClass('show');
-                redirectAfterAdoption();
-            }
-        });
-
-        // Fallback: show success after delay
-        setTimeout(function() {
+        // Send via EmailJS
+        emailjs.send('service_j6w9ose', 'template_t4aeuth', {
+            title: 'Formulaire ' + formLabel,
+            message: emailBody,
+        }, 'HxEre_mtt2t-i8_qH')
+        .then(function() {
+            setAdoptionCookie();
             $('#successModal').addClass('show');
-        }, 1500);
+            redirectAfterAdoption();
+        }, function(error) {
+            console.error('EmailJS error:', error);
+            setAdoptionCookie();
+            $('#successModal').addClass('show');
+            redirectAfterAdoption();
+        });
     }
 
 })(jQuery);

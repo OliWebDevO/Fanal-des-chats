@@ -74,13 +74,14 @@ for ($c = 1; $c <= 5; $c++) {
     );
 }
 
-// Préparer les données pour le JS (questions importantes)
+// Préparer les données pour le JS (questions + étapes)
 $form_data_js = array();
 foreach ($questions as $qid => $q) {
     $form_data_js['q' . $qid] = array(
         'label'   => $q['label'],
         'correct' => $q['correct'],
         'type'    => $q['type'],
+        'etape'   => $q['etape'],
     );
 }
 
@@ -370,7 +371,12 @@ $template_dir = get_template_directory_uri();
     <!-- Form Data pour JS -->
     <script>
         window.formData = <?php echo json_encode($form_data_js, JSON_UNESCAPED_UNICODE); ?>;
+        window.formSteps = <?php echo json_encode($etapes, JSON_UNESCAPED_UNICODE); ?>;
+        window.formPrefix = <?php echo json_encode($form_prefix); ?>;
     </script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Scripts -->
     <script src="<?php echo $template_dir; ?>/assets/js/jquery.min.js"></script>
