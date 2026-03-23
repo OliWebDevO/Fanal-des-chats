@@ -5536,150 +5536,138 @@ function generate_form_acf_fields($prefix, $type_field_key) {
         );
     }
 
-    // === Onglets Questions (jusqu'à 60) ===
-    for ($q = 1; $q <= 60; $q++) {
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_tab',
-            'label' => 'Question ' . $q,
-            'type' => 'tab',
-            'conditional_logic' => $form_condition,
-        );
+    // === Repeater Questions ===
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_questions_tab',
+        'label' => 'Questions',
+        'type' => 'tab',
+        'conditional_logic' => $form_condition,
+    );
 
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_etape',
-            'label' => 'Étape',
-            'name' => $prefix . '_form_q' . $q . '_etape',
-            'type' => 'number',
-            'instructions' => 'Numéro de l\'étape (1 à 10)',
-            'min' => 1,
-            'max' => 10,
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '10'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_label',
-            'label' => 'Libellé du champ',
-            'name' => $prefix . '_form_q' . $q . '_label',
-            'type' => 'text',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '40'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_type',
-            'label' => 'Type',
-            'name' => $prefix . '_form_q' . $q . '_type',
-            'type' => 'select',
-            'choices' => array(
-                'text' => 'Texte',
-                'email' => 'Email',
-                'tel' => 'Téléphone',
-                'number' => 'Nombre',
-                'date' => 'Date',
-                'textarea' => 'Zone de texte',
-                'radio' => 'Boutons radio',
-                'checkbox' => 'Cases à cocher',
-                'select' => 'Liste déroulante',
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_form_questions',
+        'label' => 'Questions du formulaire',
+        'name' => $prefix . '_form_questions',
+        'type' => 'repeater',
+        'layout' => 'block',
+        'button_label' => 'Ajouter une question',
+        'conditional_logic' => $form_condition,
+        'sub_fields' => array(
+            array(
+                'key' => 'field_' . $prefix . '_form_q_etape',
+                'label' => 'Étape',
+                'name' => 'etape',
+                'type' => 'number',
+                'instructions' => 'Numéro de l\'étape (1 à 10)',
+                'min' => 1,
+                'max' => 10,
+                'wrapper' => array('width' => '10'),
             ),
-            'default_value' => 'text',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '15'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_options',
-            'label' => 'Options',
-            'name' => $prefix . '_form_q' . $q . '_options',
-            'type' => 'textarea',
-            'rows' => 3,
-            'instructions' => 'Pour radio/checkbox/select. Format: valeur|Label (un par ligne)',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '35'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_disposition',
-            'label' => 'Disposition',
-            'name' => $prefix . '_form_q' . $q . '_disposition',
-            'type' => 'select',
-            'choices' => array(
-                'stacked' => 'Empilé (stacked)',
-                'inline' => 'En ligne (inline)',
+            array(
+                'key' => 'field_' . $prefix . '_form_q_label',
+                'label' => 'Libellé du champ',
+                'name' => 'label',
+                'type' => 'text',
+                'wrapper' => array('width' => '40'),
             ),
-            'default_value' => 'stacked',
-            'instructions' => 'Pour radio/checkbox',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '15'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_placeholder',
-            'label' => 'Placeholder',
-            'name' => $prefix . '_form_q' . $q . '_placeholder',
-            'type' => 'text',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '25'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_largeur',
-            'label' => 'Largeur',
-            'name' => $prefix . '_form_q' . $q . '_largeur',
-            'type' => 'select',
-            'choices' => array(
-                '12' => '12 (pleine largeur)',
-                '8' => '8 (2/3)',
-                '6' => '6 (1/2)',
-                '4' => '4 (1/3)',
-                '3' => '3 (1/4)',
+            array(
+                'key' => 'field_' . $prefix . '_form_q_type',
+                'label' => 'Type',
+                'name' => 'type',
+                'type' => 'select',
+                'choices' => array(
+                    'text' => 'Texte',
+                    'email' => 'Email',
+                    'tel' => 'Téléphone',
+                    'number' => 'Nombre',
+                    'date' => 'Date',
+                    'textarea' => 'Zone de texte',
+                    'radio' => 'Boutons radio',
+                    'checkbox' => 'Cases à cocher',
+                    'select' => 'Liste déroulante',
+                ),
+                'default_value' => 'text',
+                'wrapper' => array('width' => '15'),
             ),
-            'default_value' => '12',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '15'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_required',
-            'label' => 'Obligatoire ?',
-            'name' => $prefix . '_form_q' . $q . '_required',
-            'type' => 'true_false',
-            'ui' => 1,
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '15'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_correct',
-            'label' => 'Bonne(s) réponse(s)',
-            'name' => $prefix . '_form_q' . $q . '_correct',
-            'type' => 'textarea',
-            'rows' => 2,
-            'instructions' => 'Une par ligne. Si vide = question non importante.',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '30'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_section_titre',
-            'label' => 'Titre de section',
-            'name' => $prefix . '_form_q' . $q . '_section_titre',
-            'type' => 'text',
-            'instructions' => 'Optionnel : titre h3 avant ce champ',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '50'),
-        );
-
-        $fields[] = array(
-            'key' => 'field_' . $prefix . '_form_q' . $q . '_section_icone',
-            'label' => 'Icône de section',
-            'name' => $prefix . '_form_q' . $q . '_section_icone',
-            'type' => 'text',
-            'instructions' => 'Classe FA (ex: fas fa-user)',
-            'conditional_logic' => $form_condition,
-            'wrapper' => array('width' => '20'),
-        );
-    }
+            array(
+                'key' => 'field_' . $prefix . '_form_q_options',
+                'label' => 'Options',
+                'name' => 'options',
+                'type' => 'textarea',
+                'rows' => 3,
+                'instructions' => 'Pour radio/checkbox/select. Format: valeur|Label (un par ligne)',
+                'wrapper' => array('width' => '35'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_disposition',
+                'label' => 'Disposition',
+                'name' => 'disposition',
+                'type' => 'select',
+                'choices' => array(
+                    'stacked' => 'Empilé (stacked)',
+                    'inline' => 'En ligne (inline)',
+                ),
+                'default_value' => 'stacked',
+                'instructions' => 'Pour radio/checkbox',
+                'wrapper' => array('width' => '15'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_placeholder',
+                'label' => 'Placeholder',
+                'name' => 'placeholder',
+                'type' => 'text',
+                'wrapper' => array('width' => '25'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_largeur',
+                'label' => 'Largeur',
+                'name' => 'largeur',
+                'type' => 'select',
+                'choices' => array(
+                    '12' => '12 (pleine largeur)',
+                    '8' => '8 (2/3)',
+                    '6' => '6 (1/2)',
+                    '4' => '4 (1/3)',
+                    '3' => '3 (1/4)',
+                ),
+                'default_value' => '12',
+                'wrapper' => array('width' => '15'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_required',
+                'label' => 'Obligatoire ?',
+                'name' => 'required',
+                'type' => 'true_false',
+                'ui' => 1,
+                'wrapper' => array('width' => '15'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_correct',
+                'label' => 'Bonne(s) réponse(s)',
+                'name' => 'correct',
+                'type' => 'textarea',
+                'rows' => 2,
+                'instructions' => 'Une par ligne. Si vide = question non importante.',
+                'wrapper' => array('width' => '30'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_section_titre',
+                'label' => 'Titre de section',
+                'name' => 'section_titre',
+                'type' => 'text',
+                'instructions' => 'Optionnel : titre h3 avant ce champ',
+                'wrapper' => array('width' => '50'),
+            ),
+            array(
+                'key' => 'field_' . $prefix . '_form_q_section_icone',
+                'label' => 'Icône de section',
+                'name' => 'section_icone',
+                'type' => 'text',
+                'instructions' => 'Classe FA (ex: fas fa-user)',
+                'wrapper' => array('width' => '20'),
+            ),
+        ),
+    );
 
     // === Onglet Consentements ===
     $fields[] = array(
@@ -5736,12 +5724,20 @@ function handle_generic_form_submit() {
     $nb_etapes = $post_id ? intval(get_field($prefix . '_form_nb_etapes', $post_id)) : 5;
     $excluded_fields = array('action', 'form_prefix', 'form_post_id', $nonce_field, '_wp_http_referer', 'important_summary');
 
-    // Lire les labels des questions depuis ACF
+    // Lire les labels et étapes des questions depuis le repeater ACF
     $question_labels = array();
-    for ($q = 1; $q <= 60; $q++) {
-        $label = $post_id ? get_field($prefix . '_form_q' . $q . '_label', $post_id) : '';
-        if ($label) {
-            $question_labels['q' . $q] = $label;
+    $question_etapes = array();
+    $questions_rows = $post_id ? get_field($prefix . '_form_questions', $post_id) : array();
+    if ($questions_rows) {
+        foreach ($questions_rows as $index => $row) {
+            $qid = $index + 1;
+            if (!empty($row['label'])) {
+                $question_labels['q' . $qid] = $row['label'];
+            }
+            $etape = intval($row['etape']);
+            if ($etape) {
+                $question_etapes['q' . $qid] = $etape;
+            }
         }
     }
 
@@ -5749,15 +5745,6 @@ function handle_generic_form_submit() {
     $etape_titres = array();
     for ($n = 1; $n <= $nb_etapes; $n++) {
         $etape_titres[$n] = $post_id ? get_field($prefix . '_form_etape_' . $n . '_titre', $post_id) : 'Étape ' . $n;
-    }
-
-    // Lire les étapes des questions
-    $question_etapes = array();
-    for ($q = 1; $q <= 60; $q++) {
-        $etape = $post_id ? intval(get_field($prefix . '_form_q' . $q . '_etape', $post_id)) : 0;
-        if ($etape) {
-            $question_etapes['q' . $q] = $etape;
-        }
     }
 
     // Parser le sommaire des questions importantes
@@ -5876,3 +5863,62 @@ foreach ($form_actions as $action) {
     add_action('admin_post_nopriv_' . $action, 'handle_generic_form_submit');
     add_action('admin_post_' . $action, 'handle_generic_form_submit');
 }
+
+/**
+ * Migration one-time : convertit les anciennes questions individuelles (q1-q60)
+ * en champ repeater ACF (form_questions).
+ */
+function fanal_migrate_form_questions_to_repeater() {
+    if (get_option('fanal_form_questions_migrated')) {
+        return;
+    }
+
+    $prefixes_cpts = array(
+        'adoption' => 'page_adoption',
+        'abandon'  => 'page_abandon',
+        'benevole' => 'page_benevole',
+        'emploi'   => 'page_emploi',
+        'stage'    => 'page_stage',
+        'famille'  => 'page_famille_accueil',
+    );
+
+    foreach ($prefixes_cpts as $prefix => $cpt) {
+        $posts = get_posts(array(
+            'post_type'   => $cpt,
+            'numberposts' => -1,
+            'post_status' => 'any',
+        ));
+
+        foreach ($posts as $post) {
+            $repeater_rows = array();
+
+            for ($q = 1; $q <= 60; $q++) {
+                $label = get_post_meta($post->ID, $prefix . '_form_q' . $q . '_label', true);
+                $etape = get_post_meta($post->ID, $prefix . '_form_q' . $q . '_etape', true);
+
+                if (!$label && !$etape) continue;
+
+                $repeater_rows[] = array(
+                    'etape'         => $etape ?: '',
+                    'label'         => $label ?: '',
+                    'type'          => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_type', true) ?: 'text',
+                    'options'       => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_options', true) ?: '',
+                    'disposition'   => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_disposition', true) ?: 'stacked',
+                    'placeholder'   => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_placeholder', true) ?: '',
+                    'largeur'       => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_largeur', true) ?: '12',
+                    'required'      => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_required', true) ? true : false,
+                    'correct'       => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_correct', true) ?: '',
+                    'section_titre' => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_section_titre', true) ?: '',
+                    'section_icone' => get_post_meta($post->ID, $prefix . '_form_q' . $q . '_section_icone', true) ?: '',
+                );
+            }
+
+            if (!empty($repeater_rows)) {
+                update_field($prefix . '_form_questions', $repeater_rows, $post->ID);
+            }
+        }
+    }
+
+    update_option('fanal_form_questions_migrated', true);
+}
+add_action('admin_init', 'fanal_migrate_form_questions_to_repeater');

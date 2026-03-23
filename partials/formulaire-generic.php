@@ -31,26 +31,30 @@ for ($n = 1; $n <= $nb_etapes; $n++) {
     );
 }
 
-// Questions (jusqu'à 60)
+// Questions (repeater ACF)
 $questions = array();
-for ($q = 1; $q <= 60; $q++) {
-    $etape = intval(get_field($form_prefix . '_form_q' . $q . '_etape', $form_post_id));
-    $label = get_field($form_prefix . '_form_q' . $q . '_label', $form_post_id);
-    if (!$etape || !$label) continue;
+$questions_rows = get_field($form_prefix . '_form_questions', $form_post_id);
+if ($questions_rows) {
+    foreach ($questions_rows as $index => $row) {
+        $etape = intval($row['etape']);
+        $label = $row['label'];
+        if (!$etape || !$label) continue;
 
-    $questions[$q] = array(
-        'etape'         => $etape,
-        'label'         => $label,
-        'type'          => get_field($form_prefix . '_form_q' . $q . '_type', $form_post_id) ?: 'text',
-        'options'       => get_field($form_prefix . '_form_q' . $q . '_options', $form_post_id) ?: '',
-        'disposition'   => get_field($form_prefix . '_form_q' . $q . '_disposition', $form_post_id) ?: 'stacked',
-        'placeholder'   => get_field($form_prefix . '_form_q' . $q . '_placeholder', $form_post_id) ?: '',
-        'largeur'       => get_field($form_prefix . '_form_q' . $q . '_largeur', $form_post_id) ?: '12',
-        'required'      => get_field($form_prefix . '_form_q' . $q . '_required', $form_post_id) ? true : false,
-        'correct'       => get_field($form_prefix . '_form_q' . $q . '_correct', $form_post_id) ?: '',
-        'section_titre' => get_field($form_prefix . '_form_q' . $q . '_section_titre', $form_post_id) ?: '',
-        'section_icone' => get_field($form_prefix . '_form_q' . $q . '_section_icone', $form_post_id) ?: '',
-    );
+        $qid = $index + 1;
+        $questions[$qid] = array(
+            'etape'         => $etape,
+            'label'         => $label,
+            'type'          => $row['type'] ?: 'text',
+            'options'       => $row['options'] ?: '',
+            'disposition'   => $row['disposition'] ?: 'stacked',
+            'placeholder'   => $row['placeholder'] ?: '',
+            'largeur'       => $row['largeur'] ?: '12',
+            'required'      => !empty($row['required']),
+            'correct'       => $row['correct'] ?: '',
+            'section_titre' => $row['section_titre'] ?: '',
+            'section_icone' => $row['section_icone'] ?: '',
+        );
+    }
 }
 
 // Grouper les questions par étape
