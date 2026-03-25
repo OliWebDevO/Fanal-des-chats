@@ -2090,7 +2090,7 @@ img {
   position: relative;
 }
 .wpo-site-footer .wpo-upper-footer {
-  padding: 70px 0;
+  padding: 100px 0 70px;
 }
 @media (max-width: 991px) {
   .wpo-site-footer .wpo-upper-footer {
@@ -2121,6 +2121,9 @@ img {
     flex-direction: row;
     align-items: flex-start;
     gap: 20px;
+}
+.wpo-site-footer .about-widget .widget-title {
+  margin-top: -15px;
 }
 @media (max-width: 767px) {
   .wpo-site-footer .widget-title {

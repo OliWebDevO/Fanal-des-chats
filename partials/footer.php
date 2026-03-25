@@ -13,11 +13,11 @@
                                 </div>
                                 <div class="social-widget">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitch"></i></a></li>
-                                        <li><a href="#"><i class="ti-youtube"></i></a></li>
+                                        <li><a href="https://www.facebook.com/lefanaldeschatsasbl" target="_blank" rel="noopener"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/lefanaldeschats/" target="_blank" rel="noopener"><i class="ti-instagram"></i></a></li>
+                                        <li><a href="https://www.tiktok.com/@lefanaldeschats" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a></li>
+                                        <li><a href="https://m.twitch.tv/lefanaldeschats/" target="_blank" rel="noopener"><i class="fab fa-twitch"></i></a></li>
+                                        <li><a href="https://www.youtube.com/@lefanaldeschats1846" target="_blank" rel="noopener"><i class="ti-youtube"></i></a></li>
                                     </ul>
                                 </div>
 
