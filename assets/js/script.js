@@ -456,9 +456,9 @@
             dots: false,
             items: 1,
             autoplay: true,
+            autoplayTimeout: 8000,
             arrows: true,
             smartSpeed: 300,
-            nav: true,
             navText: ['<i class="fi ti-angle-left"></i>', '<i class="fi ti-angle-right"></i>'],
         })
 

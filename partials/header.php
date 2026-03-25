@@ -91,9 +91,9 @@
                                         <li class="menu-item-has-children">
                                             <span class="nav-trigger">Adoption</span>
                                             <ul class="sub-menu">
-                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adoption</a></li>
+                                                <li><a href="<?php echo home_url('/adoption'); ?>">Adoption Chat</a></li>
+                                                <li><a href="<?php echo home_url('/adoption-chaton'); ?>">Adoption Chaton</a></li>
                                                 <li><a href="<?php echo home_url('/abandon'); ?>">Abandon</a></li>
-                                                <li><a href="<?php echo home_url('/parrainer'); ?>">Parrainer un chat</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -101,6 +101,7 @@
                                             <ul class="sub-menu">
                                                 <li><a href="<?php echo home_url('/don'); ?>">Faire un don</a></li>
                                                 <li><a href="<?php echo home_url('/leguer'); ?>">Faire un legs</a></li>
+                                                <li><a href="<?php echo home_url('/parrainer'); ?>">Parrainer un chat</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
@@ -115,8 +116,8 @@
                                         <li class="menu-item-has-children">
                                             <span class="nav-trigger">News</span>
                                             <ul class="sub-menu">
+                                                <li><a href="<?php echo home_url('/histoires'); ?>">News</a></li>
                                                 <li><a href="<?php echo home_url('/revue'); ?>">Revue</a></li>
-                                                <li><a href="<?php echo home_url('/histoires'); ?>">Livre d'Or</a></li>
                                             </ul>
                                         </li>
                                         <li>

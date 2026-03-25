@@ -1,5 +1,6 @@
 <?php
 
+
 // Activer les images a la une sur tous les types de contenu
 
 add_theme_support('post-thumbnails');
@@ -165,6 +166,36 @@ function register_cpt_page_adoption() {
     register_post_type('page_adoption', $args);
 }
 add_action('init', 'register_cpt_page_adoption');
+
+// CPT: Adoption Chaton
+function register_cpt_page_adoption_chaton() {
+    $labels = array(
+        'name'               => 'Adoption Chaton',
+        'singular_name'      => 'Contenu Adoption Chaton',
+        'menu_name'          => 'Adoption Chaton',
+        'add_new'            => 'Ajouter du contenu',
+        'add_new_item'       => 'Ajouter du contenu',
+        'edit_item'          => 'Modifier le contenu',
+        'new_item'           => 'Nouveau contenu',
+        'view_item'          => 'Voir le contenu',
+        'search_items'       => 'Rechercher',
+        'not_found'          => 'Aucun contenu trouvé',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 8,
+        'menu_icon'          => 'dashicons-heart',
+        'supports'           => array('title'),
+        'has_archive'        => false,
+    );
+
+    register_post_type('page_adopt_chaton', $args);
+}
+add_action('init', 'register_cpt_page_adoption_chaton');
 
 // CPT: Abandon
 function register_cpt_page_abandon() {
@@ -2094,6 +2125,234 @@ if( function_exists('acf_add_local_field_group') ) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'page_adoption',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    // ============================================================
+    // GROUPE: Contenu spécifique Page Adoption Chaton
+    // ============================================================
+    acf_add_local_field_group(array(
+        'key' => 'group_page_adoption_chaton',
+        'title' => 'Contenu spécifique',
+        'fields' => array(
+            array(
+                'key' => 'field_adopt_chaton_type',
+                'label' => 'Type de contenu',
+                'name' => 'adopt_chaton_type',
+                'type' => 'select',
+                'instructions' => 'Sélectionnez le type de contenu',
+                'required' => 1,
+                'choices' => array(
+                    'intro' => 'Introduction',
+                    'criteres' => 'Critères d\'adoption',
+                    'processus' => 'Processus d\'adoption',
+                    'etapes' => 'Étapes d\'adoption',
+                    'quiz' => 'Quiz',
+                    'formulaire' => 'Formulaire',
+                    'faq' => 'FAQ',
+                    'cta' => 'Call-to-Action Final',
+                ),
+                'default_value' => 'intro',
+            ),
+
+            // === CHAMPS INTRO ===
+            array(
+                'key' => 'field_adopt_chaton_intro_titre',
+                'label' => 'Titre Section',
+                'name' => 'adopt_chaton_intro_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'intro'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_intro_paragraphe_1',
+                'label' => 'Paragraphe 1',
+                'name' => 'adopt_chaton_intro_paragraphe_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'intro'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_intro_paragraphe_2',
+                'label' => 'Paragraphe 2',
+                'name' => 'adopt_chaton_intro_paragraphe_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'intro'))),
+            ),
+
+            // === CHAMPS CRITÈRES ===
+            array(
+                'key' => 'field_adopt_chaton_criteres_titre',
+                'label' => 'Titre Section',
+                'name' => 'adopt_chaton_criteres_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'criteres'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_criteres_texte',
+                'label' => 'Texte introduction',
+                'name' => 'adopt_chaton_criteres_texte',
+                'type' => 'textarea',
+                'rows' => 2,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'criteres'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_criteres_liste',
+                'label' => 'Liste des critères',
+                'name' => 'adopt_chaton_criteres_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne.',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'criteres'))),
+            ),
+
+            // === CHAMPS PROCESSUS ===
+            array(
+                'key' => 'field_adopt_chaton_processus_titre',
+                'label' => 'Titre Section',
+                'name' => 'adopt_chaton_processus_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'processus'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_processus_texte',
+                'label' => 'Texte',
+                'name' => 'adopt_chaton_processus_texte',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'processus'))),
+            ),
+
+            // === CHAMPS ÉTAPES ===
+            array(
+                'key' => 'field_adopt_chaton_etapes_titre',
+                'label' => 'Titre Section',
+                'name' => 'adopt_chaton_etapes_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'etapes'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_etapes_liste',
+                'label' => 'Liste des étapes',
+                'name' => 'adopt_chaton_etapes_liste',
+                'type' => 'textarea',
+                'rows' => 5,
+                'instructions' => 'Chaque élément doit être sur une nouvelle ligne.',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'etapes'))),
+            ),
+
+            // === CHAMPS QUIZ === (générés dynamiquement)
+            ...generate_quiz_acf_fields('adopt_chaton', 'field_adopt_chaton_type'),
+
+            // === CHAMPS FORMULAIRE === (générés dynamiquement)
+            ...generate_form_acf_fields('adopt_chaton', 'field_adopt_chaton_type'),
+
+            // === CHAMPS FAQ ===
+            array(
+                'key' => 'field_adopt_chaton_faq_tab',
+                'label' => 'FAQ',
+                'type' => 'tab',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_titre',
+                'label' => 'Titre Section',
+                'name' => 'adopt_chaton_faq_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_question_1',
+                'label' => 'Question 1',
+                'name' => 'adopt_chaton_faq_question_1',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_reponse_1',
+                'label' => 'Réponse 1',
+                'name' => 'adopt_chaton_faq_reponse_1',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_question_2',
+                'label' => 'Question 2',
+                'name' => 'adopt_chaton_faq_question_2',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_reponse_2',
+                'label' => 'Réponse 2',
+                'name' => 'adopt_chaton_faq_reponse_2',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_question_3',
+                'label' => 'Question 3',
+                'name' => 'adopt_chaton_faq_question_3',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_reponse_3',
+                'label' => 'Réponse 3',
+                'name' => 'adopt_chaton_faq_reponse_3',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_question_4',
+                'label' => 'Question 4',
+                'name' => 'adopt_chaton_faq_question_4',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_faq_reponse_4',
+                'label' => 'Réponse 4',
+                'name' => 'adopt_chaton_faq_reponse_4',
+                'type' => 'textarea',
+                'rows' => 3,
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
+            ),
+
+            // === CHAMPS CTA ===
+            array(
+                'key' => 'field_adopt_chaton_cta_tab',
+                'label' => 'CTA',
+                'type' => 'tab',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'cta'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_cta_titre',
+                'label' => 'Titre',
+                'name' => 'adopt_chaton_cta_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'cta'))),
+            ),
+            array(
+                'key' => 'field_adopt_chaton_cta_sous_titre',
+                'label' => 'Sous-titre',
+                'name' => 'adopt_chaton_cta_sous_titre',
+                'type' => 'text',
+                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'cta'))),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page_adopt_chaton',
                 ),
             ),
         ),
@@ -4634,11 +4893,21 @@ if( function_exists('acf_add_local_field_group') ) {
                 'instructions' => 'Ex: 3 ans, 6 mois',
             ),
             array(
-                'key' => 'field_parrainage_lien_don',
-                'label' => 'Lien don',
-                'name' => 'parrainage_lien_don',
-                'type' => 'url',
-                'instructions' => 'URL personnalisée vers la page de don (par défaut /don)',
+                'key' => 'field_parrainage_description_longue',
+                'label' => 'Description longue (popup)',
+                'name' => 'parrainage_description_longue',
+                'type' => 'textarea',
+                'rows' => 6,
+                'instructions' => 'Description détaillée du chat pour la popup de parrainage (personnalité, histoire, besoins spéciaux...).',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_parrainage_impact',
+                'label' => 'Impact du parrainage',
+                'name' => 'parrainage_impact',
+                'type' => 'textarea',
+                'rows' => 3,
+                'instructions' => 'Décrivez l\'impact positif du parrainage sur la vie de ce chat au refuge.',
             ),
         ),
         'location' => array(
@@ -5065,21 +5334,131 @@ if( function_exists('acf_add_local_field_group') ) {
 }
 
 // ============================================================================
-// CPT: Histoires d'adoption
+// CPT: Témoignages adoptants
+// ============================================================================
+function register_cpt_temoignage() {
+    $labels = array(
+        'name'               => 'Témoignages',
+        'singular_name'      => 'Témoignage',
+        'menu_name'          => 'Témoignages',
+        'add_new'            => 'Ajouter',
+        'add_new_item'       => 'Ajouter un témoignage',
+        'edit_item'          => 'Modifier le témoignage',
+        'new_item'           => 'Nouveau témoignage',
+        'view_item'          => 'Voir le témoignage',
+        'search_items'       => 'Rechercher un témoignage',
+        'not_found'          => 'Aucun témoignage trouvé',
+        'not_found_in_trash' => 'Aucun témoignage dans la corbeille',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => false,
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 6,
+        'menu_icon'          => 'dashicons-format-quote',
+        'supports'           => array('title', 'editor'),
+    );
+
+    register_post_type('temoignage', $args);
+}
+add_action('init', 'register_cpt_temoignage');
+
+// ACF: Champs pour Témoignages
+add_action('acf/init', 'register_acf_temoignage_fields');
+function register_acf_temoignage_fields() {
+    if (!function_exists('acf_add_local_field_group')) return;
+
+    acf_add_local_field_group(array(
+        'key' => 'group_temoignage',
+        'title' => 'Informations du témoignage',
+        'fields' => array(
+            array(
+                'key' => 'field_temoignage_nom',
+                'label' => 'Nom de l\'adoptant',
+                'name' => 'temoignage_nom',
+                'type' => 'text',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_temoignage_chat',
+                'label' => 'Nom du chat adopté',
+                'name' => 'temoignage_chat',
+                'type' => 'text',
+                'required' => 1,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'temoignage',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
+// AJAX: Soumission de témoignage (visiteurs)
+add_action('wp_ajax_nopriv_submit_temoignage', 'handle_submit_temoignage');
+add_action('wp_ajax_submit_temoignage', 'handle_submit_temoignage');
+function handle_submit_temoignage() {
+    // Vérifier le nonce
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'temoignage_nonce')) {
+        wp_send_json_error(array('message' => 'Erreur de sécurité.'));
+        return;
+    }
+
+    $nom = isset($_POST['nom']) ? sanitize_text_field($_POST['nom']) : '';
+    $chat = isset($_POST['chat']) ? sanitize_text_field($_POST['chat']) : '';
+    $texte = isset($_POST['texte']) ? sanitize_textarea_field($_POST['texte']) : '';
+
+    if (empty($nom) || empty($chat) || empty($texte)) {
+        wp_send_json_error(array('message' => 'Tous les champs sont obligatoires.'));
+        return;
+    }
+
+    // Créer le post en attente de modération
+    $post_id = wp_insert_post(array(
+        'post_type'    => 'temoignage',
+        'post_title'   => 'Témoignage de ' . $nom . ' — ' . $chat,
+        'post_content' => $texte,
+        'post_status'  => 'pending',
+    ));
+
+    if ($post_id && !is_wp_error($post_id)) {
+        update_field('temoignage_nom', $nom, $post_id);
+        update_field('temoignage_chat', $chat, $post_id);
+        wp_send_json_success(array('message' => 'Merci ! Votre témoignage sera publié après modération.'));
+    } else {
+        wp_send_json_error(array('message' => 'Une erreur est survenue. Veuillez réessayer.'));
+    }
+}
+
+// ============================================================================
+// CPT: News
 // ============================================================================
 function register_cpt_histoire() {
     $labels = array(
-        'name'               => 'Histoires',
-        'singular_name'      => 'Histoire',
-        'menu_name'          => 'Histoires',
+        'name'               => 'News',
+        'singular_name'      => 'News',
+        'menu_name'          => 'News',
         'add_new'            => 'Ajouter',
-        'add_new_item'       => 'Ajouter une histoire',
-        'edit_item'          => 'Modifier l\'histoire',
-        'new_item'           => 'Nouvelle histoire',
-        'view_item'          => 'Voir l\'histoire',
-        'search_items'       => 'Rechercher une histoire',
-        'not_found'          => 'Aucune histoire trouvée',
-        'not_found_in_trash' => 'Aucune histoire dans la corbeille',
+        'add_new_item'       => 'Ajouter une news',
+        'edit_item'          => 'Modifier la news',
+        'new_item'           => 'Nouvelle news',
+        'view_item'          => 'Voir la news',
+        'search_items'       => 'Rechercher une news',
+        'not_found'          => 'Aucune news trouvée',
+        'not_found_in_trash' => 'Aucune news dans la corbeille',
     );
 
     $args = array(
@@ -5094,7 +5473,7 @@ function register_cpt_histoire() {
         'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-heart',
+        'menu_icon'          => 'dashicons-megaphone',
         'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
     );
 
@@ -5136,10 +5515,11 @@ add_action('init', 'register_taxonomy_categorie_histoire');
 // Ajouter les catégories par défaut lors de l'activation du thème
 function add_default_histoire_categories() {
     $categories = array(
-        'Chats craintifs',
-        'Chats seniors',
-        'Duos inséparables',
-        'Transformations',
+        'Bien-être animal',
+        'Accessoires',
+        'Événements',
+        'Vie du refuge',
+        'Conseils',
     );
 
     foreach ($categories as $cat) {
@@ -5880,6 +6260,7 @@ function fanal_migrate_form_questions_to_repeater() {
         'emploi'   => 'page_emploi',
         'stage'    => 'page_stage',
         'famille'  => 'page_famille_accueil',
+        'adopt_chaton' => 'page_adopt_chaton',
     );
 
     foreach ($prefixes_cpts as $prefix => $cpt) {

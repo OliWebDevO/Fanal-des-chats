@@ -56,15 +56,15 @@
                     if ($chats_query->have_posts()) :
                         while ($chats_query->have_posts()) : $chats_query->the_post();
                             $description = get_field('parrainage_description');
+                            $description_longue = get_field('parrainage_description_longue');
                             $age = get_field('parrainage_age');
-                            $lien_don = get_field('parrainage_lien_don');
-                            if (empty($lien_don)) {
-                                $lien_don = home_url('/don');
-                            }
+                            $impact = get_field('parrainage_impact');
+                            $chat_name = get_the_title();
+                            $chat_id = get_the_ID();
                     ?>
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
-                        <a href="<?php echo esc_url($lien_don); ?>" class="parrainage-card-link" style="text-decoration: none; color: inherit;">
-                            <div class="wpo-team-wrap" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="parrainage-card-link" data-chat="<?php echo $chat_id; ?>" style="cursor: pointer;">
+                            <div class="wpo-team-wrap">
                                 <div class="wpo-team-img">
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('medium_large', array('style' => 'width: 100%; height: 300px; object-fit: contain; padding: 15px;')); ?>
@@ -83,7 +83,57 @@
                                     <span class="theme-btn-s2" style="display: inline-block; padding: 8px 25px; font-size: 14px;">Parrainer <i class="fas fa-heart"></i></span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+
+                        <!-- Popup pour ce chat -->
+                        <div class="parrainage-modal" id="modal-<?php echo $chat_id; ?>">
+                            <div class="parrainage-modal__overlay"></div>
+                            <div class="parrainage-modal__content">
+                                <button class="parrainage-modal__close" aria-label="Fermer"><i class="fas fa-times"></i></button>
+                                <div class="parrainage-modal__body">
+                                    <div class="parrainage-modal__image">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('large', array('alt' => esc_attr($chat_name))); ?>
+                                        <?php else : ?>
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/3_cute cat.png" alt="<?php echo esc_attr($chat_name); ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="parrainage-modal__info">
+                                        <h2><?php echo esc_html($chat_name); ?></h2>
+                                        <?php if ($age) : ?>
+                                            <span class="parrainage-modal__age"><?php echo esc_html($age); ?></span>
+                                        <?php endif; ?>
+
+                                        <?php if ($description_longue) : ?>
+                                            <div class="parrainage-modal__section">
+                                                <h3><i class="fas fa-cat"></i> Qui est <?php echo esc_html($chat_name); ?> ?</h3>
+                                                <p><?php echo nl2br(esc_html($description_longue)); ?></p>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if ($impact) : ?>
+                                            <div class="parrainage-modal__section">
+                                                <h3><i class="fas fa-heart"></i> L'impact de votre parrainage</h3>
+                                                <p><?php echo nl2br(esc_html($impact)); ?></p>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <div class="parrainage-modal__section parrainage-modal__how">
+                                            <h3><i class="fas fa-info-circle"></i> Comment parrainer <?php echo esc_html($chat_name); ?> ?</h3>
+                                            <p>Le parrainage se fait via un <strong>ordre permanent</strong> du montant de votre choix vers le compte du Fanal des Chats :</p>
+                                            <div class="parrainage-modal__bank">
+                                                <p><strong>Le Fanal des Chats ASBL</strong></p>
+                                                <p><strong>IBAN :</strong> BE16 0682 0580 9674</p>
+                                                <p><strong>BIC :</strong> GKCCBEBB</p>
+                                                <p><strong>Communication :</strong> Parrainage <?php echo esc_html($chat_name); ?></p>
+                                            </div>
+                                            <p>Si la situation de <?php echo esc_html($chat_name); ?> venait à changer (adoption, décès), votre parrainage serait automatiquement redirigé vers un autre pensionnaire du refuge qui en a besoin.</p>
+                                            <p class="parrainage-modal__note" style="margin-top: 12px;">Chaque euro compte. Merci pour votre soutien <i class="fas fa-paw"></i></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <?php
                         endwhile;
@@ -104,6 +154,7 @@
         </section>
 
         <style>
+            /* Cards */
             .parrainage-card-link:hover .wpo-team-wrap {
                 transform: translateY(-5px);
                 box-shadow: 0 10px 30px rgba(0,0,0,0.15);
@@ -113,10 +164,216 @@
                 overflow: hidden;
                 box-shadow: 0 2px 15px rgba(0,0,0,0.08);
                 background: #fff;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
             .wpo-team-img {
                 background: #f8f4f0;
             }
+
+            /* Modal overlay */
+            .parrainage-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 99999;
+                align-items: center;
+                justify-content: center;
+            }
+            .parrainage-modal.is-open {
+                display: flex;
+            }
+            .parrainage-modal__overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(4px);
+            }
+
+            /* Modal content */
+            .parrainage-modal__content {
+                position: relative;
+                background: #fff;
+                border-radius: 16px;
+                max-width: 800px;
+                width: 90%;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                z-index: 1;
+            }
+            .parrainage-modal__close {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 18px;
+                cursor: pointer;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                transition: background 0.2s;
+            }
+            .parrainage-modal__close:hover {
+                background: rgba(0, 0, 0, 0.12);
+            }
+
+            /* Modal body */
+            .parrainage-modal__body {
+                display: flex;
+                gap: 0;
+            }
+            .parrainage-modal__image {
+                flex: 0 0 40%;
+                background: #f8f4f0;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                border-radius: 16px 0 0 16px;
+                overflow: hidden;
+            }
+            .parrainage-modal__image img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center 10%;
+                padding: 20px;
+            }
+            .parrainage-modal__info {
+                flex: 1;
+                padding: 40px 32px;
+            }
+            .parrainage-modal__info h2 {
+                font-size: 1.75rem;
+                color: #333;
+                margin-bottom: 4px;
+            }
+            .parrainage-modal__age {
+                color: #e8804c;
+                font-weight: 600;
+                font-size: 0.95rem;
+                display: block;
+                margin-bottom: 32px;
+            }
+
+            /* Sections */
+            .parrainage-modal__section {
+                margin-bottom: 32px;
+            }
+            .parrainage-modal__section h3 {
+                font-size: 1rem;
+                color: #333;
+                margin-bottom: 8px;
+            }
+            .parrainage-modal__section h3 i {
+                color: #FF5B2E;
+                margin-right: 8px;
+            }
+            .parrainage-modal__section p {
+                font-size: 0.9rem;
+                color: #555;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            /* Bank info box */
+            .parrainage-modal__bank {
+                background: #FFF5EF;
+                border-left: 4px solid #FF5B2E;
+                padding: 16px 20px;
+                border-radius: 0 8px 8px 0;
+                margin: 12px 0;
+            }
+            .parrainage-modal__bank p {
+                margin: 4px 0;
+                font-size: 0.9rem;
+                color: #333;
+            }
+            .parrainage-modal__note {
+                margin-top: 24px;
+                font-style: italic;
+                color: #888 !important;
+                font-size: 0.85rem !important;
+            }
+
+            /* Responsive: tablet */
+            @media (max-width: 768px) {
+                .parrainage-modal__body {
+                    flex-direction: column;
+                }
+                .parrainage-modal__image {
+                    flex: none;
+                    height: 250px;
+                    border-radius: 16px 16px 0 0;
+                }
+                .parrainage-modal__info {
+                    padding: 24px 20px;
+                }
+                .parrainage-modal__content {
+                    width: 95%;
+                    max-height: 85vh;
+                }
+            }
+
+            /* Responsive: mobile */
+            @media (max-width: 480px) {
+                .parrainage-modal__image {
+                    height: 200px;
+                }
+                .parrainage-modal__info {
+                    padding: 20px 16px;
+                }
+                .parrainage-modal__info h2 {
+                    font-size: 1.4rem;
+                }
+            }
         </style>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open modal on card click
+            document.querySelectorAll('.parrainage-card-link').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var chatId = this.getAttribute('data-chat');
+                    var modal = document.getElementById('modal-' + chatId);
+                    if (modal) {
+                        modal.classList.add('is-open');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Close modal on overlay click or close button
+            document.querySelectorAll('.parrainage-modal__overlay, .parrainage-modal__close').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    var modal = this.closest('.parrainage-modal');
+                    modal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    var openModal = document.querySelector('.parrainage-modal.is-open');
+                    if (openModal) {
+                        openModal.classList.remove('is-open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        </script>
 
 <?php get_template_part("partials/footer"); ?>

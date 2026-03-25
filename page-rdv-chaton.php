@@ -100,8 +100,8 @@ $adoption_form_done = isset($_COOKIE['adoption_form_done']) && $_COOKIE['adoptio
                                                     <p>Avant de prendre rendez-vous, assurez-vous d'avoir rempli le formulaire d'adoption. Le formulaire est obligatoire pour toute demande de rencontre avec nos chatons.</p>
                                                     <div class="rdv-buttons">
                                                         <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
-                                                        <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Quiz Adoption</a>
-                                                        <a href="<?php echo home_url('/adoption'); ?>" class="theme-btn-s2">Page Adoption</a>
+                                                        <a href="<?php echo home_url('/quiz-adoption-chaton'); ?>" class="theme-btn-s2">Quiz Adoption Chaton</a>
+                                                        <a href="<?php echo home_url('/adoption-chaton'); ?>" class="theme-btn-s2">Page Adoption Chaton</a>
                                                     </div>
                                                     <?php if ($adoption_form_done) : ?>
                                                     <div class="rdv-calendar">

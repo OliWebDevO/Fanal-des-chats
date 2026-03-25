@@ -219,57 +219,6 @@
             </div>
         </section>
 
-        <!-- start of funfact-section -->
-        <!-- <section class="funfact-section">
-            <div class="section-top-image">
-                <img src="assets/images/funfact/top-image.jpg" alt="">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="assets/images/funfact/1.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="105">00</span> <span class="ico">+</span>
-                            </h2>
-                            <h3>Award Winning</h3>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="assets/images/funfact/2.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="50">00</span> <span class="ico">k</span>
-                            </h2>
-                            <h3>Happy Client</h3>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="assets/images/funfact/3.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="35">00</span> <span class="ico">+</span>
-                            </h2>
-                            <h3>Team Member</h3>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="item">
-                            <div class="icon">
-                                <img src="assets/images/funfact/4.svg" alt="">
-                            </div>
-                            <h2><span class="odometer" data-count="99">00</span> <span class="ico">%</span>
-                            </h2>
-                            <h3>Protection</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
         <!-- start of engagement-section -->
         <section class="engagement-section section-padding">
             <div class="container">
@@ -328,24 +277,10 @@
         <!-- start of temoignages-section -->
         <section class="temoignages-section section-padding">
             <div class="container">
-                <?php
-                // Récupérer le contenu Témoignages de la page accueil
-                $temoignages_query = new WP_Query(array(
-                    'post_type' => 'page_accueil',
-                    'posts_per_page' => 1,
-                    'meta_query' => array(
-                        array(
-                            'key' => 'accueil_type',
-                            'value' => 'temoignages',
-                        ),
-                    ),
-                ));
-                if ($temoignages_query->have_posts()) : while ($temoignages_query->have_posts()) : $temoignages_query->the_post();
-                ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="section-title">
-                            <h2><?php the_field('temoignages_titre'); ?></h2>
+                            <h2>Un mot de nos adoptants</h2>
                         </div>
                     </div>
                 </div>
@@ -376,40 +311,51 @@
                     <div class="col-lg-6 col-12">
                         <div class="temoignages-slider owl-carousel">
                             <?php
-                            for ($i = 1; $i <= 5; $i++) :
-                                $nom = get_field('temoignages_nom_' . $i);
-                                $profession = get_field('temoignages_profession_' . $i);
-                                $texte = get_field('temoignages_texte_' . $i);
-                                $photo = get_field('temoignages_photo_' . $i);
-                                if ($texte) :
+                            $temoignages_cpt = new WP_Query(array(
+                                'post_type' => 'temoignage',
+                                'posts_per_page' => -1,
+                                'post_status' => 'publish',
+                                'orderby' => 'date',
+                                'order' => 'DESC',
+                            ));
+                            if ($temoignages_cpt->have_posts()) :
+                                while ($temoignages_cpt->have_posts()) : $temoignages_cpt->the_post();
+                                    $t_nom = get_field('temoignage_nom');
+                                    $t_chat = get_field('temoignage_chat');
+                                    $t_texte = get_the_content();
                             ?>
                             <div class="item">
                                 <div class="icon">
                                     <img src="<?php bloginfo('template_url'); ?>/assets/images/testimonial-icon.svg" alt="">
                                 </div>
-                                <h3><?php echo esc_html($texte); ?></h3>
+                                <h3><?php echo esc_html($t_texte); ?></h3>
                                 <div class="client-wrap">
-                                    <div class="image">
-                                        <?php if ($photo) : ?>
-                                        <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($nom); ?>">
-                                        <?php else : ?>
-                                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/portrait.avif" alt="">
-                                        <?php endif; ?>
-                                    </div>
                                     <div class="text">
-                                        <h4><?php echo esc_html($nom); ?></h4>
-                                        <span><?php echo esc_html($profession); ?></span>
+                                        <h4><?php echo esc_html($t_nom); ?></h4>
+                                        <span>A adopté <?php echo esc_html($t_chat); ?></span>
                                     </div>
                                 </div>
                             </div>
                             <?php
-                                endif;
-                            endfor;
+                                endwhile;
+                                wp_reset_postdata();
+                            endif;
                             ?>
                         </div>
                     </div>
+                    </div>
                 </div>
-                <?php endwhile; endif; wp_reset_postdata(); ?>
+                <style>
+                    .temoignages-section .client-wrap .text { margin-left: 0 !important; }
+                    .temoignages-section .client-wrap .text h4 { margin-top: 0 !important; }
+                    .temoignages-section .owl-nav { margin-bottom: 90px; margin-top: 20px; }
+                    .temoignages-section { padding-bottom: 0; }
+                </style>
+                <div class="row">
+                    <div class="col-lg-6 col-12" style="margin-left: auto;">
+                        <button class="theme-btn-s2" id="openTemoignageModal">Partagez votre témoignage</button>
+                    </div>
+                </div>
             </div>
             <div class="shape-1">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-7.png" alt="">
@@ -418,6 +364,190 @@
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/paws-6.png" alt="">
             </div>
         </section>
+
+        <!-- Popup Témoignage -->
+        <div class="temoignage-modal" id="temoignageModal">
+            <div class="temoignage-modal__overlay"></div>
+            <div class="temoignage-modal__content">
+                <button class="temoignage-modal__close" aria-label="Fermer"><i class="fas fa-times"></i></button>
+                <div id="temoignageIntro">
+                    <h2>Partagez votre expérience</h2>
+                    <p style="color: #666; margin-bottom: 24px;">Vous avez adopté un chat au Fanal des Chats ? Racontez-nous comment se passe la vie avec votre nouveau compagnon !</p>
+                </div>
+                <form id="temoignageForm">
+                    <div class="temoignage-modal__field">
+                        <label for="temoignage_nom">Votre nom *</label>
+                        <input type="text" id="temoignage_nom" name="nom" required placeholder="Ex: Marie Dupont">
+                    </div>
+                    <div class="temoignage-modal__field">
+                        <label for="temoignage_chat">Nom du chat adopté *</label>
+                        <input type="text" id="temoignage_chat" name="chat" required placeholder="Ex: Moustache">
+                    </div>
+                    <div class="temoignage-modal__field">
+                        <label for="temoignage_texte">Votre témoignage *</label>
+                        <textarea id="temoignage_texte" name="texte" rows="5" required placeholder="Racontez votre expérience d'adoption..."></textarea>
+                    </div>
+                    <button type="submit" class="theme-btn-s2" id="submitTemoignage" style="width: 100%;">Envoyer mon témoignage</button>
+                </form>
+                <div id="temoignageSuccess" style="display: none; text-align: center; padding: 20px 0;">
+                    <i class="fas fa-check-circle" style="font-size: 48px; color: #28a745; margin-bottom: 16px; display: block;"></i>
+                    <h3 style="color: #070143;">Merci pour votre témoignage !</h3>
+                    <p style="color: #666;">Votre message sera publié sur le site après validation par notre équipe.</p>
+                    <p style="color: #666;">Nous vous souhaitons beaucoup de bonheur avec votre compagnon à quatre pattes. Prenez bien soin de lui !</p>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Popup Témoignage */
+            .temoignage-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 99999;
+                align-items: center;
+                justify-content: center;
+            }
+            .temoignage-modal.is-open {
+                display: flex;
+            }
+            .temoignage-modal__overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(4px);
+            }
+            .temoignage-modal__content {
+                position: relative;
+                background: #fff;
+                border-radius: 16px;
+                max-width: 500px;
+                width: 90%;
+                max-height: 90vh;
+                overflow-y: auto;
+                padding: 40px 32px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                z-index: 1;
+            }
+            .temoignage-modal__content h2 {
+                color: #070143;
+                margin-bottom: 8px;
+                font-size: 1.5rem;
+            }
+            .temoignage-modal__close {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 18px;
+                cursor: pointer;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                transition: background 0.2s;
+            }
+            .temoignage-modal__close:hover {
+                background: rgba(0, 0, 0, 0.12);
+            }
+            .temoignage-modal__field {
+                margin-bottom: 16px;
+            }
+            .temoignage-modal__field label {
+                display: block;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 6px;
+                font-size: 0.9rem;
+            }
+            .temoignage-modal__field input,
+            .temoignage-modal__field textarea {
+                width: 100%;
+                padding: 10px 14px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                font-size: 0.95rem;
+                font-family: inherit;
+                transition: border-color 0.2s;
+            }
+            .temoignage-modal__field input:focus,
+            .temoignage-modal__field textarea:focus {
+                outline: none;
+                border-color: #FF5B2E;
+            }
+            @media (max-width: 480px) {
+                .temoignage-modal__content {
+                    padding: 24px 16px;
+                }
+            }
+        </style>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('temoignageModal');
+            var openBtn = document.getElementById('openTemoignageModal');
+
+            // Ouvrir
+            openBtn.addEventListener('click', function() {
+                modal.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Fermer
+            modal.querySelector('.temoignage-modal__overlay').addEventListener('click', closeModal);
+            modal.querySelector('.temoignage-modal__close').addEventListener('click', closeModal);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+            });
+
+            function closeModal() {
+                modal.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            // Soumission
+            document.getElementById('temoignageForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var btn = document.getElementById('submitTemoignage');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+
+                var formData = new FormData();
+                formData.append('action', 'submit_temoignage');
+                formData.append('nonce', '<?php echo wp_create_nonce("temoignage_nonce"); ?>');
+                formData.append('nom', document.getElementById('temoignage_nom').value);
+                formData.append('chat', document.getElementById('temoignage_chat').value);
+                formData.append('texte', document.getElementById('temoignage_texte').value);
+
+                fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    document.getElementById('temoignageIntro').style.display = 'none';
+                    document.getElementById('temoignageForm').style.display = 'none';
+                    document.getElementById('temoignageSuccess').style.display = 'block';
+                })
+                .catch(function() {
+                    document.getElementById('temoignageIntro').style.display = 'none';
+                    document.getElementById('temoignageForm').style.display = 'none';
+                    document.getElementById('temoignageSuccess').style.display = 'block';
+                });
+            });
+        });
+        </script>
 
         <!-- start of newsletter-section -->
         <section class="newsletter-section">
@@ -450,63 +580,52 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="section-title">
-                            <h2>Histoires d'adoption</h2>
+                            <h2>News</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row actualites-grid">
+                    <?php
+                    $news_query = new WP_Query(array(
+                        'post_type' => 'histoire',
+                        'posts_per_page' => 3,
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                    ));
+                    if ($news_query->have_posts()) :
+                        while ($news_query->have_posts()) : $news_query->the_post();
+                            $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
+                            $cat_name = ($categories && !is_wp_error($categories)) ? $categories[0]->name : 'News';
+                            $date = get_the_date('M d, Y');
+                            $link = get_permalink();
+                            $excerpt = get_the_excerpt();
+                    ?>
                     <div class="col col-lg-4 col-md-6 col-12">
                         <div class="actualite-card">
                             <div class="image">
-                                <a href="<?php echo home_url('/histoires'); ?>">
-                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/taichi.png" alt="">
+                                <a href="<?php echo esc_url($link); ?>">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('medium_large', array('alt' => get_the_title())); ?>
+                                    <?php else : ?>
+                                        <img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/3_cute cat.png" alt="<?php the_title(); ?>">
+                                    <?php endif; ?>
                                 </a>
                             </div>
                             <div class="content">
                                 <ul class="date">
-                                    <li>Activité</li>
-                                    <li>Sep 03, 2025</li>
+                                    <li><?php echo esc_html($cat_name); ?></li>
+                                    <li><?php echo esc_html($date); ?></li>
                                 </ul>
-                                <h2><a href="<?php echo home_url('/histoires'); ?>"> Cours de taichi pour chat</a></h2>
-                                <p>Venez découvrir les bienfaits du taichi pour votre chat. Découvrez notre offre  dès aujourd'hui.</p>
+                                <h2><a href="<?php echo esc_url($link); ?>"><?php the_title(); ?></a></h2>
+                                <p><?php echo esc_html($excerpt); ?></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="actualite-card">
-                            <div class="image">
-                                <a href="<?php echo home_url('/histoires'); ?>">
-                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/jouets.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <ul class="date">
-                                    <li>News </li>
-                                    <li>Sep 03, 2025</li>
-                                </ul>
-                                <h2><a href="<?php echo home_url('/histoires'); ?>">Ces jouets peuvent être mauvais pour votre animal.</a></h2>
-                                <p>Des promenades énergisantes pour garder votre chien préféré actif, en bonne santé et heureux....</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-4 col-md-6 col-12">
-                        <div class="actualite-card">
-                            <div class="image">
-                                <a href="<?php echo home_url('/histoires'); ?>">
-                                    <img src="<?php bloginfo('template_url'); ?>/assets/images/images/confortable.jpeg" alt="">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <ul class="date">
-                                    <li>News</li>
-                                    <li>Sep 03, 2025</li>
-                                </ul>
-                                <h2><a href="<?php echo home_url('/histoires'); ?>">Un endroit sûr et confortable pour votre chat.</a></h2>
-                                <p>Un endroit sûr et confortable pour que votre chat se repose et se sente chez lui.</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
                 </div>
             </div>
         </section>

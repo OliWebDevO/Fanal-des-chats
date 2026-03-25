@@ -26,7 +26,7 @@ $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                         <h2><?php the_title(); ?></h2>
                         <ol class="wpo-breadcumb-wrap">
                             <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                            <li><a href="<?php echo home_url('/histoires'); ?>">Histoires d'adoption</a></li>
+                            <li><a href="<?php echo home_url('/histoires'); ?>">News</a></li>
                             <li><?php the_title(); ?></li>
                         </ol>
                     </div>
@@ -128,7 +128,7 @@ $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                                 <?php endif; ?>
                             </div>
                             <div class="author-content">
-                                <span class="author-name">Témoignage de <?php echo esc_html($auteur); ?></span>
+                                <span class="author-name"><?php echo esc_html($auteur); ?></span>
                                 <?php if (has_excerpt()) : ?>
                                 <p><?php echo get_the_excerpt(); ?></p>
                                 <?php endif; ?>
@@ -144,26 +144,26 @@ $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                             <div class="previous-post">
                                 <?php if ($prev_post) : ?>
                                 <a href="<?php echo get_permalink($prev_post->ID); ?>">
-                                    <span class="post-control-link">Histoire précédente</span>
+                                    <span class="post-control-link">Article précédent</span>
                                     <span class="post-name"><?php echo esc_html($prev_post->post_title); ?></span>
                                 </a>
                                 <?php else : ?>
                                 <a href="<?php echo home_url('/histoires'); ?>">
                                     <span class="post-control-link">Retour</span>
-                                    <span class="post-name">Toutes les histoires</span>
+                                    <span class="post-name">Toutes les news</span>
                                 </a>
                                 <?php endif; ?>
                             </div>
                             <div class="next-post">
                                 <?php if ($next_post) : ?>
                                 <a href="<?php echo get_permalink($next_post->ID); ?>">
-                                    <span class="post-control-link">Histoire suivante</span>
+                                    <span class="post-control-link">Article suivant</span>
                                     <span class="post-name"><?php echo esc_html($next_post->post_title); ?></span>
                                 </a>
                                 <?php else : ?>
                                 <a href="<?php echo home_url('/histoires'); ?>">
                                     <span class="post-control-link">Retour</span>
-                                    <span class="post-name">Toutes les histoires</span>
+                                    <span class="post-name">Toutes les news</span>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -180,14 +180,14 @@ $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                 <div class="col col-lg-4">
                     <div class="blog-sidebar">
                         <div class="widget about-widget">
-                            <h3>Partagez votre histoire</h3>
-                            <p>Vous avez adopté un chat au Fanal des Chats ? Nous serions ravis de publier son histoire et de montrer son évolution !</p>
+                            <h3>Le Fanal des Chats</h3>
+                            <p>Retrouvez ici toutes nos actualités : bien-être animal, conseils, événements et vie du refuge.</p>
                             <div class="about-btn" style="margin-top: 15px;">
                                 <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                             </div>
                         </div>
                         <div class="widget recent-post-widget">
-                            <h3>Autres histoires</h3>
+                            <h3>Autres news</h3>
                             <div class="posts">
                                 <?php
                                 $autres_histoires = new WP_Query(array(
@@ -225,23 +225,10 @@ $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                                         <a href="<?php echo home_url('/histoires'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/6_kitten.png" alt="Voir toutes les histoires"></a>
                                     </div>
                                     <div class="details">
-                                        <h4><a href="<?php echo home_url('/histoires'); ?>">Voir toutes les histoires d'adoption</a></h4>
+                                        <h4><a href="<?php echo home_url('/histoires'); ?>">Voir toutes les news</a></h4>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="widget wpo-instagram-widget">
-                            <div class="widget-title">
-                                <h3>Nos pensionnaires</h3>
-                            </div>
-                            <ul class="d-flex">
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/3_cute cat.png" alt=""></a></li>
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/6_kitten.png" alt=""></a></li>
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/14_orange cat.png" alt=""></a></li>
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/19_cute gray cat.png" alt=""></a></li>
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/4_playful cat.png" alt=""></a></li>
-                                <li><a href="<?php echo home_url('/adoption'); ?>"><img src="<?php bloginfo('template_url'); ?>/assets/images/images/illustrations/7_pretty cat.png" alt=""></a></li>
-                            </ul>
                         </div>
                         <div class="widget tag-widget">
                             <h3>Catégories</h3>

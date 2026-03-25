@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Adopter <br class="mobile-br"> un chat</h2>
+                            <h2>Adoption <br class="mobile-br"> Chat</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                                <li>Adopter un chat</li>
+                                <li>Adoption Chat</li>
                             </ol>
                         </div>
                     </div>

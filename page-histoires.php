@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Page Histoires
- * Template pour afficher la liste des histoires d'adoption
+ * Template pour afficher la liste des news
  * CPT: histoire
  */
 get_template_part("partials/header");
@@ -9,7 +9,7 @@ get_template_part("partials/header");
 // Pagination
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-// Query pour les histoires
+// Query pour les news
 $histoires_query = new WP_Query(array(
     'post_type' => 'histoire',
     'posts_per_page' => 6,
@@ -26,10 +26,10 @@ $histoires_query = new WP_Query(array(
             <div class="row">
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
-                        <h2>Histoires d'adoption</h2>
+                        <h2>News</h2>
                         <ol class="wpo-breadcumb-wrap">
                             <li><a href="<?php echo home_url('/'); ?>">Accueil</a></li>
-                            <li>Histoires d'adoption</li>
+                            <li>News</li>
                         </ol>
                     </div>
                 </div>
@@ -47,8 +47,8 @@ $histoires_query = new WP_Query(array(
                         <?php if ($histoires_query->have_posts()) : ?>
                             <?php while ($histoires_query->have_posts()) : $histoires_query->the_post(); ?>
                                 <?php
-                                // Récupérer les champs ACF
                                 $auteur = get_field('histoire_auteur');
+                                $categories = get_the_terms(get_the_ID(), 'categorie_histoire');
                                 ?>
                                 <div class="post format-standard-image">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -60,8 +60,11 @@ $histoires_query = new WP_Query(array(
                                     <?php endif; ?>
                                     <div class="entry-meta">
                                         <ul>
+                                            <?php if ($categories && !is_wp_error($categories)) : ?>
+                                            <li><i class="fi flaticon-comment-white-oval-bubble"></i> <?php echo esc_html($categories[0]->name); ?></li>
+                                            <?php endif; ?>
                                             <?php if ($auteur) : ?>
-                                            <li><i class="fi flaticon-user"></i> Par <a href="#"><?php echo esc_html($auteur); ?></a></li>
+                                            <li><i class="fi flaticon-user"></i> Par <?php echo esc_html($auteur); ?></li>
                                             <?php endif; ?>
                                             <li><i class="fi flaticon-calendar-1"></i> <?php echo get_the_date('d M Y'); ?></li>
                                         </ul>
@@ -73,7 +76,7 @@ $histoires_query = new WP_Query(array(
                                         <?php else : ?>
                                             <p><?php echo wp_trim_words(get_the_content(), 40, '...'); ?></p>
                                         <?php endif; ?>
-                                        <a href="<?php the_permalink(); ?>" class="read-more">LIRE SON HISTOIRE...</a>
+                                        <a href="<?php the_permalink(); ?>" class="read-more">LIRE LA SUITE...</a>
                                     </div>
                                 </div>
                             <?php endwhile; ?>
@@ -99,7 +102,7 @@ $histoires_query = new WP_Query(array(
                             <?php wp_reset_postdata(); ?>
                         <?php else : ?>
                             <div class="no-posts">
-                                <p>Aucune histoire d'adoption pour le moment. Revenez bientôt pour découvrir les témoignages de nos familles adoptantes !</p>
+                                <p>Aucune news pour le moment. Revenez bientôt !</p>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -107,14 +110,14 @@ $histoires_query = new WP_Query(array(
                 <div class="col col-lg-4 col-12">
                     <div class="blog-sidebar">
                         <div class="widget about-widget">
-                            <h3>Partagez votre histoire</h3>
-                            <p>Vous avez adopté un chat au Fanal des Chats ? Nous serions ravis de publier son histoire et de montrer son évolution. Contactez-nous avec vos photos et témoignages !</p>
+                            <h3>Le Fanal des Chats</h3>
+                            <p>Retrouvez ici toutes nos actualités : bien-être animal, conseils, événements et vie du refuge. Restez informés et partagez notre passion pour les chats !</p>
                             <div class="about-btn" style="margin-top: 15px;">
                                 <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                             </div>
                         </div>
                         <div class="widget recent-post-widget">
-                            <h3>Dernières histoires</h3>
+                            <h3>Dernières news</h3>
                             <div class="posts">
                                 <?php
                                 $recent_histoires = new WP_Query(array(
