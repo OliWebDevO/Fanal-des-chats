@@ -1490,16 +1490,16 @@ img {
   }
 }
 .wpo-site-header .navbar-header .navbar-brand img {
-  max-height: 50px;
+  max-height: 80px;
 }
 @media (max-width: 440px) {
   .wpo-site-header .navbar-header .navbar-brand img {
-    max-height: 50px;
+    max-height: 60px;
   }
 }
 @media (max-width: 370px) {
   .wpo-site-header .navbar-header .navbar-brand img {
-    max-height: 30px;
+    max-height: 45px;
   }
 }
 .wpo-site-header {

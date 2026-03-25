@@ -6,7 +6,7 @@
                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="widget about-widget">
                                 <div class="widget-title">
-                                    <a class="footer-logo" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
+                                    <a class="footer-logo" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/Logo Fanal des Chats.png"
                                             alt=""></a>
                                     <h2>Le Fanal des Chats</h2>
                                 </div>

@@ -129,7 +129,7 @@ $quiz_data = array(
     <header class="quiz-header">
         <div class="container">
             <a href="javascript:history.back()" class="quiz-logo">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/logo.gif" alt="<?php bloginfo('name'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/Logo Fanal des Chats.png" alt="<?php bloginfo('name'); ?>">
             </a>
             <a href="javascript:history.back()" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Retour au site

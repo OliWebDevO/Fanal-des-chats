@@ -67,7 +67,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2 col-md-6 col-6">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/logo.gif"
+                                    <a class="navbar-brand" href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo("template_url")?>/assets/images/images/Logo Fanal des Chats.png"
                                             alt=""></a>
                                 </div>
                             </div>
