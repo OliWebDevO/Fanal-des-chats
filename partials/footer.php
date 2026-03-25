@@ -43,9 +43,9 @@
                                 </div>
                                 <ul>
                                     <li><a href="<?php echo home_url('/about'); ?>">A Propos</a></li>
-                                    <li><a href="<?php echo home_url('/service'); ?>">Services</a></li>
-                                    <li><a href="<?php echo home_url('/pricing'); ?>">Réseau</a></li>
-                                    <li><a href="<?php echo home_url('/histoires'); ?>">Histoires</a></li>
+                                    <li><a href="<?php echo home_url('/adoption'); ?>">Adoption</a></li>
+                                    <li><a href="<?php echo home_url('/don'); ?>">Don</a></li>
+                                    <li><a href="<?php echo home_url('/histoires'); ?>">News</a></li>
                                     <li><a href="<?php echo home_url('/contact'); ?>">Contact</a></li>
                                 </ul>
                             </div>
@@ -60,19 +60,9 @@
                             <p class="copyright"> Copyright &copy; 2025 Le Fanal des Chats Asbl. All
                                 Rights Reserved.</p>
                         </div>
-                        <div class="col col-lg-6 col-12">
-                            <ul class="right">
-                                <li><a href="<?php echo home_url('/privace'); ?>"><span class="rolling-text">Confidentialité</span> </a></li>
-                                <li><a href="<?php echo home_url('/terms'); ?>"><span class="rolling-text">Conditions</span></a></li>
-                                <li><a href="<?php echo home_url('/about'); ?>"><span class="rolling-text">A Propos</span></a></li>
-                                <li><a href="<?php echo home_url('/faq'); ?>"><span class="rolling-text">FAQ</span></a></li>
-                            </ul>
+                        <div class="col col-lg-6 col-12" style="display: flex; align-items: center; justify-content: flex-end;">
+                            <p class="site-credit" style="margin: 0;">Ce site web a été réalisé par <a href="https://olivervdb.com/" target="_blank" rel="noopener">Oliver Van Droogenbroeck</a></p>
                         </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col col-12">
-                        <p class="site-credit">Ce site web a été réalisé par <a href="https://olivervdb.com/" target="_blank" rel="noopener">Oliver Van Droogenbroeck</a></p>
                     </div>
                 </div>
             </div>

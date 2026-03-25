@@ -2066,8 +2066,10 @@ img {
 4. wpo-footer
 --------------------------------------------------------------*/
 .footer-logo img {
-  max-width: 50px;
+  max-width: 75px;
   height: auto;
+  position: relative;
+  top: -6px;
 }
 .wpo-site-footer {
   background: #FFEFEB;
@@ -2113,7 +2115,7 @@ img {
   }
 }
 .wpo-site-footer .widget-title {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 
     display: flex;
     flex-direction: row;
@@ -2214,6 +2216,15 @@ img {
 .wpo-site-footer .link-widget ul li + li {
   padding-top: 10px;
 }
+.wpo-site-footer .social-widget {
+  padding-left: 0;
+  margin-left: 0;
+}
+.wpo-site-footer .social-widget ul {
+  padding-left: 0;
+  margin-left: 15px;
+  list-style: none;
+}
 .wpo-site-footer .social-widget ul li {
   display: inline-block;
   margin-right: 20px;
@@ -2295,7 +2306,7 @@ img {
   font-weight: 400;
   line-height: 30px;
   color: #666;
-  padding: 10px 0 5px;
+  padding: 0;
   margin: 0;
 }
 .wpo-site-footer .wpo-lower-footer .site-credit a {
