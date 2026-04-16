@@ -1933,145 +1933,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_adoption_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'adoption_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'adoption_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'adoption_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'adoption_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'adoption_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'adoption_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'adoption_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'adoption_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_adoption_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'adoption_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_adoption_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('adoption', 'field_adoption_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -2257,73 +2119,7 @@ if( function_exists('acf_add_local_field_group') ) {
                 'type' => 'tab',
                 'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
             ),
-            array(
-                'key' => 'field_adopt_chaton_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'adopt_chaton_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'adopt_chaton_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'adopt_chaton_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'adopt_chaton_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'adopt_chaton_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'adopt_chaton_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'adopt_chaton_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'adopt_chaton_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
-            array(
-                'key' => 'field_adopt_chaton_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'adopt_chaton_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(array(array('field' => 'field_adopt_chaton_type', 'operator' => '==', 'value' => 'faq'))),
-            ),
+            ...generate_faq_acf_fields('adopt_chaton', 'field_adopt_chaton_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -2574,145 +2370,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_abandon_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'abandon_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'abandon_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'abandon_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'abandon_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'abandon_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'abandon_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'abandon_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'abandon_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_abandon_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'abandon_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_abandon_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('abandon', 'field_abandon_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -2983,145 +2641,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_don_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'don_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'don_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'don_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'don_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'don_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'don_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'don_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'don_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_don_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'don_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_don_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('don', 'field_don_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -3396,145 +2916,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_benevole_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'benevole_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'benevole_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'benevole_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'benevole_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'benevole_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'benevole_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'benevole_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'benevole_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_benevole_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'benevole_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_benevole_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('benevole', 'field_benevole_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -3809,145 +3191,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_emploi_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'emploi_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'emploi_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'emploi_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'emploi_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'emploi_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'emploi_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'emploi_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'emploi_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_emploi_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'emploi_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_emploi_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('emploi', 'field_emploi_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -4222,145 +3466,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_stage_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'stage_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'stage_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'stage_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'stage_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'stage_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'stage_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'stage_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'stage_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_stage_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'stage_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_stage_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('stage', 'field_stage_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -4671,145 +3777,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_famille_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'famille_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'famille_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'famille_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'famille_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'famille_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'famille_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'famille_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'famille_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_famille_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'famille_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_famille_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('famille', 'field_famille_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -4884,6 +3852,19 @@ if( function_exists('acf_add_local_field_group') ) {
                 'rows' => 3,
                 'instructions' => 'Courte description du chat (personnalité, histoire...)',
                 'required' => 1,
+            ),
+            array(
+                'key' => 'field_parrainage_sexe',
+                'label' => 'Sexe',
+                'name' => 'parrainage_sexe',
+                'type' => 'button_group',
+                'choices' => array(
+                    'male' => 'Mâle ♂',
+                    'femelle' => 'Femelle ♀',
+                ),
+                'default_value' => '',
+                'allow_null' => 1,
+                'layout' => 'horizontal',
             ),
             array(
                 'key' => 'field_parrainage_age',
@@ -5133,145 +4114,7 @@ if( function_exists('acf_add_local_field_group') ) {
                     ),
                 ),
             ),
-            array(
-                'key' => 'field_legue_faq_titre',
-                'label' => 'Titre Section',
-                'name' => 'legue_faq_titre',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_question_1',
-                'label' => 'Question 1',
-                'name' => 'legue_faq_question_1',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_reponse_1',
-                'label' => 'Réponse 1',
-                'name' => 'legue_faq_reponse_1',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_question_2',
-                'label' => 'Question 2',
-                'name' => 'legue_faq_question_2',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_reponse_2',
-                'label' => 'Réponse 2',
-                'name' => 'legue_faq_reponse_2',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_question_3',
-                'label' => 'Question 3',
-                'name' => 'legue_faq_question_3',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_reponse_3',
-                'label' => 'Réponse 3',
-                'name' => 'legue_faq_reponse_3',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_question_4',
-                'label' => 'Question 4',
-                'name' => 'legue_faq_question_4',
-                'type' => 'text',
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
-            array(
-                'key' => 'field_legue_faq_reponse_4',
-                'label' => 'Réponse 4',
-                'name' => 'legue_faq_reponse_4',
-                'type' => 'textarea',
-                'rows' => 3,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_legue_type',
-                            'operator' => '==',
-                            'value' => 'faq',
-                        ),
-                    ),
-                ),
-            ),
+            ...generate_faq_acf_fields('legue', 'field_legue_type'),
 
             // === CHAMPS CTA ===
             array(
@@ -6079,6 +4922,57 @@ function generate_form_acf_fields($prefix, $type_field_key) {
     }
 
     return $fields;
+}
+
+/**
+ * Génère les champs ACF pour une FAQ dynamique (repeater).
+ * Permet d'ajouter, supprimer et réordonner les questions depuis wp-admin.
+ */
+function generate_faq_acf_fields($prefix, $type_field_key) {
+    $faq_condition = array(
+        array(
+            array(
+                'field' => $type_field_key,
+                'operator' => '==',
+                'value' => 'faq',
+            ),
+        ),
+    );
+
+    return array(
+        array(
+            'key' => 'field_' . $prefix . '_faq_titre',
+            'label' => 'Titre Section',
+            'name' => $prefix . '_faq_titre',
+            'type' => 'text',
+            'conditional_logic' => $faq_condition,
+        ),
+        array(
+            'key' => 'field_' . $prefix . '_faq_items',
+            'label' => 'Questions / Réponses',
+            'name' => $prefix . '_faq_items',
+            'type' => 'repeater',
+            'instructions' => 'Ajoutez, supprimez et réorganisez les questions par glisser-déposer.',
+            'layout' => 'block',
+            'button_label' => 'Ajouter une question',
+            'conditional_logic' => $faq_condition,
+            'sub_fields' => array(
+                array(
+                    'key' => 'field_' . $prefix . '_faq_item_question',
+                    'label' => 'Question',
+                    'name' => 'question',
+                    'type' => 'text',
+                ),
+                array(
+                    'key' => 'field_' . $prefix . '_faq_item_reponse',
+                    'label' => 'Réponse',
+                    'name' => 'reponse',
+                    'type' => 'textarea',
+                    'rows' => 3,
+                ),
+            ),
+        ),
+    );
 }
 
 add_action('wp_enqueue_scripts', 'enable_threaded_comments');

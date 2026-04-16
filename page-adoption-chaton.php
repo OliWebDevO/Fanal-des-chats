@@ -253,33 +253,31 @@
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="accordionChaton">
                                             <?php
-                                            $faq_items = array(
-                                                array('num' => 'One', 'index' => 1, 'expanded' => 'true', 'show' => ' show'),
-                                                array('num' => 'Two', 'index' => 2, 'expanded' => 'false', 'show' => ''),
-                                                array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
-                                                array('num' => 'Four', 'index' => 4, 'expanded' => 'false', 'show' => ''),
-                                            );
-                                            foreach ($faq_items as $item) :
-                                                $question = get_field('adopt_chaton_faq_question_' . $item['index']);
-                                                $reponse = get_field('adopt_chaton_faq_reponse_' . $item['index']);
-                                                if ($question && $reponse) :
+                                            $faq_items_data = get_field('adopt_chaton_faq_items');
+                                            if ($faq_items_data) :
+                                                foreach ($faq_items_data as $faq_idx => $faq_row) :
+                                                    $faq_q = isset($faq_row['question']) ? $faq_row['question'] : '';
+                                                    $faq_r = isset($faq_row['reponse']) ? $faq_row['reponse'] : '';
+                                                    if (!$faq_q || !$faq_r) continue;
+                                                    $faq_num = 'Item' . ($faq_idx + 1);
+                                                    $faq_first = ($faq_idx === 0);
                                             ?>
                                             <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingChaton<?php echo $item['num']; ?>">
-                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseChaton<?php echo $item['num']; ?>"
-                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapseChaton<?php echo $item['num']; ?>">
-                                                        <?php echo esc_html($question); ?>
+                                                <h3 class="accordion-header" id="heading<?php echo $faq_num; ?>">
+                                                    <button class="accordion-button<?php echo !$faq_first ? ' collapsed' : ''; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $faq_num; ?>"
+                                                        aria-expanded="<?php echo $faq_first ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $faq_num; ?>">
+                                                        <?php echo esc_html($faq_q); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapseChaton<?php echo $item['num']; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
-                                                    aria-labelledby="headingChaton<?php echo $item['num']; ?>" data-bs-parent="#accordionChaton">
+                                                <div id="collapse<?php echo $faq_num; ?>" class="accordion-collapse collapse<?php echo $faq_first ? ' show' : ''; ?>"
+                                                    aria-labelledby="heading<?php echo $faq_num; ?>" data-bs-parent="#accordionChaton">
                                                     <div class="accordion-body">
-                                                        <p><?php echo esc_html($reponse); ?></p>
+                                                        <p><?php echo esc_html($faq_r); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php endif; endforeach; ?>
+                                            <?php endforeach; endif; ?>
                                         </div>
                                     </div>
                                 </div>

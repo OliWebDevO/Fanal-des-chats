@@ -164,7 +164,8 @@
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
-        <!-- Section Quiz : image gauche, texte droite -->
+        <!-- Section Quiz : image gauche, texte droite (commenté - à réactiver si besoin) -->
+        <?php /*
         <?php
         $quiz_query = new WP_Query(array(
             'post_type' => 'page_stage',
@@ -196,6 +197,7 @@
             </div>
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
+        */ ?>
 
         <!-- Section Formulaire : texte gauche, image droite -->
         <?php
@@ -206,24 +208,24 @@
         ));
         if ($formulaire_query->have_posts()) : while ($formulaire_query->have_posts()) : $formulaire_query->the_post();
         ?>
-        <section class="about-section section-padding benevole-block">
+        <section class="about-section section-padding orange benevole-block">
             <div class="wraper">
+                <div class="left">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/16_cat vector.png" alt="">
+                        <div class="shape">
+                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
+                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FBDABF" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <div class="right">
                     <span class="section-label">Postuler</span>
                     <h2><?php the_field('stage_formulaire_titre'); ?></h2>
                     <p><?php the_field('stage_formulaire_texte'); ?></p>
                     <div class="about-btn">
                         <a href="<?php echo home_url('/formulaire-stage'); ?>" class="theme-btn-s2">Postulez pour un stage</a>
-                    </div>
-                </div>
-                <div class="left">
-                    <div class="image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/16_cat vector.png" alt="">
-                        <div class="shape">
-                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
-                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />
-                            </svg>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -254,33 +256,31 @@
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="accordionExample">
                                             <?php
-                                            $faq_items = array(
-                                                array('num' => 'One', 'index' => 1, 'expanded' => 'true', 'show' => ' show'),
-                                                array('num' => 'Two', 'index' => 2, 'expanded' => 'false', 'show' => ''),
-                                                array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
-                                                array('num' => 'Four', 'index' => 4, 'expanded' => 'false', 'show' => ''),
-                                            );
-                                            foreach ($faq_items as $item) :
-                                                $question = get_field('stage_faq_question_' . $item['index']);
-                                                $reponse = get_field('stage_faq_reponse_' . $item['index']);
-                                                if ($question && $reponse) :
+                                            $faq_items_data = get_field('stage_faq_items');
+                                            if ($faq_items_data) :
+                                                foreach ($faq_items_data as $faq_idx => $faq_row) :
+                                                    $faq_q = isset($faq_row['question']) ? $faq_row['question'] : '';
+                                                    $faq_r = isset($faq_row['reponse']) ? $faq_row['reponse'] : '';
+                                                    if (!$faq_q || !$faq_r) continue;
+                                                    $faq_num = 'Item' . ($faq_idx + 1);
+                                                    $faq_first = ($faq_idx === 0);
                                             ?>
                                             <div class="accordion-item">
-                                                <h3 class="accordion-header" id="heading<?php echo $item['num']; ?>">
-                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $item['num']; ?>"
-                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapse<?php echo $item['num']; ?>">
-                                                        <?php echo esc_html($question); ?>
+                                                <h3 class="accordion-header" id="heading<?php echo $faq_num; ?>">
+                                                    <button class="accordion-button<?php echo !$faq_first ? ' collapsed' : ''; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $faq_num; ?>"
+                                                        aria-expanded="<?php echo $faq_first ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $faq_num; ?>">
+                                                        <?php echo esc_html($faq_q); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapse<?php echo $item['num']; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
-                                                    aria-labelledby="heading<?php echo $item['num']; ?>" data-bs-parent="#accordionExample">
+                                                <div id="collapse<?php echo $faq_num; ?>" class="accordion-collapse collapse<?php echo $faq_first ? ' show' : ''; ?>"
+                                                    aria-labelledby="heading<?php echo $faq_num; ?>" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p><?php echo esc_html($reponse); ?></p>
+                                                        <p><?php echo esc_html($faq_r); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php endif; endforeach; ?>
+                                            <?php endforeach; endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@
                                         <p><?php the_field('stage_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <a href="<?php echo home_url('/quiz-stage'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <?php /* <a href="<?php echo home_url('/quiz-stage'); ?>" class="theme-btn-s2">Faites le Quiz</a> */ ?>
                                         <a href="<?php echo home_url('/formulaire-stage'); ?>" class="theme-btn-s2">Postulez pour un stage</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>

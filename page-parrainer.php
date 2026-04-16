@@ -57,6 +57,7 @@
                         while ($chats_query->have_posts()) : $chats_query->the_post();
                             $description = get_field('parrainage_description');
                             $description_longue = get_field('parrainage_description_longue');
+                            $sexe = get_field('parrainage_sexe');
                             $age = get_field('parrainage_age');
                             $impact = get_field('parrainage_impact');
                             $chat_name = get_the_title();
@@ -74,6 +75,9 @@
                                 </div>
                                 <div class="wpo-team-text" style="padding: 20px; text-align: center;">
                                     <h3 style="margin-bottom: 5px;"><?php the_title(); ?></h3>
+                                    <?php if ($sexe) : ?>
+                                        <span style="color: #FF5B2E; font-size: 18px; font-weight: 700; display: inline-block; margin-bottom: 5px;"><?php echo $sexe === 'male' ? '<i class="fas fa-mars"></i>' : '<i class="fas fa-venus"></i>'; ?></span>
+                                    <?php endif; ?>
                                     <?php if ($age) : ?>
                                         <span style="color: #e8804c; font-weight: 600; display: block; margin-bottom: 10px;"><?php echo esc_html($age); ?></span>
                                     <?php endif; ?>

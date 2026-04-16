@@ -94,13 +94,6 @@
             ),
         );
 
-        $faq_nums = array(
-            array('num' => 'One',   'index' => 1, 'expanded' => 'true',  'show' => ' show'),
-            array('num' => 'Two',   'index' => 2, 'expanded' => 'false', 'show' => ''),
-            array('num' => 'Three', 'index' => 3, 'expanded' => 'false', 'show' => ''),
-            array('num' => 'Four',  'index' => 4, 'expanded' => 'false', 'show' => ''),
-        );
-
         foreach ($faq_sections as $section) :
             $faq_query = new WP_Query(array(
                 'post_type'      => $section['post_type'],
@@ -131,28 +124,31 @@
                                     <div class="wpo-benefits-item">
                                         <div class="accordion" id="<?php echo $section['accordion_id']; ?>">
                                             <?php
-                                            foreach ($faq_nums as $item) :
-                                                $question = get_field($section['prefix'] . '_faq_question_' . $item['index']);
-                                                $reponse  = get_field($section['prefix'] . '_faq_reponse_' . $item['index']);
-                                                $uid = $section['prefix'] . $item['num'];
-                                                if ($question && $reponse) :
+                                            $faq_items_data = get_field($section['prefix'] . '_faq_items');
+                                            if ($faq_items_data) :
+                                                foreach ($faq_items_data as $faq_idx => $faq_row) :
+                                                    $faq_q = isset($faq_row['question']) ? $faq_row['question'] : '';
+                                                    $faq_r = isset($faq_row['reponse']) ? $faq_row['reponse'] : '';
+                                                    if (!$faq_q || !$faq_r) continue;
+                                                    $uid = $section['prefix'] . 'Item' . ($faq_idx + 1);
+                                                    $faq_first = ($faq_idx === 0);
                                             ?>
                                             <div class="accordion-item">
                                                 <h3 class="accordion-header" id="heading<?php echo $uid; ?>">
-                                                    <button class="accordion-button<?php echo $item['index'] > 1 ? ' collapsed' : ''; ?>" type="button"
+                                                    <button class="accordion-button<?php echo !$faq_first ? ' collapsed' : ''; ?>" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $uid; ?>"
-                                                        aria-expanded="<?php echo $item['expanded']; ?>" aria-controls="collapse<?php echo $uid; ?>">
-                                                        <?php echo esc_html($question); ?>
+                                                        aria-expanded="<?php echo $faq_first ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $uid; ?>">
+                                                        <?php echo esc_html($faq_q); ?>
                                                     </button>
                                                 </h3>
-                                                <div id="collapse<?php echo $uid; ?>" class="accordion-collapse collapse<?php echo $item['show']; ?>"
+                                                <div id="collapse<?php echo $uid; ?>" class="accordion-collapse collapse<?php echo $faq_first ? ' show' : ''; ?>"
                                                     aria-labelledby="heading<?php echo $uid; ?>" data-bs-parent="#<?php echo $section['accordion_id']; ?>">
                                                     <div class="accordion-body">
-                                                        <p><?php echo esc_html($reponse); ?></p>
+                                                        <p><?php echo esc_html($faq_r); ?></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php endif; endforeach; ?>
+                                            <?php endforeach; endif; ?>
                                         </div>
                                     </div>
                                 </div>
