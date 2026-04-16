@@ -164,8 +164,8 @@
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
-        <!-- Section Quiz : image gauche, texte droite (commenté - à réactiver si besoin) -->
-        <?php /*
+        <!-- Section Quiz : commenté - à réactiver si besoin (changer false en true) -->
+        <?php if (false) : ?>
         <?php
         $quiz_query = new WP_Query(array(
             'post_type' => 'page_stage',
@@ -197,7 +197,7 @@
             </div>
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
-        */ ?>
+        <?php endif; ?>
 
         <!-- Section Formulaire : texte gauche, image droite -->
         <?php
@@ -313,7 +313,7 @@
                                         <p><?php the_field('stage_cta_sous_titre'); ?></p>
                                     </div>
                                     <div class="about-btn">
-                                        <?php /* <a href="<?php echo home_url('/quiz-stage'); ?>" class="theme-btn-s2">Faites le Quiz</a> */ ?>
+                                        <!-- <a href="<?php echo home_url('/quiz-stage'); ?>" class="theme-btn-s2">Faites le Quiz</a> -->
                                         <a href="<?php echo home_url('/formulaire-stage'); ?>" class="theme-btn-s2">Postulez pour un stage</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
