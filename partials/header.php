@@ -63,7 +63,7 @@
         <header id="header">
             <div class="wpo-site-header">
                 <nav class="navigation navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-2 col-md-6 col-6">
                                 <div class="navbar-header">

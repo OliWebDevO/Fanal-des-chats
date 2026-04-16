@@ -1503,22 +1503,7 @@ img {
   }
 }
 .wpo-site-header {
-  padding: 0 95px;
-}
-@media (max-width: 1700px) {
-  .wpo-site-header {
-    padding: 0 30px;
-  }
-}
-@media (max-width: 1399px) {
-  .wpo-site-header {
-    padding: 0 20px;
-  }
-}
-@media (max-width: 991px) {
-  .wpo-site-header {
-    padding: 0px;
-  }
+  padding: 0;
 }
 @media (max-width: 1500px) {
   .wpo-site-header #navbar > ul > li > a,
