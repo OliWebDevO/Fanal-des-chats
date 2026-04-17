@@ -4670,6 +4670,33 @@ function generate_form_acf_fields($prefix, $type_field_key) {
         ),
     );
 
+    // === Texte de présentation (affiché sur la page) ===
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_formulaire_presentation_tab',
+        'label' => 'Présentation',
+        'type' => 'tab',
+        'conditional_logic' => $form_condition,
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_formulaire_titre',
+        'label' => 'Titre de la section',
+        'name' => $prefix . '_formulaire_titre',
+        'type' => 'text',
+        'instructions' => 'Titre affiché sur la page (ex: Faire une demande d\'adoption)',
+        'conditional_logic' => $form_condition,
+    );
+
+    $fields[] = array(
+        'key' => 'field_' . $prefix . '_formulaire_texte',
+        'label' => 'Texte de présentation',
+        'name' => $prefix . '_formulaire_texte',
+        'type' => 'textarea',
+        'rows' => 3,
+        'instructions' => 'Texte explicatif affiché sous le titre, avant le bouton vers le formulaire.',
+        'conditional_logic' => $form_condition,
+    );
+
     // === Onglet Paramètres globaux ===
     $fields[] = array(
         'key' => 'field_' . $prefix . '_form_settings_tab',

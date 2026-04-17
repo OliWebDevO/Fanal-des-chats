@@ -106,7 +106,7 @@ $adoption_form_done = isset($_COOKIE['adoption_form_done']) && $_COOKIE['adoptio
                                                     <?php if ($adoption_form_done) : ?>
                                                     <div class="rdv-calendar">
                                                         <!-- Calendly inline widget - Adoption Chaton -->
-                                                        <div class="calendly-inline-widget" data-url="https://calendly.com/fanaldeschats/rendez-vous-adoption-chat-clone?locale=fr" style="min-width:320px;height:700px;"></div>
+                                                        <div class="calendly-inline-widget" data-url="https://calendly.com/lefanaldeschats-proximus/30min?locale=fr" style="min-width:320px;height:700px;"></div>
                                                     </div>
                                                     <?php else : ?>
                                                     <div class="rdv-locked">

@@ -179,7 +179,7 @@
                         <p><?php the_field('apropos_texte_encart'); ?></p>
                         <?php $video_url = get_field('apropos_video_encart'); if ($video_url) : ?>
                         <div class="video-holder">
-                            <a href="<?php echo esc_url(convert_youtube_to_embed($video_url)); ?>" class="video-btn" data-type="iframe">
+                            <a href="<?php echo esc_url($video_url); ?>" class="video-btn-link" target="_blank" rel="noopener">
                                 <svg width="33" height="36" viewBox="0 0 33 36" fill="none">
                                     <path
                                         d="M30.5 13.6699C33.8333 15.5944 33.8333 20.4056 30.5 22.3301L8 35.3205C4.66667 37.245 0.499998 34.8394 0.499998 30.9904L0.499999 5.00962C0.5 1.16062 4.66667 -1.24501 8 0.679491L30.5 13.6699Z"
