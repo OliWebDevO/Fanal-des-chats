@@ -47,6 +47,15 @@
         $('#wizard').on('submit', handleSubmit);
 
         initStyledInputs();
+
+        // Store adoption type (chat/chaton) from URL param for later redirect
+        var urlParams = new URLSearchParams(window.location.search);
+        var adoptionType = urlParams.get('type');
+        if (adoptionType === 'chaton') {
+            sessionStorage.setItem('adoption_type', 'chaton');
+        } else if (adoptionType === 'chat') {
+            sessionStorage.setItem('adoption_type', 'chat');
+        }
     }
 
     // Remove class from elements
@@ -299,12 +308,15 @@
         $container.html(html);
     }
 
-    // Redirect to rdv-chat after adoption form submission
+    // Redirect to rdv-chat or rdv-chaton after adoption form submission
     function redirectAfterAdoption() {
         var prefix = $('input[name="form_prefix"]').val();
         if (prefix === 'adoption') {
+            var adoptionType = sessionStorage.getItem('adoption_type');
+            var redirectPath = (adoptionType === 'chaton') ? '/rdv-chaton' : '/rdv-chat';
+            sessionStorage.removeItem('adoption_type');
             setTimeout(function() {
-                window.location.href = window.location.origin + '/rdv-chat';
+                window.location.href = window.location.origin + redirectPath;
             }, 3000);
         }
     }

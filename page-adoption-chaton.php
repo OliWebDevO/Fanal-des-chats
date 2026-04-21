@@ -212,7 +212,7 @@
                     <h2><?php the_field('adopt_chaton_formulaire_titre'); ?></h2>
                     <p><?php the_field('adopt_chaton_formulaire_texte'); ?></p>
                     <div class="about-btn">
-                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                        <a href="<?php echo home_url('/formulaire-adoption?type=chaton'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                     </div>
                 </div>
                 <div class="left">
@@ -312,7 +312,7 @@
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption-chaton'); ?>" class="theme-btn-s2">Faites le Quiz</a>
-                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                                        <a href="<?php echo home_url('/formulaire-adoption?type=chaton'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>
