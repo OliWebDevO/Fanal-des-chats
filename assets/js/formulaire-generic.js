@@ -308,13 +308,20 @@
         $container.html(html);
     }
 
-    // Redirect to rdv-chat or rdv-chaton after adoption form submission
+    // Redirect after adoption form submission
+    // - chaton : direct vers /rdv-chaton (mail déjà envoyé)
+    // - chat : vers /adoption?step=booking#cta (mail envoyé après réservation Calendly)
     function redirectAfterAdoption() {
         var prefix = $('input[name="form_prefix"]').val();
         if (prefix === 'adoption') {
             var adoptionType = sessionStorage.getItem('adoption_type');
-            var redirectPath = (adoptionType === 'chaton') ? '/rdv-chaton' : '/rdv-chat';
             sessionStorage.removeItem('adoption_type');
+            var redirectPath;
+            if (adoptionType === 'chaton') {
+                redirectPath = '/rdv-chaton';
+            } else {
+                redirectPath = '/adoption?step=booking#cta';
+            }
             setTimeout(function() {
                 window.location.href = window.location.origin + redirectPath;
             }, 3000);
@@ -441,8 +448,22 @@
         const prefix = window.formPrefix || '';
         const formLabel = prefix.charAt(0).toUpperCase() + prefix.slice(1);
         const emailBody = buildEmailBody();
+        const adoptionType = sessionStorage.getItem('adoption_type');
+        const isAdoptionChat = (prefix === 'adoption' && adoptionType !== 'chaton');
 
-        // Send via EmailJS
+        if (isAdoptionChat) {
+            // Différer l'envoi : on stocke le formulaire et on attend la réservation Calendly
+            sessionStorage.setItem('adoption_form_pending', JSON.stringify({
+                title: 'Formulaire ' + formLabel,
+                message: emailBody,
+            }));
+            setAdoptionCookie();
+            $('#successModal').addClass('show');
+            redirectAfterAdoption();
+            return;
+        }
+
+        // Envoi immédiat pour les autres cas (chaton + autres formulaires)
         emailjs.send('service_j6w9ose', 'template_t4aeuth', {
             title: 'Formulaire ' + formLabel,
             message: emailBody,

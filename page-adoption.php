@@ -298,6 +298,9 @@
         ));
         if ($cta_query->have_posts()) : while ($cta_query->have_posts()) : $cta_query->the_post();
         ?>
+        <?php
+        $is_booking_step = isset($_GET['step']) && $_GET['step'] === 'booking';
+        ?>
         <div id="cta" class="wpo-service-single-area section-padding">
             <div class="container">
                 <div class="row">
@@ -308,13 +311,39 @@
                                     <div class="wpo-contact-title">
                                         <h2><?php the_field('adoption_cta_titre'); ?></h2>
                                         <p><?php the_field('adoption_cta_sous_titre'); ?></p>
-                                        <p style="margin-top: 10px; font-size: 15px; color: #666;"><i class="fas fa-info-circle" style="color: #FF5B2E;"></i> Remplissez le formulaire d'adoption pour accéder à la prise de rendez-vous.</p>
+                                        <?php if ($is_booking_step) : ?>
+                                        <p style="margin-top: 10px; font-size: 15px; color: #2e7d32;"><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Votre formulaire est prêt. Choisissez maintenant un créneau pour finaliser votre demande.</p>
+                                        <?php else : ?>
+                                        <p style="margin-top: 10px; font-size: 15px; color: #666;"><i class="fas fa-info-circle" style="color: #FF5B2E;"></i> Vous pouvez consulter les dates disponibles. Remplissez le formulaire d'adoption pour accéder à la prise de rendez-vous.</p>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption'); ?>" class="theme-btn-s2">Faites le Quiz</a>
+                                        <?php if (!$is_booking_step) : ?>
                                         <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                                        <?php endif; ?>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
+
+                                    <!-- Calendly : interactif (consultation libre, blocage à la réservation si formulaire non rempli) -->
+                                    <div class="cta-calendly-wrap" style="margin-top: 40px; position: relative;">
+                                        <div id="calendlyAdoptionChat" class="calendly-inline-widget" data-url="https://calendly.com/lefanaldeschats/30min?locale=fr" style="min-width:320px;height:700px;"></div>
+                                    </div>
+
+                                    <?php if (!$is_booking_step) : ?>
+                                    <!-- Modal d'invitation au formulaire (affiché si l'utilisateur sélectionne un créneau sans avoir rempli le formulaire) -->
+                                    <div id="formRequiredModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;">
+                                        <div style="background:#fff;padding:40px;border-radius:12px;max-width:500px;text-align:center;margin:20px;">
+                                            <i class="fas fa-clipboard-list" style="font-size:48px;color:#FF5B2E;margin-bottom:20px;"></i>
+                                            <h3 style="margin-bottom:15px;">Une étape avant de réserver</h3>
+                                            <p style="margin-bottom:25px;color:#666;">Pour valider votre rendez-vous, merci de remplir d'abord le formulaire d'adoption. Cela nous permet de mieux préparer votre rencontre.</p>
+                                            <div style="display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;">
+                                                <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplir le formulaire</a>
+                                                <button type="button" id="formRequiredClose" class="theme-btn-s2" style="background:#999;border:0;cursor:pointer;">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -322,6 +351,64 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <?php if ($is_booking_step) : ?>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>
+        (function() {
+            // Listen for Calendly booking event
+            window.addEventListener('message', function(e) {
+                if (e.data && e.data.event === 'calendly.event_scheduled') {
+                    var formData = sessionStorage.getItem('adoption_form_pending');
+                    if (!formData) return;
+                    try {
+                        var parsed = JSON.parse(formData);
+                        var bookingInfo = e.data.payload || {};
+                        var bookingHtml = '<hr style="border:2px solid #28a745;margin:30px 0;">' +
+                            '<h2 style="color:#28a745;">Rendez-vous confirmé via Calendly</h2>' +
+                            '<p>Le visiteur a réservé son créneau. Vérifiez les détails dans votre Google Calendar lié à Calendly.</p>';
+                        if (bookingInfo.event && bookingInfo.event.uri) {
+                            bookingHtml += '<p>Référence Calendly : ' + bookingInfo.event.uri + '</p>';
+                        }
+                        var fullBody = parsed.message + bookingHtml;
+                        emailjs.send('service_j6w9ose', 'template_t4aeuth', {
+                            title: parsed.title + ' (avec RDV)',
+                            message: fullBody,
+                        }, 'HxEre_mtt2t-i8_qH').finally(function() {
+                            sessionStorage.removeItem('adoption_form_pending');
+                        });
+                    } catch (err) {
+                        console.error('Erreur envoi mail combiné:', err);
+                    }
+                }
+            });
+        })();
+        </script>
+        <?php else : ?>
+        <script>
+        (function() {
+            var modal = document.getElementById('formRequiredModal');
+            var closeBtn = document.getElementById('formRequiredClose');
+            if (!modal) return;
+
+            // Quand l'utilisateur sélectionne un créneau, afficher la popup
+            window.addEventListener('message', function(e) {
+                if (e.data && e.data.event === 'calendly.date_and_time_selected') {
+                    modal.style.display = 'flex';
+                }
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+        })();
+        </script>
+        <?php endif; ?>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
 <?php get_template_part("partials/footer"); ?>

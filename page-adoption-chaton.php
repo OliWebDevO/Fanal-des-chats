@@ -196,38 +196,7 @@
         </section>
         <?php endwhile; endif; wp_reset_postdata(); ?>
 
-        <!-- Section Formulaire : texte gauche, image droite -->
-        <?php
-        $formulaire_query = new WP_Query(array(
-            'post_type' => 'page_adopt_chaton',
-            'posts_per_page' => 1,
-            'meta_query' => array(array('key' => 'adopt_chaton_type', 'value' => 'formulaire')),
-        ));
-        if ($formulaire_query->have_posts()) : while ($formulaire_query->have_posts()) : $formulaire_query->the_post();
-        ?>
-        <section class="about-section section-padding benevole-block">
-            <div class="wraper">
-                <div class="right">
-                    <span class="section-label">Formulaire</span>
-                    <h2><?php the_field('adopt_chaton_formulaire_titre'); ?></h2>
-                    <p><?php the_field('adopt_chaton_formulaire_texte'); ?></p>
-                    <div class="about-btn">
-                        <a href="<?php echo home_url('/formulaire-adoption?type=chaton'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
-                    </div>
-                </div>
-                <div class="left">
-                    <div class="image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/illustrations/11_fat cat.png" alt="">
-                        <div class="shape">
-                            <svg width="793" height="786" viewBox="0 0 793 786" fill="none">
-                                <path d="M84.9007 505.664C-181.681 609.802 245.585 843.801 512.633 772.246C713.751 718.356 833.104 511.631 779.214 310.513C725.325 109.395 552.6 -41.9576 351.482 11.9319C150.364 65.8214 351.482 401.526 84.9007 505.664Z" fill="#FFEFEB" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <?php endwhile; endif; wp_reset_postdata(); ?>
+        <!-- Section Formulaire désactivée - le formulaire n'est plus requis pour les RDV chaton -->
 
         <!-- start wpo-faq-section -->
         <?php
@@ -308,11 +277,10 @@
                                     <div class="wpo-contact-title">
                                         <h2><?php the_field('adopt_chaton_cta_titre'); ?></h2>
                                         <p><?php the_field('adopt_chaton_cta_sous_titre'); ?></p>
-                                        <p style="margin-top: 10px; font-size: 15px; color: #666;"><i class="fas fa-info-circle" style="color: #FF5B2E;"></i> Remplissez le formulaire d'adoption chaton pour accéder à la prise de rendez-vous.</p>
                                     </div>
                                     <div class="about-btn">
                                         <a href="<?php echo home_url('/quiz-adoption-chaton'); ?>" class="theme-btn-s2">Faites le Quiz</a>
-                                        <a href="<?php echo home_url('/formulaire-adoption?type=chaton'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
+                                        <a href="<?php echo home_url('/rdv-chaton'); ?>" class="theme-btn-s2">Adoptez un chaton</a>
                                         <a href="<?php echo home_url('/contact'); ?>" class="theme-btn-s2">Contactez-nous</a>
                                     </div>
                                 </div>

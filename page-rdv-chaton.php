@@ -97,25 +97,14 @@ $adoption_form_done = isset($_COOKIE['adoption_form_done']) && $_COOKIE['adoptio
                                             </h3>
                                             <div class="accordion-collapse collapse show">
                                                 <div class="accordion-body">
-                                                    <p>Avant de prendre rendez-vous, assurez-vous d'avoir rempli le formulaire d'adoption. Le formulaire est obligatoire pour toute demande de rencontre avec nos chatons.</p>
                                                     <div class="rdv-buttons">
-                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
                                                         <a href="<?php echo home_url('/quiz-adoption-chaton'); ?>" class="theme-btn-s2">Quiz Adoption Chaton</a>
                                                         <a href="<?php echo home_url('/adoption-chaton'); ?>" class="theme-btn-s2">Page Adoption Chaton</a>
                                                     </div>
-                                                    <?php if ($adoption_form_done) : ?>
                                                     <div class="rdv-calendar">
                                                         <!-- Calendly inline widget - Adoption Chaton -->
                                                         <div class="calendly-inline-widget" data-url="https://calendly.com/lefanaldeschats-proximus/30min?locale=fr" style="min-width:320px;height:700px;"></div>
                                                     </div>
-                                                    <?php else : ?>
-                                                    <div class="rdv-locked">
-                                                        <i class="fas fa-lock"></i>
-                                                        <p>Vous devez d'abord remplir le <strong>formulaire d'adoption</strong> avant de pouvoir prendre rendez-vous.</p>
-                                                        <p>Lorsque vous aurez complété le formulaire, le calendrier des rendez-vous apparaîtra juste ici.</p>
-                                                        <a href="<?php echo home_url('/formulaire-adoption'); ?>" class="theme-btn-s2">Remplissez le formulaire</a>
-                                                    </div>
-                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
