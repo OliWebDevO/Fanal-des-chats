@@ -131,7 +131,7 @@ $template_dir = get_template_directory_uri();
         </div>
 
         <!-- Formulaire -->
-        <form class="multisteps-form__form" action="<?php echo admin_url('admin-post.php'); ?>" id="wizard" method="POST">
+        <form class="multisteps-form__form" action="javascript:void(0);" id="wizard" method="POST">
             <input type="hidden" name="action" value="<?php echo esc_attr($action_name); ?>">
             <input type="hidden" name="form_prefix" value="<?php echo esc_attr($form_prefix); ?>">
             <input type="hidden" name="form_post_id" value="<?php echo esc_attr($form_post_id); ?>">

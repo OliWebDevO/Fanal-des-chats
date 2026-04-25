@@ -5151,7 +5151,9 @@ function handle_generic_form_submit() {
     }
 }
 
-// Hooks pour les 6 formulaires
+// Hooks serveur désactivés : les formulaires sont maintenant envoyés exclusivement via EmailJS côté client.
+// Conservé en commentaire au cas où il faudrait revenir à wp_mail().
+/*
 $form_actions = array(
     'submit_adoption_form',
     'submit_abandon_form',
@@ -5164,6 +5166,7 @@ foreach ($form_actions as $action) {
     add_action('admin_post_nopriv_' . $action, 'handle_generic_form_submit');
     add_action('admin_post_' . $action, 'handle_generic_form_submit');
 }
+*/
 
 /**
  * Migration one-time : convertit les anciennes questions individuelles (q1-q60)
