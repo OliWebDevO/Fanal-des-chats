@@ -362,9 +362,15 @@ $template_dir = get_template_directory_uri();
             <h2><?php echo esc_html($success_titre); ?></h2>
             <p><?php echo nl2br(esc_html($success_message)); ?></p>
             <img src="<?php echo $template_dir; ?>/assets/images/images/illustrations/5_little cat.png" alt="" class="success-cat">
+            <?php if ($form_prefix === 'adoption') : ?>
+            <a href="<?php echo home_url('/adoption?step=booking#cta'); ?>" class="btn-home" id="btnPrendreRdv">
+                <i class="fas fa-calendar-check"></i> Prendre rendez-vous
+            </a>
+            <?php else : ?>
             <a href="<?php echo home_url('/'); ?>" class="btn-home">
                 <i class="fas fa-home"></i> Retour à l'accueil
             </a>
+            <?php endif; ?>
         </div>
     </div>
 

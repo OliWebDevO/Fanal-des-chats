@@ -29,13 +29,10 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
       <!-- Font Awesome -->
       <script src="https://kit.fontawesome.com/0144f75b4e.js" crossorigin="anonymous"></script>
-   	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo("template_url")?>/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo("template_url")?>/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php bloginfo("template_url")?>/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="<?php bloginfo("template_url")?>/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="<?php bloginfo("template_url")?>/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="<?php bloginfo("template_url")?>/assets/images/images/Logo Fanal des Chats.png">
+    <link rel="apple-touch-icon" href="<?php bloginfo("template_url")?>/assets/images/images/Logo Fanal des Chats.png">
+    <link rel="shortcut icon" href="<?php bloginfo("template_url")?>/assets/images/images/Logo Fanal des Chats.png">
+    <meta name="theme-color" content="#FF5B2E">
   	<meta name="description" content="Le Fanal des Chats | Soins et Protection des Chats">
     <title><?php bloginfo("name")?></title>
     <?php wp_head(); ?>

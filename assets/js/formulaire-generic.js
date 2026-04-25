@@ -308,23 +308,18 @@
         $container.html(html);
     }
 
-    // Redirect after adoption form submission
-    // - chaton : direct vers /rdv-chaton (mail déjà envoyé)
-    // - chat : vers /adoption?step=booking#cta (mail envoyé après réservation Calendly)
+    // Adapter le bouton du modal de succès selon le type d'adoption (chat / chaton)
+    // Pas de redirection automatique : l'utilisateur clique sur le bouton du modal
     function redirectAfterAdoption() {
         var prefix = $('input[name="form_prefix"]').val();
-        if (prefix === 'adoption') {
-            var adoptionType = sessionStorage.getItem('adoption_type');
-            sessionStorage.removeItem('adoption_type');
-            var redirectPath;
-            if (adoptionType === 'chaton') {
-                redirectPath = '/rdv-chaton';
-            } else {
-                redirectPath = '/adoption?step=booking#cta';
+        if (prefix !== 'adoption') return;
+        var adoptionType = sessionStorage.getItem('adoption_type');
+        sessionStorage.removeItem('adoption_type');
+        if (adoptionType === 'chaton') {
+            var $btn = $('#btnPrendreRdv');
+            if ($btn.length) {
+                $btn.attr('href', window.location.origin + '/rdv-chaton');
             }
-            setTimeout(function() {
-                window.location.href = window.location.origin + redirectPath;
-            }, 3000);
         }
     }
 
@@ -394,24 +389,6 @@
             });
             html += '</table>';
         });
-
-        // Important questions summary
-        const summary = buildImportantSummary();
-        if (summary.length > 0) {
-            html += '<hr style="border: 2px solid #FF5B2E; margin: 30px 0;">';
-            html += '<h2 style="color: #FF5B2E;">Questions importantes - Sommaire</h2>';
-            html += '<table style="width: 100%; border-collapse: collapse;">';
-            summary.forEach(function(item) {
-                const color = item.isCorrect ? '#28a745' : '#dc3545';
-                const icon = item.isCorrect ? '✓' : '✗';
-                const bg = item.isCorrect ? '#f0fff0' : '#fff0f0';
-                html += '<tr style="background: ' + bg + ';">';
-                html += '<td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: ' + color + ';">' + icon + ' ' + item.label + '</td>';
-                html += '<td style="padding: 10px; border-bottom: 1px solid #eee; color: ' + color + ';">' + item.answer + '</td>';
-                html += '</tr>';
-            });
-            html += '</table>';
-        }
 
         html += '</div>';
         return html;

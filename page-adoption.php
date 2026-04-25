@@ -356,11 +356,13 @@
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <script>
         (function() {
-            // Listen for Calendly booking event
+            var alreadySent = false;
             window.addEventListener('message', function(e) {
+                if (alreadySent) return;
                 if (e.data && e.data.event === 'calendly.event_scheduled') {
                     var formData = sessionStorage.getItem('adoption_form_pending');
                     if (!formData) return;
+                    alreadySent = true;
                     try {
                         var parsed = JSON.parse(formData);
                         var bookingInfo = e.data.payload || {};
@@ -379,6 +381,7 @@
                         });
                     } catch (err) {
                         console.error('Erreur envoi mail combiné:', err);
+                        alreadySent = false;
                     }
                 }
             });
