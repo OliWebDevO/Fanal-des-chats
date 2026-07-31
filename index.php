@@ -345,12 +345,49 @@
                     </div>
                     </div>
                 </div>
-                <style>
-                    .temoignages-section .client-wrap .text { margin-left: 0 !important; }
-                    .temoignages-section .client-wrap .text h4 { margin-top: 0 !important; }
-                    .temoignages-section .owl-nav { margin-bottom: 90px; margin-top: 20px; }
-                    .temoignages-section { padding-bottom: 0; }
-                </style>
+<style>
+    .temoignages-section .client-wrap .text { margin-left: 0 !important; }
+    .temoignages-section .client-wrap .text h4 { margin-top: 0 !important; }
+    .temoignages-section .owl-nav { margin-bottom: 90px; margin-top: 20px; }
+    .temoignages-section { padding-bottom: 0; }
+
+    /* Hauteur fixe + scroll sur les témoignages */
+    .temoignages-slider .item {
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+    }
+    .temoignages-slider .item h3 {
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+    }
+    .temoignages-slider .item h3::-webkit-scrollbar {
+        width: 4px;
+    }
+    .temoignages-slider .item h3::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 2px;
+    }
+</style>
+<script>
+    jQuery(window).on('load', function($) {
+        setTimeout(function() {
+            jQuery('.temoignages-slider').owlCarousel('destroy');
+            jQuery('.temoignages-slider').owlCarousel({
+                loop: true,
+                nav: true,
+                dots: false,
+                items: 1,
+                autoplay: false,
+                autoplayTimeout: 15000,
+                arrows: true,
+                smartSpeed: 1000,
+                navText: ['<i class="fi ti-angle-left"></i>', '<i class="fi ti-angle-right"></i>'],
+            });
+        }, 500);
+    });
+</script>
                 <div class="row">
                     <div class="col-lg-6 col-12" style="margin-left: auto;">
                         <button class="theme-btn-s2" id="openTemoignageModal">Partagez votre témoignage</button>
