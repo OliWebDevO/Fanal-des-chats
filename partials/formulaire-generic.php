@@ -387,14 +387,7 @@ $template_dir = get_template_directory_uri();
     <!-- Scripts -->
     <script src="<?php echo $template_dir; ?>/assets/js/jquery.min.js"></script>
     <script src="<?php echo $template_dir; ?>/assets/js/bootstrap.bundle.min.js"></script>
-    <?php
-    // Version basée sur la date de modification du fichier : l'URL change à chaque
-    // déploiement, ce qui force les navigateurs à recharger le script au lieu de
-    // servir une copie en cache.
-    $formulaire_js = get_template_directory() . '/assets/js/formulaire-generic.js';
-    $formulaire_js_ver = file_exists($formulaire_js) ? filemtime($formulaire_js) : null;
-    ?>
-    <script src="<?php echo $template_dir; ?>/assets/js/formulaire-generic.js<?php echo $formulaire_js_ver ? '?ver=' . $formulaire_js_ver : ''; ?>"></script>
+    <script src="<?php echo fanal_asset_url('assets/js/formulaire-generic.js'); ?>"></script>
 
     <?php wp_footer(); ?>
 </body>

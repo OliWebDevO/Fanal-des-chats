@@ -5227,3 +5227,29 @@ function fanal_migrate_form_questions_to_repeater() {
     update_option('fanal_form_questions_migrated', true);
 }
 add_action('admin_init', 'fanal_migrate_form_questions_to_repeater');
+/**
+ * URL d'un fichier du thème, suffixée de sa date de modification.
+ *
+ * Les fichiers du thème sont chargés en dur dans les templates, sans passer par
+ * wp_enqueue_script(). Sans numéro de version, un navigateur ayant déjà visité
+ * le site continue de servir sa copie en cache après un déploiement — ce qui a
+ * cassé l'envoi des formulaires en juillet 2026 (le code en cache n'envoyait pas
+ * la variable to_email attendue par le template EmailJS).
+ *
+ * filemtime() change à chaque modification du fichier, donc l'URL change aussi
+ * et le rechargement est forcé pour tout le monde.
+ *
+ * @param string $chemin Chemin relatif à la racine du thème, ex. 'assets/js/script.js'
+ * @return string URL complète, avec ?ver=<timestamp> si le fichier existe
+ */
+function fanal_asset_url($chemin) {
+    $chemin = ltrim($chemin, '/');
+    $absolu = get_template_directory() . '/' . $chemin;
+    $url    = get_template_directory_uri() . '/' . $chemin;
+
+    if (file_exists($absolu)) {
+        $url .= '?ver=' . filemtime($absolu);
+    }
+
+    return $url;
+}

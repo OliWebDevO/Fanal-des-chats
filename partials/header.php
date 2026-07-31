@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php bloginfo("template_url")?>/assets/css/owl.transitions.css">
     <link rel="stylesheet" href="<?php bloginfo("template_url")?>/assets/css/jquery.fancybox.css">
     <link rel="stylesheet" href="<?php bloginfo("template_url")?>/assets/css/odometer-theme-default.css">
-    <link rel="stylesheet" href="<?php bloginfo("template_url")?>/assets/sass/style.css">
+    <link rel="stylesheet" href="<?php echo fanal_asset_url('assets/sass/style.css'); ?>">
       <!-- Google Web Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
