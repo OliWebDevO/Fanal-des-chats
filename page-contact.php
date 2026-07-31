@@ -49,7 +49,7 @@
                                     </a>
                                 </div>
                                 <div class="col col-xl-4 col-lg-6 col-md-6 col-12">
-                                    <a href="mailto:lefanaldeschats@proximus.be" class="office-info-link">
+                                    <a href="mailto:contact@lefanaldeschats.org" class="office-info-link">
                                         <div class="office-info-item">
                                             <div class="office-info-icon">
                                                 <div class="icon">
@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="office-info-text">
                                                 <h2>Email</h2>
-                                                <p>lefanaldeschats@proximus.be</p>
+                                                <p>contact@lefanaldeschats.org</p>
                                             </div>
                                         </div>
                                     </a>

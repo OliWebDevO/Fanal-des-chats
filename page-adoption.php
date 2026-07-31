@@ -376,6 +376,7 @@
                         emailjs.send('service_j6w9ose', 'template_t4aeuth', {
                             title: parsed.title + ' (avec RDV)',
                             message: fullBody,
+                            to_email: parsed.to_email || 'contact@lefanaldeschats.org',
                         }, 'HxEre_mtt2t-i8_qH').finally(function() {
                             sessionStorage.removeItem('adoption_form_pending');
                         });

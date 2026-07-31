@@ -308,6 +308,27 @@
         $container.html(html);
     }
 
+    // Destinataires des formulaires, par type de demande.
+    // Le template EmailJS reçoit l'adresse via la variable {{to_email}}.
+    var MAIL_CONTACT = 'contact@lefanaldeschats.org';
+    var MAILS_PAR_FORMULAIRE = {
+        'adoption':        'adoption@lefanaldeschats.org',
+        'adoption_chaton': 'adoptionchaton@lefanaldeschats.org',
+        'abandon':         'abandon@lefanaldeschats.org',
+        'benevole':        MAIL_CONTACT,
+        'emploi':          MAIL_CONTACT,
+        'stage':           MAIL_CONTACT,
+        'famille':         MAIL_CONTACT,
+    };
+
+    // Retourne l'adresse destinataire pour un formulaire donné.
+    // EmailJS remplace une variable absente par une chaîne vide, ce qui ferait
+    // partir le mail dans le vide : on retombe donc toujours sur l'adresse de contact.
+    function getDestinataire(prefix, adoptionType) {
+        var cle = (prefix === 'adoption' && adoptionType === 'chaton') ? 'adoption_chaton' : prefix;
+        return MAILS_PAR_FORMULAIRE[cle] || MAIL_CONTACT;
+    }
+
     // Adapter le bouton du modal de succès selon le type d'adoption (chat / chaton)
     // Pas de redirection automatique : l'utilisateur clique sur le bouton du modal
     function redirectAfterAdoption() {
@@ -427,12 +448,14 @@
         const emailBody = buildEmailBody();
         const adoptionType = sessionStorage.getItem('adoption_type');
         const isAdoptionChat = (prefix === 'adoption' && adoptionType !== 'chaton');
+        const destinataire = getDestinataire(prefix, adoptionType);
 
         if (isAdoptionChat) {
             // Différer l'envoi : on stocke le formulaire et on attend la réservation Calendly
             sessionStorage.setItem('adoption_form_pending', JSON.stringify({
                 title: 'Formulaire ' + formLabel,
                 message: emailBody,
+                to_email: destinataire,
             }));
             setAdoptionCookie();
             $('#successModal').addClass('show');
@@ -444,6 +467,7 @@
         emailjs.send('service_j6w9ose', 'template_t4aeuth', {
             title: 'Formulaire ' + formLabel,
             message: emailBody,
+            to_email: destinataire,
         }, 'HxEre_mtt2t-i8_qH')
         .then(function() {
             setAdoptionCookie();

@@ -28,7 +28,7 @@
                                 <ul>
                                     <li>Le Fanal des Chats asbl</li>
                                     <li>16 avenue Emile Max, 1030 Bruxelles</li>
-                                    <li>lefanaldeschats@proximus.be</li>
+                                    <li>contact@lefanaldeschats.org</li>
                                     <li>02/734.60.29</li>
                                 </ul>
                             </div>
