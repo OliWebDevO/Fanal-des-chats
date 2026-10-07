@@ -127,6 +127,10 @@
                                                 <li><a href="<?php echo home_url('/rdv-chaton'); ?>">Adoption Chaton</a></li>
                                             </ul>
                                         </li>
+                                        <!-- Mobile uniquement : sur desktop, le bouton « Contactez nous » est à droite du menu -->
+                                        <li class="d-lg-none">
+                                            <a href="<?php echo home_url('/contact'); ?>">Contact</a>
+                                        </li>
                                     </ul>
 
                                 </div><!-- end of nav-collapse -->
